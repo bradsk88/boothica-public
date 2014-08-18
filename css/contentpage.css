@@ -1,0 +1,439 @@
+.body {
+    line-height: 16px;
+}
+
+/**Mobile**/
+
+.normalsitewide {
+    background-color: #bef1e7;
+}
+
+.highsitewide {
+    background-color: #F55;
+    font-weight: bold;
+}
+
+#pmscountwrap{
+    top: 2em;
+}
+
+.allcontent {
+    float: left;
+    background-color:#FFF;
+}
+
+.plainbutton, .plainbuttoninverted {
+    background-color: white;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    padding-bottom: 0.250em;
+    border-bottom: 0.375em solid #DDDDDD;
+    border-left: 0.050em solid #DDDDDD;
+    border-top: none;
+    font-family: Arial, sans-serif;
+    line-height: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tallbutton {
+    padding-top: 0.750em;
+}
+
+.standardbutton {
+    padding-top: 0.50em;
+}
+
+
+.plainbuttonright {
+    border-right: 0.050em solid #DDDDDD;
+}
+
+.plainbuttoninverted {
+    border-bottom: none;
+    border-top: 0.375em solid #DDDDDD;
+    border-left: 0.050em solid #DDDDDD;
+}
+
+.headerbutton, .pageheader, .headertitle {
+    height: 2.500em;
+}
+
+.headerbutton {
+    width: 2.500em;
+}
+
+#headgear {
+    background-image: url(/media/settings.png);
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.headertitle {
+    background-image: url(/media/title.png);
+    background-repeat: no-repeat;
+    width: 20em;
+}
+
+.pageheader {
+    width: 100%;
+    background-size: cover !important;
+    background: url(/media/topbarbg.png) top;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
+
+#leftcard, #rightcard {
+    display:none;
+}
+
+.main {
+    margin:0px auto;
+    text-align:left;
+    padding-top: 2.500em;
+    background-color: #FFF;
+}
+
+.usercard, .centersection {
+    border-bottom: 0.020em dashed #BBB;
+    padding-bottom: 0.500em;
+}
+
+.usercard {
+    height: 3.75em;
+    position: relative;
+}
+
+.centersection {
+    padding-top: 0.500em;
+}
+
+.sectiontitle {
+    font-size:6em;
+    font-weight: bold;
+    float: left;
+}
+
+.sectionrefresh {
+    background-image: url(/media/ajax-refresh.gif);
+    background-position: center;
+    background-size: cover;
+    width: 2.000em;
+    height: 2.000em;
+    float: right;
+}
+
+.usercardname {
+    font-weight: bold;
+}
+
+.usercardstats {
+    font-size: 0.750em;
+}
+
+.usercardimage {
+    background-size: cover;
+    background-position: center;
+    width: 3.750em;
+    height: 3.750em;
+    position: absolute;
+}
+
+.usercardtext {
+    cursor: pointer;
+}
+
+.usercardcontent {
+    position: absolute;
+    width: 11em;
+    margin-left: 4em;
+    height: 3.75em;
+}
+
+.centerpane, .leftpane, .rightpane, .settingsbutton {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.centerpane, .leftpane, .rightpane {
+    min-height: 40em;
+    font-family:"Arial", Times, serif;
+    background: #FFF;
+}
+
+.centerpane {
+    padding: 0 0.5em 0.5em 0.5em;
+}
+
+.leftpane, .rightpane {
+    padding: 0.500em;
+}
+
+.leftpane, .centerpane, .rightpane {
+    width: 100%;
+}
+
+.centerpane {
+    border-left: 0.175em solid #BBB;
+    border-right: 0.175em solid #BBB;
+    min-height: 37.500em;
+    font-family:"Arial", Times, serif;
+    background: #FFF;
+}
+
+.settingsbutton {
+    border: 0.05em solid black;
+    border-radius: 0.5em;
+    width: 100%;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+#boothsnum {
+    cursor: pointer;
+}
+
+/* Desktop */
+@media screen and (min-width: 1000px) and (orientation: landscape) {
+
+    #leftcard, #rightcard {
+        display: inherit;
+    }
+
+    .pageheader {
+        width: 1280px;
+        left: 50%;
+        margin-left: -640px;
+    }
+
+    .main {
+        position: relative;
+        width:1280px;
+        min-height: 50em;
+        background-color: #FFF;
+    }
+
+    .sectiontitle {
+        font-size:1em;
+    }
+
+    .centerandright {
+        float: right;
+    }
+
+    .usercardname, .usercardstats, .usercardtext {
+        margin: 0.500em;
+    }
+
+    .usercardnumwrap {
+        position: absolute;
+        display: none;
+        right: 0.30em;
+        top: 0.30em;
+        border: 0.3em solid #6BDBB3;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 1em;
+        padding: 0.2em;
+        width: 0.75em;
+        height: 0.75em;
+        line-height: 0.75em;
+        background-color: #FFF;
+        z-index: 900;
+    }
+    .usercardnum {
+        cursor: default;
+        font-size: 70%;
+    }
+
+    .centerpane, .rightpane {
+        float: left;
+    }
+
+    .leftpane {
+        float: right;
+    }
+
+    .centerpane {
+        left: 16.000em;
+        top: 0;
+        width: 48.000em;
+    }
+
+    .leftpane {
+        left: 0;
+        top: 0;
+        height: 100%;
+    }
+
+    .rightpane {
+        right: 0;
+        top: 0;
+        height: 100%;
+    }
+
+    .leftpane, .rightpane, .headertitle {
+        width: 16.000em;
+    }
+
+    .headertitle, .headernavbutton {
+        float: left;
+    }
+
+    .headernavbutton {
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 8em;
+        height: 1em;
+        margin-left: 1em;
+        cursor: pointer;
+        padding-top: 0.75em;
+        padding-bottom: 0.75em;
+        background-position: center;
+    }
+
+    #homebutton {
+        cursor: pointer;
+    }
+
+    .sectionrefresh {
+        width: 1.000em;
+        height: 1.000em;
+    }
+
+    .settingsbutton {
+        width: 12em;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+
+/* Desktop */
+@media screen and (min-width: 500px) and (max-width: 1000px) {
+
+    #leftcard {
+        display: inherit;
+    }
+
+    .pageheader {
+        width: 58em;
+        left: 50%;
+        margin-left: -29em;
+    }
+
+    .main {
+        position: relative;
+        width:58em;
+        min-height: 50em;
+        background-color: #FFF;
+    }
+
+    .sectiontitle {
+        font-size:1em;
+    }
+
+    .usercardname, .usercardstats, .usercardtext {
+        margin: 0.500em;
+    }
+
+    .usercardnumwrap {
+        position: absolute;
+        display: none;
+        right: 0.30em;
+        top: 0.30em;
+        border: 0.3em solid #6BDBB3;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 1em;
+        padding: 0.2em;
+        width: 0.75em;
+        height: 0.75em;
+        line-height: 0.75em;
+        background-color: #FFF;
+        z-index: 900;
+    }
+    .usercardnum {
+        cursor: default;
+        font-size: 70%;
+    }
+
+    .centerandright {
+        float: none;
+    }
+
+
+    .centerpane, .rightpane {
+        float: left;
+    }
+
+    .leftpane {
+        float: left;
+    }
+
+    .centerpane {
+        left: 16.000em;
+        top: 0;
+        width: 42em;
+    }
+
+    .leftpane {
+        left: 0;
+        top: 0;
+        height: 100%;
+    }
+
+    .rightpane {
+        right: 0;
+        top: 0;
+        height: 100%;
+    }
+
+    .leftpane, .rightpane, .headertitle {
+        width: 16.000em;
+    }
+
+    .headertitle, .headernavbutton {
+        float: left;
+    }
+
+    .headernavbutton {
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 8em;
+        height: 1em;
+        margin-left: 1em;
+        cursor: pointer;
+        padding-top: 0.75em;
+        padding-bottom: 0.75em;
+        background-position: center;
+    }
+
+    #homebutton {
+        cursor: pointer;
+    }
+
+    .sectionrefresh {
+        width: 1.000em;
+        height: 1.000em;
+    }
+
+    .settingsbutton {
+        width: 12em;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}

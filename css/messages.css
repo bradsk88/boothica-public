@@ -1,0 +1,38 @@
+.pmDate {
+    /*navigation color*/
+    background: #6bdbb3;
+}
+
+.myPM {
+
+	background-color: #ccffcc;
+	border-radius: 8px;
+	float: left;
+	width: 80%;
+	padding: 10px;
+	margin: 0.5pt;
+	box-shadow: 0px 5px 4px #BBAAAA
+
+}
+
+.theirPM {
+
+	background-color: #AADDFF;
+	border-radius: 8px;
+	margin: 0.5pt;
+	float: right;
+	width: 80%;
+	padding: 10px;
+	box-shadow: 0px 5px 4px #BBAAAA
+
+}
+
+.pmDate {
+	border-radius: 8px;
+	margin: 0.5pt;
+	float: right;
+	width: 100%;
+	padding: 10px;
+	box-shadow: 0px 5px 4px #555555
+
+}

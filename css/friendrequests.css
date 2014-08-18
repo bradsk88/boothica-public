@@ -1,0 +1,112 @@
+
+.idusername {
+
+	border-radius: 5px !important;
+	padding-left : 10px;
+	padding-right : 10px;
+	background-color: white;
+	background-color:rgba(255,255,255,0.5);
+	height: 20px;
+	width: 100px;
+	float: left;
+
+}
+
+.requestouterpane {
+
+	width: 100% !important;
+
+}
+
+.floatrequestsectiontext {
+
+	float: left;
+	padding-top:10px;
+	padding-left: 10px;
+	height: 20px;
+	width: 100px;
+
+}
+
+.requestsectiontext {
+
+	padding:20px;
+	height: 20px;
+
+}
+
+.requestleftcell {
+
+	border-left: 1px solid #e3e5f4;
+	padding-left: 5px;
+	padding-right: 5px;
+	height: 100%;
+	width:70px;
+	float:left;
+	background-size: cover;
+
+}
+
+.requestrightcell {
+border-left: 1px solid #e3e5f4;
+	padding-left: 5px;
+	padding-right: 5px;
+	height: 100%;
+	float: right;
+}
+
+.requestpane {
+
+	border: solid 1px #b1cff9;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px;
+
+}
+	
+.requestcard {
+
+	border-top: 1px solid #e3e5f4;
+	border-right: 1px solid #e3e5f4;
+	border-bottom: 1px solid #e3e5f4;
+	width: 100% !important;
+    height:60px !important;
+	min-height: 60px;
+	overflow: hidden;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ffffff 0%, #e3e5f4 82%, #f9f9f9 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(82%,#e3e5f4), color-stop(100%,#f9f9f9)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#e3e5f4 82%,#f9f9f9 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ffffff 0%,#e3e5f4 82%,#f9f9f9 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ffffff 0%,#e3e5f4 82%,#f9f9f9 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ffffff 0%,#e3e5f4 82%,#f9f9f9 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9f9f9',GradientType=0 ); /* IE6-9 */
+
+
+}
+
+.requesttopbutton {
+
+	border-radius: 10px !important;
+	padding : 5px;
+	width: auto;
+	width : 50px;
+	height: 30px;
+	position: absolute;
+	top: 30px;
+	right: 0px;
+
+}
+
+.requestbottombutton {
+
+	border-radius: 10px !important;
+	padding : 5px;
+	width: auto;
+	width : 50px;
+	height: 30px;
+	position: absolute;
+	bottom: 30px;
+	right: 0px;
+
+}

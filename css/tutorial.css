@@ -1,0 +1,58 @@
+.regbutton, .continue, .bigcontinue {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	background: #329ca9; 
+	border: 1px black solid;
+	cursor: pointer;
+	color: black;
+}
+
+.bigcontinue {
+    text-align: center;
+}
+
+.continue {
+    text-align: center;
+    float: left;
+    width: 50%
+}
+
+.regbutton a {
+	color: black;
+}
+
+.regbutton a:visited {
+	color: black;
+}
+
+.reg-description {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.infobox {
+	width: 100%; 
+	background: #8ac6ce; 
+	border-top-left-radius: 5px; 
+	border-top-right-radius: 5px;
+}
+
+.wrapper {
+	width: 100%;
+	height: 300px;
+}
+
+.choice-section {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.choice {
+    width:200px;
+    height: 300px;
+    float: left;
+    text-align: center;
+}

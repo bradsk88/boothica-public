@@ -1,0 +1,42 @@
+.digestcell {
+
+	width: 200px;
+	background: white;
+	box-shadow: 10px 10px 4px rgba(0,0,0,0.2);
+	height: 240px;
+	overflow: hidden;
+	float: left;
+	margin: 10px;
+	padding-top: 10px;
+
+}
+
+.digestpic {
+
+	width: 180px;
+	height: 150px;
+	
+}
+
+.feedcommand {
+
+	position:absolute !important;
+	bottom: 0px;
+	right: 0px !important;
+
+}
+
+.feeddate {
+
+	font-style:italic;
+	font-size: 10px;
+	color: gray;
+	float: right;
+
+}
+
+.blurb {
+
+	font-size: 10px;
+
+}

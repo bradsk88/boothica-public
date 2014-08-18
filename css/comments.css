@@ -1,0 +1,186 @@
+#comments {
+
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.commentbuttons {
+
+	font-style:italic;
+	font-size: 10px;
+	color: gray;
+	position: absolute;
+	right: 20px;
+	bottom: 0px;
+
+}
+
+.commentfooter {
+
+	float: left;
+	width: 100%;
+	height: 20px;
+
+}
+
+.commentlikes {
+
+	font-style:italic;
+	font-size: 16px;
+	color: green;
+	position: absolute;
+	left: 20px;
+	bottom: 0px;
+	height: 20px;
+	float: left;
+
+}
+
+.commentdislikes {
+
+	font-style:italic;
+	font-size: 10px;
+	color: red;
+	position: absolute;
+	left: 20px;
+	bottom: 0px;
+	height: 20px;
+	float: left;
+
+}
+
+.newcommentbuttons {
+
+	width: 100%; 
+	position:absolute; 
+	bottom: 30px;	
+
+}
+
+.commenticonframe {
+
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 15px;
+	height: auto;
+	background: #FFFFFF;
+	position:relative;
+	width: 100%;
+	min-width: 640px;
+	position: relative;
+	overflow: hidden;
+
+}
+
+.commentpicframe {
+
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	height: auto;
+	background: #FFFFFF;
+	position:relative;
+	width: 100%;
+	min-width: 640px;
+	position: relative;
+	overflow: hidden;
+
+}
+
+.commenttext {
+
+	width: 720px;
+	float: right;
+	background-color: white;
+
+}
+
+.commentpictext {
+
+	width: 510px;
+	float: right;
+	background-color: white;
+
+}
+
+.commenticon {
+
+	background-size: cover !important;
+	background-position: center !important;
+	width: 60px !important;
+	height: 60px !important;
+	float: left !important;
+	border-style: solid !important;
+	border-color: white !important;
+	border-width: 5px !important;
+
+}
+
+.commentpic{
+
+	background-size: contain !important;
+	background-repeat: no-repeat;
+	width: 266px !important;
+	float: left !important;
+	border-style: solid !important;
+	border-color: white !important;
+	border-width: 5px !important;
+
+}
+
+.commentcommand {
+
+	position:absolute !important;
+	bottom: 0px;
+	right: 0px !important;
+
+}
+
+.commentslink {
+
+	text-decoration:none;
+	color: #669999;
+
+}
+
+.commentcamerasection {
+
+	position: absolute; 
+	left: 0px; 
+	top: 0px; 
+	width: 320px; 
+	height: 240px;
+
+}
+
+.commentfilepreviewsection {
+
+	position: absolute; 
+	left: 0px; 
+	top: 25px; 
+	width: 320px; 
+	height: 215px;
+
+}
+
+.halfcommentarea {
+
+	padding: 10px; 
+	width: 296px; 
+	height: 216px; 
+	float:right
+
+}
+
+.commentarea {
+
+	position: absolute !important;
+	top: 0px !important;
+	right: 0px;
+	padding: 10px 10px 10px 10px !important;
+
+}

@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^([^/.]+)/?$ news/view.php?n=$1 [L]
