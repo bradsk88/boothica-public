@@ -15,6 +15,9 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_common("cookies");
 require_common("utils");
 
+if ($_SESSION['username'] == 'bradsk88') {
+error_reporting(E_ALL);
+}
 class ContentPage
 {
 

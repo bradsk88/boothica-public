@@ -185,7 +185,7 @@ function loadRandomBooths() {
 function getFriendFeedHTML(data,  commandName) {
     $("head").append("<script type = 'text/javascript' src = '/activity/friendfeed-scripts.js'></script>");
     $("head").append("<script type = 'text/javascript' src = '/common/feed-scripts.js'></script>");
-    if (debugging) {
+    if ("undefined" !== typeof(debugging) && debugging) {
         return data;
     }
     var html =
@@ -202,7 +202,7 @@ function getFriendFeedHTML(data,  commandName) {
 
 
 function getLiveFeedHTML(data,  commandName, sectionTitle) {
-    if (debugging) {
+    if ("undefined" !== typeof(debugging) && debugging) {
         return data;
     }
     var html =
@@ -250,7 +250,7 @@ function getBoothFeedHTML(data, onClickFunc) {
 
 
 function getNotificationsHTML(data) {
-    if (debugging) {
+    if ("undefined" !== typeof(debugging) && debugging) {
         return data;
     }
     var html = "<div class = 'sectiontitle'>Notifications</div>" +
@@ -275,7 +275,7 @@ function getNotificationsHTML(data) {
 
 
 function getSiteWideNotifsHTML(data) {
-    if (debugging) {
+    if ("undefined" !== typeof(debugging) && debugging) {
         return "DEBUG:"+data;
     }
     var html = "<div class = 'widenotifs'>";

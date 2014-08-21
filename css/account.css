@@ -72,7 +72,7 @@
 }
 
 .wholething {
-	width: 1000px;
+	width: 100%;
 }
 
 .homenavbutton, .gradienteffect, .wholething {
@@ -127,8 +127,12 @@
 
 .privacy-off, .privacy-on {
 	text-align: left;
-	width: 885px;
+    font-size: 75%;
+	width: 100%;
 	padding: 10px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
 }
 
 .privacy-off, .privacy-on, .setting, .account-problem, .account-ok {
@@ -147,15 +151,26 @@
 	border-bottom: 10px solid #477499;
 }
 
-.setting, .account-problem, .account-ok {
-    width: 885px;
-    padding: 10px;
+.setting {
+    padding-bottom: 2em;
 }
 
-.setting {
+.setting, .setting-with-image, .account-problem, .account-ok {
+    width: 100%;
+    padding: 10px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+
+.setting, .setting-with-image{
 	text-align: left;
-	background-color: rgba(0,0,0,0.2);
-	border-bottom: 10px solid gray;
+	background-color: #FFF;
+	border-bottom: 0.02em dashed #BBB;
+    position: relative;
+}
+
+.setting-with-image {
 }
 
 .account-problem, .account-ok {
@@ -180,28 +195,40 @@
 	font-family: "Trebuchet MS",sans-serif;
 }
 
-.setting-img-left, .setting-desc {
+.setting-img-left, .setting-desc, .setting-img-desc {
 	background-color: rgba(255,255,255,0.2);
 	border: 1px dashed gray;
 	padding: 10px;
 	margin-top: 5px;
 }
 
-.setting-desc {
-	font-size: 16px;	
-	text-decoration: italic;
-	margin-bottom: 5px;
+.setting-img-left {
+    position: absolute;
+    right: 1em;
+    top: 1em;
 }
 
-.setting-cur {
-	margin-left: 100px;
-	text-align: right;
+.setting-desc, .setting-img-desc {
+	font-size: 16px;	
+	text-decoration: italic;
+    margin-bottom: 2em;
+    position: relative;
+}
+
+.setting-img-desc {
+    margin-right: 10em;
+    margin-left: 2em;
 }
 
 .setting-cur, .setting-cur a {
 	font-size: 18px;
 	font-style: bold;
 	text-decoration: none;
+}
+
+.setting-link {
+    float: right;
+    padding: 0.25em;
 }
 
 #submit {
