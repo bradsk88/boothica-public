@@ -4,6 +4,22 @@
 
 /**Mobile**/
 
+.searchtextarea {
+    display: none;
+}
+
+.searchbutton {
+    display: none;
+}
+
+.searchchoiceswrapper {
+    display: none;
+}
+
+.advsearchbutton {
+    width: 4em !important;
+}
+
 .normalsitewide {
     background-color: #bef1e7;
 }
@@ -13,20 +29,20 @@
     font-weight: bold;
 }
 
-#pmscountwrap{
+#pmscountwrap {
     top: 2em;
 }
 
 .allcontent {
     float: left;
-    background-color:#FFF;
+    background-color: #FFF;
 }
 
 .plainbutton, .plainbuttoninverted {
     background-color: white;
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     padding-bottom: 0.250em;
     border-bottom: 0.375em solid #DDDDDD;
     border-left: 0.050em solid #DDDDDD;
@@ -45,7 +61,6 @@
 .standardbutton {
     padding-top: 0.50em;
 }
-
 
 .plainbuttonright {
     border-right: 0.050em solid #DDDDDD;
@@ -90,12 +105,12 @@
 }
 
 #leftcard, #rightcard {
-    display:none;
+    display: none;
 }
 
 .main {
-    margin:0px auto;
-    text-align:left;
+    margin: 0px auto;
+    text-align: left;
     padding-top: 2.500em;
     background-color: #FFF;
 }
@@ -115,7 +130,7 @@
 }
 
 .sectiontitle {
-    font-size:6em;
+    font-size: 6em;
     font-weight: bold;
     float: left;
 }
@@ -158,13 +173,13 @@
 
 .centerpane, .leftpane, .rightpane, .settingsbutton {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
 }
 
 .centerpane, .leftpane, .rightpane {
     min-height: 40em;
-    font-family:"Arial", Times, serif;
+    font-family: "Arial", Times, serif;
     background: #FFF;
 }
 
@@ -184,7 +199,7 @@
     border-left: 0.175em solid #BBB;
     border-right: 0.175em solid #BBB;
     min-height: 37.500em;
-    font-family:"Arial", Times, serif;
+    font-family: "Arial", Times, serif;
     background: #FFF;
 }
 
@@ -205,6 +220,55 @@
 /* Desktop */
 @media screen and (min-width: 1000px) and (orientation: landscape) {
 
+    .searchtextarea {
+        display: initial;
+        border: none;
+        margin-top: 0.25em;
+        height: 2.3em;
+        width: 28em;
+        float: left;
+        margin-left: 1em;
+        border-top-left-radius: 0.5em;
+        border-bottom-left-radius: 0.5em;
+        font-family: arial;
+        padding-left: 1em;
+        resize: none;
+    }
+
+    .searchbutton {
+        display: initial;
+        float: left;
+        margin-top: 0.2em;
+        padding: 0.4em;
+        background-color: rgba(255, 255, 255, 0.75);
+        font-weight: bold;
+        cursor: pointer;
+        border-top-right-radius: 0.5em;
+        border-bottom-right-radius: 0.5em;
+        border: none;
+        height: 2.5em;
+    }
+
+    .searchchoiceswrapper {
+        display: initial;
+        float: left;
+        margin-top: 0.2em;
+        height: 2.05em;
+        background: #FFF;
+        width: 6.5em;
+    }
+
+    .searchchoices {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0.4em;
+        height: 1.5em;
+        width: 6.5em;
+        text-align: left;
+        border: 1px solid #3C3;
+        border-radius: 0.25em;
+    }
+
     #leftcard, #rightcard {
         display: inherit;
     }
@@ -217,13 +281,13 @@
 
     .main {
         position: relative;
-        width:1280px;
+        width: 1280px;
         min-height: 50em;
         background-color: #FFF;
     }
 
     .sectiontitle {
-        font-size:1em;
+        font-size: 1em;
     }
 
     .centerandright {
@@ -250,6 +314,7 @@
         background-color: #FFF;
         z-index: 900;
     }
+
     .usercardnum {
         cursor: default;
         font-size: 70%;
@@ -290,7 +355,6 @@
     }
 
     .headernavbutton {
-        background-size: contain;
         background-repeat: no-repeat;
         width: 8em;
         height: 1em;
@@ -319,7 +383,6 @@
 
 }
 
-
 /* Desktop */
 @media screen and (min-width: 500px) and (max-width: 1000px) {
 
@@ -335,13 +398,13 @@
 
     .main {
         position: relative;
-        width:58em;
+        width: 58em;
         min-height: 50em;
         background-color: #FFF;
     }
 
     .sectiontitle {
-        font-size:1em;
+        font-size: 1em;
     }
 
     .usercardname, .usercardstats, .usercardtext {
@@ -364,6 +427,7 @@
         background-color: #FFF;
         z-index: 900;
     }
+
     .usercardnum {
         cursor: default;
         font-size: 70%;
@@ -372,7 +436,6 @@
     .centerandright {
         float: none;
     }
-
 
     .centerpane, .rightpane {
         float: left;
@@ -409,7 +472,6 @@
     }
 
     .headernavbutton {
-        background-size: contain;
         background-repeat: no-repeat;
         width: 8em;
         height: 1em;

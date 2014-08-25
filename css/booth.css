@@ -2,6 +2,18 @@
     width: 100%;
 }
 
+.wideboothdatestamp {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    color: rgba(255, 180, 100, 1);
+    font-family: 'Digital';
+    font-weight: bold;
+    text-shadow: 0 0 0.25em red;
+    transform: rotate(0.5deg);
+        
+}
+
 .wideboothtext {
     font-size: 1em;
     width: 100%;
@@ -25,12 +37,14 @@
     padding-top: 0.500em;
     display: inline-block;
     width: 100%;
+    position: relative;
 }
 
 .wideboothcell-tall {
     width: auto;
     margin-left: 4em;
     margin-right: 4em;
+    position: relative;
 }
 
 .wideboothimg {

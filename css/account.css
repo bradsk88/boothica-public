@@ -1,239 +1,239 @@
-.accountframe {
-}
-
-.accounticon {
-
-	border-radius: 10px !important; 
-	background-size: cover !important;
-	background-position: center !important;
-	width: 60px !important;
-	height: 60px !important;
-	float: left !important;
-	border-style: solid !important;
-	border-color: white !important;
-	border-width: 5px !important;
-
-}
-
-.accountframe {
-
-	margin-top: 10px;
-	margin-bottom: 0px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-bottom: 15px;
-	height: auto;
-	background: #FFFFFF;
-	position:relative;
-	width: 640px;
-	min-width: 640px;
-	position: relative;
-	overflow: hidden;
-
-}
-
-.accountcommand {
-
-	position:absolute !important;
-	bottom: 0px;
-	right: 0px !important;
-
-}
-
-/*new stuff goes here*/
-
-/*This will actually be used for the new styling*/
-
-.homenavbutton, .topnavbutton, .morebutton {
-	float: left;
-}
-
-.topnavbutton, .morebutton {
-	border-bottom: 10px solid green;
-}
-
-.topnavbutton {
-	margin-right: 1px;
-	padding: 10px;
-	width: 200px;
-}
-
-.topnavbutton, .morebutton {
-	font-family: "Trebuchet MS",sans-serif;
-	text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-	font-size: 26px;
-	text-align: center;
-}
-
-.homenavbutton, .morebutton {
-	min-width: 58px;
-	max-width: 58px;
-	height: 51px;
-}
-
-.wholething {
-	width: 100%;
-}
-
-.homenavbutton, .gradienteffect, .wholething {
-	border-bottom-left-radius: 10px;
-}
-
-.wholething, .topnavbutton, .morebutton {
-	background: #6bdbb3;
-	background: #63f9d4; /* Old browsers */
-	background: -moz-linear-gradient(top, #63f9d4 0%, #6bdbb3 62%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63f9d4), color-stop(62%,#6bdbb3)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #63f9d4 0%,#6bdbb3 62%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #63f9d4 0%,#6bdbb3 62%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #63f9d4 0%,#6bdbb3 62%); /* IE10+ */
-	background: linear-gradient(to bottom, #63f9d4 0%,#6bdbb3 62%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63f9d4', endColorstr='#6bdbb3',GradientType=0 ); /* IE6-9 */
-}
-
-.homenavbutton {
-	background: #ff4e00;
-}
-
-.gradienteffect {
-	background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(0,0,0,1) 50%, rgba(0,68,0,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(50%,rgba(0,0,0,1)), color-stop(100%,rgba(0,68,0,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,0,0,1) 50%,rgba(0,68,0,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,0,0,1) 50%,rgba(0,68,0,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,0,0,1) 50%,rgba(0,68,0,1) 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(0,0,0,1) 50%,rgba(0,68,0,1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#004400',GradientType=0 ); /* IE6-9 */
-}
-
-/* New account page css */
-
-.setting-text {
-	float: left;
-	width: 250px;
-}
-
-.setting-img-left, .setting-img-right {
-	float: right;
-	position: relative;
-}
-
-.setting-img-left {
-	margin-right: 10px;
-}
-
-.setting-img-right {
-	width: 752px;
-}
-
-.privacy-off, .privacy-on {
-	text-align: left;
-    font-size: 75%;
-	width: 100%;
-	padding: 10px;
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-}
-
-.privacy-off, .privacy-on, .setting, .account-problem, .account-ok {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.privacy-on {
-	background-color: #4235b2;
-	border-bottom: 10px solid #251e63;
-	color: #DDDDDD;
-}
-
-.privacy-off {
-	background-color: #77c1ff;
-	border-bottom: 10px solid #477499;
-}
-
-.setting {
-    padding-bottom: 2em;
-}
-
-.setting, .setting-with-image, .account-problem, .account-ok {
-    width: 100%;
-    padding: 10px;
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-}
-
-.setting, .setting-with-image{
-	text-align: left;
-	background-color: #FFF;
-	border-bottom: 0.02em dashed #BBB;
-    position: relative;
-}
-
-.setting-with-image {
-}
-
-.account-problem, .account-ok {
-    font-weight: bold;
-}
-
-.account-problem {
-    background-color: red;
-    border-bottom: 10px solid darkred;
-    color: white;
-}
-
-.account-ok {
-    background-color: #6bdbb3;
-    border-bottom: 10px solid #3e8068;
-    color: black;
-    text-align: center;
-}
-
-.setting stitle {
-	font-size: 20px;
-	font-family: "Trebuchet MS",sans-serif;
-}
-
-.setting-img-left, .setting-desc, .setting-img-desc {
-	background-color: rgba(255,255,255,0.2);
-	border: 1px dashed gray;
-	padding: 10px;
-	margin-top: 5px;
-}
-
-.setting-img-left {
-    position: absolute;
-    right: 1em;
-    top: 1em;
-}
-
-.setting-desc, .setting-img-desc {
-	font-size: 16px;	
-	text-decoration: italic;
-    margin-bottom: 2em;
-    position: relative;
-}
-
-.setting-img-desc {
-    margin-right: 10em;
-    margin-left: 2em;
-}
-
-.setting-cur, .setting-cur a {
-	font-size: 18px;
-	font-style: bold;
-	text-decoration: none;
-}
-
-.setting-link {
-    float: right;
-    padding: 0.25em;
-}
-
-#submit {
-    cursor: pointer;
-}
-
-
-
+.accountframe {
+}
+
+.accounticon {
+
+	border-radius: 10px !important; 
+	background-size: cover !important;
+	background-position: center !important;
+	width: 60px !important;
+	height: 60px !important;
+	float: left !important;
+	border-style: solid !important;
+	border-color: white !important;
+	border-width: 5px !important;
+
+}
+
+.accountframe {
+
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 15px;
+	height: auto;
+	background: #FFFFFF;
+	position:relative;
+	width: 640px;
+	min-width: 640px;
+	position: relative;
+	overflow: hidden;
+
+}
+
+.accountcommand {
+
+	position:absolute !important;
+	bottom: 0px;
+	right: 0px !important;
+
+}
+
+/*new stuff goes here*/
+
+/*This will actually be used for the new styling*/
+
+.homenavbutton, .topnavbutton, .morebutton {
+	float: left;
+}
+
+.topnavbutton, .morebutton {
+	border-bottom: 10px solid green;
+}
+
+.topnavbutton {
+	margin-right: 1px;
+	padding: 10px;
+	width: 200px;
+}
+
+.topnavbutton, .morebutton {
+	font-family: "Trebuchet MS",sans-serif;
+	text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+	font-size: 26px;
+	text-align: center;
+}
+
+.homenavbutton, .morebutton {
+	min-width: 58px;
+	max-width: 58px;
+	height: 51px;
+}
+
+.wholething {
+	width: 100%;
+}
+
+.homenavbutton, .gradienteffect, .wholething {
+	border-bottom-left-radius: 10px;
+}
+
+.wholething, .topnavbutton, .morebutton {
+	background: #6bdbb3;
+	background: #63f9d4; /* Old browsers */
+	background: -moz-linear-gradient(top, #63f9d4 0%, #6bdbb3 62%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63f9d4), color-stop(62%,#6bdbb3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #63f9d4 0%,#6bdbb3 62%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #63f9d4 0%,#6bdbb3 62%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #63f9d4 0%,#6bdbb3 62%); /* IE10+ */
+	background: linear-gradient(to bottom, #63f9d4 0%,#6bdbb3 62%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63f9d4', endColorstr='#6bdbb3',GradientType=0 ); /* IE6-9 */
+}
+
+.homenavbutton {
+	background: #ff4e00;
+}
+
+.gradienteffect {
+	background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(0,0,0,1) 50%, rgba(0,68,0,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(50%,rgba(0,0,0,1)), color-stop(100%,rgba(0,68,0,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,0,0,1) 50%,rgba(0,68,0,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,0,0,1) 50%,rgba(0,68,0,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,0,0,1) 50%,rgba(0,68,0,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(0,0,0,1) 50%,rgba(0,68,0,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#004400',GradientType=0 ); /* IE6-9 */
+}
+
+/* New account page css */
+
+.setting-text {
+	float: left;
+	width: 250px;
+}
+
+.setting-img-left, .setting-img-right {
+	float: right;
+	position: relative;
+}
+
+.setting-img-left {
+	margin-right: 10px;
+}
+
+.setting-img-right {
+	width: 752px;
+}
+
+.privacy-off, .privacy-on {
+	text-align: left;
+    font-size: 75%;
+	width: 100%;
+	padding: 10px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+
+.privacy-off, .privacy-on, .setting, .account-problem, .account-ok {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.privacy-on {
+	background-color: #4235b2;
+	border-bottom: 10px solid #251e63;
+	color: #DDDDDD;
+}
+
+.privacy-off {
+	background-color: #77c1ff;
+	border-bottom: 10px solid #477499;
+}
+
+.setting {
+    padding-bottom: 2em;
+}
+
+.setting, .setting-with-image, .account-problem, .account-ok {
+    width: 100%;
+    padding: 10px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+
+.setting, .setting-with-image{
+	text-align: left;
+	background-color: #FFF;
+	border-bottom: 0.02em dashed #BBB;
+    position: relative;
+}
+
+.setting-with-image {
+}
+
+.account-problem, .account-ok {
+    font-weight: bold;
+}
+
+.account-problem {
+    background-color: red;
+    border-bottom: 10px solid darkred;
+    color: white;
+}
+
+.account-ok {
+    background-color: #6bdbb3;
+    border-bottom: 10px solid #3e8068;
+    color: black;
+    text-align: center;
+}
+
+.setting stitle {
+	font-size: 20px;
+	font-family: "Trebuchet MS",sans-serif;
+}
+
+.setting-img-left, .setting-desc, .setting-img-desc {
+	background-color: rgba(255,255,255,0.2);
+	border: 1px dashed gray;
+	padding: 10px;
+	margin-top: 5px;
+}
+
+.setting-img-left {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+}
+
+.setting-desc, .setting-img-desc {
+	font-size: 16px;	
+	text-decoration: italic;
+    margin-bottom: 2em;
+    position: relative;
+}
+
+.setting-img-desc {
+    margin-right: 10em;
+    margin-left: 2em;
+}
+
+.setting-cur, .setting-cur a {
+	font-size: 18px;
+	font-style: bold;
+	text-decoration: none;
+}
+
+.setting-link {
+    float: right;
+    padding: 0.25em;
+}
+
+#submit {
+    cursor: pointer;
+}
+
+
+

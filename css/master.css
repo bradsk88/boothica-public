@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Digital';
+    src: url('/fonts/DS-DIGI.TTF');
+    font-weight:400;
+}
+
+@font-face {
+    font-family: 'Digital';
+    src: url('/fonts/DS-DIGI.TTF');
+    font-weight:400;
+}
+
 a  {
 
     text-decoration:none;
@@ -58,14 +70,12 @@ a:visited {
 }
 
 .headersocialmessage {
-    width: 800px;
+    width: 400px;
     height: 11px;
     margin-top: 12px;
     padding-top: 10px;
     padding-bottom: 10px;
     font-weight: bold;
-    right: 50%;
-    margin-right: -405px;
     background-color: #AAEDD5;
     border-bottom-left-radius: 14px;
     border-bottom-right-radius: 14px;

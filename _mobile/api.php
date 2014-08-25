@@ -329,7 +329,11 @@ $body =
                     \"prevnum\":\"4\",<span class = \"apirefjsonnote\">The unique integer ID of this user's previous booth.  http://boothi.ca/someuser/4</span><br/>
                     \"nextnum\":\"9\",<span class = \"apirefjsonnote\">The unique integer ID of this user's next booth.  http://boothi.ca/someuser/9</span><br/>
                     \"likes\":\"2\",<span class = \"apirefjsonnote\">The number of likes this booth has received</span><br/>
-                    \"isfriend\":true}<span class = \"apirefjsonnote\">True if the current user is friends with this boother.</span><br/>]
+                    \"isfriend\":true,<span class = \"apirefjsonnote\">True if the current user is friends with this boother.</span><br/>
+                    \"datetime\":\"2012-08-04 00:07:11\",<span class = \"apirefjsonnote\">The time this booth was posted</span><br/>
+                    \"hoursago\":\"2\",<span class = \"apirefjsonnote\">The number hours that have passed since this booth was posted</span><br/>
+                    \"minutesago\":\"18\",<span class = \"apirefjsonnote\">The number minutes that have passed since this booth was posted</span><br/>
+                    }]
                 </div>
                 ".standardError()."
             </div>

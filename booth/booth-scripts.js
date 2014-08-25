@@ -245,6 +245,7 @@ function getBoothHTML(data) {
             "<div style = 'clear: both;'></div>" +
             "<div class = 'widebooth'>" +
             "<div class = '"+cellClass+"'>" +
+            "<div class = \"wideboothdatestamp\">" + obj.datetime + "</div>"+
             "<img class = \"wideboothimg\" src = '" + obj.imagePath + "' style = 'width: 100%'>" +
             "</div>" +
             "<div class = 'wideboothbuttons plainbutton standardbutton'>" +
