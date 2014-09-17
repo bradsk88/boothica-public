@@ -27,6 +27,6 @@ $page->meta("<link rel='stylesheet' href='/css/commentinput.css' type='text/css'
 $page->meta("<script type = 'text/javascript' src = '/common/jquery.a-tools-1.5.2.min.js'></script>");
 $page->meta("<script type = 'text/javascript' src = '/common/jquery.asuggest.js'></script>");
 
-$page->body("<div id = \"friendships\" class = \"centersection\">This site requires JavaScript</div>
+$page->body("<div id = \"newmembers\" class = \"centersection\">This site requires JavaScript</div>
 <div id = \"conversation\" class = \"centersection\"></div>");
 $page->echoPage();

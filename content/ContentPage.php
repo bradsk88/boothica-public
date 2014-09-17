@@ -62,7 +62,7 @@ class ContentPage
     private function includeJQuery()
     {
         $this->metaHTML .= "
-        <script src=\"http://code.jquery.com/jquery-1.10.1.min.js\"></script>
+        <script src=\"http://code.jquery.com/jquery-2.1.1.min.js\"></script>
         <script src=\"http://code.jquery.com/jquery-migrate-1.2.1.min.js\"></script>
         <script src=\"/common/jcanvas.min.js\"></script>
         <script language=\"text/javascript\" src = \"http://code.jquery.com/ui/1.10.0/jquery-ui.js\"></script>";
@@ -109,12 +109,12 @@ class ContentPage
         if (isset($_SESSION['username'])) {
 
             echo
-                "          <a href = \"/search\">
-                                <div class = \"headernavbutton\" onclick = \"openSnapNewBooth();\""
+                "<div class = \"headernavbutton\" onclick = \"openSnapNewBooth();\""
                 . " style = \"background-image: url(/media/newbooth.png);\"></div>
-                            </a>
-                            <div class = \"headernavbutton advsearchbutton\" onclick = \"openAdvancedSearch();\""
+                            <a href = \"/search\">
+                                <div class = \"headernavbutton advsearchbutton\" onclick = \"openAdvancedSearch();\""
                 . " style = \"background-image: url(/media/search.png);\"></div>
+                            </a>
                             <form method = \"GET\" action = \"/searchresults\">
                                 <input type = \"text\" class = \"searchtextarea\" name = \"q\"/>
                                 <div class = \"searchchoiceswrapper\">
@@ -219,6 +219,7 @@ class ContentPage
     function metaData()
     {
         $str = "<meta http-equiv='content-type' content='text/html; charset=UTF-8' />
+        <meta name=\"keywords\" content=\"dailybooth, social, photography, photo, socialnetworking, microblogging, community, web2.0, pictures, blog, photos\">
 		<title>Boothi.ca - Take a picture every day and make friends</title>
 		<link rel='stylesheet' href='/css/master.css' type='text/css' media='screen' />
 		<link rel='stylesheet' href='/css/contentpage.css' type='text/css' media='screen' />

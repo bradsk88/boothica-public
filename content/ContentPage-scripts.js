@@ -244,7 +244,7 @@ function getBoothFeedHTML(data, onClickFunc) {
     html = html +
         "<div class = \"narrowboothpad\"></div>" +
         "<div class = \"narrowboothpadline\"></div>" +
-        "<div class = \"plainbutton plainbuttonright\" onclick=\""+onClickFunc+"()\">More</div>";
+        "<div class = \"plainbutton plainbuttonright standardbutton\" onclick=\""+onClickFunc+"()\">More</div>";
     return html;
 }
 
@@ -391,9 +391,9 @@ function reloadPMCount() {
 function backToMain() {
     pushStateIfDifferent("activity");
     $("#centerpane").html(
-        "<div class = \"centersection\" id=\"friendships\"></div>" +
+        "<div class = \"centersection\" id=\"newmembers\"></div>" +
             "<div class = \"centersection\" id=\"conversation\"></div>");
     reloadSiteWideNotifications();
-    reloadFriendshipsSpot();
+    reloadNewMembersSpot();
     reloadInteractionFeed();
 }

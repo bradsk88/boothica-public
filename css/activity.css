@@ -153,6 +153,10 @@
     text-align: center;
 }
 
+#newmembers {
+    display: none;
+}
+
 /* Desktop */
 @media screen and (min-width: 1000px) and (orientation: landscape) {
 
@@ -208,6 +212,54 @@
         width: 37.500em;
     }
 
+    #newmembers {
+        display: inherit;
+        height: 6em;
+        position: relative;
+    }
+
+    .newmember {
+        width: 8em;
+        height: 4em;
+        position: absolute;
+    }
+
+    .newmemberimageframe {
+        width: 6em;
+        height: 4em;
+        cursor: pointer;
+    }
+
+    .newmemberimage {
+        margin: 0.5em;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
+
+    .newmember0 {
+        left: 0;
+    }
+
+    .newmember1 {
+        left: 8em;
+    }
+
+    .newmember2 {
+        left: 16em;
+    }
+
+    .newmember3 {
+        left: 24em;
+    }
+
+    .newmember4 {
+        left: 32em;
+    }
+
+    .newmember5 {
+        left: 40em;
+    }
 }
 
 /* Desktop Half-Screen */
@@ -263,6 +315,55 @@
 
     .convo {
         width: 32.000em;
+    }
+
+    #newmembers {
+        display: inherit;
+        height: 6em;
+        position: relative;
+    }
+
+    .newmember {
+        width: 8em;
+        height: 4em;
+        position: absolute;
+    }
+
+    .newmemberimageframe {
+        width: 6em;
+        height: 4em;
+        cursor: pointer;
+    }
+
+    .newmemberimage {
+        margin: 0.5em;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
+
+    .newmember0 {
+        left: 0;
+    }
+
+    .newmember1 {
+        left: 8em;
+    }
+
+    .newmember2 {
+        left: 16em;
+    }
+
+    .newmember3 {
+        left: 24em;
+    }
+
+    .newmember4 {
+        left: 32em;
+    }
+
+    .newmember5 {
+        left: 40em;
     }
 
 }

@@ -23,9 +23,7 @@ $(function() {
         });
     });
 
-    if (window.screen.width < 1280) {
-        readyFile();
-    }
+    readyFile();
 
     $('#camcountdownbutton').click( function() {
         startCountDown();
@@ -117,7 +115,6 @@ function readyCam() {
         $('.commentaddpic > .webcambuttons').slideToggle("slow");
         $('.commentaddpic > .filebuttons').slideToggle("slow", function() {
             $('#camtofilebutton').unbind('click');
-            readyFile();
         });
     });
 

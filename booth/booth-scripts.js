@@ -11,6 +11,11 @@ function getDataType() {
 function openBooth(boothnum) {
     window.boothnumber = boothnum;
     window.scrollTo(0, 0);
+
+    $("head").append("<link rel='stylesheet' href='/css/commentinput.css' type='text/css' media='screen' />");
+    $("head").append("<link rel='stylesheet' href='/css/booth.css' type='text/css' media='screen' />");
+    $("head").append("<script type = 'text/javascript' src = '/common/jquery.a-tools-1.5.2.min.js'></script>");
+    $("head").append("<script type = 'text/javascript' src = '/common/jquery.asuggest.js'></script>");
     $("#centerpane").html(
         "<div class = \"centersection\" id=\"boothtop\"></div>" +
             "<div class = \"centersection\" id=\"boothcomments\"></div>" +
@@ -245,7 +250,7 @@ function getBoothHTML(data) {
             "<div style = 'clear: both;'></div>" +
             "<div class = 'widebooth'>" +
             "<div class = '"+cellClass+"'>" +
-            "<div class = \"wideboothdatestamp\">" + obj.datetime + "</div>"+
+            "<div class = \"wideboothdatestamp\">" + obj.datetime + "-UTC</div>"+ //TODO: use user's zone
             "<img class = \"wideboothimg\" src = '" + obj.imagePath + "' style = 'width: 100%'>" +
             "</div>" +
             "<div class = 'wideboothbuttons plainbutton standardbutton'>" +

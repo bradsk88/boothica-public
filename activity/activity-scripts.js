@@ -1,6 +1,7 @@
 $(window).bind("load", function() {
     if ('undefined' !== typeof window.username) {
-        reloadFriendshipsSpot();
+//        reloadFriendshipsSpot();
+        reloadNewMembersSpot();
         reloadInteractionFeed();
         setTimeout(autoReloadInteractions,1000*60*10);
     }
@@ -17,16 +18,78 @@ function autoReloadInteractions() {
 }
 
 function reloadInteractionFeed() {
+    initialLoadConversation();
+}
+
+function initialLoadConversation() {
+
     $("#conversation").html("<div class = 'loadspinner'></div>");
     $.post("/_mobile/getnewconversation.php", {
         numperpage: "10"
     }, function (data) {
-        $("#conversation").html(getConversationHTML(data));
+        var html = "<div class = 'sectiontitle'>Interactions</div>" +
+            "<div class = 'sectionrefresh' onclick='reloadInteractionFeed()'></div>" +
+            "<div style = 'clear: both;'></div>";
+        html += getConversationHTML(data);
+        html += "<div class = \"plainbuttoninverted standardbutton\" id = \"loadmoreconvobutton\" onclick=\"loadMoreConversation(1)\">" +
+            "More..." +
+            "</div>";
+        $("#conversation").html(html);
     }, getDataType())
         .fail(function (jqXHR, textStatus) {
             $("#conversation").html("There was a problem... [" + textStatus + "]" +
                 "<div class = 'sectionrefresh' onclick='reloadInteractionFeed()'></div>");
         });
+
+}
+
+function loadMoreConversation(page) {
+
+    $("#conversation").append("<div class = 'loadspinner' id = 'convospinner'></div>");
+    $.post("/_mobile/getnewconversation.php", {
+        numperpage: "10",
+        pagenum: page + 1
+    }, function (data) {
+        $("#loadmoreconvobutton").remove();
+        $("#convospinner").remove();
+        var html = getConversationHTML(data);
+        html += "<div class = \"plainbuttoninverted standardbutton\" id = \"loadmoreconvobutton\" onclick=\"loadMoreConversation("+page+1+")\">" +
+            "More..." +
+            "</div>";
+        $("#conversation").append(html);
+    }, getDataType())
+.fail(function (jqXHR, textStatus) {
+            $("#conversation").append("There was a problem... [" + textStatus + "]" +
+                "<div class = 'sectionrefresh' onclick='reloadInteractionFeed()'></div>");
+        });
+}
+
+function reloadNewMembersSpot() {
+    $("#newmembers").html("<div class = 'loadspinner'></div>");
+    $.post("/_mobile/newmembers.php", {
+        username: window.username,
+        numperpage: "6"
+    }, function (data) {
+        $("#newmembers").html(getNewMembersHTML(data));
+    }, getDataType())
+        .fail(function (jqXHR, textStatus) {
+            $("#friendships").html("There was a problem... [" + textStatus + "]" +
+                "<div class = 'sectionrefresh' onclick='reloadFriendshipsSpot()'></div>");
+        });
+}
+
+function getNewMembersHTML(data) {
+    var html = "<div class = 'sectiontitle'>New Members</div><div class = 'sectionrefresh' onclick='reloadNewMembersSpot()'></div><div style = 'clear: both;'></div>";
+    $.each(data, function (idx, obj) {
+        html = html +
+            "<div class = 'newmember newmember"+idx +"'>" +
+                "<div class = 'newmemberimageframe' onclick=\"openBooth('"+obj.boothnum+"')\">" +
+                    "<div class = 'newmemberimage' style = 'background-image: url(/booths/small/" + obj.imageHash + "." + obj.filetype + ")'>" +
+                    "</div>" +
+                "</div>" +
+            "</div>"
+    });
+    return html;
 }
 
 function reloadFriendshipsSpot() {
@@ -68,9 +131,7 @@ function getConversationHTML(data) {
     if (debugging) {
         return data;
     }
-    var html = "<div class = 'sectiontitle'>Interactions</div>" +
-        "<div class = 'sectionrefresh' onclick='reloadInteractionFeed()'></div>" +
-        "<div style = 'clear: both;'></div>";
+    var html = "";
     $.each(data, function (idx, obj) {
         if (obj.hasPhoto) {
             var imageHeightInEm = obj.imageRatio * 16;
