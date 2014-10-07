@@ -32,7 +32,10 @@ function getFeedGridCellsHTML(data, pageNum, loadMoreButtonId, loadMoreFunction)
                 "<div class = \"narrowboothimage\" style = \"background-image: url(" + bgImage + ")\"></div>" +
                 "</div>" +
                 "</div>" +
-                "<div class = \"narrowboothtext\">" + blurb + "</div>" +
+				"<div class = \"narrowboothtextwrapper\">" +
+					"<div class = \"narrowbooth-text\">" + blurb + "</div>" +
+					"<div class = \"narrowbooth-textshadow\"></div>" +
+				"</div>" +
                 "</div>";
         html = html + iHTML;
     });

@@ -9,6 +9,7 @@ function getDataType() {
 }
 
 function openBooth(boothnum) {
+
     window.boothnumber = boothnum;
     window.scrollTo(0, 0);
 

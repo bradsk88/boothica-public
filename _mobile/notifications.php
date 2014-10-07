@@ -96,7 +96,8 @@ function main()
         $root = "http://" . $_SERVER['SERVER_NAME'] . "/";
         $booths[] = array(
             'boothnum' => $boothNum,
-            'boothername' => (string)$boothInfo->boother,
+            'boothername' => strtolower((string)$boothInfo->boother),
+            'bootherdisplayname' => (string)$boothInfo->boother,
             'mentioner' => $mentioner,
             'comment' => (string)$boothInfo->text,
             'image' => $root .$boothInfo->imageUrl,

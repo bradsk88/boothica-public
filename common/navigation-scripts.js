@@ -1,20 +1,51 @@
+
+var doEndsWith;
+var endsWithString;
+
+var openActivitySection = function() {
+    pushStateIfDifferent("activity");
+    $("#centerpane").html(
+        "<div class = \"centersection\" id=\"newmembers\"></div>" +
+        "<div class = \"centersection\" id=\"conversation\"></div>");
+    reloadNewMembersSpot();
+    reloadInteractionFeed();
+};
+
 $(function () {
+
+    doEndsWith = function(str, suffix) {
+		return str.indexOf(suffix, str.length - suffix.length) !== -1;
+	}
+
+    endsWithString = function (str, suffix) {
+		var exactMatch = doEndsWith(str, suffix);
+		if (exactMatch) {
+			return true;
+		}
+		var withSlash = doEndsWith(str, suffix + "/");
+		if (withSlash) {
+			return true;
+		}
+		return doEndsWith(str, suffix + ".php");
+	};
+
     $(window).on("popstate", function (e) {
         var pathName = window.location.pathname;
-        if (endsWith(pathName, "activity")) {
-            backToMain();
+        if (endsWithString(pathName, "activity")) {
+            $("head").append("<script type = 'text/javascript' src = '/activity/activity-scripts.js'></script>");
+            openActivitySection();
             return;
         }
         if (typeof(openSnapNewBooth) === "function")
         {
-            if (endsWith(pathName, "newbooth/webcam")) {
+            if (endsWithString(pathName, "newbooth/webcam")) {
                 openSnapNewBooth();
                 return;
             }
         }
         if (typeof(openFileNewBooth) === "function")
         {
-            if (endsWith(pathName, "newbooth/file")) {
+            if (endsWithString(pathName, "newbooth/file")) {
                 openFileNewBooth();
                 return;
             }
@@ -49,20 +80,7 @@ function pushStateIfDifferent(relativeDir) {
 }
 
 function curLocationEndsWith(relativeDir) {
-    return endsWith(window.location.pathname, relativeDir);
+    return endsWithString(window.location.pathname, relativeDir);
 }
 
-var doEndsWith = function(str, suffix) {
-    return str.indexOf(suffix, str.length - suffix.length) !== -1;
-}
-var endsWith = function (str, suffix) {
-    var exactMatch = doEndsWith(str, suffix);
-    if (exactMatch) {
-        return true;
-    }
-    var withSlash = doEndsWith(str, suffix + "/");
-    if (withSlash) {
-        return true;
-    }
-    return doEndsWith(str, suffix + ".php");
-};
+

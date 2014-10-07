@@ -173,6 +173,7 @@ function reloadPublicFeed() {
 function loadRandomBooths() {
     $("#leftfeed").html("<div class = 'loadspinner'></div>");
     $.post("/_mobile/randompublicbooths.php", {
+		numperpage: 10
     }, function (data) {
         $("#leftfeed").html(getLiveFeedHTML(data, "loadRandomBooths", "Random Booths"));
     }, getDataType())
@@ -229,17 +230,29 @@ function getBoothFeedHTML(data, onClickFunc) {
         var blurb = content.html();
         blurb = truncate(blurb, 200, '');
         //TODO: The above truncate code is duplicated in feed-scripts.js/getFeedGridCellsHTML
+        var cellId = "boothlink"+obj.boothnum;
         html = html +
-            "<div class = \"narrowbooth\" onclick='openBooth(" + obj.boothnum + ")'>" +
-            "<div class = \"narrowboothpadline\"></div>" +
-            "<div class = \"narrowboothusername\">" + obj.boothername + "</div>" +
-            "<div class = \"narrowboothpad\"></div>" +
-            "<div class = \"narrowboothcell\">" +
-            "<div class = \"narrowboothaspect\"></div>" +
-            "<div class = \"narrowboothimage\" style = \"background-image: url(" + bgImage + ")\"></div>" +
+            "<div class = \"narrowbooth\">" +
+                "<div class = \"narrowboothpadline\"></div>" +
+                "<div class = \"narrowboothusername\">" + obj.boothername + "</div>" +
+                "<div class = \"narrowboothpad\"></div>" +
+                "<div class = \"narrowboothcell\">" +
+                    "<a id = \""+cellId+"\" href = \"/users/" + obj.boothername + "/" + obj.boothnum + "\">" +
+                        "<div class = \"narrowboothaspect\"></div>" +
+                        "<div class = \"narrowboothimage\" style = \"background-image: url(" + bgImage + ")\"></div>" +
+                    "</a>" +
+                "</div>" +
             "</div>" +
-            "</div>" +
-            "<div class = \"narrowboothtext\">" + blurb + "</div>";
+            "<div class = \"narrowboothtextwrapper\">" +
+					"<div class = \"narrowbooth-text\">" + blurb + "</div>" +
+					"<div class = \"narrowbooth-textshadow\"></div>" +
+			"</div>";
+        $('body').on('click', "#"+cellId, function (e) {
+            if ("undefined" !== typeof(e) && e.button == 0) {
+                e.preventDefault();
+                openBooth(obj.boothnum);
+            }
+        });
     });
     html = html +
         "<div class = \"narrowboothpad\"></div>" +
@@ -257,11 +270,14 @@ function getNotificationsHTML(data) {
         "<div class = 'sectionrefresh' onclick='reloadUsersNotifications()'></div>" +
         "<div style = 'clear: both;'></div>";
     $.each(data, function (idx, obj) {
+        var cellId = "notification"+obj.boothnum+""+idx;
         html = html +
             "<div class = 'centersection'>" +
-            "<div class = 'convoimages' onclick='openBooth(" + obj.boothnum + ")'>" +
+            "<div class = 'convoimages'>" +
+            "<a id = \""+cellId+"\" href = \"/users/"+obj.boothername+"/"+obj.boothnum+"\">" +
             "<div class = 'convoaspect'></div>" +
             "<div class = 'convocommenterimage' style = 'background-image: url(" + obj.iconImage + ")'></div>" +
+            "</a>" +
             "</div>" +
             "<div class = 'convo'>" +
             "<div class = 'convocommentername'>" + obj.mentioner + " commented:</div>" +
@@ -269,6 +285,12 @@ function getNotificationsHTML(data) {
             "</div>" +
             "<div style = 'clear:both;'></div>" +
             "</div>"
+        $('body').on('click', "#"+cellId, function (e) {
+            if ("undefined" !== typeof(e) && e.button == 0) {
+                e.preventDefault();
+                openBooth(obj.boothnum);
+            }
+        });
     });
     return html;
 }

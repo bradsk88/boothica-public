@@ -133,15 +133,18 @@ function getConversationHTML(data) {
     }
     var html = "";
     $.each(data, function (idx, obj) {
+        var cellId = "convo" + obj.commentNum;
         if (obj.hasPhoto) {
             var imageHeightInEm = obj.imageRatio * 16;
             html = html +
                 "<div class = 'centersection'>" +
-                "<div class = 'convoimages-photo'>" +
-                "<div class = 'convoaspect-photo'></div>" +
-                "<div class = 'convocommenterimage-photo' style = 'background-image: url(" + obj.commentPhotoImg + "); height: "+imageHeightInEm+"em'></div>" +
-                "<div class = 'convoboothimage-photo'  onclick='openBooth(" + obj.boothnumber + ")' style = 'background-image: url(" + obj.boothIconImg + ")'></div>" +
-                "</div>" +
+                "<a id = \""+cellId+"\" href = \"/users/"+obj.boothername+"/"+obj.boothnumber+"\">" +
+                    "<div class = 'convoimages-photo'>" +
+                        "<div class = 'convoaspect-photo'></div>" +
+                        "<div class = 'convocommenterimage-photo' style = 'background-image: url(" + obj.commentPhotoImg + "); height: "+imageHeightInEm+"em'></div>" +
+                        "<div class = 'convoboothimage-photo' style = 'background-image: url(" + obj.boothIconImg + ")'></div>" +
+                    "</div>" +
+                "</a>" +
                 "<div class = 'convo-photo'>" +
                 "<div class = 'convocommentername'><span class = \"username\" onclick=\"openUserFeed('"+obj.commentername+"')\">"+obj.commenterdisplayname + "</span> commented:</div>" +
                 "<div class = 'convotext'>" + obj.comment + "</div>" +
@@ -151,19 +154,26 @@ function getConversationHTML(data) {
         } else {
             html = html +
                 "<div class = 'centersection'>" +
-                "<div class = 'convoimages' onclick='openBooth(" + obj.boothnumber + ")'>" +
-                "<div class = 'convoaspect'></div>" +
-                "<div class = 'convocommenterimage' style = 'background-image: url(" + obj.commenterImg + ")'></div>" +
-                "<div class = 'convoboothimage' style = 'background-image: url(" + obj.boothIconImg + ")'></div>" +
-                "</div>" +
+                "<a id = \""+cellId+"\" href = \"/users/"+obj.boothername+"/"+obj.boothnumber+"\">" +
+                    "<div class = 'convoimages'>" +
+                        "<div class = 'convoaspect'></div>" +
+                        "<div class = 'convocommenterimage' style = 'background-image: url(" + obj.commenterImg + ")'></div>" +
+                        "<div class = 'convoboothimage' style = 'background-image: url(" + obj.boothIconImg + ")'></div>" +
+                    "</div>" +
+                "</a>" +
                 "<div class = 'convo'>" +
                 "<div class = 'convocommentername'><span class = \"username\" onclick=\"openUserFeed('"+obj.commentername+"')\">"+obj.commenterdisplayname + "</span> commented:</div>" +
                 "<div class = 'convotext'>" + obj.comment + "</div>" +
                 "</div>" +
                 "<div style = 'clear:both;'></div>" +
                 "</div>"
-
         }
+        $('body').on('click', "#"+cellId, function (e) {
+            if ("undefined" !== typeof(e) && e.button == 0) {
+                e.preventDefault();
+                openBooth(obj.boothnumber);
+            }
+        });
     });
     return html;
 }

@@ -325,10 +325,42 @@
 
 /* Desktop */
 @media screen and (min-width: 1440px) {
-    .narrowboothtext, .wideboothtext {
+    .narrowboothtextwrapper, .wideboothtext {
+        font-size: 1.0em; 
+	}	
+	
+	.narrowboothtextwrapper  { 
+		height: 6em;
+		overflow: hidden;
+		position: relative;
+	}	
+	
+	.narrowbooth-text {
         font-size: 1.0em;
-    }
-
+		position: absolute;
+		overflow: hidden;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	
+	.narrowboothtextwrapper {
+		font-size: 1.0em;
+		height: 6em;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.narrowbooth-textshadow {
+		background: linear-gradient( 0deg, rgba(255,255,255,1), rgba(255,255,255,0), rgba(255,255,255,0) );
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	
     .widebooth {
         width: auto;
         margin-left: 4em;

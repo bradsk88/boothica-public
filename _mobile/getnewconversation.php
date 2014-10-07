@@ -34,6 +34,7 @@ function main() {
 
     $sql =
         "SELECT A.`fkUsername` as `commenter`,
+            B.`fkUsername` as `boothername`,
             B.`pkNumber` as `boothnumber`,
             B.`imageTitle` as `boothImg`,
             B.`filetype` as `boothFileType`,
@@ -41,7 +42,8 @@ function main() {
             C.`hasPhoto` as `hasPhoto`,
             C.`hash` as `commentImage`,
             C.`extension` as `commentExtension`,
-            C.`imageHeightProp` as `imageHeightProp`
+            C.`imageHeightProp` as `imageHeightProp`,
+            C.`pkCommentNumber` as `commentNum`
         FROM `activitytbl` A
         LEFT JOIN `commentstbl` C ON A.`fkIndex` = C.`pkCommentNumber`
 		LEFT JOIN `boothnumbers` B ON C.`fkNumber` = B.`pkNumber`
@@ -133,9 +135,11 @@ function main() {
             'comment' => $row['comment'],
             'boothIconImg' => "/booths/tiny/".$row['boothImg'].".".$row['boothFileType'],
             'boothnumber' => $row['boothnumber'],
+            'boothername' => $row['boothername'],
             'hasPhoto' => ($row['hasPhoto']==1),
             'commentPhotoImg' => "/comments/".$row['commentImage'].".".$row['commentExtension'],
-            'imageRatio' => $row['imageHeightProp']
+            'imageRatio' => $row['imageHeightProp'],
+            'commentNum' => $row['commentNum']
         );
     }
     echo json_encode($booths);

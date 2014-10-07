@@ -33,9 +33,10 @@ class ContentPage
     {
         $this->includeJQuery();
         $this->populateCenter = $defaultPopulateCenterFunctionName;
-        $this->meta("<script type = 'text/javascript' src = '/common/navigation-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '/common/navigation-scripts.js?version=0.1'></script>");
         $this->meta("<script type = 'text/javascript' src = '/messages/pm-scripts.js'></script>");
         $this->meta("<script type = 'text/javascript' src = '/livefeed/livefeed-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '/newbooth/newbooth-scripts.js'></script>");
     }
 
     function veryFirst($html)

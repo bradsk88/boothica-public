@@ -188,7 +188,7 @@
         margin-left: 1em;
         margin-right: 1em;
         margin-bottom: 1em;
-        height: 400px;
+	height: 18em;
     }
 
     .gridcontainer {
@@ -363,7 +363,7 @@
     }
 
     .newmember5 {
-        left: 40em;
+        display: none;
     }
 
 }
