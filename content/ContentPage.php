@@ -145,10 +145,39 @@ class ContentPage
                 </div>
                 <div class = 'rightpane' id = 'rightpane'>
 ";
+
+        if (isset($_SESSION['username']) && $this->includeSideBars) {
+            $displayName = getDisplayName($username);
+            $userImage = UserImage::getImage($username);
+        }
+
+        $usercard =
+                    "<div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(" . (string)$userImage . ")'></div>
+                        <div class = \"usercardcontent\">
+                            <div class = 'usercardname'>
+                                <span onclick = \"openUserFeed('" . $username . "')\">@" . $displayName . "</span>
+                            </div>
+                            <div class = 'usercardstats'>
+                                <a id = \"boothsnum\" href = '/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
+                                    ??? Booths
+                                </a> / <a id = \"friendsnum\" href = '/users/" . $username . "/friends'>
+                                    ??? Friends
+                                </a>
+                            </div>
+                        </div>
+                        <div style = 'clear:both;'></div>";
+
         if ($this->includeSideBars) {
 
+            if (isset($_SESSION['username']) && $this->includeSideBars) {
+                echo
+"                               <div class = 'usercard' id = 'usercardright'>
+                                    ".$usercard.
+"                               </div>";
+            }
+
             echo
-            "                 <div class = 'usercard' id = 'rightcard'>
+"                               <div class = 'usercard' id = 'rightcard'>
                                     <div class = 'usercardimage' style = 'background-image: url(/media/messages.png); background-repeat: no-repeat; background-size: auto;'></div>
                                     <div class = \"usercardcontent\">
                                         <div class = 'usercardtext' onclick=\"reloadUsersNotifications()\">Notifications</div>
@@ -166,6 +195,8 @@ class ContentPage
                                 </div>
                                 <div id= 'rightfeed'>
                                 </div>
+                                <div id= 'primaryfeedright'>
+                                </div>
             ";
         }
         echo
@@ -174,25 +205,10 @@ class ContentPage
                     </div>
                                     <div class = 'leftpane' id = 'leftpane'>";
         if (isset($_SESSION['username']) && $this->includeSideBars) {
-            $displayName = getDisplayName($username);
-            $userImage = UserImage::getImage($username);
-            echo
-                "                <div class = 'usercard' id = 'leftcard'>
-                                <div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(" . (string)$userImage . ")'></div>
-                        <div class = \"usercardcontent\">
-                            <div class = 'usercardname'>
-                                <span onclick = \"openUserFeed('" . $username . "')\">@" . $displayName . "</span>
-                            </div>
-                            <div class = 'usercardstats'>
-                                <a id = \"boothsnum\" href = '/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
-                                    ??? Booths
-                                </a> / <a id = \"friendsnum\" href = '/users/" . $username . "/friends'>
-                                    ??? Friends
-                                </a>
-                            </div>
-                        </div>
-                        <div style = 'clear:both;'></div>
-                    </div>";
+            echo "
+                <div class = 'usercard' id = 'leftcard'>" .
+                $usercard."
+                </div>";
         }
         if ($this->includeSideBars) {
             echo
@@ -201,7 +217,7 @@ class ContentPage
         }
         echo
         "               </div>
-                </div>
+                    </div>
                 </div>
                 <div style = \"clear:both\"></div>
                 <div class = 'subheader'>

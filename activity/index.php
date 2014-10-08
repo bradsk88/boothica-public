@@ -2,7 +2,11 @@
 
 session_start();
 
-require_once "{$_SERVER['DOCUMENT_ROOT']}/content/ContentPage.php";
+if (strpos(__FILE__, '_dev')) {
+    require_once "{$_SERVER['DOCUMENT_ROOT']}/_dev/content/ContentPage.php";
+} else {
+    require_once "{$_SERVER['DOCUMENT_ROOT']}/content/ContentPage.php";
+}
 
 /**
  * @var $page ContentPage

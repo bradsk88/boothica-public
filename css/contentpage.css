@@ -103,10 +103,7 @@
     top: 0;
     z-index: 9999;
 }
-
-#leftcard, #rightcard {
-    display: none;
-}
+ 
 
 .main {
     margin: 0px auto;
@@ -217,6 +214,14 @@
     cursor: pointer;
 }
 
+#primaryfeedright, #usercardright  {
+	display: none;
+}
+
+#rightfeed {
+	display: inherit;
+}
+
 /* Desktop */
 @media screen and (min-width: 1000px) and (orientation: landscape) {
 
@@ -267,10 +272,6 @@
         text-align: left;
         border: 1px solid #3C3;
         border-radius: 0.25em;
-    }
-
-    #leftcard, #rightcard {
-        display: inherit;
     }
 
     .pageheader {
@@ -383,7 +384,7 @@
 
 }
 
-/* Desktop */
+/* Desktop HalfScreen */
 @media screen and (min-width: 500px) and (max-width: 1000px) {
 
     #leftcard {
@@ -497,5 +498,12 @@
         margin-left: auto;
         margin-right: auto;
     }
-
+	
+	#primaryfeedright, #usercardright  {
+		display: inherit;
+	}
+	
+	#rightfeed {
+		display: none;
+	}
 }

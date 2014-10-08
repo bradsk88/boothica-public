@@ -109,21 +109,35 @@ function changeToDefaultAndReset() {
 
 
 function reloadFriendFeed() {
-    $("#leftfeed").html("<div class = 'loadspinner'></div>");
+    if ($("#primaryfeedright").is(':visible')) {
+        doReloadFriendFeed("#primaryfeedright", "#leftfeed");
+        return;
+    }
+    doReloadFriendFeed("#leftfeed", "#primaryfeedright");
+}
+
+function doReloadFriendFeed(visible, invisible) {
+    $(visible).html("<div class = 'loadspinner'></div>");
+    $(invisible).html("<div class = 'loadspinner'></div>");
     $.post("/_mobile/friendfeed.php", {
         username: window.username,
         numberofbooths: "3"
     }, function (data) {
-        $("#leftfeed").html(getFriendFeedHTML(data, "reloadFriendFeed"));
+        var h = getFriendFeedHTML(data, "reloadFriendFeed");
+        $(visible).html(h);
+        $(invisible).on("show", $(invisible).html(h))
     }, getDataType())
         .fail(function () {
-            $("#leftfeed").html("There was a problem..." +
-                "<div class = 'sectionrefresh' onclick='reloadFriendFeed()'></div>");
+            $(visible).html("There was a problem..." +
+            "<div class = 'sectionrefresh' onclick='reloadFriendFeed()'></div>");
+            $(invisible).html("There was a problem..." +
+            "<div class = 'sectionrefresh' onclick='reloadFriendFeed()'></div>");
         });
 }
 
 function reloadSiteWideNotifications() {
-    $("#centerpane").prepend("<div style = \"text-align: center;\" class = \"centersection\"><a href = '/userpages/friendsactivity'>Having trouble?  Click here for the old layout</a></div>");
+    $("#centerpane").prepend("<div style = \"text-align: center;\" class = \"centersection\">" +
+    "   <a href = '/userpages/friendsactivity'>Having trouble?  Click here for the old layout</a></div>");
     $.post("/_mobile/getsitewidenotifications.php", {
     }, function (data) {
         myDebug("about to prepend");
@@ -156,30 +170,39 @@ function reloadSiteWideNotifications() {
 }
 
 function reloadPublicFeed() {
-    $("#rightfeed").html("<div class = 'loadspinner'></div>");
+    var secondaryFeed = "#rightfeed";
+    $(secondaryFeed).html("<div class = 'loadspinner'></div>");
     $.post("/_mobile/publicfeed.php", {
         numberofbooths: "3",
         includeFriends: false,
         numperpage: 3
     }, function (data) {
-        $("#rightfeed").html(getLiveFeedHTML(data, "reloadPublicFeed", "Public Feed"));
+        $(secondaryFeed).html(getLiveFeedHTML(data, "reloadPublicFeed", "Public Feed"));
     }, getDataType())
         .fail(function () {
-            $("#rightfeed").html("There was a problem..." +
+            $(secondaryFeed).html("There was a problem..." +
                 "<div class = 'sectionrefresh' onclick='reloadPublicFeed()'></div>");
         });
 }
 
 function loadRandomBooths() {
-    $("#leftfeed").html("<div class = 'loadspinner'></div>");
+    var primaryFeed = "#leftfeed";
+    if ($("#primaryfeedright").is(':visible')) {
+        primaryFeed = "#primaryfeedright";
+    }
+    doLoadRandomBooths(primaryFeed);
+}
+
+function doLoadRandomBooths(primaryFeed) {
+    $(primaryFeed).html("<div class = 'loadspinner'></div>");
     $.post("/_mobile/randompublicbooths.php", {
-		numperpage: 10
+        numperpage: 10
     }, function (data) {
-        $("#leftfeed").html(getLiveFeedHTML(data, "loadRandomBooths", "Random Booths"));
+        $(primaryFeed).html(getLiveFeedHTML(data, "loadRandomBooths", "Random Booths"));
     }, getDataType())
         .fail(function () {
-            $("#leftfeed").html("There was a problem..." +
-                "<div class = 'sectionrefresh' onclick='loadRandomBooths()'></div>");
+            $(primaryFeed).html("There was a problem..." +
+            "<div class = 'sectionrefresh' onclick='loadRandomBooths()'></div>");
         });
 }
 
