@@ -115,6 +115,7 @@ function readyCam() {
         $('.commentaddpic > .webcambuttons').slideToggle("slow");
         $('.commentaddpic > .filebuttons').slideToggle("slow", function() {
             $('#camtofilebutton').unbind('click');
+            readyFile();
         });
     });
 
