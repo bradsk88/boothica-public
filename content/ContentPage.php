@@ -15,6 +15,7 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_common("cookies");
 require_common("utils");
 
+error_reporting(0);
 if ($_SESSION['username'] == 'bradsk88') {
     error_reporting(E_ERROR);
 }
@@ -146,13 +147,14 @@ class ContentPage
                 <div class = 'rightpane' id = 'rightpane'>
 ";
 
+        $usercard = "";
+
         if (isset($_SESSION['username']) && $this->includeSideBars) {
             $displayName = getDisplayName($username);
             $userImage = UserImage::getImage($username);
-        }
 
-        $usercard =
-                    "<div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(" . (string)$userImage . ")'></div>
+            $usercard =
+                "<div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(" . (string)$userImage . ")'></div>
                         <div class = \"usercardcontent\">
                             <div class = 'usercardname'>
                                 <span onclick = \"openUserFeed('" . $username . "')\">@" . $displayName . "</span>
@@ -166,6 +168,7 @@ class ContentPage
                             </div>
                         </div>
                         <div style = 'clear:both;'></div>";
+        }
 
         if ($this->includeSideBars) {
 
