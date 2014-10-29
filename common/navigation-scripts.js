@@ -53,7 +53,7 @@ $(function () {
         var boothRegex = /.+\/users\/.+\/([0-9]+)(?:\.php)?$/g;
         var boothMatch = boothRegex.exec(window.location);
         if (boothMatch != null && "undefined" !== typeof(boothMatch) && "undefined" !== typeof(boothMatch[1]) && boothMatch.length > 1) {
-            $("head").append("<script type = 'text/javascript' src = '/booth/booth-scripts.js'></script>");
+            $("head").append("<script type = 'text/javascript' src = '/booth/booth-scripts.js.php'></script>");
             openBooth(boothMatch[1]);
             return;
         }

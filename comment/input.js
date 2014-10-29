@@ -126,10 +126,11 @@ function readyCam() {
         commentSent(true);
     });
     var flashvars = {};
-    var params = {};
+    var params = {wmode:"transparent"};
     params.allowscriptaccess = "always";
     var attributes = { };
     attributes.id = "photocommentsection";
+    $("head").append("<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js\"></script>");
     swfobject.embedSWF("http://boothi.ca/webcam/webcam.swf", "photocommentsection", "320", "240", "9", false, flashvars, params, attributes, function(e) {
 
         $('#camsnapbutton').click( function() {

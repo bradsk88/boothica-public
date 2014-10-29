@@ -16,7 +16,7 @@ if (isset($_SESSION['username'])) {
     $page->meta("<script type = 'text/javascript'>username = '".$_SESSION['username']."'</script>");
 }
 //TODO: Load these scripts just-in-time -BJ
-$page->meta("<script type = 'text/javascript' src = '/booth/booth-scripts.js'></script>");
+$page->meta("<script type = 'text/javascript' src = '/booth/booth-scripts.js.php'></script>");
 $page->meta("<script type = 'text/javascript' src = '/booth/booth-comment-scripts.js'></script>");
 $page->meta("<script type = 'text/javascript' src = '/booth/userbooths-scripts.js'></script>");
 $page->meta("<script type = 'text/javascript' src = '/common/feed-scripts.js'></script>");
