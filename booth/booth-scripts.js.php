@@ -372,7 +372,7 @@ function getBoothCommentsHTML(boothnum, data) {
             obj.likes +
             "</div>" +
             "</div>" +
-            "<div class =  \"boothcommentername \" onclick=\"openUserFeed( \"" + obj.commentername + " \")\">" + obj.commenterdisplayname + "</div>" +
+            "<div class = \"boothcommentername\" onclick=\"openUserFeed('" + obj.commentername + "')\">" + obj.commenterdisplayname + "</div>" +
 
             "<div class =  \"boothcommentbuttons \">";
         if ("undefined" !== typeof(window.username) && window.username.toLowerCase() == boother.toLowerCase() && obj.commentername != window.username) {
