@@ -1,11 +1,24 @@
-/**
- * Created by Brad on 6/19/14.
- */
+<?PHP
+
+header('Content-Type: application/javascript');
+
+$prependage = '';
+error_reporting(0);
+if (strpos(__FILE__, '_dev')) {
+    $prependage = '/_dev';
+    error_reporting(E_ALL);
+}
+
+require_once("{$_SERVER['DOCUMENT_ROOT']}".$prependage."/common/boiler.php");
+
+$base = base();
+
+echo <<<EOT
 
 function deleteComment(boothnum, commentNumber) {
-    var confirmed = confirm("Are you sure you want to delete this comment?\n(This cannot be undone)");
+    var confirmed = confirm("Are you sure you want to delete this comment?\\n(This cannot be undone)");
     if (confirmed) {
-        $.post("/_mobile/deletecomment.php", {
+        $.post("$base/_mobile/deletecomment.php", {
             commentnum: commentNumber
         }, function (data) {
             if (data == "0") {
@@ -26,7 +39,7 @@ var endsWith = function (str, suffix) {
 };
 
 function likeComment(commentNumber) {
-    $.get("/actions/likecomment.php", {
+    $.get("$base/actions/likecomment.php", {
         commentnumber: commentNumber
     }, function (data) {
         if (endsWith(data, ":OK")) {
@@ -47,3 +60,4 @@ function likeComment(commentNumber) {
             alert("There was a problem liking the comment. [" + textStatus + "]");
         });
 }
+EOT;

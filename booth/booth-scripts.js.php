@@ -353,7 +353,7 @@ function getBoothCommentsHTML(boothnum, data) {
                 "<div class = \"boothcommenterimageuploaded\" style = \"background-image: url($base" + obj.imageHash + "); height: " + imageHeightInEM + "em;\"></div>";
         } else {
             html = html +
-                "<div class =  \"boothcommenterimage \" onclick=\"openUserFeed( \"" + obj.commentername + " \")\" style =  \"background-image: url($base" + obj.iconImage + ") \"></div>";
+                "<div class =  \"boothcommenterimage\" onclick=\"openUserFeed( \"" + obj.commentername + "\")\" style = \"background-image: url($base" + obj.iconImage + ")\"></div>";
         }
         var style = "display: none;";
         if ("undefined" !== typeof(obj.likes) && obj.likes != null && obj.likes > 0) {
@@ -366,22 +366,22 @@ function getBoothCommentsHTML(boothnum, data) {
             likeClass = "boothcommenterlikeswithupload";
         }
         html = html +
-            "<div class =  \"" + effectClass + " \" id =  \"effect" + obj.commentnum + " \"></div>" +
-            "<div class =  \"" + likeClass + " \" id =  \"likewrap" + obj.commentnum + " \" style = \"" + style + "\">" +
-            "<div class = \"boothcommentlike\" id =  \"like" + obj.commentnum + " \" title = \"" + obj.likes + " Likes\">" +
+            "<div class = \"" + effectClass + "\" id = \"effect" + obj.commentnum + "\"></div>" +
+            "<div class = \"" + likeClass + "\" id = \"likewrap" + obj.commentnum + "\" style = \"" + style + "\">" +
+            "<div class = \"boothcommentlike\" id = \"like" + obj.commentnum + "\" title = \"" + obj.likes + " Likes\">" +
             obj.likes +
             "</div>" +
             "</div>" +
             "<div class = \"boothcommentername\" onclick=\"openUserFeed('" + obj.commentername + "')\">" + obj.commenterdisplayname + "</div>" +
 
-            "<div class =  \"boothcommentbuttons \">";
+            "<div class = \"boothcommentbuttons\">";
         if ("undefined" !== typeof(window.username) && window.username.toLowerCase() == boother.toLowerCase() && obj.commentername != window.username) {
-            html = html + "<div class =  \"boothcommentbutton secondcommentbutton \" onclick= \"deleteComment(" + boothnum + ", " + obj.commentnum + ") \">Delete</div>";
+            html = html + "<div class = \"boothcommentbutton secondcommentbutton\" onclick= \"deleteComment(" + boothnum + ", " + obj.commentnum + ")\">Delete</div>";
         } else if (obj.commentername == window.username) {
-            html = html + "<div class =  \"boothcommentbutton \" onclick= \"deleteComment(" + boothnum + ", " + obj.commentnum + ") \">Delete</div>";
+            html = html + "<div class = \"boothcommentbutton\" onclick= \"deleteComment(" + boothnum + ", " + obj.commentnum + ")\">Delete</div>";
         }
         if (obj.commentername != window.username) {
-            html = html + "<div class =  \"boothcommentlikebutton \" onclick= \"likeComment(" + obj.commentnum + ") \">Like</div>";
+            html = html + "<div class = \"boothcommentlikebutton\" onclick= \"likeComment(" + obj.commentnum + ")\">Like</div>";
         }
         html = html +
             "</div>" +
