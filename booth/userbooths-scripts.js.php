@@ -1,11 +1,25 @@
+<?PHP
 
+header('Content-Type: application/javascript');
+
+$prependage = '';
+error_reporting(0);
+if (strpos(__FILE__, '_dev')) {
+    $prependage = '/_dev';
+    error_reporting(E_ALL);
+}
+
+require_once("{$_SERVER['DOCUMENT_ROOT']}".$prependage."/common/boiler.php");
+
+$base = base();
+
+echo <<<EOT
 var page = 1;
 
 function openUserFeed(username) {
 
     window.scrollTo(0, 0);
-    $("#centerpane").html(
-        "<div class = \"centersection\" id=\"fulluserfeed\"></div>");
+    $("#centerpane").html("<div class = 'centersection' id='fulluserfeed'></div>");
     $("#fulluserfeed").html("<div class = 'loadspinner'></div>");
 
     loadInitialUserFeedCells(username);
@@ -15,7 +29,7 @@ function openUserFeed(username) {
 
 function loadMoreUserFeed(username) {
     $("#userfeedmorebutton").html("<div class = 'loadspinner'></div>");
-    $.post("/_mobile/userfeed.php", {
+    $.post("$base/_mobile/userfeed.php", {
         boothername: username,
         pagenum: page+1,
         numperpage: 9
@@ -36,13 +50,13 @@ function loadMoreUserFeed(username) {
 function sendFriendRequest(username) {
     var confirm2 = confirm("Do you want to send " + username + " a friend request?");
     if (confirm2) {
-        location.href = "/actions/request?username="+username;
+        location.href = "$base/actions/request?username="+username;
     }
 }
 
 
 function loadInitialUserFeedCells(username, dispName) {
-    $.post("/_mobile/userfeed.php", {
+    $.post("$base/_mobile/userfeed.php", {
         boothername: username,
         pagenum: 1,
         numperpage: 9
@@ -64,8 +78,8 @@ function getUserFeedGridHTML(data, username, commandName) {
         dispName = obj.bootherdisplayname;
     });
     var html =
-        "<div class = \"narrowboothpad\"></div>" +
-            "<div class = 'sectiontitle' onclick=\"openUserFeed("+username+")\">" +
+        "<div class = 'narrowboothpad'></div>" +
+            "<div class = 'sectiontitle' onclick='openUserFeed("+username+")'>" +
             dispName + "'s Booths" +
             "</div>" +
             "<div class = 'sectionrefresh' onclick='" + commandName + "()'></div>" +
@@ -77,3 +91,4 @@ function getUserFeedGridHTML(data, username, commandName) {
 function getUserFeedGridCellsHTML(data, pageNum, username) {
     return getFeedGridCellsHTML(data, pageNum, "userfeedmorebutton", "loadMoreUserFeed('"+username+"')");
 }
+EOT;

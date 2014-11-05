@@ -1,3 +1,20 @@
+<?PHP
+
+header('Content-Type: application/javascript');
+
+$prependage = '';
+error_reporting(0);
+if (strpos(__FILE__, '_dev')) {
+    $prependage = '/_dev';
+    error_reporting(E_ALL);
+}
+
+require_once("{$_SERVER['DOCUMENT_ROOT']}".$prependage."/common/boiler.php");
+
+$base = base();
+
+echo <<<EOT
+
 $(window).bind("load", function() {
     if ('undefined' !== typeof window.username) {
 //        reloadFriendshipsSpot();
@@ -31,7 +48,7 @@ function initialLoadConversation() {
             "<div class = 'sectionrefresh' onclick='reloadInteractionFeed()'></div>" +
             "<div style = 'clear: both;'></div>";
         html += getConversationHTML(data);
-        html += "<div class = \"plainbuttoninverted standardbutton\" id = \"loadmoreconvobutton\" onclick=\"loadMoreConversation(1)\">" +
+        html += "<div class = 'plainbuttoninverted standardbutton' id = 'loadmoreconvobutton' onclick='loadMoreConversation(1)'>" +
             "More..." +
             "</div>";
         $("#conversation").html(html);
@@ -53,7 +70,7 @@ function loadMoreConversation(page) {
         $("#loadmoreconvobutton").remove();
         $("#convospinner").remove();
         var html = getConversationHTML(data);
-        html += "<div class = \"plainbuttoninverted standardbutton\" id = \"loadmoreconvobutton\" onclick=\"loadMoreConversation("+page+1+")\">" +
+        html += "<div class = 'plainbuttoninverted standardbutton' id = 'loadmoreconvobutton' onclick= 'loadMoreConversation("+page+1+")'>" +
             "More..." +
             "</div>";
         $("#conversation").append(html);
@@ -83,8 +100,8 @@ function getNewMembersHTML(data) {
     $.each(data, function (idx, obj) {
         html = html +
             "<div class = 'newmember newmember"+idx +"'>" +
-                "<div class = 'newmemberimageframe' onclick=\"openBooth('"+obj.boothnum+"')\">" +
-                    "<div class = 'newmemberimage' style = 'background-image: url(/booths/small/" + obj.imageHash + "." + obj.filetype + ")'>" +
+                "<div class = 'newmemberimageframe' onclick= 'openBooth("+obj.boothnum+")'>" +
+                    "<div class = 'newmemberimage' style = 'background-image: url($base/booths/small/" + obj.imageHash + "." + obj.filetype + ")'>" +
                     "</div>" +
                 "</div>" +
             "</div>"
@@ -116,9 +133,9 @@ function getFriendshipsHTML(data) {
     $.each(data, function (idx, obj) {
         html = html +
             "<div class = 'friendshiprow'>" +
-            "<div class = 'friendshipleft' onclick=\"openUserFeed('"+obj.follower+"')\"><div class = 'friendshipimg' style = 'background-image: url(" + obj.followerImg + ")'></div></div>" +
+            "<div class = 'friendshipleft' onclick='openUserFeed(\"" + obj.follower + "\")'><div class = 'friendshipimg' style = 'background-image: url($base" + obj.followerImg + ")'></div></div>" +
             "<div class = 'friendshipleft'><div class = 'friendshipname'>" + obj.follower + "</div></div>" +
-            "<div class = 'friendshipright' onclick=\"openUserFeed('"+obj.followee+"')\"><div class = 'friendshipimg' style = 'background-image: url(" + obj.followeeImg + ")'></div></div>" +
+            "<div class = 'friendshipright' onclick='openUserFeed(\""+obj.followee+"\")'><div class = 'friendshipimg' style = 'background-image: url($base" + obj.followeeImg + ")'></div></div>" +
             "<div class = 'friendshipright'><div class = 'friendshipname'>" + obj.followee + "</div></div>" +
             "<div style = 'clear:both;'></div>" +
             "</div>"
@@ -138,15 +155,15 @@ function getConversationHTML(data) {
             var imageHeightInEm = obj.imageRatio * 16;
             html = html +
                 "<div class = 'centersection'>" +
-                "<a id = \""+cellId+"\" href = \"/users/"+obj.boothername+"/"+obj.boothnumber+"\">" +
+                "<a id = '"+cellId+"' href = '$base/users/"+obj.boothername+"/"+obj.boothnumber+"'>" +
                     "<div class = 'convoimages-photo'>" +
                         "<div class = 'convoaspect-photo'></div>" +
-                        "<div class = 'convocommenterimage-photo' style = 'background-image: url(" + obj.commentPhotoImg + "); height: "+imageHeightInEm+"em'></div>" +
-                        "<div class = 'convoboothimage-photo' style = 'background-image: url(" + obj.boothIconImg + ")'></div>" +
+                        "<div class = 'convocommenterimage-photo' style = 'background-image: url($base" + obj.commentPhotoImg + "); height: "+imageHeightInEm+"em'></div>" +
+                        "<div class = 'convoboothimage-photo' style = 'background-image: url($base" + obj.boothIconImg + ")'></div>" +
                     "</div>" +
                 "</a>" +
                 "<div class = 'convo-photo'>" +
-                "<div class = 'convocommentername'><span class = \"username\" onclick=\"openUserFeed('"+obj.commentername+"')\">"+obj.commenterdisplayname + "</span> commented:</div>" +
+                "<div class = 'convocommentername'><span class = 'username' onclick='openUserFeed(\""+obj.commentername+"\")'>"+obj.commenterdisplayname + "</span> commented:</div>" +
                 "<div class = 'convotext'>" + obj.comment + "</div>" +
                 "</div>" +
                 "<div style = 'clear:both;'></div>" +
@@ -154,15 +171,15 @@ function getConversationHTML(data) {
         } else {
             html = html +
                 "<div class = 'centersection'>" +
-                "<a id = \""+cellId+"\" href = \"/users/"+obj.boothername+"/"+obj.boothnumber+"\">" +
+                "<a id = '"+cellId+"' href = '$base/users/"+obj.boothername+"/"+obj.boothnumber+"'>" +
                     "<div class = 'convoimages'>" +
                         "<div class = 'convoaspect'></div>" +
-                        "<div class = 'convocommenterimage' style = 'background-image: url(" + obj.commenterImg + ")'></div>" +
-                        "<div class = 'convoboothimage' style = 'background-image: url(" + obj.boothIconImg + ")'></div>" +
+                        "<div class = 'convocommenterimage' style = 'background-image: url($base" + obj.commenterImg + ")'></div>" +
+                        "<div class = 'convoboothimage' style = 'background-image: url($base" + obj.boothIconImg + ")'></div>" +
                     "</div>" +
                 "</a>" +
                 "<div class = 'convo'>" +
-                "<div class = 'convocommentername'><span class = \"username\" onclick=\"openUserFeed('"+obj.commentername+"')\">"+obj.commenterdisplayname + "</span> commented:</div>" +
+                "<div class = 'convocommentername'><span class = 'username' onclick='openUserFeed(\""+obj.commentername+"\")'>"+obj.commenterdisplayname + "</span> commented:</div>" +
                 "<div class = 'convotext'>" + obj.comment + "</div>" +
                 "</div>" +
                 "<div style = 'clear:both;'></div>" +
@@ -177,3 +194,5 @@ function getConversationHTML(data) {
     });
     return html;
 }
+
+EOT;

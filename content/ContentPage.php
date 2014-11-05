@@ -20,6 +20,8 @@ if ($_SESSION['username'] == 'bradsk88') {
     error_reporting(E_ERROR);
 }
 
+define(BASE, base());
+
 class ContentPage
 {
 
@@ -34,10 +36,10 @@ class ContentPage
     {
         $this->includeJQuery();
         $this->populateCenter = $defaultPopulateCenterFunctionName;
-        $this->meta("<script type = 'text/javascript' src = '/common/navigation-scripts.js?version=0.1'></script>");
-        $this->meta("<script type = 'text/javascript' src = '/messages/pm-scripts.js'></script>");
-        $this->meta("<script type = 'text/javascript' src = '/livefeed/livefeed-scripts.js'></script>");
-        $this->meta("<script type = 'text/javascript' src = '/newbooth/newbooth-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".BASE."/common/navigation-scripts.js?version=0.1'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".BASE."/messages/pm-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".BASE."/livefeed/livefeed-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".BASE."/newbooth/newbooth-scripts.js'></script>");
     }
 
     function veryFirst($html)
@@ -66,7 +68,7 @@ class ContentPage
         $this->metaHTML .= "
         <script src=\"http://code.jquery.com/jquery-2.1.1.min.js\"></script>
         <script src=\"http://code.jquery.com/jquery-migrate-1.2.1.min.js\"></script>
-        <script src=\"/common/jcanvas.min.js\"></script>
+        <script src=\"".BASE."/common/jcanvas.min.js\"></script>
         <script language=\"text/javascript\" src = \"http://code.jquery.com/ui/1.10.0/jquery-ui.js\"></script>";
     }
 
@@ -90,10 +92,10 @@ class ContentPage
             echo "Please log in";
         }
 
-        $headerlink = "/info/news";
+        $headerlink = "".BASE."/info/news";
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
-            $headerlink = "/activity";
+            $headerlink = "".BASE."/activity";
         }
 
         echo "<!DOCTYPE html>
@@ -104,7 +106,7 @@ class ContentPage
     <body>
         " . $this->veryFirstHTML . "
         <div class = 'pageheader'>
-            <a href = \"" . $headerlink . "\" id=\"homebutton\">
+            <a href = \"".BASE."" . $headerlink . "\" id=\"homebutton\">
                 <div class = \"headertitle\"></div>
             </a>
             ";
@@ -112,12 +114,12 @@ class ContentPage
 
             echo
                 "<div class = \"headernavbutton\" onclick = \"openSnapNewBooth();\""
-                . " style = \"background-image: url(/media/newbooth.png);\"></div>
+                . " style = \"background-image: url(".BASE."/media/newbooth.png);\"></div>
                             <a href = \"/search\">
                                 <div class = \"headernavbutton advsearchbutton\" onclick = \"openAdvancedSearch();\""
-                . " style = \"background-image: url(/media/search.png);\"></div>
+                . " style = \"background-image: url(".BASE."/media/search.png);\"></div>
                             </a>
-                            <form method = \"GET\" action = \"/searchresults\">
+                            <form method = \"GET\" action = \"".BASE."/searchresults\">
                                 <input type = \"text\" class = \"searchtextarea\" name = \"q\"/>
                                 <div class = \"searchchoiceswrapper\">
                                     <select class = \"searchchoices\" name = \"scope\">
@@ -133,8 +135,8 @@ class ContentPage
                             </canvas>
                 ";
         } else {
-            echo "<a href = '/registration'><div class = \"headernavbutton\">Register</div></a>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href = '/login'><div class = \"headernavbutton\">Login</div></a>";
+            echo "<a href = '".BASE."/registration'><div class = \"headernavbutton\">Register</div></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href = '".BASE."/login'><div class = \"headernavbutton\">Login</div></a>";
         }
         echo
             "       </div>
@@ -154,13 +156,13 @@ class ContentPage
             $userImage = UserImage::getImage($username);
 
             $usercard =
-                "<div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(" . (string)$userImage . ")'></div>
+                "<div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(".BASE. (string)$userImage . ")'></div>
                         <div class = \"usercardcontent\">
                             <div class = 'usercardname'>
                                 <span onclick = \"openUserFeed('" . $username . "')\">@" . $displayName . "</span>
                             </div>
                             <div class = 'usercardstats'>
-                                <a id = \"boothsnum\" href = '/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
+                                <a id = \"boothsnum\" href = '".BASE."/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
                                     ??? Booths
                                 </a> / <a id = \"friendsnum\" href = '/users/" . $username . "/friends'>
                                     ??? Friends
@@ -181,7 +183,7 @@ class ContentPage
 
             echo
 "                               <div class = 'usercard' id = 'rightcard'>
-                                    <div class = 'usercardimage' style = 'background-image: url(/media/messages.png); background-repeat: no-repeat; background-size: auto;'></div>
+                                    <div class = 'usercardimage' style = 'background-image: url(".BASE."/media/messages.png); background-repeat: no-repeat; background-size: auto;'></div>
                                     <div class = \"usercardcontent\">
                                         <div class = 'usercardtext' onclick=\"reloadUsersNotifications()\">Notifications</div>
                                         <div class = 'usercardnumwrap' id = 'notifscountwrap'>
@@ -224,13 +226,13 @@ class ContentPage
                 </div>
                 <div style = \"clear:both\"></div>
                 <div class = 'subheader'>
-                    <a href = '/info/news'><span class = 'subheadernavbutton'>News</span></a>
-                    <a href = '/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
-                    <!--TODO<a href = '/info/tos'><span class = 'subheadernavbutton'>Terms of Service</span></a>-->
-                    <a href = '/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
-                    <a href = '/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
-                    <a href = '/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
-                    <a href = '/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
+                    <a href = '".BASE."/info/news'><span class = 'subheadernavbutton'>News</span></a>
+                    <a href = '".BASE."/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
+                    <!--TODO<a href = '".BASE."/info/tos'><span class = 'subheadernavbutton'>Terms of Service</span></a>-->
+                    <a href = '".BASE."/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
+                    <a href = '".BASE."/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
+                    <a href = '".BASE."/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
+                    <a href = '".BASE."/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
                 </div>
                 </body>
             </html>";
@@ -241,12 +243,12 @@ class ContentPage
         $str = "<meta http-equiv='content-type' content='text/html; charset=UTF-8' />
         <meta name=\"keywords\" content=\"dailybooth, social, photography, photo, socialnetworking, microblogging, community, web2.0, pictures, blog, photos\">
 		<title>Boothi.ca - Take a picture every day and make friends</title>
-		<link rel='stylesheet' href='/css/master.css' type='text/css' media='screen' />
-		<link rel='stylesheet' href='/css/contentpage.css' type='text/css' media='screen' />
-		<link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\">
+		<link rel='stylesheet' href='".BASE."/css/master.css' type='text/css' media='screen' />
+		<link rel='stylesheet' href='".BASE."/css/contentpage.css' type='text/css' media='screen' />
+		<link rel=\"shortcut icon\" href=\"".BASE."/favicon.ico\" type=\"image/x-icon\">
 		<script type = \"text/javascript\">defaultPopulateCenterFunction = \"" . $this->populateCenter . "\";</script>";
         if ($this->redirectToLogin) {
-            $str .= "<script type = \"text/javascript\" src = \"/content/ContentPage-scripts.js\"></script>";
+            $str .= "<script type = \"text/javascript\" src = \"".BASE."/content/ContentPage-scripts.js\"></script>";
         }
         $str = $this->metaHTML . $str;
         return $str;
