@@ -61,13 +61,15 @@ function main()
 
     $booths = array();
     while ($row = mysql_fetch_array($result)) {
+        $root = "http://" . $_SERVER['SERVER_NAME'];
         $booths[] = array(
             'boothnum' => $row['pkNumber'],
             'boothername' => $row['fkUsername'],
             'bootherdisplayname' => (string)getDisplayName($row['fkUsername']),
             'blurb' => $row['blurb'],
             'imageHash' => $row['imageTitle'],
-            'filetype' => $row['filetype']);
+            'filetype' => $row['filetype'],
+            'absoluteImageUrlThumbnail' => $root . '/booths/small/' . $row['imageTitle'] . '.' . $row['filetype']);
     }
     echo json_encode($booths);
 

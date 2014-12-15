@@ -11,7 +11,11 @@
  * and finally calling $page->echoPage().
  */
 
-require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+if (strpos(__FILE__, '_dev')) {
+    require_once "{$_SERVER['DOCUMENT_ROOT']}/_dev/common/boiler.php";
+} else {
+    require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+}
 require_common("cookies");
 require_common("utils");
 
