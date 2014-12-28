@@ -376,14 +376,12 @@ function getBoothCommentsHTML(boothnum, data) {
             "<div class = 'boothcommentername' onclick='openUserFeed(\"" + obj.commentername + "\")'>" + obj.commenterdisplayname + "</div>" +
 
             "<div class = 'boothcommentbuttons'>";
-        if ("undefined" !== typeof(window.username) && window.username.toLowerCase() == boother.toLowerCase() && obj.commentername != window.username) {
+        if ("undefined" !== typeof(window.username) && (window.username.toLowerCase() == boother.toLowerCase() || obj.commentername != window.username)) {
             html = html + "<div class = 'boothcommentbutton secondcommentbutton' onclick= 'deleteComment(" + boothnum + ", " + obj.commentnum + ")'>Delete</div>";
-        } else if (obj.commentername == window.username) {
+        } else if (obj.commentername == window.username || obj.canDelete) {
             html = html + "<div class = 'boothcommentbutton' onclick= 'deleteComment(" + boothnum + ", " + obj.commentnum + ")'>Delete</div>";
         }
-        if (obj.commentername != window.username) {
-            html = html + "<div class = 'boothcommentlikebutton' onclick= 'likeComment(" + obj.commentnum + ")'>Like</div>";
-        }
+        html = html + "<div class = 'boothcommentlikebutton' onclick= 'likeComment(" + obj.commentnum + ")'>Like</div>";
         html = html +
             "</div>" +
             "</div>"

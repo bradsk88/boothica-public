@@ -1,0 +1,46 @@
+.welcome-logo, .welcome-brief {
+    width: 100%;
+    text-align: center;
+    padding: 0.50em;
+    box-sizing: border-box;
+}
+
+.welcome-logo, .welcome-brief, .welcome-signup-button button {
+    border: 1px solid #FFF;
+    background-color: #8EC;
+    color: #FFF;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 0.5em;
+    font-family: 'Bitter', serif;
+}
+
+.welcome-username-label, .welcome-password-label {
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.25em;
+}
+
+.welcome-username-field input, .welcome-password-field input, .welcome-login-button button, .welcome-signup-button button {
+    max-width: 20em;
+    min-width: 10em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.25em;
+    font-size: 1.5rem;
+    display: block;
+}
+
+.welcome-login-button button, .welcome-signup-button button {
+    box-sizing: border-box;
+}
+
+.welcome-login-button button {
+    background: #FFF;
+}
+
+.welcome-login-header {
+    text-align: center;
+    padding: 1em;
+}

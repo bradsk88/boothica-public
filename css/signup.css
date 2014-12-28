@@ -1,0 +1,76 @@
+/* Colors */
+
+.signup-hint {
+    border-color: #E88;
+}
+
+.signup-info {
+    border-color: #777;
+}
+
+/* Layout */
+.signup-title, .signup-brief {
+    width: 100%;
+    text-align: center;
+    padding: 0.50em;
+    box-sizing: border-box;
+}
+
+.signup-onoffswitch {
+    margin: 0 auto 0.5em auto;
+}
+
+.signup-private {
+    margin: 0 auto;
+    max-width: 20em;
+}
+
+#signup-private-switch, #signup-private-label {
+    float: left;
+}
+
+#signup-private-end {
+    clear: both;
+}
+
+.signup-hint, .signup-info {
+    padding: 0.5em;
+    margin: 1em;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.signup-label {
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.25em;
+}
+.signup-field input, .signup-button button {
+    font-size: 1.5rem;
+}
+
+.signup-field input, .signup-hint, .signup-info, .signup-button button {
+    max-width: 20em;
+    min-width: 10em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.25em;
+    display: block;
+    box-sizing: border-box;
+}
+
+.signup-button button {
+    box-sizing: border-box;
+}
+
+.signup-button button {
+    background: #FFF;
+}
+
+/* Overrides */
+.signup-hint, .signup-info {
+    display: none;
+}

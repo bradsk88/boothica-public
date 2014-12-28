@@ -15,6 +15,7 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/CommentObj.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/Comments.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/comment_utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
 require_common("utils");
 require_common("internal_utils");
@@ -37,11 +38,10 @@ function getComments() {
 
 
     if (!isset($_POST['boothnum'])) {
-//        echo "Missing parameter: boothnum";
-//        return;
-        $boothnumber = 16378;
+        echo "Missing parameter: boothnum";
+        return;
     } else {
-    $boothnumber = $_POST['boothnum'];
+        $boothnumber = $_POST['boothnum'];
     }
 
     if (isBoothPublic($boothnumber)) {
@@ -79,6 +79,10 @@ function toArray($comments) {
 			WHERE `fkCommentNumber` = ".$comment->getCommentNumber().";";
         $numLikes = sql_get_expectOneRow(sql_query($sql), "num");
 
+        $canDeleteComment = false;
+        if (isset($_SESSION['username'])) {
+            $canDeleteComment = isAllowedToDeleteCommentNumber($_SESSION['username'], $comment->getCommentNumber());
+        }
         if ($comment->hasPhoto()) {
             $hash = "/comments/".$comment->getImageHash().".".$comment->getImageExtension();
             $out[] = array(
@@ -86,6 +90,7 @@ function toArray($comments) {
                 'commentername' => $comment->getCommenterName(),
                 'commenterdisplayname' => (string)getDisplayName($comment->getCommenterName()),
                 'commenttext' => $comment->getCommentBody(),
+                'canDelete' => $canDeleteComment,
                 'iconImage' => UserImage::getImage($comment->getCommenterName()),
                 'imageHash' => $hash,
                 'imageRatio' => $comment->getImageHeightWidthProp(),
@@ -97,6 +102,7 @@ function toArray($comments) {
                 'commentername' => $comment->getCommenterName(),
                 'commenterdisplayname' => (string)getDisplayName($comment->getCommenterName()),
                 'commenttext' => $comment->getCommentBody(),
+                'canDelete' => $canDeleteComment,
                 'iconImage' => UserImage::getImage($comment->getCommenterName()),
                 'likes' => $numLikes,
                 'time' => $comment->getDateTimeStringReally());

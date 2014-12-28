@@ -738,16 +738,21 @@ function isModerator($username) {
 		}
 
 		$sql = "SELECT `isAdmin` FROM `logintbl` WHERE `username` = '".$username."' LIMIT 2";
-		$result = mysql_query($sql);
+		$result = sql_query($sql);
+        $isAdmin = sql_get_expectOneRow($result, 'isAdmin');
+        if ($isAdmin == 1) {
+            return true;
+        }
+        $result = mysql_query($sql);
 		if ($result) {	
 			$num = mysql_num_rows($result);
 			if ($num == 1) {
-			$row = mysql_fetch_array($result);
-			$isAdmin = ($row['isAdmin'] == 1);
+                $row = mysql_fetch_array($result);
+                $isAdmin = ($row['isAdmin'] == 1);
 			
 				if ($isAdmin) {
 					return true;
-				} else {	
+				} else {
 					return false;
 				}
 				

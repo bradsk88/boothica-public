@@ -21,12 +21,24 @@ function isAllowedToDeleteCommentNumber($username, $commentnumber) {
             AND `fkUsername` = '".$username."';";
 
     $results = sql_query($sql);
-    if (emptyResult($results)) {
-        return false;
+    if ($results->num_rows > 0) {
+        return true;
     }
 
-    return true;
+    $sql = "SELECT fkUsername FROM boothnumbers
+            WHERE pkNumber IN
+                (SELECT fkNumber FROM `commentstbl`
+                WHERE `pkCommentNumber` = '".$commentnumber."')
+            LIMIT 1";
 
+    $results = sql_query($sql);
+    while ($row = $results->fetch_assoc()) {
+        if (strtolower($row['fkUsername']) == strtolower($username)) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function getCommentOwnerByNumber($commentNumber) {
@@ -41,8 +53,8 @@ function deleteCommentByNumber($commentNumber, $link, $username) {
     if ($hash == null) {
         return false;
     }
-    deleteCommentByHash($hash, $link, $username);
-    return true;
+    $deleted = deleteCommentByHash($hash, $link, $username);
+    return $deleted == 0;
 }
 
 
@@ -93,25 +105,7 @@ function deleteCommentByHash($hash, $link, $username) {
 
 				FROM `commentstbl`
 
-				WHERE `hash` = '" . $hash . "'
-
-				AND (
-
-					`fkUsername` = '" . $username . "'
-
-					OR
-
-					`fkNumber` IN (
-
-						SELECT `pkNumber`
-
-						FROM `boothnumbers`
-
-						WHERE `fkUsername` = '" . $username . "'
-
-					)
-
-				);";
+				WHERE `hash` = '" . $hash . "';";
 
     $result = mysql_query($sql);
 

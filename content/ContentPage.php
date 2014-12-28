@@ -5,7 +5,9 @@
  * Date: 6/4/14
  * Time: 10:11 PM
  *
- * ContentPage should be used as the base for almost all major sections on Boothi.ca.
+ * Deprecated as of December 26, 2014.  Please use PageFrame.php as it is more mobile-friendly
+ *
+ * (old doc) ContentPage should be used as the base for almost all major sections on Boothi.ca.
  *
  * You can easily create a basic page by creating a new ContentPage object, calling $page->body("your body HTML"),
  * and finally calling $page->echoPage().
@@ -68,8 +70,8 @@ class ContentPage
     private function includeJQuery()
     {
         $this->metaHTML .= "
-        <script src=\"http://code.jquery.com/jquery-2.1.1.min.js\"></script>
-        <script src=\"http://code.jquery.com/jquery-migrate-1.2.1.min.js\"></script>
+        <script src=\"http://code.jquery.com/jquery-2.1.1.js\"></script>
+        <script src=\"http://code.jquery.com/jquery-migrate-1.2.1.js\"></script>
         <script src=\"/common/jcanvas.min.js\"></script>
         <script language=\"text/javascript\" src = \"http://code.jquery.com/ui/1.10.0/jquery-ui.js\"></script>";
     }
@@ -138,7 +140,7 @@ class ContentPage
                 ";
         } else {
             echo "<a href = '".base()."/registration'><div class = \"headernavbutton\">Register</div></a>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href = '".base()."/login'><div class = \"headernavbutton\">Login</div></a>";
+            <a href = '".base()."/login'><div class = \"headernavbutton\">Login</div></a>";
         }
         echo
             "       </div>

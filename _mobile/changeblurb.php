@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(0);
+error_reporting(E_ERROR);
 session_start();
 
 try {
@@ -9,8 +9,7 @@ try {
     echo json_encode(array("error" => $exception->getMessage()));
 }
 
-function main()
-{
+function main() {
 
     require_once("{$_SERVER['DOCUMENT_ROOT']}/userpages/friendbooth_utils.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
@@ -56,18 +55,18 @@ function main()
     $boothNum = $_POST['boothnum'];
     $blurb = $_POST['blurb'];
 
-    if (doesBoothBelongTo($boothNum, $username)) {
-        doChangeBlurb($boothNum, $username, $blurb);
+    if (!doesBoothBelongTo($boothNum, $username)) {
+        echo json_encode(
+            array("error" => "Booth " . $boothNum . " does not belong to user " . $username)
+        );
         return;
     }
 
-    echo json_encode(
-        array("error" => "Booth " . $boothNum . " does not belong to user " . $username)
-    );
+    doChangeBlurb($boothNum, $username, $blurb);
+
 }
 
-function doChangeBlurb($boothNum, $username, $blurb)
-{
+function doChangeBlurb($boothNum, $username, $blurb) {
     $sql = "SELECT
 				true
 				FROM `boothnumbers`
@@ -105,7 +104,11 @@ function doChangeBlurb($boothNum, $username, $blurb)
         }
     }
 
-    $formattedblurb = formatBlurb($blurb);
+    $formattedblurb = strip_tags($blurb);
+    $formattedblurb = handle_mentions($formattedblurb);
+    $formattedblurb = handle_links($formattedblurb);
+    $formattedblurb = handle_hashtags($formattedblurb);
+    $formattedblurb = mysql_real_escape_string(str_replace("\n", "<br />", $formattedblurb));
 
     $sql = "UPDATE
 					`boothnumbers`
@@ -122,7 +125,5 @@ function doChangeBlurb($boothNum, $username, $blurb)
     echo json_encode(
         array("newblurb" => stripslashes($formattedblurb))
     );
-
-    return;
 
 }
