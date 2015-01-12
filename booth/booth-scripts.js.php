@@ -341,7 +341,7 @@ function getBoothCommentsHTML(boothnum, data) {
 
 
         html = html +
-            "<div class = 'centersection' style = 'position: relative; height: " + sectionHeight + "'>" +
+            "<div class = 'centersection' style = 'position: relative; " + sectionHeight + "'>" +
             "<div class = '" + boothcommenttextclass + "'>" +
             "<div class = 'boothcommenttime'>" + obj.time + "</div>" +
             "<div class = 'boothcommenttextbg'>" +
