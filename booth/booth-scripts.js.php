@@ -34,7 +34,6 @@ function openBooth(boothnum) {
     $("head").append("<link rel= 'stylesheet' href= '$base/css/booth.css' type= 'text/css' media= 'screen' />");
     $("head").append("<script type =  'text/javascript' src = '$base/common/jquery.a-tools-1.5.2.min.js'></script>");
     $("head").append("<script type =  'text/javascript' src = '$base/common/jquery.asuggest.js'></script>");
-    $("head").append("<script type =  'text/javascript' src = 'http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js'></script>");
     $("#centerpane").html(
         "<div class = 'centersection' id='boothtop'></div>" +
             "<div class = 'centersection' id= 'boothcomments'></div>" +
@@ -376,12 +375,14 @@ function getBoothCommentsHTML(boothnum, data) {
             "<div class = 'boothcommentername' onclick='openUserFeed(\"" + obj.commentername + "\")'>" + obj.commenterdisplayname + "</div>" +
 
             "<div class = 'boothcommentbuttons'>";
-        if ("undefined" !== typeof(window.username) && (window.username.toLowerCase() == boother.toLowerCase() || obj.commentername != window.username)) {
+        if ("undefined" !== typeof(window.username) && window.username.toLowerCase() == boother.toLowerCase() && obj.commentername != window.username) {
             html = html + "<div class = 'boothcommentbutton secondcommentbutton' onclick= 'deleteComment(" + boothnum + ", " + obj.commentnum + ")'>Delete</div>";
-        } else if (obj.commentername == window.username || obj.canDelete) {
+        } else if (obj.commentername == window.username) {
             html = html + "<div class = 'boothcommentbutton' onclick= 'deleteComment(" + boothnum + ", " + obj.commentnum + ")'>Delete</div>";
         }
-        html = html + "<div class = 'boothcommentlikebutton' onclick= 'likeComment(" + obj.commentnum + ")'>Like</div>";
+        if (obj.commentername != window.username) {
+            html = html + "<div class = 'boothcommentlikebutton' onclick= 'likeComment(" + obj.commentnum + ")'>Like</div>";
+        }
         html = html +
             "</div>" +
             "</div>"

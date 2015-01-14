@@ -26,6 +26,8 @@ if ($_SESSION['username'] == 'bradsk88') {
     error_reporting(E_ERROR);
 }
 
+define(BASE, base());
+
 class ContentPage
 {
 
@@ -70,9 +72,9 @@ class ContentPage
     private function includeJQuery()
     {
         $this->metaHTML .= "
-        <script src=\"http://code.jquery.com/jquery-2.1.1.js\"></script>
-        <script src=\"http://code.jquery.com/jquery-migrate-1.2.1.js\"></script>
-        <script src=\"/common/jcanvas.min.js\"></script>
+        <script src=\"http://code.jquery.com/jquery-2.1.1.min.js\"></script>
+        <script src=\"http://code.jquery.com/jquery-migrate-1.2.1.min.js\"></script>
+        <script src=\"".BASE."/common/jcanvas.min.js\"></script>
         <script language=\"text/javascript\" src = \"http://code.jquery.com/ui/1.10.0/jquery-ui.js\"></script>";
     }
 
@@ -96,10 +98,10 @@ class ContentPage
             echo "Please log in";
         }
 
-        $headerlink = "/info/news";
+        $headerlink = "".BASE."/info/news";
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
-            $headerlink = "/activity";
+            $headerlink = "".BASE."/activity";
         }
 
         echo "<!DOCTYPE html>
@@ -166,7 +168,7 @@ class ContentPage
                                 <span onclick = \"openUserFeed('" . $username . "')\">@" . $displayName . "</span>
                             </div>
                             <div class = 'usercardstats'>
-                                <a id = \"boothsnum\" href = '".base()."/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
+                                <a id = \"boothsnum\" href = '/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
                                     ??? Booths
                                 </a> / <a id = \"friendsnum\" href = '/users/" . $username . "/friends'>
                                     ??? Friends
@@ -187,7 +189,7 @@ class ContentPage
 
             echo
 "                               <div class = 'usercard' id = 'rightcard'>
-                                    <div class = 'usercardimage' style = 'background-image: url(/media/messages.png); background-repeat: no-repeat; background-size: auto;'></div>
+                                    <div class = 'usercardimage' style = 'background-image: url(".BASE."/media/messages.png); background-repeat: no-repeat; background-size: auto;'></div>
                                     <div class = \"usercardcontent\">
                                         <div class = 'usercardtext' onclick=\"reloadUsersNotifications()\">Notifications</div>
                                         <div class = 'usercardnumwrap' id = 'notifscountwrap'>
@@ -230,13 +232,13 @@ class ContentPage
                 </div>
                 <div style = \"clear:both\"></div>
                 <div class = 'subheader'>
-                    <a href = '".base()."/info/news'><span class = 'subheadernavbutton'>News</span></a>
-                    <a href = '".base()."/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
+                    <a href = '/info/news'><span class = 'subheadernavbutton'>News</span></a>
+                    <a href = '/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
                     <!--TODO<a href = '/info/tos'><span class = 'subheadernavbutton'>Terms of Service</span></a>-->
-                    <a href = '".base()."/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
-                    <a href = '".base()."/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
-                    <a href = '".base()."/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
-                    <a href = '".base()."/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
+                    <a href = '/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
+                    <a href = '/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
+                    <a href = '/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
+                    <a href = '/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
                 </div>
                 </body>
             </html>";
@@ -247,12 +249,12 @@ class ContentPage
         $str = "<meta http-equiv='content-type' content='text/html; charset=UTF-8' />
         <meta name=\"keywords\" content=\"dailybooth, social, photography, photo, socialnetworking, microblogging, community, web2.0, pictures, blog, photos\">
 		<title>Boothi.ca - Take a picture every day and make friends</title>
-		<link rel='stylesheet' href='".base()."/css/master.css' type='text/css' media='screen' />
-		<link rel='stylesheet' href='".base()."/css/contentpage.css' type='text/css' media='screen' />
-		<link rel=\"shortcut icon\" href=\"".base()."/favicon.ico\" type=\"image/x-icon\">
+		<link rel='stylesheet' href='/css/master.css' type='text/css' media='screen' />
+		<link rel='stylesheet' href='/css/contentpage.css' type='text/css' media='screen' />
+		<link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\">
 		<script type = \"text/javascript\">defaultPopulateCenterFunction = \"" . $this->populateCenter . "\";</script>";
         if ($this->redirectToLogin) {
-            $str .= "<script type = \"text/javascript\" src = \"".base()."/content/ContentPage-scripts.js\"></script>";
+            $str .= "<script type = \"text/javascript\" src = \"/content/ContentPage-scripts.js\"></script>";
         }
         $str = $this->metaHTML . $str;
         return $str;

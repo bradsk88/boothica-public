@@ -2,22 +2,22 @@
 
 // register_shutdown_function('errorHandler');
 // function errorHandler() {
-	
-   // $err = error_get_last();
-   // if($err) {
-		// if (isset($_SESSION['username']) && isModerator($_SESSION['username'])) {
-			// echo death($err['type']."\n".$err['message']."\n".$err['file']."\n".$err['line']."\n");
-		// } else {
-			// death($err['type']."\n".$err['message']."\n".$err['file']."\n".$err['line']."\n");
-			// echo "<script type = 'text/javascript'>location.href = '/errors/error.php?msg=An%20unexpected%20error%20has%20occurred';</script>";
-		// }
-	// }
+
+// $err = error_get_last();
+// if($err) {
+// if (isset($_SESSION['username']) && isModerator($_SESSION['username'])) {
+// echo death($err['type']."\n".$err['message']."\n".$err['file']."\n".$err['line']."\n");
+// } else {
+// death($err['type']."\n".$err['message']."\n".$err['file']."\n".$err['line']."\n");
+// echo "<script type = 'text/javascript'>location.href = '/errors/error.php?msg=An%20unexpected%20error%20has%20occurred';</script>";
+// }
+// }
 // }
 
-require_once "{$_SERVER['DOCUMENT_ROOT']}/common/assets/DisplayName.php";
-require_once "{$_SERVER['DOCUMENT_ROOT']}/common/assets/UserIcon.php";
-require_once "{$_SERVER['DOCUMENT_ROOT']}/common/db.php";
-require_once "{$_SERVER['DOCUMENT_ROOT']}/common/db_auth.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+require_asset('DisplayName'); require_asset('UserIcon');
+require_common('db');
+require_common('db_auth');
 
 function checkNotNull($obj) {
     checkNotNull_Msg($obj, "Null Pointer Exception");
@@ -31,7 +31,7 @@ function checkNotNull_Msg($obj, $msg) {
 }
 
 function useJQuery() {
-	echo jQueryString();
+    echo jQueryString();
 }
 
 function jQueryString() {
@@ -41,36 +41,36 @@ function jQueryString() {
 }
 
 function get_ip_address() {
-	foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key) {
-		if (array_key_exists($key, $_SERVER) === true) {
-			foreach (explode(',', $_SERVER[$key]) as $ip) {
-				if (filter_var($ip, FILTER_VALIDATE_IP) !== false) {
-					return $ip;
-				}
-			}
-		}
-	}
+    foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key) {
+        if (array_key_exists($key, $_SERVER) === true) {
+            foreach (explode(',', $_SERVER[$key]) as $ip) {
+                if (filter_var($ip, FILTER_VALIDATE_IP) !== false) {
+                    return $ip;
+                }
+            }
+        }
+    }
 }
 
 function removeSiteMsg($type) {
-	if (isset($_SESSION['username'])) {
-		$sql = "DELETE FROM `sitemsgtbl` WHERE `fkUsername` = '".$_SESSION['username']."' AND `area` = '".$type."';";
-		$result = mysql_query($sql);
-		if (!$result) {
-			mysql_death1($sql);
-		}	
-	}
+    if (isset($_SESSION['username'])) {
+        $sql = "DELETE FROM `sitemsgtbl` WHERE `fkUsername` = '".$_SESSION['username']."' AND `area` = '".$type."';";
+        $result = mysql_query($sql);
+        if (!$result) {
+            mysql_death1($sql);
+        }
+    }
 }
 
 function go_home() {
 
-	echo "<script = 'text/javascript'>location.href='/';</script>";
+    echo "<script = 'text/javascript'>location.href='/';</script>";
 
 }
 
 function go_to($relativepage) {
 
-	echo "<script = 'text/javascript'>location.href='/".$relativepage."';</script>";
+    echo "<script = 'text/javascript'>location.href='/".$relativepage."';</script>";
 
 }
 
@@ -92,167 +92,167 @@ function go_to_and_post($relativepage, $vars, $fallbackmessage) {
 
 function go_to_404() {
 
-	echo "<script = 'text/javascript'>location.href='/errors/404page';</script>";
+    echo "<script = 'text/javascript'>location.href='/errors/404page';</script>";
 
 }
 
 function go_to_login() {
-	echo "<script = 'text/javascript'>location.href='/errors/loginpage';</script>";
+    echo "<script = 'text/javascript'>location.href='/errors/loginpage';</script>";
 }
 
 function go_to_banned() {
-	echo "<script = 'text/javascript'>location.href='/errors/bannedpage';</script>";
+    echo "<script = 'text/javascript'>location.href='/errors/bannedpage';</script>";
 }
 
 function go_to_suspended() {
 
-	echo "<script = 'text/javascript'>location.href='/errors/suspendedpage';</script>";
+    echo "<script = 'text/javascript'>location.href='/errors/suspendedpage';</script>";
 
 }
 
 function go_to_unexpected_error() {
-	
-	if ($down) {
-		return;
-	}
-	echo "<script = 'text/javascript'>location.href='/errors/error?msg=An%20unexpected%20error%20has%20occurred;</script>";
-	
+
+    if ($down) {
+        return;
+    }
+    echo "<script = 'text/javascript'>location.href='/errors/error?msg=An%20unexpected%20error%20has%20occurred;</script>";
+
 }
 
 function go_to_db_error($sql) {
-	if ($down) {
-		echo(mysql_error($sql));
-		return;
-	}
-	if (isset($_SESSION['username']) && isModerator($_SESSION['username'])) {
-		go_to_error($sql);
-	} else {
-		go_to_error(mysql_death1($sql));
-	}
+    if ($down) {
+        echo(mysql_error($sql));
+        return;
+    }
+    if (isset($_SESSION['username']) && isModerator($_SESSION['username'])) {
+        go_to_error($sql);
+    } else {
+        go_to_error(mysql_death1($sql));
+    }
 }
 
 function go_to_error_return($msg, $return) {
-	echo "<script = 'text/javascript'>location.href='/errors/error?msg=".urlencode($msg)."&return=".$return."';</script>";
+    echo "<script = 'text/javascript'>location.href='/errors/error?msg=".urlencode($msg)."&return=".$return."';</script>";
 }
 
 function go_to_error($msg) {
-	if ($down) {
-		echo($msg);
-		return;
-	}
-	echo "<script = 'text/javascript'>location.href='/errors/error?msg=".urlencode($msg)."';</script>";
+    if ($down) {
+        echo($msg);
+        return;
+    }
+    echo "<script = 'text/javascript'>location.href='/errors/error?msg=".urlencode($msg)."';</script>";
 }
 
 include("{$_SERVER['DOCUMENT_ROOT']}/utils/devlist.php");
 
 function mysql_death2($link,$sql) {
-	$usern = "not logged in";
-	if (isset($_SESSION['username'])) {
-		$usern = $_SESSION['username'];
-	}
-	foreach (getDevs() as $dev) {
-		error_log("You are receiving this because you are on the developers list\n\nUsername at time of death: ".$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".mysql_error($link)."\n".$sql."\n\n".get_ip_address(), 1, $dev);
-	}
-	return "Database error.";
+    $usern = "not logged in";
+    if (isset($_SESSION['username'])) {
+        $usern = $_SESSION['username'];
+    }
+    foreach (getDevs() as $dev) {
+        error_log("You are receiving this because you are on the developers list\n\nUsername at time of death: ".$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".mysql_error($link)."\n".$sql."\n\n".get_ip_address(), 1, $dev);
+    }
+    return "Database error.";
 }
 
 function mysql_deathm($sql, $msg) {
-	if ($down) {
-		echo(mysql_error($sql));
-		return;
-	}
-	$usern = "not logged in";
-	if (isset($_SESSION['username'])) {
-		$usern = $_SESSION['username'];
-	}
-	foreach (getDevs() as $dev) {
-		error_log("You are receiving this because you are on the developers list\n\n"."MySQL Death\nUsername at time of death: ".$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".mysql_error()."\n".$sql."\n".$msg."\n\n".get_ip_address(), 1, $dev);
-	}
-	return "Database error.";
+    if ($down) {
+        echo(mysql_error($sql));
+        return;
+    }
+    $usern = "not logged in";
+    if (isset($_SESSION['username'])) {
+        $usern = $_SESSION['username'];
+    }
+    foreach (getDevs() as $dev) {
+        error_log("You are receiving this because you are on the developers list\n\n"."MySQL Death\nUsername at time of death: ".$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".mysql_error()."\n".$sql."\n".$msg."\n\n".get_ip_address(), 1, $dev);
+    }
+    return "Database error.";
 }
 
 function mysql_death1($sql) {
-	if ($down) {
-		echo(mysql_error($sql));
-		return;
-	}
-	$usern = "not logged in";
-	if (isset($_SESSION['username'])) {
-		$usern = $_SESSION['username'];
-	}
+    if ($down) {
+        echo(mysql_error($sql));
+        return;
+    }
+    $usern = "not logged in";
+    if (isset($_SESSION['username'])) {
+        $usern = $_SESSION['username'];
+    }
     ob_start();
     debug_print_backtrace();
     $trace = ob_get_clean();
     $old_error = mysql_error();
     $new_error = mysqli_errno($link).": ".mysqli_error($link);
 
-	foreach (getDevs() as $dev) {
-		error_log("You are receiving this because you are on the developers list\n\n"."MySQL Death\nUsername at time of death: "
+    foreach (getDevs() as $dev) {
+        error_log("You are receiving this because you are on the developers list\n\n"."MySQL Death\nUsername at time of death: "
             .$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \nMySQL ".$old_error."\nMySQLi ".$new_error."\n\nSQL:".$sql.get_ip_address()."\n\n".$trace, 1, $dev);
-	}
-	return "Database error.";
+    }
+    return "Database error.";
 }
 
 function mysql_death($error) {
-	$usern = "not logged in";
-	if (isset($_SESSION['username'])) {
-		$usern = $_SESSION['username'];
-	}
-	foreach (getDevs() as $dev) {
-		error_log("You are receiving this because you are on the developers list\n\nUsername at time of death: ".$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".$error.get_ip_address(), 1, $dev);
-	}
-	return "Database error.";
+    $usern = "not logged in";
+    if (isset($_SESSION['username'])) {
+        $usern = $_SESSION['username'];
+    }
+    foreach (getDevs() as $dev) {
+        error_log("You are receiving this because you are on the developers list\n\nUsername at time of death: ".$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".$error.get_ip_address(), 1, $dev);
+    }
+    return "Database error.";
 }
 
 function death($error) {
-	$usern = "not logged in";
-	if (isset($_SESSION['username'])) {
-		$usern = $_SESSION['username'];
-	}
+    $usern = "not logged in";
+    if (isset($_SESSION['username'])) {
+        $usern = $_SESSION['username'];
+    }
     ob_start();
     debug_print_backtrace();
     $trace = ob_get_clean();
-	foreach (getDevs() as $dev) {
-		error_log("You are receiving this because you are on the developers list\n\nUsername at time of death: ".$usern.
+    foreach (getDevs() as $dev) {
+        error_log("You are receiving this because you are on the developers list\n\nUsername at time of death: ".$usern.
             "\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".$error."\n\n".get_ip_address()."\n\n".$trace, 1, $dev);
-	}
-	return "Internal error.";
+    }
+    return "Internal error.";
 }
 
 
 function debug($text) {
 
-	if (isset($_SESSION['debugon']) && $_SESSION['debugon']  == true) {
-		echo "Debug:<p>".$text."<p/>";
-	}
-	
+    if (isset($_SESSION['debugon']) && $_SESSION['debugon']  == true) {
+        echo "Debug:<p>".$text."<p/>";
+    }
+
 }
 
 function record_ip($type) {
 
-	$sql = "INSERT INTO 
+    $sql = "INSERT INTO
 			`hackattemptstbl` 
 			(`ip`, `type`) 
 			VALUES 
 			('".get_ip_address()."', '".$type."');";
-	$result = mysql_query($sql);
-	if (!$result) {
-		mysql_death("Hack report is broken. IP: ".get_ip_address()." TYPE: ".$type);
-	}
+    $result = mysql_query($sql);
+    if (!$result) {
+        mysql_death("Hack report is broken. IP: ".get_ip_address()." TYPE: ".$type);
+    }
 
 }
 
 function update_online_presence() {
 
-		if (isset($_SESSION['username'])) {
-			$username = $_SESSION['username'];
-			$sql = "UPDATE 
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+        $sql = "UPDATE
 					`logintbl` 
 					SET 
 					`lastonline` = current_timestamp 
 					WHERE `username` = '".$username."';";
-			mysql_query($sql);	
-		}
+        mysql_query($sql);
+    }
 }
 
 function getDisplayName($username) {
@@ -261,71 +261,71 @@ function getDisplayName($username) {
 
 function isPublic($username) {
 
-	$sql = "SELECT 
+    $sql = "SELECT
 			`username`, 
 			`password`
 			FROM `logintbl` 
 			WHERE `username` = '".$username."'
 			LIMIT 1;";
-	$result = mysql_query($sql);
-	if (!$result) {
-		mysql_death1($sql);
-		return false;
-	}
-	
-	$loginarray= mysql_fetch_array($result);
-	$passwordhash = $loginarray['password'];
-	
-	$sql = "SELECT `fkPassword` 
+    $result = mysql_query($sql);
+    if (!$result) {
+        mysql_death1($sql);
+        return false;
+    }
+
+    $loginarray= mysql_fetch_array($result);
+    $passwordhash = $loginarray['password'];
+
+    $sql = "SELECT `fkPassword`
 			FROM `userspublictbl` 
 			WHERE `fkUsername` = '" . $username . "'
 			LIMIT 1;";
-	$result2 = mysql_query($sql);
-	if (!$result2) {
-		mysql_death1($sql);
-		return false;
-	}
-	$numrows = mysql_num_rows($result);
-	if ($numrows == 1) {
-		$publichasharray = mysql_fetch_array($result2);
-		$publichash = $publichasharray['fkPassword'];
-	} else {
-		if (mysql_num_rows($result2) > 1) {
-			record_ip('".$commentername.": muliple entries in public table');
-		}		
-		return false;
-	}
-	
-	if ( $publichash == $passwordhash) {
-		return true;
-	}	
-	return false;
+    $result2 = mysql_query($sql);
+    if (!$result2) {
+        mysql_death1($sql);
+        return false;
+    }
+    $numrows = mysql_num_rows($result);
+    if ($numrows == 1) {
+        $publichasharray = mysql_fetch_array($result2);
+        $publichash = $publichasharray['fkPassword'];
+    } else {
+        if (mysql_num_rows($result2) > 1) {
+            record_ip('".$commentername.": muliple entries in public table');
+        }
+        return false;
+    }
+
+    if ( $publichash == $passwordhash) {
+        return true;
+    }
+    return false;
 
 }
 
 function putTest($val) {
 
-	$sql = "INSERT INTO `boothsite`.`testtbl` (`val`) VALUES ('".$val."');";
-	$result = mysql_query($sql);
-	if (!$result) {
-		mysql_death1($sql);
-	}
+    $sql = "INSERT INTO `boothsite`.`testtbl` (`val`) VALUES ('".$val."');";
+    $result = mysql_query($sql);
+    if (!$result) {
+        mysql_death1($sql);
+    }
 
 }
 
 function mutualFriends($user1,$user2) {
-	
-	if ($user1 == "") {
-		death("mutualFriends: blank 1st parameter");
-		return false;
-	}
-	
-	if ($user2 == "") {
-		death("mutualFriends: blank 2nd parameter");
-		return false;
-	}
-	
-	$sql = "SELECT 
+
+    if ($user1 == "") {
+        death("mutualFriends: blank 1st parameter");
+        return false;
+    }
+
+    if ($user2 == "") {
+        death("mutualFriends: blank 2nd parameter");
+        return false;
+    }
+
+    $sql = "SELECT
 			true 
 			FROM `friendstbl` 
 			WHERE `fkUsername` = '".$user1."' 
@@ -335,18 +335,18 @@ function mutualFriends($user1,$user2) {
 				AND `fkFriendName` = '".$user1."'
 				LIMIT 1)
 			LIMIT 2;";
-	$result = mysql_query($sql);
-	if ($result) {
-	$num = mysql_num_rows($result);
-		if ($num == 1) {
-			return true;
-		} else if ($num > 1) {
-			record_ip("friendship ".$user1."->".$user2." exists in database more than once.");
-		}
-	} else {
-		mysql_death1($sql);
-	}
-	return false;
+    $result = mysql_query($sql);
+    if ($result) {
+        $num = mysql_num_rows($result);
+        if ($num == 1) {
+            return true;
+        } else if ($num > 1) {
+            record_ip("friendship ".$user1."->".$user2." exists in database more than once.");
+        }
+    } else {
+        mysql_death1($sql);
+    }
+    return false;
 
 }
 
@@ -369,47 +369,47 @@ function isFriendOf($user1,$user2) {
     if ($user1 == $user2) {
         return true;
     }
-	$sql = "SELECT
+    $sql = "SELECT
 			true 
 			FROM `friendstbl` 
 			WHERE `fkUsername` = '".$user2."' 
 			AND `fkFriendName` = '" . $user1 . "' 
 			LIMIT 2;";
-	$result = mysql_query($sql);
-	if ($result) {
-	$num = mysql_num_rows($result);
-		if ($num == 1) {
-			return true;
-		} else if ($num > 1) {
-			record_ip("friendship ".$user1."->".$user2." exists in database more than once.");
-		}
-	} else {
-		mysql_death1($sql);
-	}
-	return false;
+    $result = mysql_query($sql);
+    if ($result) {
+        $num = mysql_num_rows($result);
+        if ($num == 1) {
+            return true;
+        } else if ($num > 1) {
+            record_ip("friendship ".$user1."->".$user2." exists in database more than once.");
+        }
+    } else {
+        mysql_death1($sql);
+    }
+    return false;
 
 }
 
 function isIgnoring($user1,$user2) {
 
-	$sql = "SELECT 
+    $sql = "SELECT
 			true 
 			FROM `ignorestbl` 
 			WHERE `fkUsername` = '".$user1."' 
 			AND `fkIgnoredName` = '" . $user2 . "' 
 			LIMIT 2;";
-	$result = mysql_query($sql);
-	if ($result) {
-	$num = mysql_num_rows($result);
-		if ($num == 1) {
-			return true;
-		} else if ($num > 1) {
-			record_ip("ignoreship ".$user1."->".$user2." exists in database more than once.");
-		}
-	} else {
-		mysql_death1($sql);
-	}
-	return false;
+    $result = mysql_query($sql);
+    if ($result) {
+        $num = mysql_num_rows($result);
+        if ($num == 1) {
+            return true;
+        } else if ($num > 1) {
+            record_ip("ignoreship ".$user1."->".$user2." exists in database more than once.");
+        }
+    } else {
+        mysql_death1($sql);
+    }
+    return false;
 
 }
 
@@ -423,22 +423,22 @@ function userExists($username) {
 
 function isBanned($username) {
 
-		$sql = "SELECT `fkUsername` FROM `usersbannedtbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
-		$result = mysql_query($sql);
-		if ($result) {	
-			$num = mysql_num_rows($result);
-			if ($num == 1) {
-				return true;				
-			} else if ($num == 0) {		
-				return false;
-			} else {
-				death("Multiple entries in usersbannedtbl.  Name: ".$username.", IP:".get_ip_address());			
-				return false;
-			}
-		} else {
-			mysql_death2($link,$sql);
-			return false;
-		}
+    $sql = "SELECT `fkUsername` FROM `usersbannedtbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
+    $result = mysql_query($sql);
+    if ($result) {
+        $num = mysql_num_rows($result);
+        if ($num == 1) {
+            return true;
+        } else if ($num == 0) {
+            return false;
+        } else {
+            death("Multiple entries in usersbannedtbl.  Name: ".$username.", IP:".get_ip_address());
+            return false;
+        }
+    } else {
+        mysql_death2($link,$sql);
+        return false;
+    }
 
 }
 
@@ -458,7 +458,7 @@ function isBoothPublic($boothnumber) {
     if (isIndividualBoothPrivate($boothnumber)) {
         return false;
     }
-	$sql = "SELECT `fkUsername`
+    $sql = "SELECT `fkUsername`
 			FROM `userspublictbl` 
 			WHERE `fkUsername` = 
 				(SELECT `fkUsername` 
@@ -466,54 +466,54 @@ function isBoothPublic($boothnumber) {
 					WHERE `pkNumber` = ".$boothnumber." 
 					LIMIT 1 ) 
 			LIMIT 2";
-		$result = mysql_query($sql);
-		if ($result) {	
-			$num = mysql_num_rows($result);
-			if ($num == 1) {
-				return true;				
-			} else if ($num == 0) {		
-				return false;
-			} else {
-				death("Multiple entries in usersbannedtbl.  Name: ".$username.", IP:".get_ip_address());			
-				return false;
-			}
-		} else {
-			mysql_death2($link,$sql);
-			return false;
-		}
+    $result = mysql_query($sql);
+    if ($result) {
+        $num = mysql_num_rows($result);
+        if ($num == 1) {
+            return true;
+        } else if ($num == 0) {
+            return false;
+        } else {
+            death("Multiple entries in usersbannedtbl.  Name: ".$username.", IP:".get_ip_address());
+            return false;
+        }
+    } else {
+        mysql_death2($link,$sql);
+        return false;
+    }
 }
 
 function isSuspended($username) {
 
-		$sql = "SELECT `fkUsername` FROM `userssuspendedtbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
-		$result = mysql_query($sql);
-		if ($result) {	
-			$num = mysql_num_rows($result);
-			if ($num == 1) {
-				return true;				
-			} else if ($num == 0) {		
-				return false;
-			} else {
-				death("Multiple entries in userssuspendedtbl.  Name: ".$username.", IP:".get_ip_address());			
-				return true;
-			}
-		} else {
-			mysql_death2($link,$sql);
-			return false;
-		}
+    $sql = "SELECT `fkUsername` FROM `userssuspendedtbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
+    $result = mysql_query($sql);
+    if ($result) {
+        $num = mysql_num_rows($result);
+        if ($num == 1) {
+            return true;
+        } else if ($num == 0) {
+            return false;
+        } else {
+            death("Multiple entries in userssuspendedtbl.  Name: ".$username.", IP:".get_ip_address());
+            return true;
+        }
+    } else {
+        mysql_death2($link,$sql);
+        return false;
+    }
 
 }
 
 function doBanSuspendCheck($username) {
 
-	if (isBanned($username)) {
-		go_to_banned();
-		return false;
-	} else if (isSuspended($username)){
-		go_to_suspended();
-		return false;
-	}
-	return true;
+    if (isBanned($username)) {
+        go_to_banned();
+        return false;
+    } else if (isSuspended($username)){
+        go_to_suspended();
+        return false;
+    }
+    return true;
 
 }
 
@@ -535,52 +535,52 @@ function getUserNumber($username) {
 
 function getPublicImage($username) {
 
-	// if (isset($_SESSION['username']) && (mutualFriends($_SESSION['username'], $username) || isPublic($username))) {
+    // if (isset($_SESSION['username']) && (mutualFriends($_SESSION['username'], $username) || isPublic($username))) {
 
-		// $sql = "SELECT 
-		// `imageTitle`,
-		// `filetype`
-		// FROM `boothnumbers` 
-		// WHERE fkUsername = '".$username."'
-		// ORDER BY `pkNumber` DESC
-		// LIMIT 1;";
-		// $result = mysql_query($sql);
-		// if (!$result) {
-			// mysql_death1($sql);
-			// return "/media/error.png";
-		// }
-		// if (mysql_num_rows($result) == 0) {
-			// return "/media/noimage.jpg";
-		// } else {
-			// $row = mysql_fetch_array($result);
-			// return "/booths/".$row['imageTitle'].".".$row['filetype'];
-		// }
-	// } else {
-		$sql = "SELECT 
+    // $sql = "SELECT
+    // `imageTitle`,
+    // `filetype`
+    // FROM `boothnumbers`
+    // WHERE fkUsername = '".$username."'
+    // ORDER BY `pkNumber` DESC
+    // LIMIT 1;";
+    // $result = mysql_query($sql);
+    // if (!$result) {
+    // mysql_death1($sql);
+    // return "/media/error.png";
+    // }
+    // if (mysql_num_rows($result) == 0) {
+    // return "/media/noimage.jpg";
+    // } else {
+    // $row = mysql_fetch_array($result);
+    // return "/booths/".$row['imageTitle'].".".$row['filetype'];
+    // }
+    // } else {
+    $sql = "SELECT
 				`hasIcon`, `iconext`
 				FROM `logintbl`
 				WHERE `username` = '".$username."'
 				LIMIT 2;";
-		$result = mysql_query($sql);
-		if (!$result) {
-			mysql_death1($sql);
-			return "/media/error.png";
-		}
-		
-		$num = mysql_num_rows($result);
-		if ($num == 1) {
-			$row = mysql_fetch_array($result);
-			if ($row['hasIcon'] == 1) {
-				return "/users/".$username."/public.".$row['iconext'];
-			} else {
-				return "/media/private.jpg";
-			}
-		} else {
-			death($num." rows in logintbl for user: ".$username);
-			return "/media/error.png";
-		}
-	// }
-	
+    $result = mysql_query($sql);
+    if (!$result) {
+        mysql_death1($sql);
+        return "/media/error.png";
+    }
+
+    $num = mysql_num_rows($result);
+    if ($num == 1) {
+        $row = mysql_fetch_array($result);
+        if ($row['hasIcon'] == 1) {
+            return "/users/".$username."/public.".$row['iconext'];
+        } else {
+            return "/media/private.jpg";
+        }
+    } else {
+        death($num." rows in logintbl for user: ".$username);
+        return "/media/error.png";
+    }
+    // }
+
 }
 
 function getDefaultLayout($username) {
@@ -732,74 +732,69 @@ function getEmailFooter() {
 
 function isModerator($username) {
 
-		if ($username == "" || $username == null) {
-			death("Attempted to check moderator status when user not logged in IP:".get_ip_address());			
-			return false;
-		}
+    if ($username == "" || $username == null) {
+        death("Attempted to check moderator status when user not logged in IP:".get_ip_address());
+        return false;
+    }
 
-		$sql = "SELECT `isAdmin` FROM `logintbl` WHERE `username` = '".$username."' LIMIT 2";
-		$result = sql_query($sql);
-        $isAdmin = sql_get_expectOneRow($result, 'isAdmin');
-        if ($isAdmin == 1) {
-            return true;
+    $sql = "SELECT `isAdmin` FROM `logintbl` WHERE `username` = '".$username."' LIMIT 2";
+    $result = mysql_query($sql);
+    if ($result) {
+        $num = mysql_num_rows($result);
+        if ($num == 1) {
+            $row = mysql_fetch_array($result);
+            $isAdmin = ($row['isAdmin'] == 1);
+
+            if ($isAdmin) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } else if ($num == 0) {
+            death("SEVERE: Logged in as non-existent user!!! (".$username.")\n\nIP:".get_ip_address());
+            $_SESSION['username'] = null;
+            return false;
+        } else {
+            death("Multiple entries in logintbl.  Name: ".$username.", IP:".get_ip_address());
+            return false;
         }
-        $result = mysql_query($sql);
-		if ($result) {	
-			$num = mysql_num_rows($result);
-			if ($num == 1) {
-                $row = mysql_fetch_array($result);
-                $isAdmin = ($row['isAdmin'] == 1);
-			
-				if ($isAdmin) {
-					return true;
-				} else {
-					return false;
-				}
-				
-			} else if ($num == 0) {
-				death("SEVERE: Logged in as non-existent user!!! (".$username.")\n\nIP:".get_ip_address());
-				$_SESSION['username'] = null;
-				return false;
-			} else {
-				death("Multiple entries in logintbl.  Name: ".$username.", IP:".get_ip_address());			
-				return false;
-			}
-		} else {
-			mysql_death1($sql);
-			return false;
-		}
+    } else {
+        mysql_death1($sql);
+        return false;
+    }
 
 }
 
 function isDeveloper($username) {
 
-	if ($username == "" || $username == null) {
-		death("Attempted to check developer status when user not logged in IP:".get_ip_address());			
-		return false;
-	}
+    if ($username == "" || $username == null) {
+        death("Attempted to check developer status when user not logged in IP:".get_ip_address());
+        return false;
+    }
 
-	//TODO Check hash -BJ
-	$sql = "SELECT true FROM `usersdevstbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
-	$result = mysql_query($sql);
-	if ($result) {	
-		$num = mysql_num_rows($result);
-		if ($num == 1) {
-			return true;
-		} else if ($num == 0) {
-			return false;
-		} else {
-			death("Multiple entries in logintbl.  Name: ".$username.", IP:".get_ip_address());			
-			return false;
-		}
-	} else {
-		mysql_death1($sql);
-		return false;
-	}
+    //TODO Check hash -BJ
+    $sql = "SELECT true FROM `usersdevstbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
+    $result = mysql_query($sql);
+    if ($result) {
+        $num = mysql_num_rows($result);
+        if ($num == 1) {
+            return true;
+        } else if ($num == 0) {
+            return false;
+        } else {
+            death("Multiple entries in logintbl.  Name: ".$username.", IP:".get_ip_address());
+            return false;
+        }
+    } else {
+        mysql_death1($sql);
+        return false;
+    }
 }
 
 function create_generic_header($string) {
 
-	echo "
+    echo "
 						<div class = 'contentheaderbarregion'>					
 							<div class = 'contentheaderbar'>
 								<div class = 'friendstatus'>
@@ -816,7 +811,7 @@ function create_generic_header($string) {
 function parameterIsMissingAndEchoFailureMessage($param) {
 
     if (!isset($_POST[$param]) || strlen($_POST[$param]) == 0) {
-        $arr = array("error" => "Missing or empty parameter: ".$param);
+        $arr = array("error" => "Missing or empty POST parameter: ".$param);
         echo json_encode($arr);
         return true;
     }
