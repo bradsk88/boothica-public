@@ -92,7 +92,7 @@ function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly) {
     $row = mysql_fetch_array($imgquery);
     $name = $row['imageTitle'];
 
-    $filename = "../booths/".$name.".".$extension;
+    $filename = "{$_SERVER['DOCUMENT_ROOT']}/booths/".$name.".".$extension;
     file_put_contents($filename, $uploadedfile);
 
     list($width,$height)=getimagesize($filename);
@@ -114,7 +114,7 @@ function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly) {
 
     $filename2 = uploadTiny($name, $extension, $height/$width, $filename, $uploadedfile);
 
-    $webpagefile = "../users/".$username."/".$number.'.php';
+    $webpagefile = "{$_SERVER['DOCUMENT_ROOT']}/users/".$username."/".$number.'.php';
     $fh = @fopen($webpagefile, "w") or die("can't open file");
     $stringdata = "<?PHP include(\"{\$_SERVER['DOCUMENT_ROOT']}/userpages/booth.php\");";
     $pagewrite = fwrite($fh, $stringdata);
@@ -203,7 +203,7 @@ function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly) {
  */
 function uploadTiny($name, $extension, $percent2, $filename, $uploadedfile)
 {
-    $filename2 = "../booths/tiny/" . $name . "." . $extension;
+    $filename2 = "{$_SERVER['DOCUMENT_ROOT']}/booths/tiny/" . $name . "." . $extension;
     if ($extension == 'jpg') {
         $normal = imagecreatefromjpeg($filename);
         $small = ImageUtils::resize($normal, $filename, $percent2, 80);
@@ -242,7 +242,7 @@ function uploadTiny($name, $extension, $percent2, $filename, $uploadedfile)
  */
 function uploadSmall($name, $extension, $heightOverWidth, $filename, $uploadedfile)
 {
-    $filename1 = "../booths/small/" . $name . "." . $extension;
+    $filename1 = "{$_SERVER['DOCUMENT_ROOT']}/booths/small/" . $name . "." . $extension;
     if ($extension == 'jpg') {
         $normal = imagecreatefromjpeg($filename);
         $small = ImageUtils::resize($normal, $filename, $heightOverWidth, 260);

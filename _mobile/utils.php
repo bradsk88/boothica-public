@@ -28,15 +28,21 @@ function failsStandardMobileChecksAndEchoFailureMessage() {
     }
 
     if ($check == BAD) {
-        echo "Login key not accepted";
+        echo json_encode(
+            array('error' => "Login key not accepted")
+        );
         return true;
     }
     if ($check == NO_KEY) {
-        echo "Login key was missing";
+        echo json_encode(
+            array('error' => "Login key was missing")
+        );
         return true;
     }
 
-    echo "Unexpected error";
+    echo json_encode(
+        array('error' => "Unexpected error")
+    );
     return true;
 
 }
