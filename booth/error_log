@@ -1,0 +1,57 @@
+[19-Jun-2014 02:15:41 UTC] PHP Warning:  require_once(/home/clicar5/public_html/activity/CommentInputSection2.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/clicar5/public_html/booth/getboothcommentinputsection.php on line 9
+[19-Jun-2014 02:15:41 UTC] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/home/clicar5/public_html/activity/CommentInputSection2.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/clicar5/public_html/booth/getboothcommentinputsection.php on line 9
+[19-Jun-2014 02:25:39 UTC] PHP Fatal error:  Call to undefined function getBoothOwner() in /home/clicar5/public_html/booth/getboothcommentinputsection.php on line 34
+[19-Jun-2014 02:25:59 UTC] PHP Notice:  Undefined index: fkUsername in /home/clicar5/public_html/common/db.php on line 35
+[19-Jun-2014 02:25:59 UTC] PHP Notice:  Undefined property: CommentInputSection2::$baseJsFile in /home/clicar5/public_html/common/assets/AbstractCommentInputSection.php on line 75
+[19-Jun-2014 02:27:16 UTC] PHP Notice:  Undefined index: fkUsername in /home/clicar5/public_html/common/db.php on line 35
+[22-Jun-2014 00:49:46 UTC] PHP Notice:  Undefined variable: down in /home/clicar5/public_html/common/utils.php on line 175
+[22-Jun-2014 00:49:46 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:49:46 UTC] PHP Warning:  mysqli_errno() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:49:46 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:49:46 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:49:47 UTC] PHP Notice:  Trying to get property of non-object in /home/clicar5/public_html/common/db.php on line 39
+[22-Jun-2014 00:49:47 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 468
+[22-Jun-2014 00:49:47 UTC] PHP Warning:  mysql_error() expects parameter 1 to be resource, null given in /home/clicar5/public_html/common/utils.php on line 154
+[22-Jun-2014 00:50:25 UTC] PHP Notice:  Undefined variable: down in /home/clicar5/public_html/common/utils.php on line 175
+[22-Jun-2014 00:50:25 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:50:25 UTC] PHP Warning:  mysqli_errno() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:50:25 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:50:25 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:50:25 UTC] PHP Notice:  Trying to get property of non-object in /home/clicar5/public_html/common/db.php on line 39
+[22-Jun-2014 00:50:25 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 468
+[22-Jun-2014 00:50:25 UTC] PHP Warning:  mysql_error() expects parameter 1 to be resource, null given in /home/clicar5/public_html/common/utils.php on line 154
+[22-Jun-2014 00:50:56 UTC] PHP Notice:  Undefined variable: down in /home/clicar5/public_html/common/utils.php on line 175
+[22-Jun-2014 00:50:56 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:50:56 UTC] PHP Warning:  mysqli_errno() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:50:56 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:50:56 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[22-Jun-2014 00:50:56 UTC] PHP Notice:  Trying to get property of non-object in /home/clicar5/public_html/common/db.php on line 39
+[22-Jun-2014 00:50:56 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 468
+[22-Jun-2014 00:50:56 UTC] PHP Warning:  mysql_error() expects parameter 1 to be resource, null given in /home/clicar5/public_html/common/utils.php on line 154
+[17-Sep-2014 03:50:03 UTC] PHP Notice:  Undefined variable: down in /home/clicar5/public_html/common/utils.php on line 175
+[17-Sep-2014 03:50:03 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:03 UTC] PHP Warning:  mysqli_errno() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:03 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:03 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:04 UTC] PHP Notice:  Trying to get property of non-object in /home/clicar5/public_html/common/db.php on line 39
+[17-Sep-2014 03:50:04 UTC] PHP Notice:  Undefined variable: down in /home/clicar5/public_html/common/utils.php on line 175
+[17-Sep-2014 03:50:04 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:04 UTC] PHP Warning:  mysqli_errno() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:04 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:04 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:04 UTC] PHP Notice:  Trying to get property of non-object in /home/clicar5/public_html/common/db.php on line 39
+[17-Sep-2014 03:50:16 UTC] PHP Notice:  Undefined variable: down in /home/clicar5/public_html/common/utils.php on line 175
+[17-Sep-2014 03:50:16 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:16 UTC] PHP Warning:  mysqli_errno() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:16 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:16 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:16 UTC] PHP Notice:  Trying to get property of non-object in /home/clicar5/public_html/common/db.php on line 39
+[17-Sep-2014 03:50:16 UTC] PHP Notice:  Undefined variable: down in /home/clicar5/public_html/common/utils.php on line 175
+[17-Sep-2014 03:50:16 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:16 UTC] PHP Warning:  mysqli_errno() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:16 UTC] PHP Notice:  Undefined variable: link in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:16 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/clicar5/public_html/common/utils.php on line 187
+[17-Sep-2014 03:50:17 UTC] PHP Notice:  Trying to get property of non-object in /home/clicar5/public_html/common/db.php on line 39
+[29-Oct-2014 02:34:39 UTC] PHP Fatal error:  Call to undefined function base() in /home/clicar5/public_html/booth/booth-scripts.js.php on line 3
+[29-Oct-2014 02:41:02 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/clicar5/public_html/booth/booth-scripts.js.php on line 14
+[29-Oct-2014 02:41:05 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/clicar5/public_html/booth/booth-scripts.js.php on line 14

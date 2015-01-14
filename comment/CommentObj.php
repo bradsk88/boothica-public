@@ -97,7 +97,8 @@ class CommentObj {
     }
 
     public static function fromSQL($row) {
-        return new CommentObj($row['fkUsername'], $row['hasPhoto'], $row['commentBody'], $row['pkCommentNumber'], $row['imageHeightProp'], $row['hash'], $row['extension'], $row['datetime'], $row['hours'], $row['minutes']);
+        return new CommentObj($row['fkUsername'], $row['hasPhoto'], $row['commentBody'], $row['pkCommentNumber'],
+            $row['imageHeightProp'], $row['hash'], $row['extension'], $row['datetime'], $row['hours'], $row['minutes']);
     }
 
     public function getImageHash()

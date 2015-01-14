@@ -6,8 +6,9 @@ require("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_common("db");
 require_common("utils");
 require_common("internal_utils");
+
 $link = connect_to_boothsite();
-update_online_presence();
+
 mobileLogin();
 
 function mobileLogin() {
@@ -42,24 +43,26 @@ function mobileLogin() {
                 SELECT
                     `key`
                 FROM `phonekeystbl`
-                WHERE `fkUsername` = '".$username."' AND `fkPhoneID` = ".$phoneid."
+                WHERE `fkUsername` = '".$username."' AND `fkPhoneID` = '".$phoneid."'
                 LIMIT 1;";
                 $keyres = mysql_query($sql);
                 if (!$keyres) {
                     mysql_death1($sql);
-                    echo "Could not connect to database.";
+                    echo json_encode(array("error"=>"Could not connect to database."));
                     return;
                 }
                 if (mysql_num_rows($keyres) == 1) {
                     $r = mysql_fetch_array($keyres);
-                    echo "KEY:".$r['key'];
+                    echo json_encode(array("success" =>
+                        array("key" => $r['key'])
+                    ));
                     return;
                 }
-                echo "No key";
+                echo json_encode(array("error"=>"No key"));
                 return;
 
             } else {
-                echo "Bad login";
+                echo json_encode(array("error"=>"Bad login"));
                 return;
         //		$response["success"] = 0;
         //		echo json_encode($response);
@@ -67,8 +70,18 @@ function mobileLogin() {
             }
             return;
         }
-        echo "Password missing";
+        echo json_encode(array("error"=>"Password missing"));
         return;
+    } else {
+        $rawArray = "POST";
+        foreach ($_POST as $key => $value) {
+            $rawArray .= $key . "=>" . $value;
+        }
+        $rawArray .= "GET";
+        foreach ($_GET as $key => $value) {
+            $rawArray .= $key . "=>" . $value;
+        }
+        echo json_encode(array("error"=>"Missing username or phoneid".$rawArray));
     }
 }
 

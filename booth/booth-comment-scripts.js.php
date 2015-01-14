@@ -21,13 +21,13 @@ function deleteComment(boothnum, commentNumber) {
         $.post("$base/_mobile/deletecomment.php", {
             commentnum: commentNumber
         }, function (data) {
-            if (data == "0") {
+            if (data.success) {
                 reloadBoothComments(boothnum);
                 return;
             }
-            alert("There was a problem deleting the comment. [ErrorCode:" + data + "]");
+            alert("There was a problem deleting the comment. [" + data.error + "]");
             reloadBoothComments(boothnum);
-        })
+        },"json")
             .fail(function (jqXHR, textStatus, errorThrown) {
                 alert("There was a problem deleting the comment. [" + textStatus + "]");
             });

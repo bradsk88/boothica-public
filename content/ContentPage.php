@@ -5,13 +5,19 @@
  * Date: 6/4/14
  * Time: 10:11 PM
  *
- * ContentPage should be used as the base for almost all major sections on Boothi.ca.
+ * Deprecated as of December 26, 2014.  Please use PageFrame.php as it is more mobile-friendly
+ *
+ * (old doc) ContentPage should be used as the base for almost all major sections on Boothi.ca.
  *
  * You can easily create a basic page by creating a new ContentPage object, calling $page->body("your body HTML"),
  * and finally calling $page->echoPage().
  */
 
-require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+if (strpos(__FILE__, '_dev')) {
+    require_once "{$_SERVER['DOCUMENT_ROOT']}/_dev/common/boiler.php";
+} else {
+    require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+}
 require_common("cookies");
 require_common("utils");
 
@@ -36,10 +42,10 @@ class ContentPage
     {
         $this->includeJQuery();
         $this->populateCenter = $defaultPopulateCenterFunctionName;
-        $this->meta("<script type = 'text/javascript' src = '".BASE."/common/navigation-scripts.js?version=0.1'></script>");
-        $this->meta("<script type = 'text/javascript' src = '".BASE."/messages/pm-scripts.js'></script>");
-        $this->meta("<script type = 'text/javascript' src = '".BASE."/livefeed/livefeed-scripts.js'></script>");
-        $this->meta("<script type = 'text/javascript' src = '".BASE."/newbooth/newbooth-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".base()."/common/navigation-scripts.js?version=0.1'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".base()."/messages/pm-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".base()."/livefeed/livefeed-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".base()."/newbooth/newbooth-scripts.js'></script>");
     }
 
     function veryFirst($html)
@@ -106,7 +112,7 @@ class ContentPage
     <body>
         " . $this->veryFirstHTML . "
         <div class = 'pageheader'>
-            <a href = \"".BASE."" . $headerlink . "\" id=\"homebutton\">
+            <a href = \"".base().$headerlink."\" id=\"homebutton\">
                 <div class = \"headertitle\"></div>
             </a>
             ";
@@ -114,12 +120,12 @@ class ContentPage
 
             echo
                 "<div class = \"headernavbutton\" onclick = \"openSnapNewBooth();\""
-                . " style = \"background-image: url(".BASE."/media/newbooth.png);\"></div>
+                . " style = \"background-image: url(".base()."/media/newbooth.png);\"></div>
                             <a href = \"/search\">
                                 <div class = \"headernavbutton advsearchbutton\" onclick = \"openAdvancedSearch();\""
-                . " style = \"background-image: url(".BASE."/media/search.png);\"></div>
+                . " style = \"background-image: url(".base()."/media/search.png);\"></div>
                             </a>
-                            <form method = \"GET\" action = \"".BASE."/searchresults\">
+                            <form method = \"GET\" action = \"".base()."/searchresults\">
                                 <input type = \"text\" class = \"searchtextarea\" name = \"q\"/>
                                 <div class = \"searchchoiceswrapper\">
                                     <select class = \"searchchoices\" name = \"scope\">
@@ -135,8 +141,8 @@ class ContentPage
                             </canvas>
                 ";
         } else {
-            echo "<a href = '".BASE."/registration'><div class = \"headernavbutton\">Register</div></a>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href = '".BASE."/login'><div class = \"headernavbutton\">Login</div></a>";
+            echo "<a href = '".base()."/registration'><div class = \"headernavbutton\">Register</div></a>
+            <a href = '".base()."/login'><div class = \"headernavbutton\">Login</div></a>";
         }
         echo
             "       </div>
@@ -156,13 +162,13 @@ class ContentPage
             $userImage = UserImage::getImage($username);
 
             $usercard =
-                "<div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(".BASE. (string)$userImage . ")'></div>
+                "<div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(".base(). (string)$userImage . ")'></div>
                         <div class = \"usercardcontent\">
                             <div class = 'usercardname'>
                                 <span onclick = \"openUserFeed('" . $username . "')\">@" . $displayName . "</span>
                             </div>
                             <div class = 'usercardstats'>
-                                <a id = \"boothsnum\" href = '".BASE."/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
+                                <a id = \"boothsnum\" href = '/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
                                     ??? Booths
                                 </a> / <a id = \"friendsnum\" href = '/users/" . $username . "/friends'>
                                     ??? Friends
@@ -226,13 +232,13 @@ class ContentPage
                 </div>
                 <div style = \"clear:both\"></div>
                 <div class = 'subheader'>
-                    <a href = '".BASE."/info/news'><span class = 'subheadernavbutton'>News</span></a>
-                    <a href = '".BASE."/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
-                    <!--TODO<a href = '".BASE."/info/tos'><span class = 'subheadernavbutton'>Terms of Service</span></a>-->
-                    <a href = '".BASE."/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
-                    <a href = '".BASE."/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
-                    <a href = '".BASE."/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
-                    <a href = '".BASE."/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
+                    <a href = '/info/news'><span class = 'subheadernavbutton'>News</span></a>
+                    <a href = '/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
+                    <!--TODO<a href = '/info/tos'><span class = 'subheadernavbutton'>Terms of Service</span></a>-->
+                    <a href = '/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
+                    <a href = '/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
+                    <a href = '/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
+                    <a href = '/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
                 </div>
                 </body>
             </html>";
@@ -243,12 +249,12 @@ class ContentPage
         $str = "<meta http-equiv='content-type' content='text/html; charset=UTF-8' />
         <meta name=\"keywords\" content=\"dailybooth, social, photography, photo, socialnetworking, microblogging, community, web2.0, pictures, blog, photos\">
 		<title>Boothi.ca - Take a picture every day and make friends</title>
-		<link rel='stylesheet' href='".BASE."/css/master.css' type='text/css' media='screen' />
-		<link rel='stylesheet' href='".BASE."/css/contentpage.css' type='text/css' media='screen' />
-		<link rel=\"shortcut icon\" href=\"".BASE."/favicon.ico\" type=\"image/x-icon\">
+		<link rel='stylesheet' href='/css/master.css' type='text/css' media='screen' />
+		<link rel='stylesheet' href='/css/contentpage.css' type='text/css' media='screen' />
+		<link rel=\"shortcut icon\" href=\"/favicon.ico\" type=\"image/x-icon\">
 		<script type = \"text/javascript\">defaultPopulateCenterFunction = \"" . $this->populateCenter . "\";</script>";
         if ($this->redirectToLogin) {
-            $str .= "<script type = \"text/javascript\" src = \"".BASE."/content/ContentPage-scripts.js\"></script>";
+            $str .= "<script type = \"text/javascript\" src = \"/content/ContentPage-scripts.js\"></script>";
         }
         $str = $this->metaHTML . $str;
         return $str;

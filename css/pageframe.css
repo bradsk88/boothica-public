@@ -1,0 +1,82 @@
+.pageheader {
+    width: 100%;
+    height: 2.5em;
+    background-size: cover !important;
+    background: url(/media/topbarbg.png) top;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
+
+
+.headerbutton, .pageheader, .headertitle {
+    height: 2.500em;
+}
+
+.headerbutton {
+    width: 2.500em;
+}
+
+#headgear {
+    background-image: url(/media/settings.png);
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.headertitle {
+    background-image: url(/media/title.png);
+    background-repeat: no-repeat;
+    width: 20em;
+}
+
+.searchtextarea {
+    display: none;
+}
+
+.searchbutton {
+    display: none;
+}
+
+.searchchoiceswrapper {
+    display: none;
+}
+
+.advsearchbutton {
+    width: 4em !important;
+}
+
+.sidebar_left {
+    display: none;
+    position: absolute;
+    width: 4em;
+    top: 0;
+    bottom: 0;
+}
+
+.body_inside {
+    position: relative;
+    text-align: left;
+    margin: 2.500em auto 0;
+    background-color: #FFF;
+}
+
+#bottomlinks {
+    display: none;
+}
+
+
+@media screen and (min-width: 64em) and (orientation: landscape) {
+
+    .sidebar_left {
+        display: initial;
+        width: 16em;
+        margin-left: -16em;
+    }
+
+    .body_inside {
+        width: 48em;
+    }
+}

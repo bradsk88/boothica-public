@@ -38,12 +38,13 @@ function main() {
 
         $success = deleteCommentByNumber($commentNum, $link, $username);
         if ($success) {
-           echo "0";
-           return;
+            echo json_encode(array(
+                "success" => $username." deleted comment number ".$commentNum."."
+            ));
+            return;
         }
         echo json_encode(
-            array(
-                "Unexpected error.  Failed to delete comment."));
+            array("error" => "Unexpected error.  Failed to delete comment."));
         return;
     }
 
