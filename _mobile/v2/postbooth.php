@@ -40,11 +40,12 @@ function main() {
         return;
     }
 
-    if (parameterIsMissingAndEchoFailureMessage("blurb")) {
+    if (parameterIsMissingAndEchoFailureMessage("image")) {
         return;
     }
 
-    if (parameterIsMissingAndEchoFailureMessage("image")) {
+    if (!isset($_POST["blurb"])) { # Can be empty
+        echo json_encode(array('error' => 'Missing POST parameter: blurb'));
         return;
     }
 
