@@ -105,5 +105,10 @@ function getSQL()
         $numPerPage = $_POST['numperpage'];
     }
 
-    return getBoothsSQL(strtolower($_POST['boothername']), $pageNum, $numPerPage);
+    $newerThan = -1;
+    if (isset($_POST['newer_than_booth_number'])) {
+        $newerThan = $_POST['newer_than_booth_number'];
+    }
+
+    return getBoothsSQL(strtolower($_POST['boothername']), $pageNum, $numPerPage, $newerThan);
 }

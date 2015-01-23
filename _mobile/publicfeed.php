@@ -33,7 +33,8 @@
                 'blurb' => $row['blurb'],
                 'imageHash' => $row['imageTitle'],
                 'filetype' => $row['filetype'],
-                'absoluteImageUrlThumbnail' => $root . '/booths/small/' . $row['imageTitle'] . '.' . $row['filetype']);
+                'absoluteImageUrlThumbnail' => $root . '/booths/small/' . $row['imageTitle'] . '.' . $row['filetype'],
+                'absoluteImageUrl' => $root . '/booths/' . $row['imageTitle'] . '.' . $row['filetype']);
         }
         echo json_encode($booths);
 
@@ -55,24 +56,27 @@ function getSQL()
         return getMyPublicFeedSQL($_SESSION['username'], $pageNum, $numPerPage);
     }
 
+    $newerThanBoothNumber = -1;
+    if (isset($_POST['newer_than_booth_number'])) {
+        $newerThanBoothNumber = $_POST['newer_than_booth_number'];
+    }
+
     if (isset($_POST['username'], $_POST['phoneid'], $_POST['loginkey'])) {
         $username = $_POST['username'];
         $_SESSION['username'] = $username;
         $check = isKeyOK($username, $_POST['phoneid'], $_POST['loginkey']);
         if ($check == OK) {
-            //TODO: This
-            return getMyPublicFeedSQL($username, $pageNum, $numPerPage);
+            return getMyPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber);
         }
     }
-
-    return getPublicFeedSQL($pageNum);
+    return getPublicFeedSQL($pageNum, $newerThanBoothNumber);
 }
 
-function getMyPublicFeedSQL($username, $pageNum, $numPerPage) {
+function getMyPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber=-1) {
     if (isset($_POST['includeFriends'])) {
         if ($_POST['includeFriends'] == false || $_POST['includeFriends'] = "false") {
-           return getNonFriendPublicFeedSQL($username, $pageNum, $numPerPage);
+           return getNonFriendPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber);
         }
     }
-    return getUserPublicFeedSQL($username, $pageNum, $numPerPage, 0);
+    return getUserPublicFeedSQL($username, $pageNum, $numPerPage, 0, $newerThanBoothNumber);
 }

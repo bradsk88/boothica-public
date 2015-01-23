@@ -67,14 +67,16 @@ function main() {
         $likes = 0;
         if($query) {
             $r = mysql_fetch_array($query);
-            $likes = $r['num'];
+            if ($r['num']) {
+                $likes = $r['num'];
+            }
         }
 
 
         $root = "http://" . $_SERVER['SERVER_NAME'];
         $imagePath = "/booths/" . $row['imageTitle'] . "." . $row['filetype'];
         if ($cansee) {
-            $booths[] = array(
+            $booths = array(
                 'boothnum' => $boothnum,
                 'userboothnum' => $row['userBoothNumber'],
                 'userboothcount' => $userboothcount,
@@ -95,10 +97,12 @@ function main() {
                 'minutesago' => $row['minutes'],
                 'absoluteImageUrl' => $root.$imagePath
             );
-            echo json_encode($booths);
+            echo json_encode(array(
+                "success" => $booths
+            ));
             return;
         } else {
-            $booths[] = array(
+            $booths = array(
                 'boothnum' => $boothnum,
                 'userboothnum' => $row['userBoothNumber'],
                 'userboothcount' => $userboothcount,
@@ -119,7 +123,9 @@ function main() {
                 'minutesago' => $row['minutes'],
                 'absoluteImageUrl' => $root.$imagePath
             );
-            echo json_encode($booths);
+            echo json_encode(array(
+                "success" => $booths
+            ));
             return;
         }
     }

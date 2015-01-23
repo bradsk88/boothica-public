@@ -397,8 +397,12 @@ function getBooths($boothername, $pageNum, $perPage) {
     return mysql_query(getBoothsSQL($boothername, $pageNum, $perPage));
 }
 
-function getBoothsSQL($boothername, $pageNum, $perPage) {
+function getBoothsSQL($boothername, $pageNum, $perPage, $newerThanBoothNumber=-1) {
 
+    $additionalCheck = "";
+    if ($newerThanBoothNumber > 0) {
+        $additionalCheck = "AND `pkNumber` > ".$newerThanBoothNumber;
+    }
     $startnum = $perPage * ($pageNum-1);
     $sql = "SELECT
 			`pkNumber`,
@@ -410,11 +414,12 @@ function getBoothsSQL($boothername, $pageNum, $perPage) {
 			`imageHeightProp`
 			FROM `boothnumbers`
 			WHERE `fkUsername` ='" . $boothername . "'
-    ";
+    ".$additionalCheck;
     if (!isFriendOf($_SESSION['username'], $boothername)) {
         $sql .= " AND `isPublic` = true ";
     }
-    $sql .= "ORDER BY `pkNumber` DESC
+    $sql .= "
+    ORDER BY `pkNumber` DESC
 			LIMIT " . $startnum . ", " . $perPage . ";";
     return $sql;
 }

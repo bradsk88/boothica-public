@@ -13,13 +13,19 @@
  * @param $numToSkip
  * @return string
  */
-function getUserPublicFeedSQL($username, $pageNum, $numperpage, $numToSkip)
+function getUserPublicFeedSQL($username, $pageNum, $numperpage, $numToSkip, $newerThanBoothNumber=-1)
 {
+    $additionalCheck = "";
+    $additionalBracket = "";
+    if ($newerThanBoothNumber > 0) {
+        $additionalCheck = ") AND pkNumber > ".$newerThanBoothNumber;
+        $additionalBracket = "(";
+    }
     $start = ($numperpage * ($pageNum - 1)) + $numToSkip;
-    return "
+    $sql = "
 		SELECT *
 		FROM `boothnumbers` bn
-		WHERE
+		WHERE " . $additionalBracket . "
 			(
 			bn.`isPublic` = true
 			AND
@@ -37,13 +43,19 @@ function getUserPublicFeedSQL($username, $pageNum, $numperpage, $numToSkip)
 				FROM `friendstbl`
 				WHERE `fkFriendName` = '" . $username . "')
 			)
+        " . $additionalCheck . "
 		ORDER BY bn.`datetime` DESC
-		LIMIT " . $start . ", ".$numperpage.";";
+		LIMIT " . $start . ", " . $numperpage . ";";
+    return $sql;
 }
 
 
-function getNonFriendPublicFeedSQL($username, $pageNum, $numOfPages)
+function getNonFriendPublicFeedSQL($username, $pageNum, $numOfPages, $newerThanBoothNumber=-1)
 {
+    $additionalCheck = "";
+    if ($newerThanBoothNumber > 0) {
+        $additionalCheck = "AND pkNumber > ".$newerThanBoothNumber;
+    }
     return "
 		SELECT *
 		FROM `boothnumbers` bn
@@ -66,14 +78,19 @@ function getNonFriendPublicFeedSQL($username, $pageNum, $numOfPages)
 				WHERE `fkFriendName` = '" . $username . "')
 			)
 		ORDER BY bn.`datetime` DESC
+		".$additionalCheck."
 		LIMIT " . $numOfPages * ($pageNum - 1) . ", ".$numOfPages.";";
 }
 /**
  * @param $pageNum
  * @return string
  */
-function getPublicFeedSQL($pageNum)
+function getPublicFeedSQL($pageNum, $newerThanBoothNumber=-1)
 {
+    $additionalCheck = "";
+    if ($newerThanBoothNumber > 0) {
+        $additionalCheck = "AND pkNumber > ".$newerThanBoothNumber;
+    }
     return "
 		SELECT *
 		FROM `boothnumbers` bn
@@ -86,6 +103,7 @@ function getPublicFeedSQL($pageNum)
 				FROM `userspublictbl`
 				WHERE `fkUsername` = bn.`fkUsername`
 			)
+        ".$additionalCheck."
 		ORDER BY bn.`datetime` DESC
 		LIMIT " . 10 * ($pageNum - 1) . ", 10;";
 }
