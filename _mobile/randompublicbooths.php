@@ -29,13 +29,14 @@ function main() {
     }
 
     $max = sql_get_expectOneRow($result, "max");
-    $sql = "SELECT * FROM `boothnumbers` bn WHERE ";
+    $sql = "SELECT * FROM `boothnumbers` bn WHERE (";
 
-    for ($i = 0; $i < $numPerPage+3; $i++) {
+    for ($i = 0; $i < $numPerPage+10; $i++) {
         $sql .= "`pkNumber` = '".rand(1,$max)."' OR ";
     }
 
     $sql = substr($sql, 0, strlen($sql)-4)."
+    )
     AND
 			(
 			bn.`isPublic` = true
@@ -47,6 +48,21 @@ function main() {
 				WHERE `fkUsername` = bn.`fkUsername`
 			))
     LIMIT ".$numPerPage.";";
+
+    if ($_POST['debug']) {
+        echo "Email of SQL sent to devlist";
+        death($sql);
+        return;
+    }
+
+    if (rand(0,100) == 0 || $_POST['force_integrity_check']) {
+        try {
+            doRandomIntegrityCheck($sql);
+        } catch (Exception $e) {
+            death($e->getMessage());
+            //do nothing
+        }
+    }
 
     unset($result);
     $result = mysql_query($sql);
@@ -68,4 +84,20 @@ function main() {
     }
     echo json_encode($booths);
 
+}
+
+function doRandomIntegrityCheck($sql) {
+    $r = mysql_query($sql);
+
+    if (!$r) {
+        echo mysql_death1($sql);
+        return;
+    }
+
+    while($row = mysql_fetch_array($r)) {
+        if (isBoothPublic($row['pkNumber'])) {
+            continue;
+        }
+        death ("Random public booths included private booth number: ".$row['pkNumber']);
+    }
 }
