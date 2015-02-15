@@ -8,13 +8,13 @@
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php";
 
+main();
+
+function main() {
+
 $page = new PageFrame();
 
 $body = <<<EOT
-<div class = "sidebar_left">
-Hi
-</div>
-
 <div class = "welcome-section">
     <div class = "welcome-logo">
         Welcome to Boothi.ca
@@ -43,7 +43,7 @@ Hi
         </form>
     </div>
     <div class = "welcome-brief">
-        Boothi.ca is a place to share your face and your thoughts with the internet
+        <div class = "welcome-brief-text">Boothi.ca is a place to share your face and your thoughts with the internet</div>
         <div class = "welcome-signup-button">
             <button>Click here to sign up</button>
         </div>
@@ -52,8 +52,25 @@ Hi
 EOT;
 
 $page->body($body);
-
-$page->meta("<link rel='stylesheet' href='/css/welcome.css' type='text/css' media='screen' />");
+$page->firstSideBar(makeRandomBoothsSideBar(), "Random Booths", false);
+$page->lastSideBar(makePublicFeedSideBar(), "New Public Booths");
+$page->css("welcome.css");
 $page->meta("<link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>");
 
 $page->echoHtml();
+
+}
+
+function makeRandomBoothsSideBar() {
+    //TODO: This
+    return "<div style = \"background-color: #F00; width: 100%; height: 30em;\">
+    Random Booths
+    </div>";
+}
+
+function makePublicFeedSideBar() {
+    //TODO: This
+    return "<div style = \"background-color: #0F0; width: 100%; height: 30em;\">
+    PublicFeed
+    </div>";
+}

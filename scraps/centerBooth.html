@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        .centerBooth {
+            box-sizing: border-box;
+            display: flex;
+            flex-flow: column wrap;
+            max-height: 20em;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .centerBoothImage {
+            order: 1;
+            width: 50%;
+            background-color: forestgreen;
+        }
+
+        .centerBoothText {
+            width: 50%;
+            order: 3;
+            max-height: 20em;
+            overflow: hidden;
+            font-size: 0.75rem;
+            background-color: #eaeaea;
+        }
+
+        .centerBoothOpenButton {
+            width: 50%;
+            order: 2;
+            background-color: #FFF;
+            height: 4em;
+        }
+
+
+        @media all and (min-width: 400px) {
+            .centerBoothText {
+                font-size: 1rem;
+            }
+        }
+
+        @media all and (min-width: 600px) {
+
+            .centerBooth {
+                align-items: flex-end;
+            }
+            .centerBoothImage {
+                width: 30%;
+            }
+
+            .centerBoothText {
+                order: 2;
+                width: 70%;
+                flex-grow: 1;
+                font-size: 1rem;
+                max-height: 17.5em;
+            }
+
+            .centerBoothOpenButton {
+                width: 40%;
+                order: 3;
+                height: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class = "centerBooth">
+    <div class = "centerBoothImage">
+        <img src = "http://boothi.ca/booths/8f3bbb84fb9de7ba7f65f7b026278b50.jpg" width="100%">
+    </div>
+    <button class = "centerBoothOpenButton">
+        Open
+    </button>
+    <div class = "centerBoothText">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+    </div>
+</div>
+</body>
+</html>

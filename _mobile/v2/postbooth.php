@@ -59,6 +59,10 @@ function main() {
         echo json_encode(array(
             'success' => 'booth posted successfully' 
         ));
+    } else if ($code == 0214150354) {
+        echo json_encode(array(
+            'error' => 'Posting too rapidly.  Wait 5 minutes between posts.'
+        ));
     } else {
         echo json_encode(array(
             'error' => 'the booth could not be posted' #TODO: Better errors

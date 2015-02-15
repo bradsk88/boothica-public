@@ -1,3 +1,5 @@
+/*Header stuff*/
+
 .pageheader {
     width: 100%;
     height: 2.5em;
@@ -48,35 +50,105 @@
     width: 4em !important;
 }
 
-.sidebar_left {
-    display: none;
-    position: absolute;
-    width: 4em;
-    top: 0;
-    bottom: 0;
+/* Page layout stuff */
+
+.page_frame {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 2.5em;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.body_inside {
-    position: relative;
-    text-align: left;
-    margin: 2.500em auto 0;
-    background-color: #FFF;
+.sidebar_first, .sidebar_last, .body_inside {
+    flex: 1 100%;
 }
 
-#bottomlinks {
-    display: none;
+.sidebar_body {
+    width: 100%
 }
 
+.collapsed {
+    height: 0;
+    visibility: hidden;
+}
 
-@media screen and (min-width: 64em) and (orientation: landscape) {
+.sidebar_titleandbutton {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
 
-    .sidebar_left {
-        display: initial;
-        width: 16em;
-        margin-left: -16em;
+.sidebar_title {
+    padding: 1em;
+}
+
+.sidebar_button {
+    padding: 1em;
+}
+
+/* Medium screens */
+@media all and (min-width: 600px) {
+
+    .sidebar_first, .sidebar_last {
+        flex: 2 auto;
+    }
+
+    .collapsed {
+        height: auto;
+        visibility: inherit;
+    }
+}
+
+/* Medium screens */
+@media all and (min-width: 1024px) {
+    .body_inside {
+        flex: 3 auto;
+    }
+
+    .sidebar_first {
+        order: 1;
     }
 
     .body_inside {
-        width: 48em;
+        order: 2;
+    }
+
+    .sidebar_last {
+        order: 3;
     }
 }
+
+/*.sidebar_first {*/
+    /*display: none;*/
+    /*position: absolute;*/
+    /*width: 4em;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+/*}*/
+
+/*.body_inside {*/
+    /*position: relative;*/
+    /*text-align: left;*/
+    /*margin: 2.500em auto 0;*/
+    /*background-color: #FFF;*/
+/*}*/
+
+/*#bottomlinks {*/
+    /*display: none;*/
+/*}*/
+
+
+/*@media screen and (min-width: 64em) and (orientation: landscape) {*/
+
+    /*.sidebar_left {*/
+        /*display: initial;*/
+        /*width: 16em;*/
+        /*margin-left: -16em;*/
+    /*}*/
+
+    /*.body_inside {*/
+        /*width: 48em;*/
+    /*}*/
+/*}*/

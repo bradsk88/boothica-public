@@ -27,6 +27,8 @@ if ($_SESSION['username'] == 'bradsk88') {
 class PageFrame {
 
     private $body;
+    private $sidebarFirst;
+    private $sidebarLast;
     private $metaHTML;
 
     private $loadRandomBooths = false;
@@ -39,6 +41,14 @@ class PageFrame {
 
     function body($html) {
         $this->body = $html;
+    }
+
+    function firstSideBar($html, $title, $startCollapsed=true, $headerLink=null) {
+        $this->sidebarFirst = $this->makeSidebarHTML($html, $title, $startCollapsed, $headerLink);
+    }
+
+    function lastSideBar($html, $title, $startCollapsed=true, $headerLink=null) {
+        $this->sidebarLast = $this->makeSidebarHTML($html, $title, $startCollapsed, $headerLink);
     }
 
     function meta($metahtml) {
@@ -76,11 +86,19 @@ class PageFrame {
         " . $this->metaData() . "
     </head>
     <body>"
-        .$this->headerContents()
-        ."<div class = \"body_inside\">
-            ".$this->body."
-        </div>"
-        .$this->footer()."
+        .$this->headerContents()."
+        <div class = \"page_frame\">"
+            ."<div class = \"body_inside\">
+                ".$this->body."
+            </div>
+            <div class = \"sidebar_first\">
+                ".$this->sidebarFirst."
+            </div>
+            <div class = \"sidebar_last\">
+                ".$this->sidebarLast."
+            </div>"
+            .$this->footer()."
+        </div>
     </body>
 </html>";
     }
@@ -106,7 +124,7 @@ class PageFrame {
         }
     }
 
-    private function headerContents() {
+    function headerContents() {
         $headerlink = "/info/news";
         if (isset($_SESSION['username'])) {
             $headerlink = "/activity";
@@ -182,7 +200,32 @@ class PageFrame {
 
     public function css($absoluteUrl)
     {
-        $this->meta("<link rel='stylesheet' href='".$absoluteUrl."' type='text/css' media='screen' />");
+        $this->meta("<link rel='stylesheet' href='/css/".$absoluteUrl."' type='text/css' media='screen' />");
+    }
+
+    function makeSidebarHTML($html, $title, $startCollapsed, $absoluteHeaderLink) {
+        $sidebarBodyClass = "sidebar_body";
+        if ($startCollapsed) {
+            $sidebarBodyClass = "sidebar_body collapsed";
+        }
+        if ($absoluteHeaderLink == null) {
+            $sidebarButtonHTML = "";
+        } else {
+            $sidebarButtonHTML = "<div class = \"sidebar_button>
+                <a href = \"".$absoluteHeaderLink."\">go</a>
+            </div>";
+        }
+        return
+        "<div class = \"sidebar_titleandbutton\">
+            <div class = \"sidebar_title\">
+                ".$title."
+            </div>
+            ".$sidebarButtonHTML."
+        </div>
+        <div class = \"".$sidebarBodyClass."\">
+            ".$html."
+        </div>
+        ";
     }
 
 }

@@ -1,17 +1,21 @@
-.welcome-logo, .welcome-brief {
+.welcome-logo {
     width: 100%;
     text-align: center;
     padding: 0.50em;
     box-sizing: border-box;
 }
 
+.welcome-brief {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
 .welcome-logo, .welcome-brief, .welcome-signup-button button {
     border: 1px solid #FFF;
-    background-color: #8EC;
+    background-color: #4CA;
     color: #FFF;
-    font-size: 1.25rem;
     font-weight: bold;
-    margin-top: 0.5em;
     font-family: 'Bitter', serif;
 }
 
@@ -21,19 +25,24 @@
     padding: 0.25em;
 }
 
-.welcome-username-field input, .welcome-password-field input, .welcome-login-button button, .welcome-signup-button button {
-    max-width: 20em;
-    min-width: 10em;
-    margin-bottom: 1em;
+.welcome-username-field input, .welcome-password-field input, .welcome-login-button button, .welcome-signup-button button, .welcome-brief-text {
     margin-left: auto;
     margin-right: auto;
     padding: 0.25em;
-    font-size: 1.5rem;
     display: block;
+}
+
+.welcome-username-field input, .welcome-password-field input, .welcome-login-button button, .welcome-signup-button button {
+    font-size: 1.5rem;
+    margin-bottom: 1em;
 }
 
 .welcome-login-button button, .welcome-signup-button button {
     box-sizing: border-box;
+}
+
+.welcome-signup-button button, .welcome-brief-text {
+    margin-top: 0.5em;
 }
 
 .welcome-login-button button {

@@ -15,6 +15,20 @@ require_common("upload_utils");
 function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly) {
 
     connect_to_boothsite();
+
+    $ratelimitsql = "
+SELECT NOW( ) > datetime + INTERVAL 5
+MINUTE AS timePassed
+FROM `boothnumbers`
+WHERE fkUsername = 'bradsk88'
+ORDER BY datetime DESC
+LIMIT 1 ";
+    $result = sql_query($ratelimitsql);
+    $rateLimitRow = $result->fetch_assoc();
+    if ($rateLimitRow['timePassed'] === 0) {
+        return array(0214150354, null); // User posting too rapidly
+    }
+
     $uploadedfile = ImageUtils::makeFromEncoded($rawImageBytes);
     $extension = ImageUtils::getExtensionOfEncoded($rawImageBytes);
     $sql = "SELECT `nextIndex`
