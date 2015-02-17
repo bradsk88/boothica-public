@@ -54,12 +54,12 @@ echo <<<EOT
         $.each(booths, function (idx, obj) {
             cellHTML =
             "<div class = 'centerBooth'>" +
-                "<div class = 'centerBoothImage'>" +
-                "   <img src = '"+obj.absoluteImageUrlThumbnail+"' width='100%'>"+
+                "<div class = 'centerBoothImageRegion'>" +
+                "   <img class = 'centerBoothImage' src = '"+obj.absoluteImageUrlThumbnail+"' width='100%'>"+
                 "</div>" +
-                "<button class = 'centerBoothOpenButton'>" +
-                "    Open" +
-                "</button>" +
+                "<div class = 'centerBoothOpenButton'>" +
+                "    10 Comments" +
+                "</div>" +
                 "<div class = 'centerBoothText'>" +
                     obj.blurb +
                 "</div>" +
