@@ -3,80 +3,71 @@
 <head>
     <title></title>
     <style>
+
         .centerBooth {
-            box-sizing: border-box;
-            display: flex;
-            flex-flow: column wrap;
-            max-height: 20em;
-            justify-content: space-between;
             width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+        }
+
+        .centerBoothImage, .centerBoothText {
+            flex: 1 50%;
         }
 
         .centerBoothImage {
             order: 1;
-            width: 50%;
-            background-color: forestgreen;
+            padding-bottom: 4em;
         }
-
-        .centerBoothText {
-            width: 50%;
-            order: 3;
-            max-height: 20em;
-            overflow: hidden;
-            font-size: 0.75rem;
-            background-color: #eaeaea;
-        }
-
+        .centerBoothText { order: 2; }
         .centerBoothOpenButton {
-            width: 50%;
-            order: 2;
-            background-color: #FFF;
+            order: 3;
             height: 4em;
+            width: 50%;
+            margin-top: -4em;
         }
 
-
-        @media all and (min-width: 400px) {
-            .centerBoothText {
-                font-size: 1rem;
-            }
-        }
-
-        @media all and (min-width: 600px) {
+        @media all and (min-width: 500px) {
 
             .centerBooth {
-                align-items: flex-end;
+                justify-content: flex-end;
             }
+
             .centerBoothImage {
-                width: 30%;
+                max-width: 20em;
+                padding-bottom: 0;
             }
 
             .centerBoothText {
-                order: 2;
-                width: 70%;
-                flex-grow: 1;
-                font-size: 1rem;
-                max-height: 17.5em;
+                padding-bottom: 4em;
             }
 
             .centerBoothOpenButton {
-                width: 40%;
+            }
+
+            .centerBoothText { order: 2; }
+            .centerBoothOpenButton {
                 order: 3;
-                height: 2.5em;
+                margin-right: 0;
             }
         }
+
     </style>
 </head>
 <body>
+<div style = "max-width: 1440px">
 <div class = "centerBooth">
     <div class = "centerBoothImage">
-        <img src = "http://boothi.ca/booths/8f3bbb84fb9de7ba7f65f7b026278b50.jpg" width="100%">
+        <img src = "http://boothi.ca/booths/small/cc091bf6dc284ea91c90abb26f6f11cb.jpg" width="100%">
     </div>
     <button class = "centerBoothOpenButton">
         Open
     </button>
     <div class = "centerBoothText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        Text
+        <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum-->
     </div>
+</div>
 </div>
 </body>
 </html>

@@ -1,62 +1,57 @@
+
 .centerBooth {
-    box-sizing: border-box;
-    display: flex;
-    flex-flow: column wrap;
-    max-height: 20em;
-    justify-content: space-between;
     width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding-bottom: 1em;
+    background-color: #FFF;
+}
+
+.centerBoothImage, .centerBoothText {
+    flex: 0 1 50%;
+    max-width: 50%
 }
 
 .centerBoothImage {
     order: 1;
-    width: 50%;
-    background-color: forestgreen;
+    padding-bottom: 4em;
 }
 
 .centerBoothText {
-    width: 50%;
-    order: 3;
-    max-height: 20em;
-    overflow: hidden;
-    font-size: 0.75rem;
-    background-color: #eaeaea;
+    text-align: left;
+    order: 2;
+    font-size: 0.75rem
 }
 
 .centerBoothOpenButton {
-    width: 50%;
-    order: 2;
-    background-color: #FFF;
+    order: 3;
     height: 4em;
+    width: 50%;
+    margin-top: -4em;
 }
 
-
-@media all and (min-width: 400px) {
-    .centerBoothText {
-        padding: 1em;
-        font-size: 1rem;
-    }
-}
-
-@media all and (min-width: 600px) {
+@media all and (min-width: 500px) {
 
     .centerBooth {
-        align-items: flex-end;
+        justify-content: flex-end;
     }
+
     .centerBoothImage {
-        width: 30%;
+        max-width: 20em;
+        padding-bottom: 0;
+    }
+
+    .centerBoothText {
+        padding-bottom: 4em;
+        font-size: 1rem;
     }
 
     .centerBoothText {
         order: 2;
-        width: 70%;
-        flex-grow: 1;
-        font-size: 1rem;
-        max-height: 17.5em;
     }
 
     .centerBoothOpenButton {
-        width: 40%;
         order: 3;
-        height: 2.5em;
     }
 }

@@ -23,7 +23,7 @@ EOT;
 function main() {
 
 $base = base();
-$user = "bradsk88";
+$user = "alyen";
 
 echo <<<EOT
 
@@ -44,10 +44,6 @@ echo <<<EOT
         })
     }
 
-    $(document).ready(function() {
-        loadUserBooths();
-    });
-
     function makeUserFeedGridCellsHTML(jsonData, username) {
         html = "";
         if (jsonData.success == "undefined") {
@@ -56,7 +52,19 @@ echo <<<EOT
         var success = jsonData.success;
         var booths = success.booths;
         $.each(booths, function (idx, obj) {
-            html += obj.boothername;
+            cellHTML =
+            "<div class = 'centerBooth'>" +
+                "<div class = 'centerBoothImage'>" +
+                "   <img src = '"+obj.absoluteImageUrlThumbnail+"' width='100%'>"+
+                "</div>" +
+                "<button class = 'centerBoothOpenButton'>" +
+                "    Open" +
+                "</button>" +
+                "<div class = 'centerBoothText'>" +
+                    obj.blurb +
+                "</div>" +
+            "</div>";
+            html += cellHTML;
         });
         return html;
     }
