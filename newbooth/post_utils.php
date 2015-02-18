@@ -20,7 +20,7 @@ function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly) {
 SELECT NOW( ) > datetime + INTERVAL 5
 MINUTE AS timePassed
 FROM `boothnumbers`
-WHERE fkUsername = 'bradsk88'
+WHERE fkUsername = '".$username."'
 ORDER BY datetime DESC
 LIMIT 1 ";
     $result = sql_query($ratelimitsql);
