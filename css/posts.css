@@ -1,5 +1,5 @@
 
-.centerBooth {
+.centerBooth, .sideBooth {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -8,24 +8,26 @@
     background-color: #FFF;
 }
 
-.centerBoothImageRegion, .centerBoothText {
+.centerBoothImageRegion, .centerBoothText, .sideBoothImageRegion, .sideBoothText {
     flex: 0 1 50%;
     max-width: 50%
 }
 
-.centerBoothImageRegion {
+.centerBoothImageRegion, .sideBoothImageRegion {
     order: 1;
     padding-bottom: 2em;
 }
 
-.centerBoothText {
+.centerBoothText, .sideBoothText {
     box-sizing: border-box;
     text-align: left;
     order: 2;
-    font-size: 0.75rem
+    font-size: 0.75rem;
+    max-height: 20em;
+    overflow: hidden;
 }
 
-.centerBoothOpenButton {
+.centerBoothOpenButton, .sideBoothOpenButton {
     order: 3;
     width: 50%;
     margin-top: -1em;
@@ -60,5 +62,33 @@
         text-align: right;
         padding-right: 1em;
         order: 3;
+    }
+}
+
+/* Medium screens */
+@media all and (min-width: 1024px) {
+
+    .centerBoothText, .sideBoothText {
+        max-height: inherit;
+        overflow: auto;
+    }
+
+    .sideBoothImageRegion, .sideBoothText, .sideBoothOpenButton {
+        flex: 1 100%! important;
+        max-width: 100%;
+    }
+
+    .sideBoothOpenButton {
+        padding: 1em;
+        background-color: rgba(255, 255, 255, 0.625);
+    }
+
+    .sideBoothOpenButton:hover {
+        background-color: rgba(200, 255, 220, 0.8);
+    }
+
+    .sideBoothText {
+        height: 4em;
+        overflow: hidden;
     }
 }

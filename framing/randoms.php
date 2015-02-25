@@ -16,7 +16,7 @@ function main() {
     $root = base();
 
     $html = <<<EOT
-    <div id = "user_booths_feed"></div>
+    <div id = "random_booths_feed"></div>
     <div id="loadmoreajaxloader" style="display:none;">
         <center><img src="$root/media/ajax-loader.gif" /></center>
     </div>
@@ -24,10 +24,9 @@ EOT;
 
     $page = new PageFrame();
     $page->body($html);
-    $page->firstSideBar("<div id = 'random_booths_feed'></div>", "Random Booths", false);
+    $page->firstSideBar(makeRandomBoothsSideBar(), "Random Booths", false);
     $page->lastSideBar(makePublicFeedSideBar(), "New Public Booths");
-    $page->script($root."/booth/user-booth-scripts.js");
-    $page->script($root."/booth/user-booth-page-scripts.js");
+    $page->script($root."/booth/random-booth-page-scripts.js");
     $page->css("posts.css");
     $page->echoHtml();
 

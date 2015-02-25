@@ -190,7 +190,7 @@ class PageFrame {
         <link rel='stylesheet' href='".base()."/css/master.css' type='text/css' media='screen' />
         <link rel='stylesheet' href='".base()."/css/pageframe.css' type='text/css' media='screen' />
         <link rel=\"shortcut icon\" href=\"".base()."/favicon.ico\" type=\"image/x-icon\">
-        <script type = \"text/javascript\" src = \"".base()."/framing/PageFrame-scripts.js\"></script>";
+        <script type = \"text/javascript\" src = \"".base()."/framing/PageFrame-scripts.js.php\"></script>";
     }
 
     public function script($absoluteUrl)

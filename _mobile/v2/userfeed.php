@@ -103,6 +103,10 @@ function getSQL()
 {
     $pageNum = 1;
     if (isset($_POST['pagenum'])) {
+        if ($_POST['pagenum'] < 1) {
+            echo json_encode(array('error' => "pagenum ".$_POST['pagenum']." is invalid.  Page numbers start at 1."));
+            return -1;
+        }
         $pageNum = $_POST['pagenum'];
     }
 

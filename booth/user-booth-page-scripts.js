@@ -1,3 +1,5 @@
 $(document).ready(function() {
-    loadUserBooths();
+    loadUserBooths("alyen");
+    enableInfiniteScroll("alyen");
+    loadRandomBooths();
 });

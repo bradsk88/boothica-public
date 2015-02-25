@@ -1,5 +1,7 @@
 <?PHP
 
+# These scripts are deprecated.  See user-booths-scripts.js.php
+
 header('Content-Type: application/javascript');
 
 $prependage = '';
