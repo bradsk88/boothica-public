@@ -63,6 +63,7 @@
 
 .sidebar_first, .sidebar_last, .body_inside {
     flex: 1 100%;
+    background: #FFF;
 }
 
 .sidebar_body {
@@ -108,7 +109,9 @@
     }
 
     .sidebar_first, .sidebar_last {
-        max-width: 20em;
+        max-width: 14em;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
     }
 
     .sidebar_first {
@@ -122,6 +125,16 @@
 
     .sidebar_last {
         order: 3;
+    }
+}
+
+/* Bigger screens */
+@media all and (min-width: 1280px) {
+    .sidebar_first, .sidebar_last {
+        max-width: 20em;
+        padding-left: 1em;
+        padding-right: 1em;
+
     }
 }
 
