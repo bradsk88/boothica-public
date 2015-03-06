@@ -1,0 +1,15 @@
+<div class = "sideBoothRegion">
+    <div class = "sideBooth">
+        <div class = "sideBoothImageRegion">
+               <img class = "sideBoothImage" src = "{{thumbnail}}" width="100%">
+            </div>
+        <div class = "sideBoothOpenButtonRegion">
+            <div class = "sideBoothOpenButton">
+                {{commentsCount}} Comments
+            </div>
+        </div>
+        <div class = "sideBoothText">
+            {{{blurb}}}
+        </div>
+    </div>
+</div>

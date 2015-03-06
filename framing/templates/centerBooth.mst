@@ -1,0 +1,17 @@
+<div class = "centerBoothRegion">
+    <div class = "centerBooth">
+        <div class = "centerBoothImageRegion">
+            <img class = "centerBoothImage" src = "{{thumbnail}}">
+        </div>
+        <div class = 'centerBoothOpenButtonRegion'>
+            <div class = 'centerBoothOpenButton'>
+                <div class = 'centerBoothOpenButtonText'>
+                    {{commentsCount}} comments
+                </div>
+            </div>
+        </div>
+        <div class = 'centerBoothText'>
+            {{{blurb}}}
+        </div>
+    </div>
+</div>

@@ -42,7 +42,7 @@ function main() {
             pagenum: 1,
             numperpage: 9
         }, function (data) {
-            $("#random_booths_feed").append(makeSideBoothFeedGridCellsHTML(data));
+            renderSideBoothsFromDataAsync(data, "#random_booths_feed");
         }, "json")
         .fail(function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
@@ -51,34 +51,23 @@ function main() {
         return html;
     }
 
-    function makeSideBoothFeedGridCellsHTML(jsonData) {
-
-        if (typeof(jsonData.success) === "undefined") {
-            return "error " + jsonData.error;
-        }
-        return makeSideBoothHTMLFromSuccess(jsonData.success);
-    }
-
-    function makeSideBoothHTMLFromSuccess(success) {
-        html = "";
-        var booths = success.booths;
-        $.each(booths, function (idx, obj) {
-            cellHTML =
-            "<div class = 'sideBooth'>" +
-                "<div class = 'sideBoothImageRegion'>" +
-                "   <img class = 'sideBoothImage' src = '"+obj.absoluteImageUrlThumbnail+"' width='100%'>"+
-                "</div>" +
-                "<div class = 'sideBoothOpenButton'>" +
-                "    10 Comments" +
-                "</div>" +
-                "<div class = 'sideBoothText'>" +
-                    obj.blurb +
-                "</div>" +
-            "</div>";
-            html += cellHTML;
+    var renderSideBoothsFromDataAsync = function(data, div) {
+        $.get(baseUrl + '/framing/templates/sideBooth.mst', function(template) {
+            var html = "";
+            if (typeof(data.success) === "undefined") {
+                html = "error: " + data.error;
+                return;
+            }
+            $.each(data.success.booths, function (idx, obj) {
+                html += Mustache.render(template, {
+                    thumbnail: obj.absoluteImageUrlThumbnail,
+                    blurb: obj.blurb,
+                    commentsCount: 10
+                });
+            });
+            $(div).append(html);
         });
-        return html;
-    }
+    };
 
 EOT;
 

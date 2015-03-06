@@ -26,46 +26,35 @@ echo <<<EOT
 
     //declare event to run when div is visible
     function loadUserBooths(username){
-        $.post("$base/_mobile/v2/userfeed.php", {
+        $.post(baseUrl + "/_mobile/v2/userfeed.php", {
             boothername: username,
             pagenum: 1,
             numperpage: 9
         }, function (data) {
-            $("#user_booths_feed").append(makeUserFeedGridCellsHTML(data, username));
+            renderBoothsFromData(data);
         }, "json")
         .fail(function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
         })
     }
 
-    function makeUserFeedGridCellsHTML(jsonData, username) {
-
-        if (jsonData.success == "undefined") {
-            return "error" + jsonData.error;
-        }
-        return makeHTMLFromSuccess(jsonData.success)
-    }
-
-    function makeHTMLFromSuccess(success) {
-        html = "";
-        var booths = success.booths;
-            $.each(booths, function (idx, obj) {
-                cellHTML =
-                "<div class = 'centerBooth'>" +
-                    "<div class = 'centerBoothImageRegion'>" +
-                    "   <img class = 'centerBoothImage' src = '"+obj.absoluteImageUrlThumbnail+"' width='100%'>"+
-                    "</div>" +
-                    "<div class = 'centerBoothOpenButton'>" +
-                    "    10 Comments" +
-                    "</div>" +
-                    "<div class = 'centerBoothText'>" +
-                        obj.blurb +
-                    "</div>" +
-                "</div>";
-                html += cellHTML;
+    var renderBoothsFromData = function(data) {
+        $.get(baseUrl + '/framing/templates/centerBooth.mst', function(template) {
+            var html = "";
+            if (typeof(data.success) === "undefined") {
+                html = "error: " + data.error;
+                return;
+            }
+            $.each(data.success.booths, function (idx, obj) {
+                html += Mustache.render(template, {
+                    thumbnail: obj.absoluteImageUrlThumbnail,
+                    blurb: decodeURI(obj.blurb),
+                    commentsCount: 10
+                });
             });
-        return html;
-    }
+            $("#user_booths_feed").append(html);
+        });
+    };
 
     function enableInfiniteScroll(username) {
         var page = 2;
@@ -91,14 +80,16 @@ echo <<<EOT
                 {
                     if (json.success) {
                         page++;
-                        $("#user_booths_feed").append(makeHTMLFromSuccess(json.success));
                         $('div#loadmoreajaxloader').hide();
+                        renderBoothsFromData(json);
+                        pauseScroll = false;
                     } else if (json.error) {
                         $('div#loadmoreajaxloader').html('<center>'+json.error+'</center>');
+                        pauseScroll = false;
                     } else {
                         $('div#loadmoreajaxloader').html('<center>No more posts to show.</center>');
+                        pauseScroll = true;
                     }
-                    pauseScroll = false;
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert(textStatus);
