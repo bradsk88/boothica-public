@@ -151,9 +151,4 @@
     .sidebar_last {
         border-left: 1em solid rgba(107,219,179, 0.15); /*6bdbb3*/
     }
-
-    .page_frame {
-        box-shadow: 0em 0em 10em #89A;
-    }
-
 }

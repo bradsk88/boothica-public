@@ -81,26 +81,26 @@
         width: 10em;
         background-color: #F00;
         position: absolute;
-        right: 0;
+        right: -2em;
         bottom: 0;
         box-shadow: 0 0 0.5em #DDD;
         border-top-left-radius: 0.25em;
         height: 1.4em;
         border: 0.15em solid #F00;
         border-bottom-left-radius: 0.25em;
-        border-top-right-radius: 0.5em;
-        border-bottom-right-radius: 0.5em;
+        border-top-right-radius: 0.25em;
+        border-bottom-right-radius: 0.25em;
     }
 
     .centerBoothOpenButtonText {
         background-color: #FFF;
         position: absolute;
-        right: 0.4em;
+        right: 0em;
         top: -2px;
         bottom: -2px;
         padding: 0.2em 0.15em 0.15em;
         border-radius: 0.175em;
-        margin-right: 0.1em;
+        margin-right: 0em;
         left: 0;
         padding-right: 1em;
     }
@@ -155,7 +155,11 @@
 
     .centerBoothText, .sideBoothText {
         max-height: inherit;
-        overflow: auto;
+        overflow: hidden;
+    }
+
+    .centerBoothText {
+        padding-bottom: 2em;
     }
 
     .sideBoothImageRegion, .sideBoothText, .sideBoothOpenButtonRegion {
@@ -176,6 +180,7 @@
         height: 4em;
         overflow: hidden;
     }
+
 }
 
 
