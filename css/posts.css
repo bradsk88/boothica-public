@@ -17,9 +17,16 @@
     width: 100%;
 }
 
+.sideBoothImage {
+    height: 0;
+    padding-bottom: 75%;
+    width: 100%;
+    overflow: hidden;
+}
+
 .centerBoothImageRegion, .sideBoothImageRegion {
     order: 1;
-    padding-bottom: 2em;
+    overflow: hidden;
 }
 
 .centerBoothText, .sideBoothText {
@@ -95,14 +102,14 @@
     .centerBoothOpenButtonText {
         background-color: #FFF;
         position: absolute;
-        right: 0em;
+        right: 0;
         top: -2px;
         bottom: -2px;
-        padding: 0.2em 0.15em 0.15em;
         border-radius: 0.175em;
-        margin-right: 0em;
+        margin-right: 0;
         left: 0;
-        padding-right: 1em;
+        padding-top: 0.2em;
+        text-align: center;
     }
 }
 
@@ -156,9 +163,6 @@
     .centerBoothText, .sideBoothText {
         max-height: inherit;
         overflow: hidden;
-    }
-
-    .centerBoothText {
         padding-bottom: 2em;
     }
 

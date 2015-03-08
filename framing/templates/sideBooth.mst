@@ -1,14 +1,26 @@
-<div class = "sideBoothRegion">
-    <div class = "sideBooth">
-        <div class = "sideBoothImageRegion">
-               <img class = "sideBoothImage" src = "{{thumbnail}}" width="100%">
+<div class="sideBoothRegion">
+    <a class="sideBoothUsername" href="{{bootherBoothsUrl}}">
+        <div id="sideBoothUsername">{{displayname}}</div>
+    </a>
+
+    <div class="sideBooth">
+        <a class="sideBoothImageRegion" href="{{boothUrl}}">
+            <div>
+                <div class="sideBoothImage">
+                    <img src="{{thumbnail}}" width="100%">
+                </div>
             </div>
-        <div class = "sideBoothOpenButtonRegion">
-            <div class = "sideBoothOpenButton">
-                {{commentsCount}} Comments
+        </a>
+
+        <a class="sideBoothOpenButtonRegion" href="{{boothUrl}}">
+            <div>
+                <div class="sideBoothOpenButton">
+                    {{commentsCount}} Comments
+                </div>
             </div>
-        </div>
-        <div class = "sideBoothText">
+        </a>
+
+        <div class="sideBoothText">
             {{{blurb}}}
         </div>
     </div>

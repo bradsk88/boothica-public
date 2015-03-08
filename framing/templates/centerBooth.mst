@@ -1,16 +1,21 @@
-<div class = "centerBoothRegion">
-    <div class = "centerBooth">
-        <div class = "centerBoothImageRegion">
-            <img class = "centerBoothImage" src = "{{thumbnail}}">
-        </div>
-        <div class = 'centerBoothOpenButtonRegion'>
-            <div class = 'centerBoothOpenButton'>
-                <div class = 'centerBoothOpenButtonText'>
-                    {{commentsCount}} comments
-                </div>
+<div class="centerBoothRegion">
+    <div class="centerBooth">
+        <a class="centerBoothImageRegion" href="{{boothUrl}}">
+            <div>
+                <img class="centerBoothImage" src="{{thumbnail}}">
             </div>
+        </a>
+
+        <div class='centerBoothOpenButtonRegion'>
+            <a href="{{boothUrl}}">
+                <div class='centerBoothOpenButton'>
+                    <div class='centerBoothOpenButtonText' id="centerBoothOpenButtonText{{boothNumber}}">
+                        Post a comment..
+                    </div>
+                </div>
+            </a>
         </div>
-        <div class = 'centerBoothText'>
+        <div class='centerBoothText'>
             {{{blurb}}}
         </div>
     </div>

@@ -49,11 +49,30 @@ echo <<<EOT
                 html += Mustache.render(template, {
                     thumbnail: obj.absoluteImageUrlThumbnail,
                     blurb: decodeURI(obj.blurb),
-                    commentsCount: 10
+                    boothUrl: baseUrl + "/users/" + obj.boothername + "/" + obj.boothnum,
+                    boothNumber: obj.boothnum
                 });
+                loadCommentCounts(obj.boothnum);
             });
             $("#user_booths_feed").append(html);
         });
+    };
+
+    var loadCommentCounts = function(boothnum) {
+        $.post(baseUrl + "/_mobile/v2/getcommentcount.php", {
+            boothnum: boothnum
+        }, function (data) {
+            if (data.success) {
+                var text = data.success.count + " comments...";
+                if (data.success.count == 1) {
+                    text = data.success.count + " comment...";
+                }
+                $("#centerBoothOpenButtonText"+boothnum).text(text);
+            }
+        }, "json")
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        })
     };
 
     function enableInfiniteScroll(username) {

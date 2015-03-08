@@ -43,12 +43,12 @@ class PageFrame {
         $this->body = $html;
     }
 
-    function firstSideBar($html, $title, $startCollapsed=true, $headerLink=null) {
-        $this->sidebarFirst = $this->makeSidebarHTML($html, $title, $startCollapsed, $headerLink);
+    function firstSideBar($title, $startCollapsed=true, $headerLink=null) {
+        $this->sidebarFirst = $this->makeSidebarHTML('firstSideBarContents', $title, $startCollapsed, $headerLink);
     }
 
-    function lastSideBar($html, $title, $startCollapsed=true, $headerLink=null) {
-        $this->sidebarLast = $this->makeSidebarHTML($html, $title, $startCollapsed, $headerLink);
+    function lastSideBar($title, $startCollapsed=true, $headerLink=null) {
+        $this->sidebarLast = $this->makeSidebarHTML('lastSideBarContents', $title, $startCollapsed, $headerLink);
     }
 
     function meta($metahtml) {
@@ -205,7 +205,7 @@ class PageFrame {
         $this->meta("<link rel='stylesheet' href='/css/".$absoluteUrl."' type='text/css' media='screen' />");
     }
 
-    function makeSidebarHTML($html, $title, $startCollapsed, $absoluteHeaderLink) {
+    function makeSidebarHTML($sidebarContentsDivTitle, $title, $startCollapsed, $absoluteHeaderLink) {
         $sidebarBodyClass = "sidebar_body";
         if ($startCollapsed) {
             $sidebarBodyClass = "sidebar_body collapsed";
@@ -225,7 +225,8 @@ class PageFrame {
             ".$sidebarButtonHTML."
         </div>
         <div class = \"".$sidebarBodyClass."\">
-            ".$html."
+            <div id = \"".$sidebarContentsDivTitle."\">
+            </div>
         </div>
         ";
     }
