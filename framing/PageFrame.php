@@ -16,27 +16,34 @@ if (strpos(__FILE__, '_dev')) {
 } else {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 }
+
+require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_common("cookies");
 require_common("utils");
+require_lib("h2o-php/h2o");
 
-error_reporting(0);
-if ($_SESSION['username'] == 'bradsk88') {
+// TODO: set error reporting to 0
+error_reporting(E_ALL);
+if (isset($_SESSION['username']) && $_SESSION['username'] == 'bradsk88') {
     error_reporting(E_ERROR);
 }
 
 class PageFrame {
 
+    private $metaScripts = array();
+    private $metaCss = array();
     private $body;
-    private $sidebarFirst;
-    private $sidebarLast;
-    private $metaHTML;
-
-    private $loadRandomBooths = false;
+    private $firstSidebarTitle = "";
+    private $firstSidebarCollapsed = false;
+    private $firstSidebarLink = null;
+    private $lastSidebarTitle = "";
+    private $lastSidebarCollapsed = false;
+    private $lastSidebarLink = null;
 
     function __construct() {
         $this->includeJQuery();
         $this->initialMeta();
-        $this->meta("<script type = 'text/javascript' src = '".base()."/common/navigation-scripts.js?version=0.1'></script>");
+        $this->script(base()."/common/navigation-scripts.js?version=0.1");
     }
 
     function body($html) {
@@ -44,20 +51,23 @@ class PageFrame {
     }
 
     function firstSideBar($title, $startCollapsed=true, $headerLink=null) {
-        $this->sidebarFirst = $this->makeSidebarHTML('firstSideBarContents', $title, $startCollapsed, $headerLink);
+        $this->firstSidebarTitle = $title;
+        $this->firstSidebarCollapsed = $startCollapsed;
+        $this->firstSidebarLink = $headerLink;
     }
 
     function lastSideBar($title, $startCollapsed=true, $headerLink=null) {
-        $this->sidebarLast = $this->makeSidebarHTML('lastSideBarContents', $title, $startCollapsed, $headerLink);
+        $this->lastSidebarTitle = $title;
+        $this->lastSidebarCollapsed = $startCollapsed;
+        $this->lastSidebarLink = $headerLink;
     }
 
-    function meta($metahtml) {
-        $this->metaHTML = $this->metaHTML . "
-        " . $metahtml;
+    public function script($absoluteUrl) {
+        $this->metaScripts[] = $absoluteUrl;
     }
 
-    function enableRandomBooths() {
-        $this->loadRandomBooths = true;
+    public function css($absoluteUrl) {
+        $this->metaCss[] = $absoluteUrl;
     }
 
     function echoHtml() {
@@ -79,40 +89,27 @@ class PageFrame {
             echo "Please log in";
         }
 
-        echo
-"<!DOCTYPE html>
-<html>
-    <head>
-        " . $this->metaData() . "
-    </head>
-    <body>"
-        .$this->headerContents()."
-        <div class = \"page_frame\">"
-            ."<div class = \"body_inside\">
-                ".$this->body."
-            </div>
-            <div class = \"sidebar_first\">
-                ".$this->sidebarFirst."
-            </div>
-            <div class = \"sidebar_last\">
-                ".$this->sidebarLast."
-            </div>"
-            .$this->footer()."
-        </div>
-    </body>
-</html>";
+        $headerlink = "/info/news";
+        if (isset($_SESSION['username'])) {
+            $headerlink = "/activity";
+        }
+
+        $data = array(
+            "metaCss" => $this->metaCss,
+            "metaScripts" => $this->metaScripts,
+            "loggedIn" => isset($_SESSION['username']),
+            "body" => $this->body,
+            "headerlink" => $headerlink,
+            "baseUrl" => base()
+        );
+        $page = new h2o("templates/pageFrame.mst");
+        echo $page->render($data);
     }
 
     private function includeJQuery()
     {
-        $this->metaHTML .= "
-        <script src=\"http://code.jquery.com/jquery-2.1.1.js\"></script>
-        <script src=\"http://code.jquery.com/jquery-migrate-1.2.1.js\"></script>";
-    }
-
-    function metaData()
-    {
-        return $this->metaHTML;
+        $this->script("http://code.jquery.com/jquery-2.1.1.js");
+        $this->script("http://code.jquery.com/jquery-migrate-1.2.1.js");
     }
 
     private function setErrorReporting()
@@ -124,111 +121,26 @@ class PageFrame {
         }
     }
 
-    function headerContents() {
-        $headerlink = "/info/news";
-        if (isset($_SESSION['username'])) {
-            $headerlink = "/activity";
-        }
-
-        $alwaysThere = "
-        <div class = 'pageheaderbg'>
-            <div class = 'pageheader'>
-                <a href = \"".base().$headerlink."\" id=\"homebutton\">
-                    <div class = \"headertitle\"></div>
-                </a>";
-
-        if (!isset($_SESSION['username'])) {
-            return $alwaysThere."
-        ";
-        }
-        return $alwaysThere
-        . "<div class = \"headernavbutton\" onclick = \"openSnapNewBooth();\""
-        . " style = \"background-image: url(".base()."/media/newbooth.png);\"></div>
-                    <a href = \"/search\">
-                        <div class = \"headernavbutton advsearchbutton\" onclick = \"openAdvancedSearch();\""
-        . " style = \"background-image: url(".base()."/media/search.png);\"></div>
-                    </a>
-                    <form method = \"GET\" action = \"".base()."/searchresults\">
-                        <input type = \"text\" class = \"searchtextarea\" name = \"q\"/>
-                        <div class = \"searchchoiceswrapper\">
-                            <select class = \"searchchoices\" name = \"scope\">
-                                <option value = \"user\">Users</option>
-                                <option value = \"booth\">Booths</option>
-                                <option value = \"booth_comment\">Comments</option>
-                            </select>
-                        </div>
-                        <button type = \"submit\" class = \"searchbutton\">Go</button>
-                        <div style = \"clear: both;\"></div>
-                    </form>
-                    <canvas id = 'headgear' class = 'headerbutton' onclick='openSettings()'>
-                    </canvas>
-                </div>"
-        .   "</div>"
-        . "</div>";
-    }
-
     private function footer() {
         //TODO: Bring this back
         return "";
-        return "
-        <div class = 'subheader' id = 'bottomlinks'>
-            <a href = '".base()."/info/news'><span class = 'subheadernavbutton'>News</span></a>
-            <a href = '".base()."/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
-            <a href = '".base()."/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
-            <a href = '".base()."/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
-            <a href = '".base()."/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
-            <a href = '".base()."/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
-        </div>";
+//        return "
+//        <div class = 'subheader' id = 'bottomlinks'>
+//            <a href = '".base()."/info/news'><span class = 'subheadernavbutton'>News</span></a>
+//            <a href = '".base()."/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
+//            <a href = '".base()."/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
+//            <a href = '".base()."/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
+//            <a href = '".base()."/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
+//            <a href = '".base()."/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
+//        </div>";
     }
 
     private function initialMeta()
     {
-        $this->metaHTML = $this->metaHTML . "
-        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-        <meta http-equiv='content-type' content='text/html; charset=UTF-8' />
-        <meta name=\"keywords\" content=\"dailybooth, social, photography, photo, socialnetworking, microblogging, community, web2.0, pictures, blog, photos\">
-        <title>Boothi.ca - Take a picture every day and make friends</title>
-        <link rel='stylesheet' href='".base()."/css/master.css' type='text/css' media='screen' />
-        <link rel='stylesheet' href='".base()."/css/pageframe.css' type='text/css' media='screen' />
-        <link rel=\"shortcut icon\" href=\"".base()."/favicon.ico\" type=\"image/x-icon\">
-        <script type = \"text/javascript\" src = \"".base()."/framing/PageFrame-scripts.js.php\"></script>
-        <script type = \"text/javascript\" src = \"".base()."/lib/mustache.js\"></script>";
-    }
-
-    public function script($absoluteUrl)
-    {
-        $this->meta("<script type = \"text/javascript\" src = \"".$absoluteUrl."\"></script>");
-    }
-
-    public function css($absoluteUrl)
-    {
-        $this->meta("<link rel='stylesheet' href='/css/".$absoluteUrl."' type='text/css' media='screen' />");
-    }
-
-    function makeSidebarHTML($sidebarContentsDivTitle, $title, $startCollapsed, $absoluteHeaderLink) {
-        $sidebarBodyClass = "sidebar_body";
-        if ($startCollapsed) {
-            $sidebarBodyClass = "sidebar_body collapsed";
-        }
-        if ($absoluteHeaderLink == null) {
-            $sidebarButtonHTML = "";
-        } else {
-            $sidebarButtonHTML = "<div class = \"sidebar_button>
-                <a href = \"".$absoluteHeaderLink."\">go</a>
-            </div>";
-        }
-        return
-        "<div class = \"sidebar_titleandbutton\">
-            <div class = \"sidebar_title\">
-                ".$title."
-            </div>
-            ".$sidebarButtonHTML."
-        </div>
-        <div class = \"".$sidebarBodyClass."\">
-            <div id = \"".$sidebarContentsDivTitle."\">
-            </div>
-        </div>
-        ";
+        $this->css(base()."/css/master.css");
+        $this->css(base()."/css/pageframe.css");
+        $this->script(base()."/framing/PageFrame-scripts.js.php");
+        $this->script(base()."/lib/mustache.js");
     }
 
 }

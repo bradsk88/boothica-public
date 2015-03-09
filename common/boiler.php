@@ -17,6 +17,10 @@ function require_common( $asset ) {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/common/".$asset.".php";
 }
 
+function require_lib( $asset ) {
+    require_once "{$_SERVER['DOCUMENT_ROOT']}/lib/".$asset.".php";
+}
+
 function require_account_asset( $asset ) {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/account/assets/".$asset.".php";
 }

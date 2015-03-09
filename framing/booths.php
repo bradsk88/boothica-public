@@ -28,7 +28,7 @@ EOT;
     $page->lastSideBar("New Public Booths");
     $page->script($root."/booth/user-booth-scripts.js");
     $page->script($root."/booth/user-booth-page-scripts.js");
-    $page->css("posts.css");
+    $page->css($root."/css/posts.css");
     $page->echoHtml();
 
 }
