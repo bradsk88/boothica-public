@@ -100,7 +100,9 @@ class PageFrame {
             "loggedIn" => isset($_SESSION['username']),
             "body" => $this->body,
             "headerlink" => $headerlink,
-            "baseUrl" => base()
+            "baseUrl" => base(),
+            "firstSidebarTitle" => $this->firstSidebarTitle,
+            "lastSidebarTitle" => $this->lastSidebarTitle
         );
         $page = new h2o("templates/pageFrame.mst");
         echo $page->render($data);

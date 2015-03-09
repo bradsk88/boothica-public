@@ -16,6 +16,9 @@ function main() {
     $root = base();
 
     $html = <<<EOT
+    <div class = "section_toggler" id = "user_booths_feed_toggler">
+        Booths from this user
+    </div>
     <div class = "primary_booths_feed" id = "user_booths_feed"></div>
     <div id="loadmoreajaxloader" style="display:none;">
         <center><img src="$root/media/ajax-loader.gif" /></center>

@@ -76,13 +76,20 @@ echo <<<EOT
     };
 
     function enableInfiniteScroll(username) {
+
         var page = 2;
         var pauseScroll = false;
         $(window).scroll(function()
         {
+
             if (pauseScroll) {
                 return;
             }
+
+            if ($("#body_load_more_button").is(":visible")) { // Load more button is only visible on small displays
+                return;
+            }
+
             if($(window).scrollTop() == $(document).height() - $(window).height())
             {
                 pauseScroll = true;

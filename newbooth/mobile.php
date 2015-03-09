@@ -1,5 +1,4 @@
 <?PHP
-
 	include("{$_SERVER['DOCUMENT_ROOT']}/html_top.php");
 	echo "
 		<link rel='stylesheet' href='/css/file.css' type='text/css' media='screen' />

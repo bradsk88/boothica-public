@@ -40,6 +40,7 @@
     background-image: url(/media/title.png);
     background-repeat: no-repeat;
     width: 20em;
+    display: block;
 }
 
 .searchtextarea {
@@ -59,6 +60,13 @@
 }
 
 /* Page layout stuff */
+
+.section_toggler {
+    padding: 1em;
+    background-color: #DDD;
+    cursor: pointer;
+    display: none; /* TODO: Make these sections collapsible */
+}
 
 .page_frame {
     display: flex;
@@ -97,8 +105,51 @@
     padding: 1em;
 }
 
+@media all and (max-width: 599px) {
+    #newboothbutton {
+        position: fixed;
+        bottom: 1em;
+        width: 1em;
+        height: 1em;
+        left: 1em;
+        background-color: red;
+        display: inherit;
+        padding: 1em;
+        border-radius: 2em;
+        background-image: url("/media/addbooth.png");
+        background-size: 1.25em;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
 /* Medium screens */
+@media all and (min-width: 500px) {
+    #newboothbutton {
+        left: auto;
+        right: 1em;
+    }
+}
+
 @media all and (min-width: 600px) {
+
+    #newboothbutton {
+        background-image: url('/media/newbooth.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        height: 100%;
+        left: 20em;
+        padding-left: 1em;
+        padding-right: 1em;
+        position: absolute;
+        top: 0;
+        width: 122px;
+    }
+
+    #newboothbutton:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
 
     .sidebar_first, .sidebar_last {
         flex: 2 auto;
@@ -108,10 +159,16 @@
         height: auto;
         visibility: inherit;
     }
+
 }
 
 /* Medium screens */
 @media all and (min-width: 1024px) {
+
+    .section_toggler {
+        display: none;
+    }
+
     .body_inside, .sidebar_first, .sidebar_last {
         flex: 1 1;
     }
@@ -145,10 +202,10 @@
     }
 
     .sidebar_first {
-        border-right: 1em solid rgba(107,219,179, 0.15); /*6bdbb3*/
+        border-right: 1em solid rgba(107, 219, 179, 0.15); /*6bdbb3*/
     }
 
     .sidebar_last {
-        border-left: 1em solid rgba(107,219,179, 0.15); /*6bdbb3*/
+        border-left: 1em solid rgba(107, 219, 179, 0.15); /*6bdbb3*/
     }
 }

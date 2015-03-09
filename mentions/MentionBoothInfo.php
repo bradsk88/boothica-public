@@ -30,7 +30,6 @@ class MentionBoothInfo {
         }
         $bootherrow = mysql_fetch_array($boothresult);
         $this->boother = new DisplayName($bootherrow['fkUsername']);
-        debug("Boother for this mention is ".$this->boother);
         if ($index == -1) {
             $textsql = "SELECT `blurb` FROM `boothnumbers` WHERE `pkNumber` = ".$boothNumber." LIMIT 1";
             $textres = mysql_query($textsql);
