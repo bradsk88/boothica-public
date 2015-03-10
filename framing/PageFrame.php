@@ -31,6 +31,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] == 'bradsk88') {
 class PageFrame {
 
     private $metaScripts = array();
+    private $metaRawScripts = array();
     private $metaCss = array();
     private $body;
     private $firstSidebarTitle = "";
@@ -66,6 +67,10 @@ class PageFrame {
         $this->metaScripts[] = $absoluteUrl;
     }
 
+    public function rawScript($fullyTaggedScript) {
+        $this->metaRawScripts[] = $fullyTaggedScript;
+    }
+
     public function css($absoluteUrl) {
         $this->metaCss[] = $absoluteUrl;
     }
@@ -97,6 +102,7 @@ class PageFrame {
         $data = array(
             "metaCss" => $this->metaCss,
             "metaScripts" => $this->metaScripts,
+            "metaRawScripts" => $this->metaRawScripts,
             "loggedIn" => isset($_SESSION['username']),
             "body" => $this->body,
             "headerlink" => $headerlink,
@@ -104,7 +110,7 @@ class PageFrame {
             "firstSidebarTitle" => $this->firstSidebarTitle,
             "lastSidebarTitle" => $this->lastSidebarTitle
         );
-        $page = new h2o("templates/pageFrame.mst");
+        $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/pageFrame.mst");
         echo $page->render($data);
     }
 

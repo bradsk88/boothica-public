@@ -1,0 +1,15 @@
+<script type = "text/javascript">
+    $(document).ready(function() {
+        loadUserBooths("{{username}}");
+        enableInfiniteScroll("{{username}}");
+    {% if loggedIn %}
+        loadNewFriendsBooths();
+    {% else %}
+        loadRandomBooths();
+    {% endif %}
+        loadPublicBooths();
+        loadBootherConsole("{{username}}");
+        $("#body_load_more_button")[0].onclick = null;
+        $("#body_load_more_button").click(function() { loadNextBoothsPage("{{username}}", function(){}) });
+    });
+</script>

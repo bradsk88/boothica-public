@@ -1,0 +1,14 @@
+.mainMenuButtonsRegion {
+}
+
+.mainMenuButton {
+    width: 100%;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #BBB;
+    margin: 1em 0;
+    padding: 1em;
+}
+
+.load_more_button {
+    display: none;
+}

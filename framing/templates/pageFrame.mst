@@ -13,15 +13,21 @@
     {% for script in metaScripts %}
     <script type="text/javascript" src="{{script}}"></script>
     {% endfor %}
+    {% for script in metaRawScripts %}
+    {% autoescape off %}
+    {{script}}
+    {% autoescape on %}
+    {% endfor %}
 </head>
 <body>
 <div class='pageheaderbg'>
     <div class='pageheader'>
-        <a href="{{headerlink}}" class="headertitle"  id="homebutton"></a>
+        <a href="{{headerlink}}" class="headertitle" id="homebutton"></a>
         {% if loggedIn %}
-        <a class="headernavbutton" href="{{baseUrl}}/newbooth"id="newboothbutton"></a>
+        <a class="headernavbutton" href="{{baseUrl}}/newbooth" id="newboothbutton"></a>
         <a href="{{baseUrl}}/search">
-            <div class="headernavbutton advsearchbutton" onclick="openAdvancedSearch();" style="background-image: url('{{baseUrl}}/media/search.png');">
+            <div class="headernavbutton advsearchbutton" onclick="openAdvancedSearch();"
+                 style="background-image: url('{{baseUrl}}/media/search.png');">
             </div>
         </a>
 
@@ -38,8 +44,10 @@
             <button type="submit" class="searchbutton">Go</button>
             <div style="clear: both;"></div>
         </form>
-        <canvas id='headgear' class='headerbutton' onclick='openSettings()'>
-        </canvas>
+        <a href="{{baseUrl}}/menu">
+            <canvas id='headgear' class='headerbutton' onclick='openSettings()'>
+            </canvas>
+        </a>
         {% endif %}
     </div>
 </div>
@@ -48,7 +56,7 @@
         {% autoescape off %}
         {{body}}
         {% autoescape on %}
-        <div class = "load_more_button" id = "body_load_more_button">
+        <div class="load_more_button" id="body_load_more_button">
             Load More ...
         </div>
     </div>
@@ -63,7 +71,7 @@
             </div>
             {% endif %}
         </div>
-        <div class = "section_toggler">
+        <div class="section_toggler">
             {{firstSidebarTitle}}
         </div>
         <div class="sidebar_body{% if firstSideBarCollapsed %} collapsed{% endif %}">
@@ -82,7 +90,7 @@
             </div>
             {% endif %}
         </div>
-        <div class = "section_toggler">
+        <div class="section_toggler">
             {{lastSidebarTitle}}
         </div>
         <div class="sidebar_body{% if lastSideBarCollapsed %} collapsed{% endif %}">

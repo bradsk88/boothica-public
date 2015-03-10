@@ -11,18 +11,45 @@ if (strpos(__FILE__, '_dev')) {
     error_reporting(E_ALL);
 }
 
-require_once("{$_SERVER['DOCUMENT_ROOT']}".$prependage."/common/boiler.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}" . $prependage . "/common/boiler.php");
 
 session_start();
 main();
 
-function main() {
+function main()
+{
 
-$base = base();
+    $base = base();
 
-echo <<<EOT
+    echo <<<EOT
 
     var baseUrl = "$base";
+
+    function loadBootherConsole(username) {
+
+        $.post(baseUrl + "/_mobile/vBeta/getuser.php", {
+            boothername: username
+        }, function (data) {
+            if (data.success) {
+            $.get(baseUrl + '/framing/templates/bootherConsole.mst', function(template) {
+                html = Mustache.render(template, {
+                        baseUrl: baseUrl,
+                        bootherName: username,
+                        bootherDisplayPhoto: data.success.displayPhotoAbsoluteUrl,
+                        bootherDisplayName: data.success.displayName,
+                        bootherPluralName: data.success.pluralDisplayName
+                });
+                $("#user_booths_feed").prepend(html);
+            });
+            } else if (data.error) {
+                $("#user_booths_feed").prepend("Error: " + data.error);
+            }
+        }, "json")
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        })
+
+    }
 
     //declare event to run when div is visible
     function loadUserBooths(username){
@@ -75,9 +102,11 @@ echo <<<EOT
         })
     };
 
+
+    var page = 1; //
+
     function enableInfiniteScroll(username) {
 
-        var page = 2;
         var pauseScroll = false;
         $(window).scroll(function()
         {
@@ -93,37 +122,41 @@ echo <<<EOT
             if($(window).scrollTop() == $(document).height() - $(window).height())
             {
                 pauseScroll = true;
-                $('div#loadmoreajaxloader').show();
-                $.ajax({
-                url: baseUrl + "/_mobile/v2/userfeed.php",
-                data: {
-                    boothername: username,
-                    pagenum: page
-                },
-                type: "POST",
-                dataType: "json",
-                success: function(json)
-                {
-                    if (json.success) {
-                        page++;
-                        $('div#loadmoreajaxloader').hide();
-                        renderBoothsFromData(json);
-                        pauseScroll = false;
-                    } else if (json.error) {
-                        $('div#loadmoreajaxloader').html('<center>'+json.error+'</center>');
-                        pauseScroll = false;
-                    } else {
-                        $('div#loadmoreajaxloader').html('<center>No more posts to show.</center>');
-                        pauseScroll = true;
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert(textStatus);
-                    pauseScroll = false;
-                }});
+                loadNextBoothsPage(username, function() { pauseScroll = false; });
             }
         });
     }
+
+    function loadNextBoothsPage(username, onAdditionalPagesAvailableCallback) {
+        $('div#loadmoreajaxloader').show();
+        $.ajax({
+        url: baseUrl + "/_mobile/v2/userfeed.php",
+        data: {
+            boothername: username,
+            pagenum: page + 1
+        },
+        type: "POST",
+        dataType: "json",
+        success: function(json)
+        {
+            if (json.success) {
+                page++;
+                $('div#loadmoreajaxloader').hide();
+                renderBoothsFromData(json);
+                onAdditionalPagesAvailableCallback.call();
+            } else if (json.error) {
+                $('div#loadmoreajaxloader').html('<center>'+json.error+'</center>');
+                onAdditionalPagesAvailableCallback.call();
+            } else {
+                $('div#loadmoreajaxloader').html('<center>No more posts to show.</center>');
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+            onAdditionalPagesAvailableCallback.call();
+        }});
+    }
+
 
 
 

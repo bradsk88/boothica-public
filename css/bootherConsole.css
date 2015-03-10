@@ -1,0 +1,87 @@
+.bootherConsole {
+    display: flex;
+    flex-flow: row wrap;
+    height: auto;
+}
+
+.bootherConsolePhotoRegion, .bootherConsoleNameRegion {
+    flex: 1 50%;
+}
+
+.bootherConsolePhoto {
+    margin: auto;
+    width: 10em;
+    height: 10em;
+}
+
+.bootherConsolePhotoResource {
+    object-fit: cover;
+}
+
+.bootherConsoleNameRegion {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.bootherConsoleName {
+    margin: auto;
+}
+
+.bootherConsoleButtons {
+    flex: 1 100%;
+}
+
+.bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
+    display: flex;
+    width: 100%;
+    min-height: 4em;
+}
+
+@media all and (max-width: 1024px) {
+    .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
+        border-top: 1px solid #DDD;
+        border-bottom: 1px solid #BBB;
+        margin: 1em 0;
+    }
+
+    .bootherConsoleFriendRequestButton, .bootherConsolePrivateMessageButton, .bootherConsoleListFriendsButton {
+        margin: auto;
+    }
+}
+
+@media all and (min-width: 1024px) {
+
+    .bootherConsole {
+        height: 6em;
+        margin: 0 3em 1em;
+    }
+
+    .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
+        max-width: 20em;
+        min-height: auto;
+        padding: 0.25em;
+        margin: auto auto 0.375em;
+        width: 100%;
+        text-align: left;
+        border: 1px solid #DDD;
+    }
+
+    .bootherConsolePhoto {
+        height: 6em;
+        width: 6em;
+        overflow: hidden;
+    }
+
+    .bootherConsolePhotoRegion {
+        flex: 0 1 auto;
+    }
+
+    .bootherConsoleButtons {
+        flex: 0 0 50%;
+    }
+
+    .bootherConsoleNameRegion {
+        flex: 1 1 auto;
+    }
+}

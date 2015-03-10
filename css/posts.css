@@ -47,15 +47,6 @@
     padding-bottom: 1em;
 }
 
-.load_more_button {
-    text-align: center;
-    margin: 0 auto;
-    background: #DDD;
-    padding: 0.75em;
-    border-radius: 0.25em;
-    max-width: 16em;
-}
-
 @media all and (min-width: 500px) {
 
     .primary_booths_feed {
@@ -194,10 +185,6 @@
     .sideBoothText {
         height: 4em;
         overflow: hidden;
-    }
-
-    .load_more_button {
-        display: none;
     }
 
 }
