@@ -172,9 +172,9 @@ function mysql_deathm($sql, $msg) {
 }
 
 function mysql_death1($sql) {
-    if ($down) {
+    if (isset($down) && $down) {
         echo(mysql_error($sql));
-        return;
+        return "Site is down";
     }
     $usern = "not logged in";
     if (isset($_SESSION['username'])) {
@@ -184,7 +184,9 @@ function mysql_death1($sql) {
     debug_print_backtrace();
     $trace = ob_get_clean();
     $old_error = mysql_error();
-    $new_error = mysqli_errno($link).": ".mysqli_error($link);
+    if (isset($link)) {
+        $new_error = mysqli_errno($link).": ".mysqli_error($link);
+    }
 
     foreach (getDevs() as $dev) {
         error_log("You are receiving this because you are on the developers list\n\n"."MySQL Death\nUsername at time of death: "
@@ -423,10 +425,11 @@ function userExists($username) {
 
 function isBanned($username) {
 
+    connect_mysqli_to_boothsite();
     $sql = "SELECT `fkUsername` FROM `usersbannedtbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
-    $result = mysql_query($sql);
+    $result = sql_query($sql);
     if ($result) {
-        $num = mysql_num_rows($result);
+        $num = $result->num_rows;
         if ($num == 1) {
             return true;
         } else if ($num == 0) {
@@ -436,7 +439,7 @@ function isBanned($username) {
             return false;
         }
     } else {
-        mysql_death2($link,$sql);
+        sql_death1($sql);
         return false;
     }
 

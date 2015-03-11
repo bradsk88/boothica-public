@@ -11,13 +11,18 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/newbooth/email.php");
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_common("ImageUtils");
 require_common("upload_utils");
+require_common("utils");
 
-function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly) {
+function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly, $requestHash = null) {
 
-    connect_to_boothsite();
+    error_reporting(0);
+    $link = connect_to_boothsite();
+    if (isset($_SESSION['username']) && isDeveloper($_SESSION['username'])) {
+        error_reporting(E_ALL);
+    }
 
     $ratelimitsql = "
-SELECT NOW( ) > datetime + INTERVAL 5
+SELECT NOW( ) > datetime + INTERVAL 1
 MINUTE AS timePassed
 FROM `boothnumbers`
 WHERE fkUsername = '".$username."'
@@ -25,7 +30,7 @@ ORDER BY datetime DESC
 LIMIT 1 ";
     $result = sql_query($ratelimitsql);
     $rateLimitRow = $result->fetch_assoc();
-    if ($rateLimitRow['timePassed'] === 0) {
+    if ($rateLimitRow['timePassed'] == 0) {
         return array(0214150354, null); // User posting too rapidly
     }
 
@@ -43,18 +48,27 @@ LIMIT 1 ";
     $row = mysql_fetch_array($nextIndexRes);
     $nextIndex = $row['nextIndex'] + 1;
 
-    $sql = "INSERT INTO 
+    $columns = "(`fkUsername`, `source`, `isPublic`)";
+    $values = "('".$username."', 'newbooth/file_upload.php',".(!($friendsonly)).")";
+    if ($requestHash != null) {
+        $columns = "(`fkUsername`, `source`, `isPublic`, `requestHash`)";
+        $values = "('".$username."', 'newbooth/file_upload.php',".(!($friendsonly)).", '".$requestHash."')";
+    }
+
+    $sql = "INSERT INTO
 			`boothnumbers` 
-			(`fkUsername`, `source`, `isPublic`)
+			".$columns."
 			VALUES 
-			('".$username."', 'newbooth/file_upload.php',".(!($friendsonly)).");";
-    $insertres = mysql_query($sql);
+			".$values.";";
+    $insertres = sql_query($sql);
     if (!$insertres) {
         echo mysql_death1($sql);
         return array(-1, null);
     }
 
-    $sql = "SELECT 
+    mysqli_autocommit($link, true);
+
+    $sql = "SELECT
 			`pkNumber` 
 			FROM `boothnumbers` 
 			WHERE `fkUsername` = '".$username."' 

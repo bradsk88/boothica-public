@@ -13,11 +13,16 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
 
 error_reporting(0);
 session_start();
-main();
+
+try {
+    main();
+} catch (Exception $e) {
+    echo json_encode(array("error" => sql_death1($e->getMessage())));
+}
 
 function main() {
 
-    $link = connect_to_boothsite();
+    $link = connect_mysqli_to_boothsite();
     $username = $_POST['username'];
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
@@ -40,6 +45,29 @@ function main() {
         return;
     }
 
+    if (parameterIsMissingAndEchoFailureMessage("requestHash")) {
+        return;
+    }
+    $requestHash = $_POST['requestHash'];
+
+
+    $link->autocommit(false);
+
+    $sql = "SELECT requestHash FROM ( SELECT requestHash FROM `boothnumbers` ORDER BY datetime DESC LIMIT 1000 ) a WHERE requestHash = '".$requestHash."' LIMIT 2";
+    $query = sql_query($sql);
+    if (!$query) {
+        echo json_encode(array("error" => sql_death1($sql)));
+        return;
+    }
+    $link->autocommit(true);
+
+    if ($query->num_rows > 0) {
+        if ($query->num_rows == 2) {
+            death("Multiple entries for booth request hash: ".$requestHash);
+        }
+        echo json_encode(array("error" => "It seems this booth has already been posted"));
+    }
+
     if (parameterIsMissingAndEchoFailureMessage("image")) {
         return;
     }
@@ -54,14 +82,14 @@ function main() {
         $friendsonly = $_POST['friendsonly'];
     }
 
-    list($code, ) = doPostBooth($_SESSION['username'], $_POST['image'], $_POST['blurb'], $friendsonly);
+    list($code, ) = doPostBooth($_SESSION['username'], $_POST['image'], $_POST['blurb'], $friendsonly, $requestHash);
     if ($code == 0) {
         echo json_encode(array(
             'success' => 'booth posted successfully' 
         ));
     } else if ($code == 0214150354) {
         echo json_encode(array(
-            'error' => 'Posting too rapidly.  Wait 5 minutes between posts.'
+            'error' => 'Posting too rapidly.  Wait 1 minutes between posts.'
         ));
     } else {
         echo json_encode(array(

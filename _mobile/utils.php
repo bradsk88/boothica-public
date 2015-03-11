@@ -48,8 +48,10 @@ function failsStandardMobileChecksAndEchoFailureMessage() {
 }
 
 function isKeyOK($username, $phoneid, $loginkey) {
-    $username = mysql_real_escape_string(strtolower($username));
-    $phoneid = mysql_real_escape_string($phoneid);
+
+    $link = connect_mysqli_to_boothsite();
+    $username = $link->escape_string(strtolower($username));
+    $phoneid = $link->escape_string($phoneid);
     if (isset($_POST['loginkey'])) {
         $sql = "
               SELECT
@@ -59,12 +61,12 @@ function isKeyOK($username, $phoneid, $loginkey) {
                   `fkUsername` = '" . $username . "' AND `fkPhoneID` = '".$phoneid."'
               LIMIT 1;";
 
-        $res = mysql_query($sql);
+        $res = sql_query($sql);
         if (!$res) {
             mysql_death1($sql);
             return BAD;
         }
-        $r = mysql_fetch_assoc($res);
+        $r = $res->fetch_assoc();
 
         if ($r['key'] == $loginkey) {
             return OK;
