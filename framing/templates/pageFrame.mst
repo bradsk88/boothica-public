@@ -9,6 +9,9 @@
     {% for css in metaCss %}
     <link rel="stylesheet" href="{{css}}" type="text/css" media="screen"/>
     {% endfor %}
+    {% for css in metaRemoteCss %}
+    <link href="{{css}}" type="text/css" media="screen"/>
+    {% endfor %}
     <link rel="shortcut icon" href="{{baseUrl}}/favicon.ico" type="image/x-icon">
     {% for script in metaScripts %}
     <script type="text/javascript" src="{{script}}"></script>

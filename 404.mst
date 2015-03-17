@@ -1,0 +1,21 @@
+<div class = "bigBlock404Region">
+    <div class = "bigBlock404Text">
+        404
+    </div>
+    <div class = "bigBlock404FlavourText">
+        It's not here
+    </div>
+</div>
+<div class = "requestUrl">
+    {{requestUrl}}
+</div>
+<a href = "{{baseUrl}}/activity">
+    <div class = "button" id = "backToActivityButton">Back to activity</div>
+</a>
+<form action = "{{baseUrl}}/searchresults">
+    <div class = "searchForm">
+        <input type = "text" name = "q" placeholder = "Search for users..."/><br/>
+        <input type = "hidden" name = "scope" value = "user"/>
+        <input type = "submit" value = "Search"/>
+    </div>
+</form>

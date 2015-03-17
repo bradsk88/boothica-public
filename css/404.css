@@ -1,0 +1,86 @@
+.bigBlock404Region {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 6vw;
+    background: #DDD;
+    border-radius: 4vw;
+    padding: 3vw;
+    cursor: default;
+}
+
+.bigBlock404Text, .bigBlock404FlavourText, .searchForm {
+    flex: 1 100%;
+    margin: auto;
+}
+
+.bigBlock404Text, .bigBlock404FlavourText {
+    font-family: 'Bitter', serif;
+    font-weight: bold;
+}
+
+.bigBlock404Text {
+    font-size: 40vw;
+}
+
+.bigBlock404FlavourText {
+    font-size: 7vw;
+}
+
+.searchForm {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.searchForm input {
+    box-sizing: border-box;
+    padding: 2em;
+    margin: 1em 0;
+    flex: 1 100%;
+}
+
+.requestUrl {
+    font-size: 0.75rem;
+    padding-bottom: 1em;
+}
+
+.button {
+    box-sizing: border-box;
+    width: 100%;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #BBB;
+    margin: 1em 0;
+    padding: 1.5em;
+}
+
+
+@media all and (min-width: 600px) {
+
+    .bigBlock404Region {
+        margin: 0 auto;
+        background: #FFF;
+        padding: 0;
+        cursor: default;
+        padding-bottom: 2em;
+    }
+
+    .bigBlock404Text {
+        font-size: 10rem;
+    }
+
+    .bigBlock404FlavourText {
+        font-size: 1rem;
+    }
+
+    #backToActivityButton {
+        display: none;
+    }
+
+    .searchForm {
+        margin: 1em;
+    }
+
+    .searchForm input {
+        flex: 1 50% !important;
+        padding: 1em;
+    }
+}

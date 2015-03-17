@@ -1,0 +1,10 @@
+<script type = "text/javascript">
+$(document).ready(function() {
+    {% if loggedIn %}
+    loadNewFriendsBooths();
+    {% else %}
+    loadRandomBooths();
+    {% endif %}
+    loadPublicBooths();
+});
+</script>

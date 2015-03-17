@@ -27,17 +27,22 @@ function main() {
     </div>
 EOT;
 
-    $pagescripts = new h2o("booths-page-script.mst");
     $page = new PageFrame();
     $page->body($html);
-    $page->firstSideBar("New Friend Booths", false);
+    if (isset($_SESSION['username'])) {
+        $page->firstSideBar("New Friend Booths", false);
+    } else {
+        $page->firstSideBar("Random Booths", false);
+    }
     $page->lastSideBar("New Public Booths");
     $page->script($root."/booth/user-booth-scripts.js");
+    $pagescripts = new h2o("booths-page-script.mst");
     $page->rawScript($pagescripts->render(array(
         "username" => $_GET['username'],
         "loggedIn" => isset($_SESSION['username'])
     )));
     $page->css($root."/css/posts.css");
+    $page->css($root."/css/posts-page.css");
     $page->css($root."/css/bootherConsole.css");
     $page->echoHtml();
 

@@ -11,6 +11,8 @@
  * and finally calling $page->echoPage().
  */
 
+header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 if (strpos(__FILE__, '_dev')) {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/_dev/common/boiler.php";
 } else {
@@ -33,6 +35,7 @@ class PageFrame {
     private $metaScripts = array();
     private $metaRawScripts = array();
     private $metaCss = array();
+    private $metaRemoteCss = array();
     private $body;
     private $firstSidebarTitle = "";
     private $firstSidebarCollapsed = false;
@@ -75,6 +78,10 @@ class PageFrame {
         $this->metaCss[] = $absoluteUrl;
     }
 
+    public function cssRemote($externalUrl) {
+        $this->metaRemoteCss[] = $externalUrl;
+    }
+
     function echoHtml() {
 
         session_start();
@@ -101,6 +108,7 @@ class PageFrame {
 
         $data = array(
             "metaCss" => $this->metaCss,
+            "metaRemoteCss" => $this->metaRemoteCss,
             "metaScripts" => $this->metaScripts,
             "metaRawScripts" => $this->metaRawScripts,
             "loggedIn" => isset($_SESSION['username']),
