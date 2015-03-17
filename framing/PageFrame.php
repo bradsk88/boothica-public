@@ -84,7 +84,7 @@ class PageFrame {
 
     function echoHtml() {
 
-        session_start();
+        if (!isset($_SESSION['username'])) session_start();
         $this->setErrorReporting();
         $link = connect_to_boothsite();
         if (!$link) {

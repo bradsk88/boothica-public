@@ -1,0 +1,11 @@
+<script type = "text/javascript">
+    $(document).ready(function() {
+        loadOneBooth({{boothnum}});
+        {% if loggedIn %}
+            loadNewFriendsBooths();
+            {% else %}
+            loadRandomBooths();
+            {% endif %}
+            loadPublicBooths();
+        });
+</script>

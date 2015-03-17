@@ -95,10 +95,14 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+    background-color: black;
+    color: white;
+    text-align: center;
 }
 
 .sidebar_title {
     padding: 1em;
+    margin: 0 auto;
 }
 
 .sidebar_button {
@@ -192,6 +196,11 @@
         max-width: 14em;
         padding-left: 0.5em;
         padding-right: 0.5em;
+    }
+
+    .sidebar_titleandbutton {
+        background-color: #FFF;
+        color: #000;
     }
 
     .sidebar_first {

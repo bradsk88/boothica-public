@@ -1,0 +1,19 @@
+<div class="textCommentRegionNoContext">
+    <div class="textCommentImageRegionNoContext">
+        <a href={{baseUrl}}/users/{{username}}>
+            <img src="{{imageUrl}}" class="textCommentImageNoContext"/>
+        </a>
+    </div>
+    <div class="textCommentUsernameRegionNoContext">
+        <a href={{baseUrl}}/users/{{username}}  class="textCommentUsernameNoContext">
+            <div>
+                {{displayName}}
+            </div>
+        </a>
+    </div>
+    <div class="textCommentTextRegionNoContext">
+        <div class="textCommentTextNoContext">
+            {{{text}}}
+        </div>
+    </div>
+</div>

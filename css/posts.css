@@ -24,6 +24,10 @@
     overflow: hidden;
 }
 
+.sideBoothUsername {
+    padding: 1em;
+}
+
 .centerBoothImageRegion, .sideBoothImageRegion {
     order: 1;
     overflow: hidden;

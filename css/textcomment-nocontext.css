@@ -1,0 +1,40 @@
+.textCommentRegionNoContext {
+    min-height: 5em;
+    position: relative;
+}
+
+.textCommentImageNoContext {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.textCommentImageRegionNoContext {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4em;
+    width: 4em;
+}
+
+.textCommentTextRegionNoContext {
+    margin-left: 4em;
+    padding: 1.5em 0 1.5em;
+    text-align: left;
+}
+
+.textCommentUsernameRegionNoContext {
+    position: absolute;
+    top: 0;
+    left: 4em;
+    right: 0;
+    height: 1em;
+    padding: 0.25em;
+}
+
+.textCommentTextNoContext {
+    margin: 0 1em;
+    background-color: #6bdbb3;
+    padding: 0.5em;
+    border-radius: 0.25em;
+}

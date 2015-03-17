@@ -1,3 +1,9 @@
 .load_more_button {
     display: inherit;
 }
+
+@media all and (min-width: 1024px) {
+    .load_more_button {
+        display: none;
+    }
+}
