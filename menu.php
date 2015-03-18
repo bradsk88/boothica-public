@@ -18,7 +18,7 @@ function main() {
     $html = <<<EOT
     <div class = "mainMenuButtonsRegion">
     <a href = "$root/account"><div class = "mainMenuButton">Account Settings</div></a>
-    <a href = "$root/actions/logout"><div class = "mainMenuButton">Log Out</div></a>
+    <a href = "$root/dologout"><div class = "mainMenuButton">Log Out</div></a>
     </div>
 EOT;
 

@@ -24,14 +24,6 @@ function main()
     }
     $_SESSION['username'] = $username;
 
-
-    if (!userExists($username)) {
-        echo json_encode(
-            array(
-                "error" => "Current user '" . $username . "' does not exist"));
-        return;
-    }
-
     if (parameterIsMissingAndEchoFailureMessage("boothername")) {
         return;
     }
