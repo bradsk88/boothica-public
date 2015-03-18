@@ -38,6 +38,10 @@ function main() {
     <div id="loadmoreajaxloader" style="display:none;">
         <center><img src="$root/media/ajax-loader.gif" /></center>
     </div>
+    <div id = "newCommentButton"></div>
+    <form action = "$root/actions/likebooth.php">
+    <button id = "likeBoothButton"></div>
+    </form>
 EOT;
 
     $page = new PageFrame();

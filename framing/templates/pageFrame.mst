@@ -56,6 +56,9 @@
 </div>
 <div class="page_frame">
     <div class="body_inside">
+        <div class="requires_js_warning" id = "requires_js_warning">
+            This website requires JavaScript.  While some features may work, there are no guarantees.
+        </div>
         {% autoescape off %}
         {{body}}
         {% autoescape on %}

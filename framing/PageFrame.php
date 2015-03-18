@@ -84,7 +84,7 @@ class PageFrame {
 
     function echoHtml() {
 
-        if (!isset($_SESSION['username'])) session_start();
+        if (!isset($_SESSION)) session_start();
         $this->setErrorReporting();
         $link = connect_to_boothsite();
         if (!$link) {
@@ -98,7 +98,12 @@ class PageFrame {
                 echo "<script>parent.window.location.reload(true);</script>";
                 return;
             }
-            echo "Please log in";
+            $baseUrl = base();
+            echo <<<EOF
+                <a href = "$baseUrl/login">
+                    <div class = "login_prompt">Please log in</div>
+                </a>
+EOF;
         }
 
         $headerlink = "/info/news";
@@ -133,6 +138,7 @@ class PageFrame {
         if (isset($_SESSION['username']) && $_SESSION['username'] == "bradsk88") {
             error_reporting(E_ALL);
         } else {
+            //TODO: lower this
             error_reporting(E_ALL);
         }
     }

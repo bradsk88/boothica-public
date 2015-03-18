@@ -1,0 +1,33 @@
+@media all and (max-width: 599px) {
+    #newboothbutton {
+        display: none;
+    }
+}
+
+.textCommentInputRegion {
+    background-color: #F00;
+}
+
+.textCommentInputTextareaRegion {
+    padding: 0.125em;
+    height: 12em;
+}
+
+.textCommentInputTextarea {
+    height: 100%;
+    width: 100%;
+    border: none;
+    resize: none;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border-radius: 0.125em;
+}
+
+.textCommentInputSubmitButton input {
+    width: 100%;
+    border: 0 solid #FFF;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    background-color: rgba(0,0,0,0);
+    padding: 1em;
+}

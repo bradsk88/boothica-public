@@ -70,7 +70,6 @@ function main()
         .fail(function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
         })
-
     };
 
     var renderOneBoothCommentsFromData = function(data) {

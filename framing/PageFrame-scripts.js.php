@@ -24,6 +24,10 @@ function main() {
 
     var baseUrl = "$base";
 
+    $(function() {
+        $("#requires_js_warning").remove();
+    });
+
     $(window).bind("load", function() {
 
     });
