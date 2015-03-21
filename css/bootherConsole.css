@@ -60,7 +60,7 @@
 
     .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
         max-width: 20em;
-        min-height: auto;
+        min-height: inherit;
         padding: 0.25em;
         margin: auto auto 0.375em;
         width: 100%;
