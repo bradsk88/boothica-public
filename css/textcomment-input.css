@@ -1,3 +1,10 @@
+#post_comment_button {
+    display: none;
+}
+
+#post_comment_spinner {
+}
+
 @media all and (max-width: 599px) {
     #newboothbutton {
         display: none;
@@ -23,11 +30,29 @@
     border-radius: 0.125em;
 }
 
-.textCommentInputSubmitButton input {
+.textCommentInputSubmitButton input, .textCommentInputSubmitButton button {
     width: 100%;
+}
+
+.textCommentInputSubmitButton input, .textCommentInputSubmitButton button, #post_comment_spinner {
     border: 0 solid #FFF;
     color: rgb(255, 255, 255);
     font-size: 1rem;
     background-color: rgba(0,0,0,0);
     padding: 1em;
+    cursor: pointer;
+}
+
+@media all and (min-width: 1024px) {
+    .textCommentInputRegion {
+        background-color: #FFF;
+        margin-top: 0.5em;
+    }
+    .textCommentInputSubmitButton input, .textCommentInputSubmitButton button, #post_comment_spinner {
+        color: #000;
+    }
+
+    .textCommentInputTextarea {
+        border: 1px solid #000;
+    }
 }

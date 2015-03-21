@@ -8,9 +8,6 @@
 use comment\Comments;
 use comment\CommentObj;
 
-session_start();
-error_reporting(0);
-
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/CommentObj.php");
@@ -19,22 +16,22 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/comment_utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
 require_common("utils");
 require_common("internal_utils");
+error_reporting(0);
 $link = connect_to_boothsite();
 update_online_presence();
 getComments();
 
 function getComments() {
-    $username = $_POST['username'];
+
+    if (!isset($_SESSION)) session_start();
+
+    $username = isset($_POST['username']) ? $_POST['username'] : null;
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
-    } else {
-        if (isset($_POST['username'])) {
-            if (failsStandardMobileChecksAndEchoFailureMessage()) {
-                return;
-            }
-            $_SESSION['username'] = $username;
-        }
+    } else if (isset($_POST['username']) && failsStandardMobileChecksAndEchoFailureMessage()) {
+        return;
     }
+    $_SESSION['username'] = $username;
 
     if (parameterIsMissingAndEchoFailureMessage("boothnum")) {
         return;

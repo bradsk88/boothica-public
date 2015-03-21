@@ -40,3 +40,7 @@ function require_page( $asset ) {
 function include_error( $page ) {
     include "{$_SERVER['DOCUMENT_ROOT']}/errors/".$page.".php";
 }
+
+function isLoggedIn() {
+    return isset($_SESSION['username']);
+}

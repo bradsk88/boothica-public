@@ -26,17 +26,15 @@ putComment();
 function putComment()
 {
 
-    $username = $_POST['username'];
+    if (!isset($_SESSION)) session_start();
+
+    $username = isset($_POST['username']) ? $_POST['username'] : null;
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
-    } else {
-        if (isset($_POST['username'])) {
-            if (failsStandardMobileChecksAndEchoFailureMessage()) {
-                return;
-            }
-            $_SESSION['username'] = $username;
-        }
+    } else if (isset($_POST['username']) && failsStandardMobileChecksAndEchoFailureMessage()) {
+        return;
     }
+    $_SESSION['username'] = $username;
 
     if (parameterIsMissingAndEchoFailureMessage("boothnum")) {
         return;
@@ -50,7 +48,6 @@ function putComment()
 
     $boother = getBoothOwner($boothNum);
     $res = upload_comment(false, $_POST['commenttext'], $boothNum, $boother, ".jpg");
-    unset($_SESSION['username']);
     if ($res == 0) {
         echo json_encode(array("success" => array("message" => "The comment was posted successfully")));
         return;

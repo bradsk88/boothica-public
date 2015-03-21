@@ -54,7 +54,8 @@
 
     .bootherConsole {
         height: 6em;
-        margin: 0 3em 1em;
+        background-color: #FFF;
+        padding: 1em 3em;
     }
 
     .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {

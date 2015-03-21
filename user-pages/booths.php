@@ -29,12 +29,7 @@ EOT;
 
     $page = new PageFrame();
     $page->body($html);
-    if (isset($_SESSION['username'])) {
-        $page->firstSideBar("New Friend Booths", false);
-    } else {
-        $page->firstSideBar("Random Booths", false);
-    }
-    $page->lastSideBar("New Public Booths");
+    $page->useDefaultSideBars();
     $page->script($root."/booth/user-booth-scripts.js");
     $pagescripts = new h2o("booths-page-script.mst");
     $page->rawScript($pagescripts->render(array(

@@ -1,10 +1,9 @@
 Options +FollowSymlinks
+Options -Indexes
 RewriteEngine On
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.+)$ /$1.php [L,QSA]
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.+)$ $1.php [L,QSA]
 RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]+$ ./user-pages/booths.php?username=$1
 
 ErrorDocument 404 /404.php

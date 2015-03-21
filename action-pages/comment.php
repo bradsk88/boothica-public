@@ -53,18 +53,7 @@ function main() {
     }
 
 
-    initializeSideBars($page);
+    $page->useDefaultSideBars($page);
     $page->echoHtml();
 
-}
-
-// TODO: This is duplicated in most pages.  Maybe move it to PageFrame
-function initializeSideBars($page) {
-
-    if (isset($_SESSION['username'])) {
-        $page->firstSideBar("New Friend Booths", false);
-    } else {
-        $page->firstSideBar("Random Booths", false);
-    }
-    $page->lastSideBar("New Public Booths");
 }

@@ -3,9 +3,12 @@
         loadOneBooth({{boothnum}});
         {% if loggedIn %}
             loadNewFriendsBooths();
-            {% else %}
+            $('#post_comment_button').css('display', 'inherit');
+            $('#post_comment_button_fallback').remove();
+            $('#like_booth_button').css('display', 'inherit');
+        {% else %}
             loadRandomBooths();
-            {% endif %}
+        {% endif %}
             loadPublicBooths();
         });
 </script>

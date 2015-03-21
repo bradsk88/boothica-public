@@ -1,15 +1,20 @@
 <div class="textCommentInputRegion">
     <form action="{{baseUrl}}/actions/comment/upload.php" method="post">
         <div class="textCommentInputTextareaRegion">
-            <textarea name = "comment" class="textCommentInputTextarea"></textarea>
+            <textarea id = "comment_textarea" name = "comment" class="textCommentInputTextarea"></textarea>
         </div>
-        <div class="textCommentInputSubmitButtonRegion">
+        <div class="textCommentInputSubmitButtonRegion" id = "post_comment_button_fallback" >
             <div class="textCommentInputSubmitButton">
                 <input type="submit" value="Post Comment">
             </div>
         </div>
-        <input type="hidden" name="number" value="{{boothnum}}"/>
-        <input type="hidden" name="boother" value="{{boothername}}"/>
+        <input type="hidden" id="boothnum_value" name="number" value="{{boothnum}}"/>
+        <input type="hidden" id="boothername_value" name="boother" value="{{boothername}}"/>
         <input type="hidden" name="nextUrl" value="{{baseUrl}}/users/{{boothername}}/{{boothnum}}"/>
     </form>
+    <div class="textCommentInputSubmitButtonRegion" id = "post_comment_button" >
+        <div class="textCommentInputSubmitButton">
+            <button onclick = "postComment({{boothnum}}, '{{boothername}}')">Post Comment</button>
+        </div>
+    </div>
 </div>

@@ -1,12 +1,14 @@
 .textCommentRegionNoContext {
     min-height: 5em;
     position: relative;
+    background-color: #FFF;
 }
 
 .textCommentImageNoContext {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 2em;
 }
 
 .textCommentImageRegionNoContext {
@@ -19,7 +21,7 @@
 
 .textCommentTextRegionNoContext {
     margin-left: 4em;
-    padding: 1.5em 0 1.5em;
+    padding: 2.5em 0 1em;
     text-align: left;
 }
 
@@ -30,11 +32,33 @@
     right: 0;
     height: 1em;
     padding: 0.25em;
+    text-align: left;
+}
+
+.textCommentUsernameNoContext {
+    text-align: center;
+    display: inherit;
+    padding: 0.5em;
 }
 
 .textCommentTextNoContext {
+    display: inline-block;
     margin: 0 1em;
-    background-color: #6bdbb3;
+    background-color: #DEF7F2;
     padding: 0.5em;
     border-radius: 0.25em;
+}
+
+.textCommentButtonsRegionNoContext {
+    display: none;
+}
+
+@media all and (min-width: 600px) {
+    .textCommentUsernameNoContext {
+        display: inline-block;
+    }
+
+    .textCommentTextRegionNoContext {
+        padding: 2em 0;
+    }
 }

@@ -165,4 +165,14 @@ EOF;
         $this->script(base()."/lib/mustache.js");
     }
 
+    function useDefaultSideBars() {
+
+        if (isset($_SESSION['username'])) {
+            $this->firstSideBar("New Friend Booths", false);
+        } else {
+            $this->firstSideBar("Random Booths", false);
+        }
+        $this->lastSideBar("New Public Booths");
+    }
+
 }

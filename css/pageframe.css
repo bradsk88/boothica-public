@@ -232,7 +232,7 @@
 
     .body_inside {
         order: 2;
-        padding-top: 2em;
+        padding-top: 0;
     }
 
     .sidebar_last {
@@ -244,15 +244,18 @@
 @media all and (min-width: 1280px) {
     .sidebar_first, .sidebar_last {
         max-width: 16em;
-        padding-left: 1em;
-        padding-right: 1em;
+        padding-left: 0;
+        padding-right: 0;
+        background: none;
     }
 
     .sidebar_first {
-        border-right: 1em solid rgba(107, 219, 179, 0.15); /*6bdbb3*/
+        margin-right: 1em;
+        /*border-right: 1em solid rgba(107, 219, 179, 0.15); *//*6bdbb3*/
     }
 
     .sidebar_last {
-        border-left: 1em solid rgba(107, 219, 179, 0.15); /*6bdbb3*/
+        margin-left: 1em;
+        /*border-left: 1em solid rgba(107, 219, 179, 0.15); *//*6bdbb3*/
     }
 }

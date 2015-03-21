@@ -40,7 +40,7 @@ function main() {
         return;
     }
 
-    $booths = array();
+    $booth = array();
     while($row = mysql_fetch_array($result)) {
         $boothername = $row['fkUsername'];
         $cansee = false;
@@ -76,7 +76,7 @@ function main() {
         $root = "http://" . $_SERVER['SERVER_NAME'];
         $imagePath = "/booths/" . $row['imageTitle'] . "." . $row['filetype'];
         if ($cansee) {
-            $booths = array(
+            $booth = array(
                 'boothnum' => $boothnum,
                 'userboothnum' => $row['userBoothNumber'],
                 'userboothcount' => $userboothcount,
@@ -92,17 +92,18 @@ function main() {
                 'nextnum' => $nextBooth,
                 'likes' => $likes,
                 'isfriend' => isFriendOf($username, $boothername),
+                'is_current_user_following' => isFriendOf($boothername, $username),
                 'datetime' => $row['datetime'],
                 'hoursago' => $row['hours'],
                 'minutesago' => $row['minutes'],
                 'absoluteImageUrl' => $root.$imagePath
             );
             echo json_encode(array(
-                "success" => $booths
+                "success" => $booth
             ));
             return;
         } else {
-            $booths = array(
+            $booth = array(
                 'boothnum' => $boothnum,
                 'userboothnum' => $row['userBoothNumber'],
                 'userboothcount' => $userboothcount,
@@ -118,13 +119,14 @@ function main() {
                 'nextnum' => $nextBooth,
                 'likes' => 0,
                 'isfriend' => isFriendOf($username, $boothername),
+                'is_current_user_following' => isFriendOf($boothername, $username),
                 'datetime' => $row['datetime'],
                 'hoursago' => $row['hours'],
                 'minutesago' => $row['minutes'],
                 'absoluteImageUrl' => $root.$imagePath
             );
             echo json_encode(array(
-                "success" => $booths
+                "success" => $booth
             ));
             return;
         }

@@ -196,12 +196,24 @@
 /* Bigger screens */
 @media all and (min-width: 1280px) {
 
+    .body_inside {
+        background: none;
+    }
+
     .centerBoothRegion {
-        padding: 0 3em;
+        background-color: #FFF;
+        padding: 1em 3em;
+        margin: 0.5em 0;
     }
 
     .centerBoothOpenButton {
         right: -2em;
+    }
+
+    .sideBoothRegion {
+        background-color: white;
+        margin: 0.5em 0;
+        padding: 0 0.25em;
     }
 
 }

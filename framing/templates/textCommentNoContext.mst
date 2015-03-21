@@ -16,4 +16,12 @@
             {{{text}}}
         </div>
     </div>
+    <div class="textCommentButtonsRegionNoContext">
+        <div class="textCommentLikeButtonRegionNoContext">
+            <div class = "textCommentLikeButtonNoContext" id = "commentLikeButton">Like</div>
+        </div>
+        <div class="textCommentDeleteButtonRegionNoContext">
+            <div class = "textCommentDeleteButtonNoContext" id = "commentDeleteButton">Delete</div>
+        </div>
+    </div>
 </div>
