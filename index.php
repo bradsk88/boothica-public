@@ -33,12 +33,15 @@
 		include "{$_SERVER['DOCUMENT_ROOT']}/content/html.php";
 		include "{$_SERVER['DOCUMENT_ROOT']}/content/top.php";
 		echo "Logging you in...";
+
 		include "{$_SERVER['DOCUMENT_ROOT']}/content/bottom.php";
 		
 	}
 
 function displayLandingPage() {
 
+
+    require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
     include "{$_SERVER['DOCUMENT_ROOT']}/content/ContentPage.php";
     $page = new ContentPage('void');
 
@@ -83,25 +86,26 @@ EOT;
 
     $page->body($body);
 
+    $root = base();
     //TODO: Load these scripts justintime
-    $page->meta("<script type = 'text/javascript' src = '/activity/activity-scripts.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/booth/booth-scripts.js.php'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/booth/booth-comment-scripts.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/booth/userbooths-scripts.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/common/navigation-scripts.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/messages/pm-scripts.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/common/feed-scripts.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/common/truncate.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/activity/friendfeed-scripts.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/newbooth/newbooth-scripts.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/livefeed/livefeed-scripts.js'></script>");
-    $page->meta("<link rel='stylesheet' href='/css/activity.css' type='text/css' media='screen' />");
-    $page->meta("<link rel='stylesheet' href='/css/booth.css' type='text/css' media='screen' />");
-    $page->meta("<link rel = 'stylesheet' href = '/css/capture.css'  type='text/css' media='screen' />");
-    $page->meta("<link rel='stylesheet' href='/css/commentinput.css' type='text/css' media='screen' />");
-    $page->meta("<link rel='stylesheet' href='/css/welcome.css' type='text/css' media='screen' />");
-    $page->meta("<script type = 'text/javascript' src = '/common/jquery.a-tools-1.5.2.min.js'></script>");
-    $page->meta("<script type = 'text/javascript' src = '/common/jquery.asuggest.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/activity/activity-scripts.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/booth/booth-scripts.js.php'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/booth/booth-comment-scripts.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/booth/userbooths-scripts.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/common/navigation-scripts.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/messages/pm-scripts.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/common/feed-scripts.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/common/truncate.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/activity/friendfeed-scripts.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/newbooth/newbooth-scripts.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/livefeed/livefeed-scripts.js'></script>");
+    $page->meta("<link rel='stylesheet' href='".$root."/css/activity.css' type='text/css' media='screen' />");
+    $page->meta("<link rel='stylesheet' href='".$root."/css/booth.css' type='text/css' media='screen' />");
+    $page->meta("<link rel = 'stylesheet' href = '".$root."/css/capture.css'  type='text/css' media='screen' />");
+    $page->meta("<link rel='stylesheet' href='".$root."/css/commentinput.css' type='text/css' media='screen' />");
+    $page->meta("<link rel='stylesheet' href='".$root."/css/welcome.css' type='text/css' media='screen' />");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/common/jquery.a-tools-1.5.2.min.js'></script>");
+    $page->meta("<script type = 'text/javascript' src = '".$root."/common/jquery.asuggest.js'></script>");
     $page->meta("<link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>");
 
     $page->echoPage();

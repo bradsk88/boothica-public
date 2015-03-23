@@ -8,6 +8,7 @@ if (strpos(__FILE__, '_dev')) {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/content/ContentPage.php";
 }
 
+require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 $base = base();
 
 /**

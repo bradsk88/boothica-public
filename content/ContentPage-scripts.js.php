@@ -4,7 +4,7 @@ header('Content-Type: application/javascript');
 
 $prependage = '';
 error_reporting(0);
-if (strpos(__FILE__, '_dev')) {
+if (strpos(__FILE__, '/_dev')) {
     $prependage = '/_dev';
     error_reporting(E_ALL);
 }
@@ -316,7 +316,7 @@ function getNotificationsHTML(data) {
             "<div class = 'convoimages'>" +
             "<a id = '"+cellId+"' href = '$base/users/"+obj.boothername+"/"+obj.boothnum+"'>" +
             "<div class = 'convoaspect'></div>" +
-            "<div class = 'convocommenterimage' style = 'background-image: url($base" + obj.iconImage + ")'></div>" +
+            "<div class = 'convocommenterimage' style = 'background-image: url(" + obj.iconImage + ")'></div>" +
             "</a>" +
             "</div>" +
             "<div class = 'convo'>" +

@@ -92,20 +92,19 @@ class PageFrame {
         }
 
         //session not started, check for remembrance cookie
-        if (!isset($_SESSION['username'])) {
-            if (isset($_COOKIE['userid']) && cookie_set() == 0) {
+        if (!isset($_SESSION['username']) && isset($_COOKIE['userid'])) {
+            if (cookie_set() == 0) {
                 echo "Reloading. (This site requires JavaScript)";
                 echo "<script>parent.window.location.reload(true);</script>";
                 return;
-            } else {
-            	$baseUrl = base();
-           	 echo <<<EOF
+            }
+            $baseUrl = base();
+            echo <<<EOF
                 <a href = "$baseUrl/login">
                     <div class = "login_prompt">Please log in</div>
                 </a>
 EOF;
-   	    }
-	}
+        }
 
         $headerlink = "/info/news";
         if (isset($_SESSION['username'])) {
