@@ -4,7 +4,7 @@ header('Content-Type: application/javascript');
 
 $prependage = '';
 error_reporting(0);
-if (strpos(__FILE__, '_dev')) {
+if (strpos(__FILE__, '/_dev')) {
     $prependage = '/_dev';
     error_reporting(E_ALL);
 }
@@ -34,6 +34,7 @@ function openBooth(boothnum) {
     $("head").append("<link rel= 'stylesheet' href= '$base/css/booth.css' type= 'text/css' media= 'screen' />");
     $("head").append("<script type =  'text/javascript' src = '$base/common/jquery.a-tools-1.5.2.min.js'></script>");
     $("head").append("<script type =  'text/javascript' src = '$base/common/jquery.asuggest.js'></script>");
+    $("head").append("<script type =  'text/javascript' src = 'http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js'></script>");
     $("#centerpane").html(
         "<div class = 'centersection' id='boothtop'></div>" +
             "<div class = 'centersection' id= 'boothcomments'></div>" +
