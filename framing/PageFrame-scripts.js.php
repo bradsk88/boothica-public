@@ -6,7 +6,7 @@ header('Content-Type: application/javascript');
 
 $prependage = '';
 error_reporting(0);
-if (strpos(__FILE__, '_dev')) {
+if (strpos(__FILE__, '/_dev')) {
     $prependage = '/_dev';
     error_reporting(E_ALL);
 }

@@ -7,7 +7,7 @@
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/universal_utils.php";
 
 function base() {
-    return "http://localhost";
+    return 'http://localhost';
 }
 
 function require_common( $asset ) {

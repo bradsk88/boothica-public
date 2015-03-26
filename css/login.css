@@ -1,0 +1,217 @@
+.loginPaneGreetingRegion, .loginPaneFieldLabel {
+    color: #FFF;
+}
+
+#error_field {
+    color: #FFF;
+    background-color: #DA7358;
+    padding: 1em 0;
+}
+
+.loginPaneGreetingRegion {
+    padding: 4vw 0 4vw;
+}
+
+.loginPaneRegion {
+    background-color: transparent;
+    background-image: url(/media/bubblebackgroundbig.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.loginPane {
+    padding-bottom: 4em;
+    font-family: 'Bitter', serif;
+    font-weight: bold;
+}
+
+.loginPaneGreetingRegion {
+    font-size: 6vw;
+}
+
+.loginPaneFieldLabel, .loginPaneGreetingRegion {
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+}
+
+.loginPaneFieldLabel {
+    font-size: 4vw;
+}
+
+.loginPaneField input, .loginPaneButtonRegion button {
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    border: 0.25rem solid #297;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.loginPaneField input {
+    padding: 1em;
+    height: 1em;
+}
+
+.loginPaneField {
+    padding: 1em;
+}
+
+.loginPaneField input, .loginPaneButtonRegion {
+    font-size: 2rem;
+}
+
+.loginPaneButtonRegion {
+    border-bottom-width: 2vw;
+    box-sizing: border-box;
+    padding: 2vw;
+    height: 3.5em;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+}
+
+.loginPaneButtonRegion, .loginPaneFieldRegion  {
+    border-bottom-style: solid;
+    border-bottom-color: #4B9;
+}
+.loginPaneFieldRegion {
+    border-bottom-width: 4vw;
+}
+
+.loginPaneButton {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    border: none;
+    margin: auto;
+    background-color: #FFF;
+    box-sizing: border-box;
+}
+
+.loginPaneButtonRegion button, #forgot_button_active button {
+    font-size: 1rem;
+}
+
+@media all and (min-width: 600px) {
+
+    .loginPaneRegion {
+        max-width: 32em;
+        margin: 0 auto 0;
+    }
+
+    .loginPane {
+        width: 100%;
+        box-shadow: 0 1rem 5rem rgba(0,0,0,0.25);
+        padding: 0;
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+    }
+
+    .loginPaneGreetingRegion {
+        font-size: 2rem;
+        padding: 0;
+    }
+
+    .loginPaneFieldLabel {
+        font-size: 1.5rem;
+    }
+
+    .loginPaneRegistrationButtonRegion button, .loginPaneLoginButtonRegion button, #forgot_button_secondary button {
+        font-size: 1rem;
+    }
+
+    .loginPaneField input, .loginPaneRegistrationButtonRegion button, .loginPaneLoginButtonRegion button {
+        border-width: 0.25rem;
+    }
+
+    .loginPaneFieldRegion {
+        border-bottom-width: 1rem;
+    }
+
+}
+
+@media all and (min-width: 1024px) {
+
+    .loginPaneRegion {
+        margin-bottom: 1rem;
+    }
+
+    .loginPaneRegion, .loginPaneForgotPasswordButtonRegion-Secondary {
+        max-width: 24em;
+        margin: 2rem auto 10rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    .loginPaneRegistrationButtonRegion, .loginPaneRegion, .loginPane {
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+    }
+
+    .loginPane {
+        position: relative;
+        background-color: transparent;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        width: 100%;
+        box-shadow: 0 2rem 6rem rgba(0,0,0,0.25);
+        padding: 0;
+    }
+
+    .loginPaneRegistrationButtonRegion button, .loginPaneLoginButtonRegion button, .loginPaneField input {
+        max-width: 16rem;
+        border-radius: 0.5rem;
+    }
+
+    .loginPaneField input {
+        padding: 1rem;
+        border-width: 0.125rem;
+        font-size: 1.25rem;
+    }
+
+    .loginPaneField input:focus {
+        outline: none;
+    }
+
+    .loginPaneGreetingRegion {
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .loginPaneRegistrationButtonRegion button, .loginPaneLoginButtonRegion button, .loginPaneFieldLabel {
+        font-size: 1rem;
+    }
+
+    .loginPaneFieldRegion {
+        border-bottom-width: 2rem;
+    }
+
+    .loginPaneButtonRegion, .loginPaneButtonRegion, .loginPaneForgotPasswordButtonRegion-Secondary {
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+
+    .loginPaneButton {
+        box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
+        border: none !important;
+        cursor: pointer;
+    }
+
+    #forgot_button_secondary {
+        background-color: transparent !important;
+        border: none !important;
+        height: auto;
+        left: 0;
+        right: 0;
+        position: absolute;
+        border-radius: 0.25rem;
+
+    }
+
+    #forgot_button_secondary button {
+        padding: 1rem;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.125);
+    }
+
+}

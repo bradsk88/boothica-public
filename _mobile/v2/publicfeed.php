@@ -12,16 +12,16 @@
         require_common("db");
         require_common("utils");
 
-        $link = connect_to_boothsite();
+        $link = connect_boothDB();
         update_online_presence();
 
         $sql = getSQL();
-        $result = mysql_query($sql);
+        $result = sql_query($sql);
 
         if (!$result) {
             echo json_encode(
                 array(
-                    "error" => mysql_death1($sql)
+                    "error" => sql_death1($sql)
                 )
             );
             return;
@@ -29,7 +29,8 @@
 
         $booths = array();
         $newestBooth = -1;
-        while($row = mysql_fetch_array($result)) {
+        $array = $result->fetch_array();
+        while($row = $array) {
             $root = "http://" . $_SERVER['SERVER_NAME'];
             $booths[] = array(
                 'boothnum' => $row['pkNumber'],

@@ -13,7 +13,7 @@
 
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
-if (strpos(__FILE__, '_dev')) {
+if (strpos(__FILE__, '/_dev')) {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/_dev/common/boiler.php";
 } else {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
@@ -83,10 +83,13 @@ class PageFrame {
     }
 
     function echoHtml() {
+        echo $this->render();
+    }
 
+    function render() {
         if (!isset($_SESSION)) session_start();
         $this->setErrorReporting();
-        $link = connect_to_boothsite();
+        $link = connect_boothDB();
         if (!$link) {
             die ("<script type = 'text/javascript'>document.write('There was a problem connecting to the database.  Probably the server just went down :(<p>Please try again in a few minutes.');</script></head></html>");
         }
@@ -124,7 +127,7 @@ EOF;
             "lastSidebarTitle" => $this->lastSidebarTitle
         );
         $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/pageFrame.mst");
-        echo $page->render($data);
+        return $page->render($data);
     }
 
     private function includeJQuery()

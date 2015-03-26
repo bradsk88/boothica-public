@@ -1,0 +1,64 @@
+<div class = "loginPaneRegion" id = "registrationPaneRegion">
+    <div class = "loginPane">
+        {* TODO: change this to actions/dologin.php and re-implement login *}
+        <form action="{{baseUrl}}/actions/doregister.php" method="POST">
+            <div class = "loginPaneGreetingRegion">
+                <div class = "loginPaneGreeting">
+                    Boothi.ca Registration
+                </div>
+            </div>
+            <div class = "loginPaneFieldLabel">
+                username
+            </div>
+            <div class = "loginPaneFieldRegion">
+                <div class = "loginPaneField">
+                    <input type="text" name="username" {% if username %}value="{{username}}"{% endif %}/>
+                </div>
+            </div>
+            <div class = "loginPaneFieldLabel">
+                email address
+            </div>
+            <div class = "loginPaneFieldRegion">
+                <div class = "loginPaneField" id = "emailField">
+                    <input type="text" name="email"/>
+                </div>
+            </div>
+            <div class = "loginPaneFieldLabel">
+                password
+            </div>
+            <div class = "loginPaneFieldRegion">
+                <div class = "loginPaneField">
+                    <input type="password" name="password"/>
+                </div>
+                <div class = "loginPaneFieldLabel">
+                    confirm password
+                </div>
+                <div class = "loginPaneField">
+                    <input type="password" name="passwordconfirm"/>
+                </div>
+            </div>
+            {% if errorMessage %}
+            <div class = "loginPaneFieldLabel" id = "error_field">
+                {{errorMessage}}
+            </div>
+            {% endif %}
+            <div class = "loginPaneFieldLabel">
+                Take a Profile Photo
+            </div>
+            <!--<div class = "registrationPaneWebcamRegion">
+                <div class = "registrationPaneWebcam" id = "webcam">
+                </div>
+            </div>
+            <div class = "loginPaneButtonRegion">
+                <button class = "loginPaneButton" type="button">
+                    Snap!
+                </button>
+            </div>-->
+            <div class = "loginPaneButtonRegion loginPaneRegistrationButtonRegion">
+                <button class = "loginPaneButton" type = "submit">
+                    Sign Up!
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

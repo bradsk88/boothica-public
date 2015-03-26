@@ -1,7 +1,7 @@
 <?php
 
+error_reporting(E_ALL);
 session_start();
-error_reporting(0);
 main();
 
 function main() {
@@ -11,9 +11,6 @@ function main() {
     require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
     require_common("db");
     require_common("utils");
-
-    connect_to_boothsite();
-    update_online_presence();
 
     $numPerPage = 9;
     if (isset($_POST['numperpage'])) {
@@ -26,7 +23,7 @@ function main() {
     if (!$result) {
         echo json_encode(
             array(
-                "error"=>mysql_death1($sql)
+                "error"=>sql_death1($sql)
             )
         );
         return;

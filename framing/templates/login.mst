@@ -1,0 +1,63 @@
+<div class = "loginPaneRegion">
+    <div class = "loginPane">
+        {* TODO: change this to actions/dologin.php and re-implement login *}
+        <form action="{{baseUrl}}/dologin.php" method="POST">
+            <div class = "loginPaneGreetingRegion">
+                <div class = "loginPaneGreeting">
+                    Welcome to Boothi.ca!
+                </div>
+            </div>
+            <div class = "loginPaneFieldLabel">
+                username
+            </div>
+            <div class = "loginPaneFieldRegion">
+                <div class = "loginPaneField">
+                    <input type="text" name="username" {% if username %}value="{{username}}"{% endif %}/>
+                </div>
+            </div>
+            <div class = "loginPaneFieldLabel">
+                password
+            </div>
+            <div class = "loginPaneFieldRegion">
+                <div class = "loginPaneField">
+                    <input type="password" name="password"/>
+                </div>
+            </div>
+            {% if errorMessage %}
+            <div class = "loginPaneFieldLabel" id = "error_field">
+                {{errorMessage}}
+            </div>
+            {% endif %}
+            <div class = "loginPaneButtonRegion loginPaneLoginButtonRegion">
+                <button class = "loginPaneButton" type="submit">
+                    Log In
+                </button>
+            </div>
+        </form>
+        {% if promoteForgotPasswordButton %}
+        <form action="{{baseUrl}}/account/forgotpassword" method="POST">
+            <div class = "loginPaneButtonRegion loginPaneForgotPasswordButtonRegion" id = "forgot_button_active">
+                <button class = "loginPaneButton" type = "submit">
+                    Forgot Your Password?
+                </button>
+            </div>
+        </form>
+        {% endif %}
+        <form action="{{baseUrl}}/user-registration" method="POST">
+            <div class = "loginPaneButtonRegion loginPaneRegistrationButtonRegion">
+                <button class = "loginPaneButton" type = "submit">
+                    Sign Up!
+                </button>
+            </div>
+        </form>
+        {% if !promoteForgotPasswordButton %}
+        <form action="{{baseUrl}}/account/forgotpassword" method="POST">
+            <div class = "loginPaneButtonRegion loginPaneForgotPasswordButtonRegion" id = "forgot_button_secondary">
+                <button class = "loginPaneButton" type = "submit">
+                    Forgot Your Password?
+                </button>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</div>
