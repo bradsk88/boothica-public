@@ -1,0 +1,70 @@
+<div class = "loginPaneRegion" id = "registrationPaneRegion">
+    <div class = "loginPane">
+        {* TODO: change this to actions/dologin.php and re-implement login *}
+        <form action="{{baseUrl}}/actions/doregister.php" method="POST">
+            <div class = "loginPaneGreetingRegion">
+                <div class = "loginPaneGreeting">
+                    Boothi.ca Registration
+                </div>
+            </div>
+            <div class = "loginPaneFieldLabel">
+                username
+            </div>
+            <div class = "loginPaneFieldRegion">
+                <div class = "loginPaneField">
+                    <input type="text" name="username" {% if username %}value="{{username}}"{% endif %}/>
+                </div>
+            </div>
+            <div class = "loginPaneFieldLabel">
+                email address
+            </div>
+            <div class = "loginPaneFieldRegion">
+                <div class = "loginPaneField" id = "emailField">
+                    <input type="text" name="email" {% if email %} value="{{email}}"{% endif %}/>
+                </div>
+            </div>
+            {% for errorMessage in errorMessages %}
+            <div class = "loginPaneFieldLabel" id = "error_field">
+                {{errorMessage}}
+            </div>
+            {% endfor %}
+            {% if badEmail %}
+            <div class = "loginPaneFieldLabel" id = "error_field">
+                email must be in the form name@site.type
+            </div>
+            {% endif %}
+            <div class = "loginPaneFieldLabel">
+                password
+            </div>
+            <div class = "loginPaneFieldRegion">
+                <div class = "loginPaneField">
+                    <input type="password" name="password"/>
+                </div>
+                <div class = "loginPaneFieldLabel">
+                    confirm password
+                </div>
+                <div class = "loginPaneField">
+                    <input type="password" name="passwordconfirm"/>
+                </div>
+            </div>
+            <a class = "loginPaneFieldLabel" href = "http://www.lastpass.com">
+                Boothi.ca Suggests
+                <div class = "lastpassLogo"></div>
+            </a>
+            <!--<div class = "registrationPaneWebcamRegion">
+                <div class = "registrationPaneWebcam" id = "webcam">
+                </div>
+            </div>
+            <div class = "loginPaneButtonRegion">
+                <button class = "loginPaneButton" type="button">
+                    Snap!
+                </button>
+            </div>-->
+            <div class = "loginPaneButtonRegion loginPaneRegistrationButtonRegion">
+                <button class = "loginPaneButton" type = "submit">
+                    Sign Up!
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

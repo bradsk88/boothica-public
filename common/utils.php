@@ -112,7 +112,7 @@ function go_to_suspended() {
 
 function go_to_unexpected_error() {
 
-    if ($down) {
+    if (isset($down) && $down) {
         return;
     }
     echo "<script = 'text/javascript'>location.href='/errors/error?msg=An%20unexpected%20error%20has%20occurred;</script>";
@@ -120,7 +120,7 @@ function go_to_unexpected_error() {
 }
 
 function go_to_db_error($sql) {
-    if ($down) {
+    if (isset($down) && $down) {
         echo(mysql_error($sql));
         return;
     }
@@ -146,6 +146,8 @@ function go_to_error($msg) {
 include("{$_SERVER['DOCUMENT_ROOT']}/utils/devlist.php");
 
 function mysql_death2($link,$sql) {
+    //TODO: Re-enable
+    return;
     $usern = "not logged in";
     if (isset($_SESSION['username'])) {
         $usern = $_SESSION['username'];
@@ -172,6 +174,8 @@ function mysql_deathm($sql, $msg) {
 }
 
 function mysql_death1($sql) {
+    //TODO: Re-enable
+    return;
     if (isset($down) && $down) {
         echo(mysql_error($sql));
         return "Site is down";
@@ -233,9 +237,9 @@ function debug($text) {
 function record_ip($type) {
 
     $sql = "INSERT INTO
-			`hackattemptstbl` 
-			(`ip`, `type`) 
-			VALUES 
+			`hackattemptstbl`
+			(`ip`, `type`)
+			VALUES
 			('".get_ip_address()."', '".$type."');";
     $result = mysql_query($sql);
     if (!$result) {
@@ -249,11 +253,11 @@ function update_online_presence() {
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
         $sql = "UPDATE
-					`logintbl` 
-					SET 
-					`lastonline` = current_timestamp 
+					`logintbl`
+					SET
+					`lastonline` = current_timestamp
 					WHERE `username` = '".$username."';";
-        mysql_query($sql);
+        sql_query($sql);
     }
 }
 
@@ -264,9 +268,9 @@ function getDisplayName($username) {
 function isPublic($username) {
 
     $sql = "SELECT
-			`username`, 
+			`username`,
 			`password`
-			FROM `logintbl` 
+			FROM `logintbl`
 			WHERE `username` = '".$username."'
 			LIMIT 1;";
     $result = mysql_query($sql);
@@ -279,7 +283,7 @@ function isPublic($username) {
     $passwordhash = $loginarray['password'];
 
     $sql = "SELECT `fkPassword`
-			FROM `userspublictbl` 
+			FROM `userspublictbl`
 			WHERE `fkUsername` = '" . $username . "'
 			LIMIT 1;";
     $result2 = mysql_query($sql);
@@ -328,10 +332,10 @@ function mutualFriends($user1,$user2) {
     }
 
     $sql = "SELECT
-			true 
-			FROM `friendstbl` 
-			WHERE `fkUsername` = '".$user1."' 
-			AND `fkFriendName` = '" . $user2 . "' 
+			true
+			FROM `friendstbl`
+			WHERE `fkUsername` = '".$user1."'
+			AND `fkFriendName` = '" . $user2 . "'
 			AND (SELECT true FROM `friendstbl` WHERE
 				`fkUsername` = '".$user2."'
 				AND `fkFriendName` = '".$user1."'
@@ -372,10 +376,10 @@ function isFriendOf($user1,$user2) {
         return true;
     }
     $sql = "SELECT
-			true 
-			FROM `friendstbl` 
-			WHERE `fkUsername` = '".$user2."' 
-			AND `fkFriendName` = '" . $user1 . "' 
+			true
+			FROM `friendstbl`
+			WHERE `fkUsername` = '".$user2."'
+			AND `fkFriendName` = '" . $user1 . "'
 			LIMIT 2;";
     $result = mysql_query($sql);
     if ($result) {
@@ -395,10 +399,10 @@ function isFriendOf($user1,$user2) {
 function isIgnoring($user1,$user2) {
 
     $sql = "SELECT
-			true 
-			FROM `ignorestbl` 
-			WHERE `fkUsername` = '".$user1."' 
-			AND `fkIgnoredName` = '" . $user2 . "' 
+			true
+			FROM `ignorestbl`
+			WHERE `fkUsername` = '".$user1."'
+			AND `fkIgnoredName` = '" . $user2 . "'
 			LIMIT 2;";
     $result = mysql_query($sql);
     if ($result) {
@@ -462,12 +466,12 @@ function isBoothPublic($boothnumber) {
         return false;
     }
     $sql = "SELECT `fkUsername`
-			FROM `userspublictbl` 
-			WHERE `fkUsername` = 
-				(SELECT `fkUsername` 
-					FROM `boothnumbers` 
-					WHERE `pkNumber` = ".$boothnumber." 
-					LIMIT 1 ) 
+			FROM `userspublictbl`
+			WHERE `fkUsername` =
+				(SELECT `fkUsername`
+					FROM `boothnumbers`
+					WHERE `pkNumber` = ".$boothnumber."
+					LIMIT 1 )
 			LIMIT 2";
     $result = mysql_query($sql);
     if ($result) {
@@ -798,7 +802,7 @@ function isDeveloper($username) {
 function create_generic_header($string) {
 
     echo "
-						<div class = 'contentheaderbarregion'>					
+						<div class = 'contentheaderbarregion'>
 							<div class = 'contentheaderbar'>
 								<div class = 'friendstatus'>
 									<div style = 'position: absolute; top: 5px;'>
@@ -819,4 +823,13 @@ function parameterIsMissingAndEchoFailureMessage($param) {
         return true;
     }
     return false;
+}
+
+function sendBoothicaEmail($emailAddress, $subject, $message) {
+    //TODO: Re-enable emails
+    return;
+//    $headers = "From: Boothi.ca<no-reply>\r\n";
+//    $headers .= "MIME-Version: 1.0\r\n";
+//    $headers .= "Content-type: text/html; charset=utf-8\r\n";
+//    mail($emailAddress, $subject, $message, $headers);
 }

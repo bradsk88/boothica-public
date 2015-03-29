@@ -7,7 +7,10 @@
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/universal_utils.php";
 
 function base() {
-    return "http://localhost";
+    if (strpos("{$_SERVER['REQUEST_URI']}", '/_dev')) {
+        return "http://boothi.ca/_dev";
+    }
+    return "http://boothi.ca";
 }
 
 function require_common( $asset ) {

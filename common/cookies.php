@@ -1,6 +1,11 @@
 <?PHP
 
 function cookie_set() {
+
+if (!isset($_COOKIE['userid'])) {
+    return -1;
+}
+
 $parts = explode(":", $_COOKIE['userid']);
 	$name = $parts[0];
 	$rando = $parts[1];

@@ -1,0 +1,36 @@
+#registrationPaneRegion {
+    background-image: url(/media/diamondbackgroundbig.png);
+}
+
+.loginPaneButtonRegion, .loginPaneFieldRegion  {
+    border-bottom-color: #004499;
+}
+
+.loginPaneField input, .loginPaneButtonRegion button {
+    border-color: #004499;
+}
+
+.registrationPaneWebcamRegion {
+    height: 15rem;
+    background-color: #000;
+    margin: 1rem 0 1rem;
+}
+
+.registrationPaneWebcam {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#emailField input {
+    font-size: 0.75em !important;
+}
+
+.lastpassLogo {
+    height: 1.5rem;
+    background-image: url(/media/LastPassLogo329x40.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 50%;
+    margin: 1rem auto;
+}

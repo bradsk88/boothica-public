@@ -41,6 +41,7 @@
 .requestUrl {
     font-size: 0.75rem;
     padding-bottom: 1em;
+    background-color: #FFF;
 }
 
 .button {
@@ -55,12 +56,16 @@
 
 @media all and (min-width: 600px) {
 
+    .bigBlock404Region, .searchForm {
+        background: #FFF;
+    }
+
     .bigBlock404Region {
         margin: 0 auto;
-        background: #FFF;
         padding: 0;
         cursor: default;
         padding-bottom: 2em;
+        border-radius: 0;
     }
 
     .bigBlock404Text {
@@ -76,7 +81,9 @@
     }
 
     .searchForm {
-        margin: 1em;
+        padding: 1em 1em 2em;
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
     }
 
     .searchForm input {
