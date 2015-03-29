@@ -11,7 +11,9 @@
  * Class DisplayName
  * Requires that a database connection to the boothsite has been established.
  */
-require_once "{$_SERVER['DOCUMENT_ROOT']}/common/utils.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+require_common("utils");
+require_common("db");
 
 class DisplayName {
 
@@ -19,17 +21,18 @@ class DisplayName {
 
     public function __construct($username) {
         checkNotNull($username);
+        $dblink = connect_boothDB();
         $sql = "SELECT
 			`displayname`
 			FROM `logintbl`
 			WHERE `username`='".$username."'
 			LIMIT 1;";
-        $result = mysql_query($sql);
+        $result = $dblink->query($sql);
         if ($result) {
-            $row = mysql_fetch_array($result);
+            $row = $result->fetch_array();
             $this->string = $row['displayname'];
         } else {
-            mysql_death("getDisplayName() failed in utils_friend.php given value ".$username);
+            sql_death1("getDisplayName() failed in utils_friend.php given value ".$username);
         }
     }
 

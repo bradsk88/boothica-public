@@ -6,6 +6,8 @@
  * Time: 7:52 PM
  */
 
+error_reporting(0);
+
 require_once "{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_lib("h2o-php/h2o");
@@ -15,7 +17,7 @@ if (isset($_REQUEST['email'])) {
     $email = $_REQUEST['email'];
 }
 
-$errorMessages = [];
+$errorMessages = array();
 if (isset($_REQUEST['errors'])) {
     $errorMessages = json_decode($_REQUEST['errors']);
 }
@@ -23,6 +25,11 @@ if (isset($_REQUEST['errors'])) {
 $nextUrl = null;
 if (isset($_REQUEST['nextUrl'])) {
     $nextUrl = $_REQUEST['nextUrl'];
+}
+
+$username = null;
+if (isset($_REQUEST['username'])) {
+    $username = $_REQUEST['username'];
 }
 
 $action = new RegistrationPage($username, $errorMessages, $email);

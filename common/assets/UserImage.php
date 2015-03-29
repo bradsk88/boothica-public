@@ -18,8 +18,7 @@ class UserImage {
     }
     public static function getImage($username) {
 
-
-
+        $dblink = connect_boothDB();
 
         if (isset($_SESSION['username']) && (isFriendOf($_SESSION['username'], $username))) {
             $sql = "SELECT
@@ -29,15 +28,15 @@ class UserImage {
                     WHERE fkUsername = '".$username."'
                     ORDER BY `pkNumber` DESC
                     LIMIT 1;";
-            $result = mysql_query($sql);
+            $result = $dblink->query($sql);
             if (!$result) {
-                mysql_death1($sql);
-                return;
+                sql_death1($sql);
+                return null;
             }
-            if (mysql_num_rows($result) == 0) {
+            if ($result->num_rows == 0) {
                 return UserImage::NOIMG;
             } else {
-                $row = mysql_fetch_array($result);
+                $row = $result->fetch_array();
                 return  "/booths/tiny/".$row['imageTitle'].".".$row['filetype'];
             }
         } else if(isPublic($username)) {
@@ -50,15 +49,15 @@ class UserImage {
                     AND `isPublic` = true
                     ORDER BY `pkNumber` DESC
                     LIMIT 1;";
-            $result = mysql_query($sql);
+            $result = $dblink->query($sql);
             if (!$result) {
-                mysql_death1($sql);
-                return;
+                sql_death1($sql);
+                return null;
             }
-            if (mysql_num_rows($result) == 0) {
+            if ($result->num_rows == 0) {
                 return UserImage::NOIMG;
             } else {
-                $row = mysql_fetch_array($result);
+                $row = $result->fetch_array();
                 return  "/booths/tiny/".$row['imageTitle'].".".$row['filetype'];
             }
         } else {
@@ -68,15 +67,15 @@ class UserImage {
 				FROM `logintbl`
 				WHERE `username` = '".$username."'
 				LIMIT 2;";
-            $result = mysql_query($sql);
+            $result = $dblink->query($sql);
             if (!$result) {
-                mysql_death1($sql);
+                sql_death1($sql);
                 return UserImage::NOIMG;
             }
 
-            $num = mysql_num_rows($result);
+            $num = $result->num_rows;
             if ($num == 1) {
-                $row = mysql_fetch_array($result);
+                $row = $result->fetch_array();
                 if ($row['hasIcon'] == 1) {
                     return  "/users/".$username."/public.".$row['iconext'];
                 } else {
