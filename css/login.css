@@ -5,7 +5,11 @@
 #error_field {
     color: #FFF;
     background-color: #DA7358;
-    padding: 1em 0;
+    padding: 0.5em 0;
+    border-width: 0.1rem 0 0.1rem;
+    border-style: solid none solid;
+    border-top-color: #CB6247;
+    border-bottom-color: #EB8469;
 }
 
 .loginPaneGreetingRegion {

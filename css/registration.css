@@ -24,3 +24,13 @@
 #emailField input {
     font-size: 0.75em !important;
 }
+
+.lastpassLogo {
+    height: 1.5rem;
+    background-image: url(/media/LastPassLogo329x40.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 50%;
+    margin: 1rem auto;
+}
