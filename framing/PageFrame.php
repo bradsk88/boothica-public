@@ -108,7 +108,7 @@ class PageFrame {
                 return;
             } else if (!$this->excludeLoginNotification ) {
            	    $this->notificationRegion = '
-                <a href = "$baseUrl/login">
+                <a href = "'.base().'/login">
                     <div class = "login_prompt">Please log in</div>
                 </a>';
    	    }

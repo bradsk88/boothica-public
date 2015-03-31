@@ -1,6 +1,5 @@
 <?php
 
-    session_start();
     error_reporting(0);
     main();
 
@@ -12,11 +11,10 @@
         require_common("db");
         require_common("utils");
 
-        $link = connect_boothDB();
-        update_online_presence();
+        $dblink = connect_boothDB();
 
         $sql = getSQL();
-        $result = sql_query($sql);
+        $result = $dblink->query($sql);
 
         if (!$result) {
             echo json_encode(
@@ -29,9 +27,8 @@
 
         $booths = array();
         $newestBooth = -1;
-        $array = $result->fetch_array();
-        while($row = $array) {
-            $root = "http://" . $_SERVER['SERVER_NAME'];
+        while($row = $result->fetch_array()) {
+            $root = base();
             $booths[] = array(
                 'boothnum' => $row['pkNumber'],
                 'boothername' => $row['fkUsername'],

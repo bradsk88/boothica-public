@@ -11,6 +11,17 @@ a {
     color: black;
 }
 
+.loaderRegion {
+    height: 2rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.loader {
+    margin: auto;
+}
+
 .login_prompt {
     margin-top: 2.5em;
     margin-bottom: -2.5em;

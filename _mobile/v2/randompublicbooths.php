@@ -50,7 +50,7 @@ function main() {
 			))
     LIMIT ".$numPerPage.";";
 
-    if ($_POST['debug']) {
+    if (isset($_POST['debug']) && $_POST['debug']) {
         echo json_encode(array(
             "debug"=>"Email of SQL sent to devlist",
             "error"=>"Special command recieved. See 'debug'"
@@ -100,7 +100,8 @@ function main() {
 }
 
 function doRandomIntegrityCheck($sql) {
-    $r = sql_query($sql);
+    $dblink = connect_boothDB();
+    $r = $dblink->query($sql);
 
     if (!$r) {
         echo json_encode(array("error"=>sql_death1($sql)));

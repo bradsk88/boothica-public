@@ -1,0 +1,6 @@
+<div class = "noActivityRegion">
+    <div class = "noActivity">
+        There is no activity to show.
+        <!--TODO: Point user to public feed-->
+    </div>
+</div>
