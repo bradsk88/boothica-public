@@ -54,6 +54,13 @@
         {% endif %}
     </div>
 </div>
+{% if notificationRegion %}
+<div style="width: 100%;">
+    {% autoescape off %}
+    {{notificationRegion}}
+    {% autoescape on %}
+</div>
+{% endif %}
 <div class="page_frame">
     <div class="body_inside">
         <div class="requires_js_warning" id = "requires_js_warning">

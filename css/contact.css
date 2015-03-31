@@ -1,0 +1,82 @@
+.contactRegion {
+    font-family: 'Bitter', serif;
+    font-size: 4vw;
+}
+
+.contactGreeting {
+    font-size: 5vw;
+    font-weight: bold;
+    padding: 0 8vw 2vw;
+}
+
+.contactOptionTitle {
+    font-size: 4vw;
+    font-weight: bold;
+    color: #FFF;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+}
+
+.contactGreeting, .contactOptionRegion {
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 0 solid #FFF;
+}
+
+.contactOptionRegion {
+    padding: 0 0 2vw;
+}
+
+.contactOptionTitle {
+    padding: 2vw 0 2vw;
+    background-image: url(/media/bubblebackgroundbig.png);
+}
+
+.contactOptionLinkRegion {
+    height: 10vw;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.contactOptionLink {
+    margin: auto;
+}
+
+@media all and (min-width: 600px) {
+
+    .contactOptionRegion {
+        padding: 0 0 1rem;
+    }
+
+    .contactOptionLinkRegion {
+        height: 3rem;
+    }
+
+    .contactGreeting {
+        font-size: 1rem;
+        padding: 1rem 0;
+    }
+
+    .contactOptionTitle, .contactOptionBrief, .contactOptionLink {
+        font-size: 1.5rem;
+    }
+
+    .contactOptionTitle {
+        padding: 2rem 0 2rem;
+    }
+    .contactRegion {
+        max-width: 32em;
+        margin: 0 auto 0;
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .contactOptionTitle, .contactOptionBrief, .contactOptionLink {
+        font-size: 1rem;
+    }
+    .contactRegion {
+        max-width: 24rem;
+    }
+}

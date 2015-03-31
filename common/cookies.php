@@ -16,18 +16,18 @@ $parts = explode(":", $_COOKIE['userid']);
 			WHERE `fkUsername` = '".$name."' 
 			AND `cookie` = '".$rando."' 
 			AND `expiredate` > NOW();";
-	$result = mysql_query($sql);
+	$result = sql_query($sql);
 
-	if (mysql_num_rows($result) >= 1) {
+	if ($result->num_rows >= 1) {
 	
 		$sql = "DELETE FROM
 				`remembertbl`
 				WHERE `cookie` = '".$rando."'
 				OR `expiredate` < NOW();";
 
-		$delres = mysql_query($sql);
+		$delres = sql_query($sql);
 		if (!$delres) {
-			mysql_death1($sql);
+			sql_death1($sql);
 		}
 	
 		$_SESSION['username'] = $name;
@@ -63,9 +63,9 @@ $parts = explode(":", $_COOKIE['userid']);
 				(`cookie`, `fkUsername`, `expiredate`)
 				VALUES
 				('".$pr_bits."', '".strtolower($name)."', NOW() + INTERVAL 30 DAY);";
-		$insertres = mysql_query($sql);
+		$insertres = sql_query($sql);
 		if (!$insertres) {
-			mysql_deathm($sql, "failed insert on cookie");
+			sql_death1($sql);
 		}
 								
 		$parts = null;

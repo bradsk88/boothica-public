@@ -59,7 +59,7 @@ function main() {
         return;
     }
 
-    if (rand(0,100) == 0 || $_POST['force_integrity_check']) {
+    if (rand(0,100) == 0 || (isset($_POST['force_integrity_check']) && $_POST['force_integrity_check'])) {
         try {
             doRandomIntegrityCheck($sql);
         } catch (Exception $e) {
@@ -69,12 +69,12 @@ function main() {
     }
 
     unset($result);
-    $result = mysql_query($sql);
+    $result = sql_query($sql);
 
     if (!$result) {
         echo json_encode(
             array(
-                "error"=>mysql_death1($sql)
+                "error"=>sql_death1($sql)
             )
         );
         return;
@@ -82,7 +82,7 @@ function main() {
 
     $booths = array();
     $root = "http://" . $_SERVER['SERVER_NAME'];
-    while($row = mysql_fetch_array($result)) {
+    while($row = $result->fetch_array()) {
         $booths[] = array(
             'boothnum' => $row['pkNumber'],
             'boothername' => $row['fkUsername'],
@@ -100,14 +100,14 @@ function main() {
 }
 
 function doRandomIntegrityCheck($sql) {
-    $r = mysql_query($sql);
+    $r = sql_query($sql);
 
     if (!$r) {
-        echo json_encode(array("error"=>mysql_death1($sql)));
+        echo json_encode(array("error"=>sql_death1($sql)));
         return;
     }
 
-    while($row = mysql_fetch_array($r)) {
+    while($row = $r->fetch_array()) {
         if (isBoothPublic($row['pkNumber'])) {
             continue;
         }

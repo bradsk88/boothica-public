@@ -49,9 +49,9 @@ function failsStandardMobileChecksAndEchoFailureMessage() {
 
 function isKeyOK($username, $phoneid, $loginkey) {
 
-    $link = connect_mysqli_to_boothsite();
-    $username = $link->escape_string(strtolower($username));
-    $phoneid = $link->escape_string($phoneid);
+    $dblink = connect_boothDB();
+    $username = $dblink->escape_string(strtolower($username));
+    $phoneid = $dblink->escape_string($phoneid);
     if (isset($_POST['loginkey'])) {
         $sql = "
               SELECT
@@ -63,7 +63,7 @@ function isKeyOK($username, $phoneid, $loginkey) {
 
         $res = sql_query($sql);
         if (!$res) {
-            mysql_death1($sql);
+            sql_death1($sql);
             return BAD;
         }
         $r = $res->fetch_assoc();

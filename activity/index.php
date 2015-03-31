@@ -1,14 +1,20 @@
 <?php
 
-session_start();
+require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 
-if (strpos(__FILE__, '_dev')) {
+if (!isset( $_SESSION)) session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: ".base());
+    return;
+}
+
+if (strpos(__FILE__, '/_dev')) {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/_dev/content/ContentPage.php";
 } else {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/content/ContentPage.php";
 }
 
-require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 $base = base();
 
 /**

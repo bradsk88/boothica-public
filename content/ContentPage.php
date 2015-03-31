@@ -20,8 +20,6 @@ if ($_SESSION['username'] == 'bradsk88') {
     error_reporting(E_ERROR);
 }
 
-define(BASE, base());
-
 class ContentPage
 {
 
@@ -36,10 +34,10 @@ class ContentPage
     {
         $this->includeJQuery();
         $this->populateCenter = $defaultPopulateCenterFunctionName;
-        $this->meta("<script type = 'text/javascript' src = '".BASE."/common/navigation-scripts.js?version=0.1'></script>");
-        $this->meta("<script type = 'text/javascript' src = '".BASE."/messages/pm-scripts.js'></script>");
-        $this->meta("<script type = 'text/javascript' src = '".BASE."/livefeed/livefeed-scripts.js'></script>");
-        $this->meta("<script type = 'text/javascript' src = '".BASE."/newbooth/newbooth-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".base()."/common/navigation-scripts.js?version=0.1'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".base()."/messages/pm-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".base()."/livefeed/livefeed-scripts.js'></script>");
+        $this->meta("<script type = 'text/javascript' src = '".base()."/newbooth/newbooth-scripts.js'></script>");
     }
 
     function veryFirst($html)
@@ -68,7 +66,7 @@ class ContentPage
         $this->metaHTML .= "
         <script src=\"http://code.jquery.com/jquery-2.1.1.min.js\"></script>
         <script src=\"http://code.jquery.com/jquery-migrate-1.2.1.min.js\"></script>
-        <script src=\"".BASE."/common/jcanvas.min.js\"></script>
+        <script src=\"".base()."/common/jcanvas.min.js\"></script>
         <script language=\"text/javascript\" src = \"http://code.jquery.com/ui/1.10.0/jquery-ui.js\"></script>";
     }
 
@@ -77,12 +75,14 @@ class ContentPage
         session_start();
         $this->setErrorReporting();
         $link = connect_to_boothsite();
-        if (!$link) {
+        $dblink = connect_boothDB();
+        if (!isset($link) && !isset($dblink)) {
             die ("<script type = 'text/javascript'>document.write('There was a problem connecting to the database.  Probably the server just went down :(<p>Please try again in a few minutes.');</script></head></html>");
         }
 
         //session not started, check for remembrance cookie
-        if (!isset($_SESSION['username']) && isset($_COOKIE['userid'])) {
+        $username = $_SESSION['username'];
+        if (!isset($username) && isset($_COOKIE['userid'])) {
             if (cookie_set() == 0) {
                 $bodyOut .=  "Reloading. (This site requires JavaScript)";
                 $bodyOut .=  "<script>parent.window.location.reload(true);</script>";
@@ -91,10 +91,10 @@ class ContentPage
             $bodyOut .=  "Please log in";
         }
 
-        $headerlink = "".BASE."/info/news";
-        if (isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-            $headerlink = "".BASE."/activity";
+        $headerlink = "".base()."/info/news";
+        if (isset($username)) {
+            $username = $username;
+            $headerlink = "".base()."/activity";
         }
 
         $bodyOut .=  "<!DOCTYPE html>
@@ -109,16 +109,16 @@ class ContentPage
                 <div class = \"headertitle\"></div>
             </a>
             ";
-        if (isset($_SESSION['username'])) {
+        if (isset($username)) {
 
             $bodyOut .=
                 "<div class = \"headernavbutton\" onclick = \"openSnapNewBooth();\""
-                . " style = \"background-image: url(".BASE."/media/newbooth.png);\"></div>
+                . " style = \"background-image: url(".base()."/media/newbooth.png);\"></div>
                             <a href = \"/search\">
                                 <div class = \"headernavbutton advsearchbutton\" onclick = \"openAdvancedSearch();\""
-                . " style = \"background-image: url(".BASE."/media/search.png);\"></div>
+                . " style = \"background-image: url(".base()."/media/search.png);\"></div>
                             </a>
-                            <form method = \"GET\" action = \"".BASE."/searchresults\">
+                            <form method = \"GET\" action = \"".base()."/searchresults\">
                                 <input type = \"text\" class = \"searchtextarea\" name = \"q\"/>
                                 <div class = \"searchchoiceswrapper\">
                                     <select class = \"searchchoices\" name = \"scope\">
@@ -134,8 +134,8 @@ class ContentPage
                             </canvas>
                 ";
         } else {
-            $bodyOut .=  "<a href = '".BASE."/registration'><div class = \"headernavbutton\">Register</div></a>
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href = '".BASE."/login'><div class = \"headernavbutton\">Login</div></a>";
+            $bodyOut .=  "<a href = '".base()."/registration'><div class = \"headernavbutton\">Register</div></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href = '".base()."/login'><div class = \"headernavbutton\">Login</div></a>";
         }
         $bodyOut .=
             "       </div>
@@ -149,19 +149,22 @@ class ContentPage
 ";
 
         $usercard = "";
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+        }
 
         if (isset($_SESSION['username']) && $this->includeSideBars) {
             $displayName = getDisplayName($username);
             $userImage = UserImage::getImage($username);
 
             $usercard =
-                "<div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(".BASE. (string)$userImage . ")'></div>
+                "<div class = 'usercardimage' onclick = \"openUserFeed('" . $username . "')\" style = 'background-image: url(".base(). (string)$userImage . ")'></div>
                         <div class = \"usercardcontent\">
                             <div class = 'usercardname'>
                                 <span onclick = \"openUserFeed('" . $username . "')\">@" . $displayName . "</span>
                             </div>
                             <div class = 'usercardstats'>
-                                <a id = \"boothsnum\" href = '".BASE."/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
+                                <a id = \"boothsnum\" href = '".base()."/users/" . $username . "' onclick = \"openUserFeed('" . $username . "')\">
                                     ??? Booths
                                 </a> / <a id = \"friendsnum\" href = '/users/" . $username . "/friends'>
                                     ??? Friends
@@ -173,7 +176,7 @@ class ContentPage
 
         if ($this->includeSideBars) {
 
-            if (isset($_SESSION['username']) && $this->includeSideBars) {
+            if (isset($username) && $this->includeSideBars) {
                 $bodyOut .=
                     "                               <div class = 'usercard' id = 'usercardright'>
                                                         ".$usercard.
@@ -182,7 +185,7 @@ class ContentPage
 
             $bodyOut .=
                 "                               <div class = 'usercard' id = 'rightcard'>
-                                                    <div class = 'usercardimage' style = 'background-image: url(".BASE."/media/messages.png); background-repeat: no-repeat; background-size: auto;'></div>
+                                                    <div class = 'usercardimage' style = 'background-image: url(".base()."/media/messages.png); background-repeat: no-repeat; background-size: auto;'></div>
                                     <div class = \"usercardcontent\">
                                         <div class = 'usercardtext' onclick=\"reloadUsersNotifications()\">Notifications</div>
                                         <div class = 'usercardnumwrap' id = 'notifscountwrap'>
@@ -208,7 +211,7 @@ class ContentPage
                             <div style = 'clear:both;'></div>
                         </div>
                                         <div class = 'leftpane' id = 'leftpane'>";
-        if (isset($_SESSION['username']) && $this->includeSideBars) {
+        if (isset($username) && $this->includeSideBars) {
             $bodyOut .=  "
                 <div class = 'usercard' id = 'leftcard'>" .
                 $usercard."
@@ -225,13 +228,13 @@ class ContentPage
                     </div>
                     <div style = \"clear:both\"></div>
                     <div class = 'subheader'>
-                        <a href = '".BASE."/info/news'><span class = 'subheadernavbutton'>News</span></a>
-                    <a href = '".BASE."/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
-                    <!--TODO<a href = '".BASE."/info/tos'><span class = 'subheadernavbutton'>Terms of Service</span></a>-->
-                    <a href = '".BASE."/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
-                    <a href = '".BASE."/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
-                    <a href = '".BASE."/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
-                    <a href = '".BASE."/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
+                        <a href = '".base()."/info/news'><span class = 'subheadernavbutton'>News</span></a>
+                    <a href = '".base()."/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
+                    <!--TODO<a href = '".base()."/info/tos'><span class = 'subheadernavbutton'>Terms of Service</span></a>-->
+                    <a href = '".base()."/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
+                    <a href = '".base()."/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
+                    <a href = '".base()."/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
+                    <a href = '".base()."/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
                 </div>
                 </body>
             </html>";
@@ -248,12 +251,12 @@ class ContentPage
         $str = "<meta http-equiv='content-type' content='text/html; charset=UTF-8' />
         <meta name=\"keywords\" content=\"dailybooth, social, photography, photo, socialnetworking, microblogging, community, web2.0, pictures, blog, photos\">
 		<title>Boothi.ca - Take a picture every day and make friends</title>
-		<link rel='stylesheet' href='".BASE."/css/master.css' type='text/css' media='screen' />
-		<link rel='stylesheet' href='".BASE."/css/contentpage.css' type='text/css' media='screen' />
-		<link rel=\"shortcut icon\" href=\"".BASE."/favicon.ico\" type=\"image/x-icon\">
+		<link rel='stylesheet' href='".base()."/css/master.css' type='text/css' media='screen' />
+		<link rel='stylesheet' href='".base()."/css/contentpage.css' type='text/css' media='screen' />
+		<link rel=\"shortcut icon\" href=\"".base()."/favicon.ico\" type=\"image/x-icon\">
 		<script type = \"text/javascript\">defaultPopulateCenterFunction = \"" . $this->populateCenter . "\";</script>";
         if ($this->redirectToLogin) {
-            $str .= "<script type = \"text/javascript\" src = \"".BASE."/content/ContentPage-scripts.js\"></script>";
+            $str .= "<script type = \"text/javascript\" src = \"".base()."/content/ContentPage-scripts.js\"></script>";
         }
         $str = $this->metaHTML . $str;
         return $str;

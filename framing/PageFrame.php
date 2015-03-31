@@ -36,6 +36,8 @@ class PageFrame {
     private $metaRawScripts = array();
     private $metaCss = array();
     private $metaRemoteCss = array();
+    private $notificationRegion = null;
+    private $excludeLoginNotification = false;
     private $body;
     private $firstSidebarTitle = "";
     private $firstSidebarCollapsed = false;
@@ -82,6 +84,10 @@ class PageFrame {
         $this->metaRemoteCss[] = $externalUrl;
     }
 
+    public function excludeLoginNotification() {
+        $this->excludeLoginNotification = true;
+    }
+
     function echoHtml() {
         echo $this->render();
     }
@@ -100,13 +106,11 @@ class PageFrame {
                 echo "Reloading. (This site requires JavaScript)";
                 echo "<script>parent.window.location.reload(true);</script>";
                 return;
-            } else {
-            	$baseUrl = base();
-           	 echo <<<EOF
+            } else if (!$this->excludeLoginNotification ) {
+           	    $this->notificationRegion = '
                 <a href = "$baseUrl/login">
                     <div class = "login_prompt">Please log in</div>
-                </a>
-EOF;
+                </a>';
    	    }
 	}
 
@@ -121,6 +125,7 @@ EOF;
             "metaScripts" => $this->metaScripts,
             "metaRawScripts" => $this->metaRawScripts,
             "loggedIn" => isset($_SESSION['username']),
+            "notificationRegion" => $this->notificationRegion,
             "body" => $this->body,
             "headerlink" => $headerlink,
             "baseUrl" => base(),
@@ -147,6 +152,13 @@ EOF;
         }
     }
 
+    public function setBodyTemplateAndValues($file, $values)
+    {
+        $h2o = new h2o($file);
+        $html = $h2o->render(array_merge($values, array("baseUrl" => base(), "baseUrlWithoutProtocol" => baseWithoutProtocol())));
+        $this->body($html);
+    }
+
     private function footer() {
         //TODO: Bring this back
         return "";
@@ -163,7 +175,6 @@ EOF;
 
     private function initialMeta()
     {
-        $this->css(base()."/css/master.css");
         $this->css(base()."/css/pageframe.css");
         $this->script(base()."/framing/PageFrame-scripts.js.php");
         $this->script(base()."/lib/mustache.js");

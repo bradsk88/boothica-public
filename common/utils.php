@@ -218,9 +218,10 @@ function death($error) {
     ob_start();
     debug_print_backtrace();
     $trace = ob_get_clean();
+    error_log($error);
     foreach (getDevs() as $dev) {
-        error_log("You are receiving this because you are on the developers list\n\nUsername at time of death: ".$usern.
-            "\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".$error."\n\n".get_ip_address()."\n\n".$trace, 1, $dev);
+//        error_log("You are receiving this because you are on the developers list\n\nUsername at time of death: ".$usern.
+//            "\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".$error."\n\n".get_ip_address()."\n\n".$trace, 1, $dev);
     }
     return "Internal error.";
 }
@@ -236,14 +237,15 @@ function debug($text) {
 
 function record_ip($type) {
 
+    $dblink = connect_boothDB();
     $sql = "INSERT INTO
 			`hackattemptstbl`
 			(`ip`, `type`)
 			VALUES
 			('".get_ip_address()."', '".$type."');";
-    $result = mysql_query($sql);
+    $result = $dblink->query($sql);
     if (!$result) {
-        mysql_death("Hack report is broken. IP: ".get_ip_address()." TYPE: ".$type);
+        sql_death1("Hack report is broken. IP: ".get_ip_address()." TYPE: ".$type);
     }
 
 }
@@ -273,30 +275,31 @@ function isPublic($username) {
 			FROM `logintbl`
 			WHERE `username` = '".$username."'
 			LIMIT 1;";
-    $result = mysql_query($sql);
+    $dblink = connect_boothDB();
+    $result = $dblink->query($sql);
     if (!$result) {
-        mysql_death1($sql);
+        sql_death1($sql);
         return false;
     }
 
-    $loginarray= mysql_fetch_array($result);
+    $loginarray= $result->fetch_array();
     $passwordhash = $loginarray['password'];
 
     $sql = "SELECT `fkPassword`
 			FROM `userspublictbl`
 			WHERE `fkUsername` = '" . $username . "'
 			LIMIT 1;";
-    $result2 = mysql_query($sql);
+    $result2 = $dblink->query($sql);
     if (!$result2) {
-        mysql_death1($sql);
+        sql_death1($sql);
         return false;
     }
-    $numrows = mysql_num_rows($result);
+    $numrows = $result->num_rows;
     if ($numrows == 1) {
-        $publichasharray = mysql_fetch_array($result2);
+        $publichasharray = $result2->fetch_array();
         $publichash = $publichasharray['fkPassword'];
     } else {
-        if (mysql_num_rows($result2) > 1) {
+        if ($result2->num_rows > 1) {
             record_ip('".$commentername.": muliple entries in public table');
         }
         return false;
@@ -306,16 +309,6 @@ function isPublic($username) {
         return true;
     }
     return false;
-
-}
-
-function putTest($val) {
-
-    $sql = "INSERT INTO `boothsite`.`testtbl` (`val`) VALUES ('".$val."');";
-    $result = mysql_query($sql);
-    if (!$result) {
-        mysql_death1($sql);
-    }
 
 }
 
@@ -375,22 +368,23 @@ function isFriendOf($user1,$user2) {
     if ($user1 == $user2) {
         return true;
     }
+    $dblink = connect_boothDB();
     $sql = "SELECT
 			true
 			FROM `friendstbl`
 			WHERE `fkUsername` = '".$user2."'
 			AND `fkFriendName` = '" . $user1 . "'
 			LIMIT 2;";
-    $result = mysql_query($sql);
+    $result = $dblink->query($sql);
     if ($result) {
-        $num = mysql_num_rows($result);
+        $num = $result->num_rows;
         if ($num == 1) {
             return true;
         } else if ($num > 1) {
             record_ip("friendship ".$user1."->".$user2." exists in database more than once.");
         }
     } else {
-        mysql_death1($sql);
+        sql_death1($sql);
     }
     return false;
 
@@ -423,13 +417,14 @@ function userExists($username) {
     if (strlen($username) == 0) {
         return false;
     }
+    if (!isset($link)) $link = connect_to_boothsite();
     $sql = "SELECT `username` FROM `logintbl` WHERE `username` = '".$username."' LIMIT 1";
     return !emptyResult(sql_query($sql));
 }
 
 function isBanned($username) {
 
-    connect_mysqli_to_boothsite();
+    $dblink = connect_boothDB();
     $sql = "SELECT `fkUsername` FROM `usersbannedtbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
     $result = sql_query($sql);
     if ($result) {
@@ -697,6 +692,7 @@ function accountHasProblems($username) {
 }
 
 function hasNoSecurity($username) {
+    $link = connect_to_boothsite();
     $sql = "SELECT true FROM `usersecuritytbl`
 			WHERE `fkUsername` = '".$username."'
 			LIMIT 1;";
@@ -708,6 +704,7 @@ function hasNoSecurity($username) {
 }
 
 function hasNoEmail($username) {
+    if (!isset($link)) $link = connect_to_boothsite();
     $sql = "SELECT true FROM `emailtbl`
 			WHERE `fkUsername` = '".$username."'
 			AND `email` = ''
@@ -720,6 +717,7 @@ function hasNoEmail($username) {
 }
 
 function getEmail($username) {
+    if (!isset($link)) $link = connect_to_boothsite();
     $sql = "SELECT `email` FROM `emailtbl` WHERE `fkUsername` = '".$username."' LIMIT 1;";
     $result = mysql_query($sql);
     if (!$result) {
@@ -743,7 +741,7 @@ function isModerator($username) {
         death("Attempted to check moderator status when user not logged in IP:".get_ip_address());
         return false;
     }
-
+    if (!isset($link)) $link = connect_to_boothsite();
     $sql = "SELECT `isAdmin` FROM `logintbl` WHERE `username` = '".$username."' LIMIT 2";
     $result = mysql_query($sql);
     if ($result) {
@@ -779,8 +777,8 @@ function isDeveloper($username) {
         death("Attempted to check developer status when user not logged in IP:".get_ip_address());
         return false;
     }
-
     //TODO Check hash -BJ
+    if (!isset($link)) $link = connect_to_boothsite();
     $sql = "SELECT true FROM `usersdevstbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
     $result = mysql_query($sql);
     if ($result) {

@@ -16,10 +16,9 @@ function main() {
     require_common("db");
     require_common("utils");
 
-    $link = connect_to_boothsite();
-    update_online_presence();
+    $dblink = connect_boothDB();
 
-   $username = $_POST['username'];
+    $username = $_POST['username'];
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
     }
@@ -55,14 +54,14 @@ function main() {
             FROM `sitenoticestbl`
             ORDER BY `pkNum` DESC
             LIMIT 1";
-    $result = mysql_query($sql);
+    $result = sql_query($sql);
 
     if (!$result) {
-        echo mysql_death1($sql);
+        echo sql_death1($sql);
         return;
     }
 
-    while($row = mysql_fetch_array($result)) {
+    while($row = $result->fetch_array()) {
         if ($row['old']) {
             continue;
         }
@@ -98,12 +97,12 @@ function getNews() {
 
     $sql = "SELECT COUNT(*) AS `num` FROM `sitemsgtbl`
             WHERE `fkUsername` = '".$_SESSION['username']."' AND `area` = 'news';";
-    $result = mysql_query($sql);
+    $result = sql_query($sql);
     if (!$result) {
-        mysql_death1($sql);
+        sql_death1($sql);
     }
 
-    $row = mysql_fetch_array($result);
+    $row = $result->fetch_array();
     return $row['num'];
 
 }
