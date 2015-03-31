@@ -15,7 +15,7 @@
         <a class="sideBoothOpenButtonRegion" href="{{boothUrl}}">
             <div>
                 <div class="sideBoothOpenButton">
-                    {{commentsCount}} Comments
+			Open
                 </div>
             </div>
         </a>
