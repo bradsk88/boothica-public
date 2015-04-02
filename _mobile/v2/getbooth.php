@@ -112,7 +112,7 @@ function main() {
                 'blurb' => "This booth is private",
                 'imageHash' => "/media/private.jpg",
                 'imagePath' => "/media/private.jpg",
-                'imageProp' => $row['imageHeightProp'],
+                'imageProp' => 0.75,
                 'firstnum' => $firstnum,
                 'lastnum' => $lastnum,
                 'prevnum' => $prevBooth,
@@ -123,7 +123,7 @@ function main() {
                 'datetime' => $row['datetime'],
                 'hoursago' => $row['hours'],
                 'minutesago' => $row['minutes'],
-                'absoluteImageUrl' => $root.$imagePath
+                'absoluteImageUrl' => base()."/media/private.jpg"
             );
             echo json_encode(array(
                 "success" => $booth
