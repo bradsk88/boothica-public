@@ -1,5 +1,7 @@
 <?php
 
+require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+
 /*
  * Finds usernames in a blurb and turns them into links0
  */
@@ -12,7 +14,7 @@ function handle_mentions($blurb) {
  */
 function linkify_mention($mentions) {
     $mention = $mentions[1];
-    return "<a href = '/users/".strtolower($mention)."/booths.php'>@".$mention."</a>";
+    return "<a class = \"mention\" href = \"".base()."/users/".strtolower($mention)."/booths.php\">@".$mention."</a>";
 }
 
 /*
@@ -27,7 +29,7 @@ function handle_hashtags($blurb) {
  */
 function linkify_hashtag($mentions) {
     $mention = $mentions[1];
-    return "<a href = '/searchresults?scope=booth&q=%23".$mention."'>#".$mention."</a>";
+    return "<a class = \"hashtag\" href = \"".base()."/searchresults?scope=booth&q=%23".$mention."\">#".$mention."</a>";
 }
 
 /*
@@ -47,7 +49,7 @@ function linkify_link($links) {
     if (count($matches) == 0) {
         $fixedlink = "http://".$link;
     }
-    return "<a href = '".$fixedlink."'>" . $link . "</a>";
+    return "<a class = \"extLink\" href = '".$fixedlink."'>" . $link . "</a>";
 }
 
 /**

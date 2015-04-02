@@ -59,7 +59,8 @@ function getComments() {
 }
 
 function doGetComments($boothnumber) {
-    echo json_encode(toArray(Comments::loadForBooth($boothnumber)));
+    $comments = Comments::loadForBooth($boothnumber);
+    echo json_encode(toArray($comments));
     return;
 }
 

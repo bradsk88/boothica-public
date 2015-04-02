@@ -121,13 +121,13 @@ function go_to_unexpected_error() {
 
 function go_to_db_error($sql) {
     if (isset($down) && $down) {
-        echo(mysql_error($sql));
+        echo(sql_error($sql));
         return;
     }
     if (isset($_SESSION['username']) && isModerator($_SESSION['username'])) {
         go_to_error($sql);
     } else {
-        go_to_error(mysql_death1($sql));
+        go_to_error(sql_death1($sql));
     }
 }
 
@@ -457,6 +457,8 @@ function isIndividualBoothPrivate($boothnumber) {
 
 function isBoothPublic($boothnumber) {
 
+    $dblink = connect_boothDB();
+
     if (isIndividualBoothPrivate($boothnumber)) {
         return false;
     }
@@ -468,19 +470,19 @@ function isBoothPublic($boothnumber) {
 					WHERE `pkNumber` = ".$boothnumber."
 					LIMIT 1 )
 			LIMIT 2";
-    $result = mysql_query($sql);
+    $result = $dblink->query($sql);
     if ($result) {
-        $num = mysql_num_rows($result);
+        $num = $result->num_rows;
         if ($num == 1) {
             return true;
         } else if ($num == 0) {
             return false;
         } else {
-            death("Multiple entries in usersbannedtbl.  Name: ".$username.", IP:".get_ip_address());
+            death("Multiple entries in userspublictbl.  Booth Number: ".$boothnumber.", IP:".get_ip_address());
             return false;
         }
     } else {
-        mysql_death2($link,$sql);
+        sql_death1($sql);
         return false;
     }
 }
@@ -741,15 +743,14 @@ function isModerator($username) {
         death("Attempted to check moderator status when user not logged in IP:".get_ip_address());
         return false;
     }
-    if (!isset($link)) $link = connect_to_boothsite();
+    if (!isset($dblink)) $dblink = connect_boothDB();
     $sql = "SELECT `isAdmin` FROM `logintbl` WHERE `username` = '".$username."' LIMIT 2";
-    $result = mysql_query($sql);
+    $result = $dblink->query($sql);
     if ($result) {
-        $num = mysql_num_rows($result);
+        $num = $result->num_rows;
         if ($num == 1) {
-            $row = mysql_fetch_array($result);
+            $row = $result->fetch_array();
             $isAdmin = ($row['isAdmin'] == 1);
-
             if ($isAdmin) {
                 return true;
             } else {
@@ -765,7 +766,7 @@ function isModerator($username) {
             return false;
         }
     } else {
-        mysql_death1($sql);
+        sql_death1($sql);
         return false;
     }
 

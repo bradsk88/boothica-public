@@ -16,8 +16,8 @@ function main() {
 
     $root = base();
 
-    $username = 'tester2';
-    $boothnum = 18304;
+    $username = 'bradsk88';
+    $boothnum = 1;
 
     //TODO: check if username and booth number are sympatico.  If not, redirect.
     //TODO: Add photo comment display
@@ -69,7 +69,7 @@ EOT;
         "loggedIn" => isset($_SESSION['username'])
     )));
     $page->css($root."/css/posts.css");
-    $page->css($root."/css/onebooth-page.css");
+    $page->css($root."/css/oneBooth-page.css");
     $page->css($root."/css/textcomment-nocontext.css");
     $page->css($root."/css/textcomment-input.css");
     initializeSideBars($page);
