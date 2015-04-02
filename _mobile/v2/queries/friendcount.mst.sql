@@ -3,4 +3,4 @@ SELECT
 FROM
   friendstbl
 WHERE
-  fkUsername == '{{username}}'
+  fkUsername = '{{username}}'

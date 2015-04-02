@@ -26,12 +26,17 @@ class ActivityResponse extends AbstractUserApiResponse {
             return array();
         }
 
-        $sqlBuilder = new h2o("queries/activity.mst.sql");
+        $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/activity.mst.sql");
+
         $sql = $sqlBuilder->render(array(
             "username"=>$dblink->real_escape_string($username),
-            "pageNum"=>$dblink->real_escape_string($pageNum),
+            "pageStartIndex" => $numPerPage * ($pageNum - 1),
             "numPerPage"=>$dblink->real_escape_string($numPerPage)
         ));
+
+
+
+
         $result = $dblink->query($sql);
         if (!$result) {
             sql_death1($sql);
@@ -39,9 +44,7 @@ class ActivityResponse extends AbstractUserApiResponse {
         }
 
         $output = array();
-
-        $rows = $result->fetch_array();
-        foreach ($rows as $row) {
+        while ($row = $result->fetch_array()) {
             $output[] = $row['commenter'];
         }
         return $output;

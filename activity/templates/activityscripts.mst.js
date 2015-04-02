@@ -27,8 +27,8 @@ var loadActivity = function() {
         $("#activity_feed").append("failure: " + data.error);
 
     }, "json")
-        .fail(function() {
-
+        .fail(function(_, s) {
+            $("#activity_feed").append("failure: " + s);
         });
 
 };
@@ -42,5 +42,6 @@ var renderActivityFeed = function(items) {
         });
         return;
     }
+    $("#activity_feed").append(items.toString());
 
 };

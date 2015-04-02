@@ -112,4 +112,4 @@ AND
   )
 )
 ORDER BY A.datetime DESC
-LIMIT {{numPerPage * (pageNum - 1)}}, {{numPerPage}};
+LIMIT {{pageStartIndex}}, {{numPerPage}};
