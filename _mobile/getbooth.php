@@ -117,7 +117,7 @@ function main() {
                 'datetime' => $row['datetime'],
                 'hoursago' => $row['hours'],
                 'minutesago' => $row['minutes'],
-                'absoluteImageUrl' => base()."/media/private.jpg"
+                'absoluteImageUrl' => $root.$imagePath
             );
             echo json_encode($booths);
             return;
