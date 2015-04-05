@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /_mobile/
+Disallow: /account/
+Disallow: /actions/
+Disallow: /booths/
+Disallow: /bugs/
+Disallow: /cgi-bin/
+Disallow: /comments/
+Disallow: /content/
+Disallow: /css/
+Disallow: /errors/
+Disallow: /media/
+Disallow: /messages/
+Disallow: /moderation/
+Disallow: /registration/
+Disallow: /userpages/
+Disallow: /utils/

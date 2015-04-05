@@ -1,0 +1,13 @@
+<h1>Search:</h1>
+<form action = '{{baseUrl}}/searchresults' method = 'get'>
+    <input type = "radio" name = "scope" value = "user" checked />Users
+    <input type = "radio" name = "scope" value = "booth" />Booths
+    <input type = "radio" name = "scope" value = "booth_comment" />Comments<br/>
+    <input type = 'text' id = 'q' name = 'q' style = "width: 100%" />
+    <input type = 'submit' value = 'Search'>
+</form>
+<script type = "text/javascipt">
+$(function() {
+    $("#q").focus();
+});
+</script>

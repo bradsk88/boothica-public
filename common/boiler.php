@@ -11,7 +11,7 @@ function base() {
 }
 
 function baseWithoutProtocol() {
-    return "192.168.1.157";
+    return "localhost";
 }
 
 function require_common( $asset ) {
