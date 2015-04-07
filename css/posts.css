@@ -191,6 +191,10 @@
         overflow: hidden;
     }
 
+    .sideBoothRegion {
+        border-radius: 0.5rem;
+    }
+
 }
 
 /* Bigger screens */
@@ -201,7 +205,7 @@
     }
 
     .centerBoothRegion {
-        background-color: #FFF;
+        background-color: #B7F2DD;
         padding: 1em 3em;
         margin: 0.5em 0;
     }

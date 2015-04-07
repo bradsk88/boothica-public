@@ -91,7 +91,8 @@ class GetBoothApiResponse extends AbstractUserApiResponse {
                     'datetime' => $row['datetime'],
                     'hoursago' => $row['hours'],
                     'minutesago' => $row['minutes'],
-                    'absoluteImageUrl' => $absoluteImageUrl
+                    'absoluteImageUrl' => $absoluteImageUrl,
+                    'allowed' => $cansee,
                 );
                 echo json_encode(array(
                     "success" => $booth
@@ -114,11 +115,12 @@ class GetBoothApiResponse extends AbstractUserApiResponse {
                     'nextnum' => $nextBooth,
                     'likes' => 0,
                     'isfriend' => $isBootherFollowingMe,
-                    'is_current_user_following' => isFriendOf($boothername, $username),
+                    'isCurrentUserFollowing' => isFriendOf($boothername, $username),
                     'datetime' => $row['datetime'],
                     'hoursago' => $row['hours'],
                     'minutesago' => $row['minutes'],
-                    'absoluteImageUrl' => base()."/media/private.jpg"
+                    'absoluteImageUrl' => base()."/media/private.jpg",
+                    'allowed' => false,
                 );
                 echo json_encode(array(
                     "success" => $booth

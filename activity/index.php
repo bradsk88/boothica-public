@@ -14,6 +14,7 @@ function main() {
     $page->setBodyTemplateAndValues("templates/activity.mst", array());
     $page->css($root."/css/posts.css");
     $page->css($root."/css/activity.css");
+    $page->css($root."/css/textcomment-withbooth.css");
     $page->useDefaultSideBars();
     $page->script(base()."/activity/script.js");
     $page->echoHtml();

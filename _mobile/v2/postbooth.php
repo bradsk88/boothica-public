@@ -22,7 +22,7 @@ try {
 
 function main() {
 
-    $link = connect_mysqli_to_boothsite();
+    $link = connect_boothDB();
     $username = $_POST['username'];
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];

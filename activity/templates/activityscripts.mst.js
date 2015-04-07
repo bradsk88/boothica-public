@@ -27,9 +27,11 @@ var loadActivity = function() {
         $("#activity_feed").append("failure: " + data.error);
 
     }, "json")
-        .fail(function(_, s) {
-            $("#activity_feed").append("failure: " + s);
-        });
+    .fail(function(_, s) {
+        $("#activity_feed").append($("<img/>", {
+            src: "{{baseUrl}}/media/failwhale.png"
+        }));
+    });
 
 };
 
@@ -42,6 +44,20 @@ var renderActivityFeed = function(items) {
         });
         return;
     }
-    $("#activity_feed").append(items.toString());
-
+    $.get('{{baseUrl}}/comment/templates/textWithBooth.mst', function (template) {
+        $.each(items, function(idx, obj) {
+            var html = Mustache.render(template, {
+                username: obj.commenterName,
+                bootherName: obj.bootherName,
+                bootherDisplayName: obj.bootherDisplayName,
+                boothNum: obj.boothNum,
+                commenterImageUrl: obj.commenterImage,
+                commenterDisplayName: obj.commenterDisplayName,
+                boothImageUrl: obj.bootherImage,
+                text: obj.commentText,
+                boothShortDescription: obj.bootherName == obj.currentUserName ? "your booth" : obj.bootherDisplayName + "'s booth"
+            });
+            $("#activity_feed").append(html);
+        });
+    });
 };

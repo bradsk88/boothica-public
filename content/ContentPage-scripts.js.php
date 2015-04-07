@@ -154,7 +154,7 @@ function doReloadFriendFeed(visible, invisible) {
 
 function reloadSiteWideNotifications() {
     $("#centerpane").prepend("<div style = 'text-align: center;' class = 'centersection'>" +
-    "   <a href = '$base/userpages/friendsactivity'>Having trouble?  Click here for the old layout</a></div>");
+    "   <a href = '$base/userpages/friendsactivity'>Click here for old layout (will be phased out soon)</a></div>");
     $.post("$base/_mobile/getsitewidenotifications.php", {
     }, function (data) {
         myDebug("about to prepend");

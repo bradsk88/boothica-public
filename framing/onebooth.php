@@ -7,6 +7,8 @@
  */
 require_once "{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+require_common("utils");
+require_once "{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php";
 
 error_reporting(E_ALL);
 if (!isset($_SESSION)) session_start();
@@ -30,27 +32,15 @@ function main() {
     //TODO: Add edit blurb (for boother)
     //TODO: Add ability to see who has liked
 
-    //TODO: h2o this \/
-    $html = <<<EOT
-    <div class = "section_toggler" id = "user_booth_body_toggler">
-        $username - Booth #$boothnum
-    </div>
-    <div class = "userBoothBody" id = "user_booth_body"></div>
-    <div class = "userBoothButtonsRegion">
-        <div class = "userBoothButton" id = "like_booth_button" onclick = "likeBooth($boothnum, '$username')">
-            <div class = "boothLikesCounterRegion">
-                <div id = "booth_likes_counter">0</div>
-            </div>
-            Like
-        </div>
-    </div>
-    <div class = "userBoothComments" id = "user_booth_comments"></div>
-    <div id="loadmoreajaxloader" style="display:none;">
-        <center><img src="$root/media/ajax-loader.gif" /></center>
-    </div>
-EOT;
+    $allowedToInteractWithBooth = isAllowedToInteractWithBooth($_SESSION['username'], $boothnum);
 
-    if (isLoggedIn()) {
+    $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/booth/templates/oneBoothFrame.mst");
+    $html = $htmlBuilder->render(array(
+        "baseUrl" => $root,
+        "allowed" => $allowedToInteractWithBooth
+    ));
+
+    if (isLoggedIn() && $allowedToInteractWithBooth) {
         $commentInputH2O = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/textCommentInput.mst");
         $html .= $commentInputH2O->render(array(
             "baseUrl" => $root,

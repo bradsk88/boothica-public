@@ -5,3 +5,13 @@
 .noActivityRegion {
     padding: 5rem;
 }
+
+.activityHeader {
+    margin: 1rem 0 0;
+    background-color: #87E1C1;
+    border-radius: 0.5rem;
+    display: inline-block;
+    padding: 0.5rem;
+    width: 20rem;
+    font-weight: bold;
+}

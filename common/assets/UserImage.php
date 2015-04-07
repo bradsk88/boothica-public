@@ -89,6 +89,10 @@ class UserImage {
 
     }
 
+    public static function getAbsoluteImage($username) {
+        return base().UserImage::getImage($username);
+    }
+
     public function __toString() {
         return $this->string;
     }

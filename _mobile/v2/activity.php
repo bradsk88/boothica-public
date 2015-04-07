@@ -45,7 +45,17 @@ class ActivityResponse extends AbstractUserApiResponse {
 
         $output = array();
         while ($row = $result->fetch_array()) {
-            $output[] = $row['commenter'];
+            $output[] = array(
+                "currentUserName" => $username,
+                "commentText" => $row['commentText'],
+                "commenterName" => $row['commenterName'],
+                "commenterDisplayName" => (string) getDisplayName($row['commenterName']),
+                "commenterImage" => UserImage::getAbsoluteImage($row['commenterName']),
+                "bootherName" => $row['bootherName'],
+                "bootherDisplayName" => (string) getDisplayName($row['bootherName']),
+                "bootherImage" => UserImage::getAbsoluteImage($row['bootherName']),
+                "boothNum" => $row['boothNum']
+            );
         }
         return $output;
 

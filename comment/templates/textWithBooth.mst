@@ -1,0 +1,32 @@
+<div class="textCommentRegionWithBooth">
+    <div class="textCommentBoothImageRegion">
+        <a href="{{baseUrl}}/users/{{bootherName}}/{{boothNum}}">
+            <img src="{{boothImageUrl}}" class="textCommentBoothImage"/>
+        </a>
+    </div>
+    <div class="textCommentImageRegionWithBooth">
+        <a href="{{baseUrl}}/users/{{username}}">
+            <img src="{{commenterImageUrl}}" class="textCommentImageWithBooth"/>
+        </a>
+    </div>
+    <div class="textCommentHeaderRegionWithBooth">
+        <div class="textCommentHeaderWithBooth">
+            <a href = "{{baseUrl}}/users/{{username}}" class = "bootherLink">{{commenterDisplayName}}</a>
+            commented on
+            <a href = "{{baseUrl}}/users/{{bootherName}}/{{boothNum}}" class = "boothLink">{{boothShortDescription}}</a>
+        </div>
+    </div>
+    <div class="textCommentTextRegionWithBooth">
+        <div class="textCommentTextWithBooth">
+            {{{text}}}
+        </div>
+    </div>
+    <div class="textCommentButtonsRegionWithBooth">
+        <div class="textCommentLikeButtonRegionWithBooth">
+            <div class = "textCommentLikeButtonWithBooth" id = "commentLikeButton">Like</div>
+        </div>
+        <div class="textCommentDeleteButtonRegionWithBooth">
+            <div class = "textCommentDeleteButtonWithBooth" id = "commentDeleteButton">Delete</div>
+        </div>
+    </div>
+</div>
