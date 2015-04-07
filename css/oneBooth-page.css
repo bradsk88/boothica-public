@@ -99,4 +99,9 @@
         margin-bottom: 0.25em;
     }
 
+    .oneBoothBlurbRegion {
+        margin: 0 auto;
+        max-width: 40em;
+    }
+
 }

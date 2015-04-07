@@ -4,7 +4,9 @@
 
 	//methods for sending emails to friends after posting a booth
 	function sendNewBoothEmail($username, $number) {
-	
+
+        return; //TODO: Bring this back for prod
+        $dblink = connect_boothDB();
 		$sql = "SELECT 
 			`email` 
 			FROM `emailtbl` 
@@ -15,9 +17,9 @@
 				WHERE `fkFriendName` = '".$username."') 
 			AND `friendBooth` = 1 
 			AND NOT `fkUsername` = '".$username."';";
-		$emailres = mysql_query($sql);
+		$emailres = $dblink->query($sql);
 		if (!$emailres) {
-			mysql_death1($sql);
+			sql_death1($sql);
 		}	
 
 		$site = $_SERVER['HTTP_HOST'];
@@ -26,7 +28,7 @@
 		$headers .= "From: Boothi.ca<noreply@$site>\r\n";
 		$name = $_SESSION['username'];
 		require_once "{$_SERVER['DOCUMENT_ROOT']}/common/internal_utils.php";
-		while ($row = mysql_fetch_array($emailres)) {
+		while ($row = $emailres->fetch_array()) {
 			mail(
 				$row['email'], 
 				"New Booth: $name", 

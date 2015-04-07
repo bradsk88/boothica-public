@@ -18,8 +18,8 @@ function main() {
 
     $root = base();
 
-    $username = 'bradsk88';
-    $boothnum = 1;
+    $username = $_REQUEST['username'];
+    $boothnum = $_REQUEST['boothnum'];
 
     //TODO: check if username and booth number are sympatico.  If not, redirect.
     //TODO: Add photo comment display
