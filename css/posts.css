@@ -195,6 +195,13 @@
         border-radius: 0.5rem;
     }
 
+    .sideBooth {
+        border-radius: 1rem;
+    }
+
+    .centerBoothOpenButton {
+        box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.5);
+    }
 }
 
 /* Bigger screens */
@@ -205,7 +212,7 @@
     }
 
     .centerBoothRegion {
-        background-color: #B7F2DD;
+        background-color: #FFF;
         padding: 1em 3em;
         margin: 0.5em 0;
     }
@@ -218,6 +225,7 @@
         background-color: white;
         margin: 0.5em 0;
         padding: 0 0.25em;
+        box-shadow: 0 1rem 1rem rgba(0,0,0,0.125);
     }
 
 }

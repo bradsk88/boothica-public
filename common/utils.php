@@ -417,7 +417,7 @@ function userExists($username) {
     if (strlen($username) == 0) {
         return false;
     }
-    if (!isset($link)) $link = connect_to_boothsite();
+    if (!isset($dblink)) $dblink = connect_boothDB();
     $sql = "SELECT `username` FROM `logintbl` WHERE `username` = '".$username."' LIMIT 1";
     return !emptyResult(sql_query($sql));
 }

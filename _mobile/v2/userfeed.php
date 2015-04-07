@@ -13,8 +13,7 @@ function main()
     require_common("db");
     require_common("utils");
 
-    $link = connect_to_boothsite();
-    update_online_presence();
+    $dblink = connect_boothDB();
 
     $username = $_POST['username'];
     if (isset($_SESSION['username'])) {
@@ -58,18 +57,19 @@ function main()
         return;
     }
 
-    $result = mysql_query($sql);
+    $dblink = connect_boothDB();
+    $result = $dblink->query($sql);
 
     if (!$result) {
         echo json_encode(
             array(
-                "error" => mysql_death1($sql)));
+                "error" => sql_death1($sql)));
         return;
     }
 
     $booths = array();
-    while ($row = mysql_fetch_array($result)) {
-        $root = "http://" . $_SERVER['SERVER_NAME'];
+    while ($row = $result->fetch_array()) {
+        $root = base();
         $booths[] = array(
             'boothnum' => $row['pkNumber'],
             'boothername' => $row['fkUsername'],
