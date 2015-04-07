@@ -32,6 +32,17 @@ function main() {
         $numperpage = $_POST['numperpage'];
     }
 
+    $sql = "SELECT COUNT(*) as count FROM friendstbl WHERE fkUsername = '".$username.";'";
+    $countres = mysql_query($sql);
+    if (!$countres) {
+        sql_death1($sql);
+    }
+    $row = mysql_fetch_array($countres);
+    if ($row['count'] == 0) {
+        echo json_encode(array());
+        return;
+    }
+
     $sql =
         "SELECT A.`fkUsername` as `commenter`,
             B.`fkUsername` as `boothername`,
