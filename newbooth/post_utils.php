@@ -29,9 +29,11 @@ WHERE fkUsername = '".$username."'
 ORDER BY datetime DESC
 LIMIT 1 ";
     $result = sql_query($ratelimitsql);
-    $rateLimitRow = $result->fetch_assoc();
-    if ($rateLimitRow['timePassed'] == 0) {
-        return array(0214150354, null); // User posting too rapidly
+    if ($result->num_rows != 0) {
+        $rateLimitRow = $result->fetch_assoc();
+        if ($rateLimitRow['timePassed'] == 0) {
+            return array(0214150354, null); // User posting too rapidly
+        }
     }
 
     $uploadedfile = ImageUtils::makeFromEncoded($rawImageBytes);
