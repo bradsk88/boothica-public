@@ -3,11 +3,12 @@
     flex-flow: row wrap;
     justify-content: flex-start;
     padding: 0 1rem 1rem;
-    margin: 1rem;
+    margin: 1rem auto;
     position: relative;
     background-color: #87E1C1;
     border-radius: 0.25rem;
     box-sizing: border-box;
+    max-width: 40rem;
 }
 
 .photoCommentHeaderRegionWithBooth {

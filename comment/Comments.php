@@ -24,12 +24,14 @@ class Comments {
 					WHERE `fkBoothNumber` = ".$boothnumber."
 					LIMIT 1;";
         $result0 = $dblink->query($sql);
+
         if (!$result0) {
-            sql_death1($sql);
-            return array();
+            return array("error" => sql_death1($sql));
         }
         if ($result0->num_rows == 0) {
-            return array();
+            return array(
+                "success" => array()
+            );
         }
 
         $row = $result0->fetch_array();
@@ -55,18 +57,19 @@ class Comments {
 					AND `pkCommentNumber` <= ".$row['fkNewestComment']."
 					ORDER BY `pkCommentNumber` ASC
 					;";
+
         $result1 = $dblink->query($sql);
 
         $comments = array();
+
         if ($result1) {
             while($row = $result1->fetch_array()) {
                 $comments[] = CommentObj::fromSQL($row);
             }
         } else {
-            sql_death1($sql);
-            return array();
+            return array("error" => sql_death1($sql));
         }
-        return $comments;
+        return array("success" => $comments);
     }
 
 } 

@@ -1,5 +1,6 @@
 <?php
 
+    if (!isset($_SESSION)) session_start();
     error_reporting(0);
     main();
 
@@ -86,7 +87,7 @@ function getSQL()
 
 function getMyPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber=-1) {
     if (isset($_POST['includeFriends'])) {
-        if ($_POST['includeFriends'] == false || $_POST['includeFriends'] = "false") {
+        if ($_POST['includeFriends'] == false || $_POST['includeFriends'] == "false") {
            return getNonFriendPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber);
         }
     }

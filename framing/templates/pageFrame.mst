@@ -47,6 +47,11 @@
             <button type="submit" class="searchbutton">Go</button>
             <div style="clear: both;"></div>
         </form>
+        <div class = "pageHeaderUsernameRegion">
+            <div class = "pageHeaderUsername">
+                {{username}}
+            </div>
+        </div>
         <a href="{{baseUrl}}/menu">
             <canvas id='headgear' class='headerbutton' onclick='openSettings()'>
             </canvas>

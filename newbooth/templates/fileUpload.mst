@@ -1,9 +1,4 @@
-<center>
-    <a href = '{{baseUrl}}/uploadbooth'>
-        <div class = 'subheader' style = 'position: relative; width: 640px;' >
-            If you have problems with this page, click here to access the old upload page...
-        </div>
-    </a>
+<div class = "fileUploadRegion">
     <div id = "previewspot" style = "width: 640px; height: 280px; border: 1px dashed black; box-shadow: 0 0 5px #AAAAAA;"></div>
     <div style = "width: 80%;">
     <form id = "uploadform" method = null>
@@ -29,5 +24,4 @@
     </form>
     <div id = 'status' style = 'height: 32px;'></div>
     </div>
-</center>
-<script type = "text/javascript" src = "{{baseUrl}}/newbooth/file.js"></script>
+</div>

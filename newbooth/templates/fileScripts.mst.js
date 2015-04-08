@@ -9,10 +9,11 @@ var wasmobile = false;
 
 var initialized = false;
 
-function initFileBoothUpload() {
+function initFileBoothUpload(requestHash) {
     if (initialized) {
         return;
     }
+    window.requestHash = requestHash;
     submitDefaultColor = $('#submit_button').css('background-color');
     defaultPreviewHeight = $('#previewspot').css('height');
     $('#submit_button').css('background-color', '#AAAAAA').css('cursor', 'default').text('Select an image first');
@@ -63,9 +64,6 @@ function initFileBoothUpload() {
     }
     initialized = true;
 }
-window.onload = function() {
-    initFileBoothUpload();
-}
 
 function openUploadDialog() {
     $('#fileReaderSWFObject').click();
@@ -77,9 +75,9 @@ function getCurrentRotation() {
 
 //remove all preview functions and use common/preview_scripts.js
 
-function showPreviewAuto(files, mobile) {
+function showPreviewAuto(files, mobile, requestHash) {
     var rotation = getCurrentRotation();
-    showPreview(files, mobile, rotation);
+    showPreview(files, mobile, rotation, requestHash);
 }
 
 function repositionFlashButton() {
@@ -110,7 +108,9 @@ function doShowPreview(reader, rotation, mobile) {
             console.log("Proportions OK");
             $('#submit_button').css('background-color', submitDefaultColor).text('Upload Booth').css('cursor','pointer');
             $('#submit_button').unbind('click');
-            $('#submit_button').bind('click', upload);
+            $('#submit_button').bind('click', function() {
+                upload();
+            });
             $('#status').hide(1000);
         }
         var MAX_WIDTH1 = 640;
@@ -246,8 +246,8 @@ function upload(file) {
 
     $.post("{{baseUrl}}/_mobile/v2/postbooth.php", {
         image: dataURL,
-        blurb: encodeURIComponent($('#blurb').val()),
-        requestHash: "{{requestHash}}"
+        blurb: $('#blurb').val(),
+        requestHash: window.requestHash
     }, function(data) {
         if ("undefined" === typeof(data.success)) {
             if (data.error) {
@@ -259,6 +259,7 @@ function upload(file) {
         }
         $('#submit_button').unbind('click');
         $('#submit_button').text('Done!  Redirecting you now...').css('cursor','pointer');
+        location.href = data.success.boothUrl;
     }, "json")
     .fail(function(o, e) {
         $("#submit_button").prepend("Unexpected exception [" + e + "]");

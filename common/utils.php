@@ -497,10 +497,11 @@ function isBoothPublic($boothnumber) {
 
 function isSuspended($username) {
 
+    $dblink = connect_boothDB();
     $sql = "SELECT `fkUsername` FROM `userssuspendedtbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
-    $result = mysql_query($sql);
+    $result = $dblink->query($sql);
     if ($result) {
-        $num = mysql_num_rows($result);
+        $num = $result->num_rows;
         if ($num == 1) {
             return true;
         } else if ($num == 0) {
@@ -510,7 +511,7 @@ function isSuspended($username) {
             return true;
         }
     } else {
-        mysql_death2($link,$sql);
+        sql_death1($sql);
         return false;
     }
 
@@ -781,29 +782,29 @@ function isModerator($username) {
 }
 
 function isDeveloper($username) {
-
-    if ($username == "" || $username == null) {
-        death("Attempted to check developer status when user not logged in IP:".get_ip_address());
-        return false;
-    }
-    //TODO Check hash -BJ
-    if (!isset($link)) $link = connect_to_boothsite();
-    $sql = "SELECT true FROM `usersdevstbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
-    $result = mysql_query($sql);
-    if ($result) {
-        $num = mysql_num_rows($result);
-        if ($num == 1) {
-            return true;
-        } else if ($num == 0) {
-            return false;
-        } else {
-            death("Multiple entries in logintbl.  Name: ".$username.", IP:".get_ip_address());
-            return false;
-        }
-    } else {
-        mysql_death1($sql);
-        return false;
-    }
+    return false;
+//    if ($username == "" || $username == null) {
+//        death("Attempted to check developer status when user not logged in IP:".get_ip_address());
+//        return false;
+//    }
+//    //TODO Check hash -BJ
+//    if (!isset($link)) $link = connect_to_boothsite();
+//    $sql = "SELECT true FROM `usersdevstbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
+//    $result = mysql_query($sql);
+//    if ($result) {
+//        $num = mysql_num_rows($result);
+//        if ($num == 1) {
+//            return true;
+//        } else if ($num == 0) {
+//            return false;
+//        } else {
+//            death("Multiple entries in logintbl.  Name: ".$username.", IP:".get_ip_address());
+//            return false;
+//        }
+//    } else {
+//        mysql_death1($sql);
+//        return false;
+//    }
 }
 
 function create_generic_header($string) {

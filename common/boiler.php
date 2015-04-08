@@ -43,5 +43,8 @@ function include_error( $page ) {
 }
 
 function isLoggedIn() {
+    if (!isset($_SESSION)) {
+        session_start();
+    }
     return isset($_SESSION['username']);
 }

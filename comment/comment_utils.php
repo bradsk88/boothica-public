@@ -32,7 +32,7 @@ function isAllowedToDeleteCommentNumber($username, $commentnumber) {
             LIMIT 1";
 
     $results = sql_query($sql);
-    while ($row = $results->fetch_assoc()) {
+    while ($row = $results->fetch_array()) {
         if (strtolower($row['fkUsername']) == strtolower($username)) {
             return true;
         }

@@ -129,8 +129,11 @@ class PageFrame {
             "headerlink" => $headerlink,
             "baseUrl" => base(),
             "firstSidebarTitle" => $this->firstSidebarTitle,
-            "lastSidebarTitle" => $this->lastSidebarTitle
+            "lastSidebarTitle" => $this->lastSidebarTitle,
         );
+        if (isset($_SESSION['username'])) {
+            $data["username"] = $_SESSION['username'];
+        }
         $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/pageFrame.mst");
         return $page->render($data);
     }

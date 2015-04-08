@@ -1,0 +1,7 @@
+<div class = "phoneAnalog">
+    <div class = "phoneAnalogGreeting">
+        Main Menu
+    </div>
+    <a class  = "phoneAnalogButton" href = "{{baseUrl}}/account"><button>Account Settings</button></a>
+    <a class  = "phoneAnalogButton" href = "{{baseUrl}}/dologout" id = "logoutButton"><button>Log Out</button></a>
+</div>
