@@ -413,6 +413,16 @@ function isIgnoring($user1,$user2) {
 
 }
 
+function isAllowedToInteractWith($viewingUser,$otherUser) {
+    if (isFriendOf($viewingUser, $otherUser)) {
+        return true;
+    }
+    if (isPublic($otherUser)) {
+        return true;
+    }
+    return false;
+}
+
 function userExists($username) {
     if (strlen($username) == 0) {
         return false;

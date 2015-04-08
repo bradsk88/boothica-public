@@ -5,6 +5,8 @@ SELECT
   , C.fkUsername as commenterName
   , B.fkUsername as bootherName
   , C.fkNumber as boothNum
+  , C.hasPhoto as hasMedia
+  , CONCAT(C.hash, '.', C.extension) AS media
 FROM
   commentstbl C
 LEFT JOIN
@@ -43,3 +45,4 @@ OR
     )
   )
 )
+ORDER BY A.datetime DESC

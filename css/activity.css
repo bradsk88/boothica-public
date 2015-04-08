@@ -3,7 +3,17 @@
 }
 
 .noActivityRegion {
-    padding: 5rem;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    background-color: #87E1C1;
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.125);
+}
+
+.noActivity {
+    padding: 1rem;
+    background-color: #FFF;
+    border-radius: 0.5rem;
 }
 
 .activityHeader {
@@ -14,4 +24,5 @@
     padding: 0.5rem;
     width: 20rem;
     font-weight: bold;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.125);
 }

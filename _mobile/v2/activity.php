@@ -3,6 +3,7 @@
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_common("db");
 require_lib("h2o-php/h2o");
+require_once "{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/meta/AbstractUserApiResponse.php";
 
 class ActivityResponse extends AbstractUserApiResponse {
@@ -34,9 +35,6 @@ class ActivityResponse extends AbstractUserApiResponse {
             "numPerPage"=>$dblink->real_escape_string($numPerPage)
         ));
 
-
-
-
         $result = $dblink->query($sql);
         if (!$result) {
             sql_death1($sql);
@@ -45,16 +43,20 @@ class ActivityResponse extends AbstractUserApiResponse {
 
         $output = array();
         while ($row = $result->fetch_array()) {
+            $commentImage = base()."/comments/".$row['media'];
+            $canSee = isAllowedToInteractWithBooth($username, $row['boothNum']);
             $output[] = array(
-                "currentUserName" => $username,
-                "commentText" => $row['commentText'],
-                "commenterName" => $row['commenterName'],
-                "commenterDisplayName" => (string) getDisplayName($row['commenterName']),
-                "commenterImage" => UserImage::getAbsoluteImage($row['commenterName']),
-                "bootherName" => $row['bootherName'],
-                "bootherDisplayName" => (string) getDisplayName($row['bootherName']),
-                "bootherImage" => UserImage::getAbsoluteImage($row['bootherName']),
-                "boothNum" => $row['boothNum']
+                "currentUserName" => $username
+                , "commentText" => $row['commentText']
+                , "commenterName" => $row['commenterName']
+                , "commenterDisplayName" => (string) getDisplayName($row['commenterName'])
+                , "commenterImage" => UserImage::getAbsoluteImage($row['commenterName'])
+                , "bootherName" => $row['bootherName']
+                , "bootherDisplayName" => (string) getDisplayName($row['bootherName'])
+                , "bootherImage" => UserImage::getAbsoluteImage($row['bootherName'])
+                , "boothNum" => $row['boothNum']
+                , "hasMedia" => $canSee ? $row['hasMedia'] == 1 : false
+                , "commentMediaImage" => $canSee ? $commentImage : base().UserImage::PRIVATE_USER
             );
         }
         return $output;

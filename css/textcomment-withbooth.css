@@ -54,6 +54,8 @@
     text-align: center;
     display: inherit;
     padding: 0.125rem 0 0 1.75rem;
+    font-size: 0.75rem;
+    overflow: hidden;
 }
 
 .textCommentTextWithBooth {

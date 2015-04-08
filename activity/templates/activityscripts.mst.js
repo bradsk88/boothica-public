@@ -44,20 +44,38 @@ var renderActivityFeed = function(items) {
         });
         return;
     }
-    $.get('{{baseUrl}}/comment/templates/textWithBooth.mst', function (template) {
-        $.each(items, function(idx, obj) {
-            var html = Mustache.render(template, {
-                username: obj.commenterName,
-                bootherName: obj.bootherName,
-                bootherDisplayName: obj.bootherDisplayName,
-                boothNum: obj.boothNum,
-                commenterImageUrl: obj.commenterImage,
-                commenterDisplayName: obj.commenterDisplayName,
-                boothImageUrl: obj.bootherImage,
-                text: obj.commentText,
-                boothShortDescription: obj.bootherName == obj.currentUserName ? "your booth" : obj.bootherDisplayName + "'s booth"
-            });
-            $("#activity_feed").append(html);
+    $.get('{{baseUrl}}/comment/templates/textWithBooth.mst', function (textTemplate) {
+        $.get('{{baseUrl}}/comment/templates/photoWithBooth.mst', function (photoTemplate) {
+            renderActivityFeedUsingTemplates(items, textTemplate, photoTemplate);
         });
     });
+};
+
+var renderActivityFeedUsingTemplates = function(items, textTemplate, photoTemplate) {
+    $.each(items, function(idx, obj) {
+        var data = {
+            username: obj.commenterName,
+            bootherName: obj.bootherName,
+            bootherDisplayName: obj.bootherDisplayName,
+            boothNum: obj.boothNum,
+            commenterImageUrl: obj.commenterImage,
+            commenterDisplayName: obj.commenterDisplayName,
+            boothImageUrl: obj.bootherImage,
+            text: obj.commentText,
+            boothShortDescription: obj.bootherName == obj.currentUserName ? "your booth" : obj.bootherDisplayName + "'s booth"
+        };
+        var template = textTemplate;
+        if (obj.hasMedia) {
+            $.extend(data, {
+               photo: obj.commentMediaImage
+            });
+            template = photoTemplate
+        }
+        var html = Mustache.render(template, data);
+        $("#activity_feed").append(html);
+    });
+};
+
+var renderActivityCellWithMedia = function(data, photoTemplate) {
+
 };

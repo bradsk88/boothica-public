@@ -15,6 +15,7 @@ function main() {
     $page->css($root."/css/posts.css");
     $page->css($root."/css/activity.css");
     $page->css($root."/css/textcomment-withbooth.css");
+    $page->css($root."/css/photocomment-withbooth.css");
     $page->useDefaultSideBars();
     $page->script(base()."/activity/script.js");
     $page->echoHtml();

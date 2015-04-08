@@ -122,7 +122,6 @@ a {
 
 .sidebar_first, .sidebar_last, .body_inside {
     flex: 1 100%;
-    background: #FFF;
 }
 
 .sidebar_body {
