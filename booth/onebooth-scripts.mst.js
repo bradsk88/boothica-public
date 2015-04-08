@@ -5,12 +5,12 @@ function loadOneBooth(boothnum) {
         renderOneBoothFromData(data);
     }, "json")
         .fail(function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
+            $("#user_booth_body").html("Error while loading booth");
         })
 }
 
 var renderOneBoothFromData = function (data) {
-    $.get('{{baseUrl}}/framing/templates/oneBooth.mst', function (template) {
+    $.get('{{baseUrl}}/booth/templates/oneBooth.mst', function (template) {
         var html = "";
         if (typeof(data.success) === "undefined") {
             html = "error: " + data.error;
@@ -44,7 +44,8 @@ var loadOneBoothComments = function (boothnum) {
         $(spinner).hide();
     }, "json")
         .fail(function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
+            $(loader).hide();
+            $("#user_booth_comments").html("Error while loading comments");
         })
 };
 
@@ -60,7 +61,7 @@ var renderOneBoothCommentsFromData = function (data) {
                     username: obj.commentername,
                     displayName: obj.commenterdisplayname,
                     imageUrl: obj.absoluteIconImageUrl,
-                    baseUrl: baseUrl
+                    baseUrl: "{{baseUrl}}"
                 });
             });
         }
@@ -75,6 +76,13 @@ function postComment(boothnum, boothername) {
         id: "post_comment_spinner"
     }));
     var commentText = $("#comment_textarea").val();
+    confirm = true;
+    if (commentText.length == 0) {
+        confirm = prompt("Are you sure you want to post an empty comment?");
+    }
+    if (!confirm) {
+        return;
+    }
     $.post("{{baseUrl}}/_mobile/v2/putcomment.php", {
             boothnum: boothnum,
             commenttext: commentText

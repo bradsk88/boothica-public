@@ -1,7 +1,7 @@
 <div class="textCommentInputRegion">
     <form action="{{baseUrl}}/actions/comment/upload.php" method="post">
         <div class="textCommentInputTextareaRegion">
-            <textarea id = "comment_textarea" name = "comment" class="textCommentInputTextarea"></textarea>
+            <textarea id = "comment_textarea" name = "comment" class="textCommentInputTextarea" placeholder = "Add a comment..."></textarea>
         </div>
         <div class="textCommentInputSubmitButtonRegion" id = "post_comment_button_fallback" >
             <div class="textCommentInputSubmitButton">

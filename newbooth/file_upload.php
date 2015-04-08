@@ -45,12 +45,13 @@ function file_upload_error_message($error_code) {
 
 function rollback($number) {
 
+    $dblink = connect_boothDB();
 	$sql = "DELETE FROM 
 			`boothnumbers` 
 			WHERE `pkNumber`  = ".$number.";";
-	$deleteres = mysql_query($sql);
+	$deleteres = $dblink->query($sql);
 	if (!$deleteres) {
-		mysql_death1($sql);
+		sql_death1($sql);
 		return -1;
 	}
 	return 0;

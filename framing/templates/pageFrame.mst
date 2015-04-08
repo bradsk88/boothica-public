@@ -75,9 +75,11 @@
     </div>
     <div class="sidebar_first">
         <div class="sidebar_titleandbutton">
+            {% if firstSidebarTitle %}
             <div class="sidebar_title">
                 {{firstSidebarTitle}}
             </div>
+            {% endif %}
             {% if firstSidebarLink != null %}
             <div class="sidebar_button">
                 <a href="{{firstSidebarLink}}">go</a>
@@ -94,9 +96,11 @@
     </div>
     <div class="sidebar_last">
         <div class="sidebar_titleandbutton">
+            {% if lastSidebarTitle %}
             <div class="sidebar_title">
                 {{lastSidebarTitle}}
             </div>
+            {% endif %}
             {% if lastSidebarLink != null %}
             <div class="sidebar_button">
                 <a href="{{lastSidebarLink}}">go</a>

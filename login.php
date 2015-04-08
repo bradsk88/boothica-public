@@ -49,7 +49,9 @@ class LoginPage {
         $page = new PageFrame();
         $page->body($html);
         $page->useDefaultSideBars();
+        $page->loadPublicSidebarsContent();
         $page->css($root ."/css/login.css");
+        $page->css($root ."/css/posts.css");
         $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");
         return $page->render();
 

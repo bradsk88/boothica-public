@@ -1,0 +1,18 @@
+<div class = "section_toggler" id = "user_booth_body_toggler">
+    $username - Booth {{boothNum}}
+</div>
+<div class = "userBoothBody" id = "user_booth_body"></div>
+<div class = "userBoothButtonsRegion">
+    {% if allowed %}
+    <div class = "userBoothButton" id = "like_booth_button" onclick = "likeBooth({{boothNum}}, '$username')">
+        <div class = "boothLikesCounterRegion">
+            <div id = "booth_likes_counter">0</div>
+        </div>
+        Like
+    </div>
+    {% endif %}
+</div>
+<div class = "userBoothComments" id = "user_booth_comments"></div>
+<div id="loadmoreajaxloader" style="display:none;">
+    <center><img src="{{baseUrl}}/media/ajax-loader.gif" /></center>
+</div>

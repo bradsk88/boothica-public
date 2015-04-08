@@ -24,8 +24,7 @@ require_common("cookies");
 require_common("utils");
 require_lib("h2o-php/h2o");
 
-// TODO: set error reporting to 0
-error_reporting(E_ALL);
+error_reporting(0);
 if (isset($_SESSION['username']) && $_SESSION['username'] == 'bradsk88') {
     error_reporting(E_ERROR);
 }
@@ -39,10 +38,10 @@ class PageFrame {
     private $notificationRegion = null;
     private $excludeLoginNotification = false;
     private $body;
-    private $firstSidebarTitle = "";
+    private $firstSidebarTitle = null;
     private $firstSidebarCollapsed = false;
     private $firstSidebarLink = null;
-    private $lastSidebarTitle = "";
+    private $lastSidebarTitle = null;
     private $lastSidebarCollapsed = false;
     private $lastSidebarLink = null;
 
@@ -108,7 +107,7 @@ class PageFrame {
                 return;
             } else if (!$this->excludeLoginNotification ) {
            	    $this->notificationRegion = '
-                <a href = "$baseUrl/login">
+                <a href = "'.base().'/login">
                     <div class = "login_prompt">Please log in</div>
                 </a>';
    	    }
@@ -136,6 +135,15 @@ class PageFrame {
         return $page->render($data);
     }
 
+    function loadPublicSidebarsContent() {
+        $this->rawScript("<script type = \"text/javascript\">
+            $(document).ready(function() {
+                loadRandomBooths();
+                loadPublicBooths();
+            });
+        </script>");
+    }
+
     private function includeJQuery()
     {
         $this->script("http://code.jquery.com/jquery-2.1.1.js");
@@ -147,8 +155,7 @@ class PageFrame {
         if (isset($_SESSION['username']) && $_SESSION['username'] == "bradsk88") {
             error_reporting(E_ALL);
         } else {
-            //TODO: lower this
-            error_reporting(E_ALL);
+            error_reporting(0);
         }
     }
 

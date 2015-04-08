@@ -12,7 +12,6 @@
  * Requires that a database connection to the boothsite has been established.
  */
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
-require_common("utils");
 require_common("db");
 
 class DisplayName {
@@ -20,7 +19,6 @@ class DisplayName {
     private $string = "ERR";
 
     public function __construct($username) {
-        checkNotNull($username);
         $dblink = connect_boothDB();
         $sql = "SELECT
 			`displayname`
@@ -28,11 +26,11 @@ class DisplayName {
 			WHERE `username`='".$username."'
 			LIMIT 1;";
         $result = $dblink->query($sql);
-        if ($result) {
+        if ($result and $result->num_rows == 1) {
             $row = $result->fetch_array();
             $this->string = $row['displayname'];
         } else {
-            sql_death1("getDisplayName() failed in utils_friend.php given value ".$username);
+            sql_death1("getDisplayName() failed in DisplayName.php given value ".$username);
         }
     }
 

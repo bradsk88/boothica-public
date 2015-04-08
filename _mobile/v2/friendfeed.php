@@ -7,77 +7,60 @@
  */
 
 error_reporting(0);
-session_start();
-main();
+require_once("{$_SERVER['DOCUMENT_ROOT']}/userpages/friendbooth_utils.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
+require_common("db");
+require_common("utils");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/meta/AbstractUserApiResponse.php");
 
-function main()
-{
+class FriendFeedActivity extends AbstractUserApiResponse {
 
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/userpages/friendbooth_utils.php");
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
-    require_common("db");
-    require_common("utils");
+    /**
+     * This should be implemented by descendants but should not be called directly.  Use runAndEcho.
+     */
+    protected function run($username)
+    {
+        $sql = getSQL();
+        if ($sql == -1) {
+            return;
+        }
 
-    $dblink = connect_boothDB();
+        $dblink = connect_boothDB();
+        $result = $dblink->query($sql);
 
-    $username = $_POST['username'];
-    if (isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
-    } else if (isset($_POST['username']) && failsStandardMobileChecksAndEchoFailureMessage()) {
-        return;
-    }
-    $_SESSION['username'] = $username;
+        if (!$result) {
+            echo json_encode(
+                array(
+                    "error" => sql_death1($sql)));
+            return;
+        }
 
-    if (!userExists($username)) {
+        $booths = array();
+        while ($row = $result->fetch_array()) {
+            $root = "http://" . $_SERVER['SERVER_NAME'];
+            $booths[] = array(
+                'boothnum' => $row['pkNumber'],
+                'boothername' => $row['fkUsername'],
+                'bootherdisplayname' => (string)getDisplayName($row['fkUsername']),
+                'blurb' => $row['blurb'],
+                'imageHash' => $row['imageTitle'],
+                'filetype' => $row['filetype'],
+                'absoluteImageUrlThumbnail' => $root . '/booths/small/' . $row['imageTitle'] . '.' . $row['filetype']);
+            $newestBooth = $row['pkNumber'];
+        }
         echo json_encode(
-            array(
-                "error" => "Current user '" . $username . "' does not exist"));
-        return;
+            array("success" =>
+                array(
+                    "booths" => $booths),
+                "next_batch_start_booth_number" => isset($newestBooth) ? $newestBooth : null
+            )
+        );
     }
-
-    if (isBanned($username)) {
-        echo json_encode(
-            array(
-                "error" => "User is banned"));
-        return;
-    }
-
-    $sql = getSQL();
-    if ($sql == -1) {
-        return;
-    }
-
-    $result = sql_query($sql);
-
-    if (!$result) {
-        echo json_encode(
-            array(
-                "error" => sql_death1($sql)));
-        return;
-    }
-
-    $booths = array();
-    while ($row = $result->fetch_array()) {
-        $root = "http://" . $_SERVER['SERVER_NAME'];
-        $booths[] = array(
-            'boothnum' => $row['pkNumber'],
-            'boothername' => $row['fkUsername'],
-            'bootherdisplayname' => (string)getDisplayName($row['fkUsername']),
-            'blurb' => $row['blurb'],
-            'imageHash' => $row['imageTitle'],
-            'filetype' => $row['filetype'],
-            'absoluteImageUrlThumbnail' => $root . '/booths/small/' . $row['imageTitle'] . '.' . $row['filetype']);
-        $newestBooth = $row['pkNumber'];
-    }
-    echo json_encode(
-        array("success" =>
-            array(
-                "booths" => $booths),
-            "next_batch_start_booth_number" => $newestBooth
-        )
-    );
 }
+
+$page = new FriendFeedActivity();
+$page->runAndEcho();
 
 function getSQL()
 {

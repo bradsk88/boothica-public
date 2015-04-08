@@ -1,0 +1,6 @@
+<div class = "activityFeedRegion">
+    <div class = "activityFeed" id = "activity_feed">
+        <div class = "activityHeader">Activity Feed</div>
+        <div class = "loaderRegion" id = "activity_loader"><img class = "loader" src="{{baseUrl}}/media/ajax-loader.gif" /></div>
+    </div>
+</div>

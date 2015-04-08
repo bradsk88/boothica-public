@@ -16,7 +16,7 @@ require_common("utils");
 function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly, $requestHash = null) {
 
     error_reporting(0);
-    $link = connect_to_boothsite();
+    $dblink = connect_boothDB();
     if (isset($_SESSION['username']) && isDeveloper($_SESSION['username'])) {
         error_reporting(E_ALL);
     }
@@ -28,7 +28,7 @@ FROM `boothnumbers`
 WHERE fkUsername = '".$username."'
 ORDER BY datetime DESC
 LIMIT 1 ";
-    $result = sql_query($ratelimitsql);
+    $result = $dblink->query($ratelimitsql);
     if ($result->num_rows != 0) {
         $rateLimitRow = $result->fetch_assoc();
         if ($rateLimitRow['timePassed'] == 0) {
@@ -42,12 +42,12 @@ LIMIT 1 ";
 			FROM `logintbl`	
 			WHERE `username` = '".$username."'
 			LIMIT 1";
-    $nextIndexRes = mysql_query($sql);
-    if (!$nextIndexRes || mysql_num_rows($nextIndexRes) == 0) {
-        echo mysql_death1($sql);
+    $nextIndexRes = $dblink->query($sql);
+    if (!$nextIndexRes || $nextIndexRes->num_rows == 0) {
+        echo sql_death1($sql);
         return array(-1, null);
     }
-    $row = mysql_fetch_array($nextIndexRes);
+    $row = $nextIndexRes->fetch_array();
     $nextIndex = $row['nextIndex'] + 1;
 
     $columns = "(`fkUsername`, `source`, `isPublic`)";
@@ -62,26 +62,26 @@ LIMIT 1 ";
 			".$columns."
 			VALUES 
 			".$values.";";
-    $insertres = sql_query($sql);
+    $insertres = $dblink->query($sql);
     if (!$insertres) {
-        echo mysql_death1($sql);
+        echo sql_death1($sql);
         return array(-1, null);
     }
 
-    mysqli_autocommit($link, true);
+    $dblink->autocommit(true);
 
     $sql = "SELECT
 			`pkNumber` 
 			FROM `boothnumbers` 
 			WHERE `fkUsername` = '".$username."' 
 			ORDER BY `pkNumber` DESC LIMIT 1;";
-    $query = mysql_query($sql);
+    $query = $dblink->query($sql);
     if (!$query) {
-        echo mysql_death1($sql);
+        echo sql_death1($sql);
         return array(-1, null);
     }
 
-    $row = mysql_fetch_array($query);
+    $row = $query->fetch_array();
     $number = $row['pkNumber'];
 
     $sql = "INSERT INTO 
@@ -89,9 +89,9 @@ LIMIT 1 ";
 			(`fkUsername`, `fkNumber`) 
 			VALUES 
 			('".$username."', ".$number.");";
-    $recordres = mysql_query($sql);
+    $recordres = $dblink->query($sql);
     if (!$recordres) {
-        echo mysql_death1($sql);
+        echo sql_death1($sql);
         return array(-1, null);
     }
 
@@ -101,10 +101,10 @@ LIMIT 1 ";
 			`imageTitle` = md5('dagnytajjard".$number."'),
 			`filetype` = '".$extension."'
 			WHERE `pkNumber` = ".$number.";";
-    $makehash = mysql_query($sql);
+    $makehash = $dblink->query($sql);
     if (!$makehash) {
         rollback($number);
-        echo mysql_death1($sql);
+        echo sql_death1($sql);
         return array(-1, null);
     }
 
@@ -112,14 +112,14 @@ LIMIT 1 ";
 			`imageTitle` 
 			FROM `boothnumbers` 
 			WHERE `pkNumber` = ".$number.";";
-    $imgquery = mysql_query($sql);
+    $imgquery = $dblink->query($sql);
     if (!$imgquery) {
         rollback($number);
-        echo mysql_death1($sql);
+        echo sql_death1($sql);
         return array(-1, null);
     }
 
-    $row = mysql_fetch_array($imgquery);
+    $row = $imgquery->fetch_array();
     $name = $row['imageTitle'];
 
     $filename = "{$_SERVER['DOCUMENT_ROOT']}/booths/".$name.".".$extension;
@@ -135,9 +135,9 @@ LIMIT 1 ";
     $sql = "UPDATE `boothnumbers` SET 
 			`imageHeightProp` = " . $height/$width . " 
 			WHERE `pkNumber` = " . $number . ";";
-    $propq = mysql_query($sql);
+    $propq = $dblink->query($sql);
     if (!$propq) {
-        mysql_death1($sql);
+        sql_death1($sql);
     }
 
     $filename1 = uploadSmall($name, $extension, $height/$width, $filename, $uploadedfile);
@@ -170,9 +170,9 @@ LIMIT 1 ";
 							'".strtolower($mention)."', 
 							-1, 
 							".$number.");";
-            $mentionq = mysql_query($putmention);
+            $mentionq = $dblink->query($putmention);
             if (!$mentionq) {
-                mysql_death1($putmention);
+                sql_death1($putmention);
                 break;
             }
         }
@@ -185,12 +185,12 @@ LIMIT 1 ";
     $sql = "UPDATE 
 				`boothnumbers` 
 				SET 
-				blurb = '".mysql_real_escape_string(preg_replace('/(\r\n|\n|\r)/','<br/>',$formattedblurb))."',
+				blurb = '".$dblink->real_escape_string(preg_replace('/(\r\n|\n|\r)/','<br/>',$formattedblurb))."',
 				`userBoothNumber` = ".$nextIndex."
 				WHERE pkNumber = '".$number."';";
-    $blurbq = mysql_query($sql);
+    $blurbq = $dblink->query($sql);
     if (!$blurbq) {
-        mysql_death1($sql);
+        sql_death1($sql);
         rollbackall($filename, $filename1, $filename2, $number);
         echo "Error code 8";
         return array(-1, null);
@@ -205,9 +205,9 @@ LIMIT 1 ";
 			('".$username."', 
 			".$number.", 
 			'booth');";
-    $activityq = mysql_query($sql);
+    $activityq = $dblink->query($sql);
     if (!$activityq) {
-        mysql_death1($sql);
+        sql_death1($sql);
     }
 
     sendNewBoothEmail($username, $number);
@@ -215,8 +215,8 @@ LIMIT 1 ";
     $sql = "UPDATE `logintbl` 
 			SET `nextIndex` = ".($nextIndex)." 
 			WHERE `username` = '".$username."';";
-    if (!mysql_query($sql)) {
-        mysql_death1($sql);
+    if (!$dblink->query($sql)) {
+        sql_death1($sql);
     }
 
     return array(0, $number);

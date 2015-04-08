@@ -2,9 +2,12 @@
 /**
  * Utility functions for mobile api
  */
-define(NO_KEY, -2);
-define(BAD, -1);
-define(OK, 0);
+
+class MobileConstants {
+    const NO_KEY = -2;
+    const BAD = -1;
+    const OK = 0;
+}
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_common("utils");
@@ -23,17 +26,17 @@ function failsStandardMobileChecksAndEchoFailureMessage() {
     }
     $check = isKeyOK($_POST['username'], $_POST['phoneid'], $_POST['loginkey']);
 
-    if ($check == OK) {
+    if ($check == MobileConstants::OK) {
         return false;
     }
 
-    if ($check == BAD) {
+    if ($check == MobileConstants::BAD) {
         echo json_encode(
             array('error' => "Login key not accepted")
         );
         return true;
     }
-    if ($check == NO_KEY) {
+    if ($check == MobileConstants::NO_KEY) {
         echo json_encode(
             array('error' => "Login key was missing")
         );
@@ -64,14 +67,14 @@ function isKeyOK($username, $phoneid, $loginkey) {
         $res = sql_query($sql);
         if (!$res) {
             sql_death1($sql);
-            return BAD;
+            return MobileConstants::BAD;
         }
         $r = $res->fetch_assoc();
 
         if ($r['key'] == $loginkey) {
-            return OK;
+            return MobileConstants::OK;
         }
-        return BAD;
+        return MobileConstants::BAD;
     }
-    return NO_KEY;
+    return MobileConstants::NO_KEY;
 }

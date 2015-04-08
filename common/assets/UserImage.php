@@ -12,6 +12,7 @@ class UserImage {
     private $string;
 
     const NOIMG = "/media/noimage.jpg";
+    const PRIVATE_USER = "/media/private.jpg";
 
     public function __construct($username) {
         $this->string = UserImage::getImage($username);
@@ -79,7 +80,7 @@ class UserImage {
                 if ($row['hasIcon'] == 1) {
                     return  "/users/".$username."/public.".$row['iconext'];
                 } else {
-                    return "/media/private.jpg";
+                    return UserImage::PRIVATE_USER;
                 }
             } else {
                 death($num." rows in logintbl for user: ".$username);
@@ -87,6 +88,10 @@ class UserImage {
             }
         }
 
+    }
+
+    public static function getAbsoluteImage($username) {
+        return base().UserImage::getImage($username);
     }
 
     public function __toString() {
