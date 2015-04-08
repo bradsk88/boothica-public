@@ -146,8 +146,6 @@ function go_to_error($msg) {
 include("{$_SERVER['DOCUMENT_ROOT']}/utils/devlist.php");
 
 function mysql_death2($link,$sql) {
-    //TODO: Re-enable
-    return;
     $usern = "not logged in";
     if (isset($_SESSION['username'])) {
         $usern = $_SESSION['username'];
@@ -835,7 +833,7 @@ function parameterIsMissingAndEchoFailureMessage($param) {
 }
 
 function sendBoothicaEmail($emailAddress, $subject, $message) {
-    //TODO: Re-enable emails
+    //TODO: Re-enable emails before launch
     return;
 //    $headers = "From: Boothi.ca<no-reply>\r\n";
 //    $headers .= "MIME-Version: 1.0\r\n";

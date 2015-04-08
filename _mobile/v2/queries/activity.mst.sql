@@ -20,6 +20,8 @@ ON
 WHERE
   C.fkUsername = '{{username}}'
 OR
+  B.fkUsername = '{{username}}'
+OR
 (
   C.fkUsername
   IN

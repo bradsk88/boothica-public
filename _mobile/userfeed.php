@@ -54,7 +54,6 @@ function main()
 
     if (!isPublic($bootherName)) {
         if (!isFriendOf($username, $bootherName)) {
-            //TODO: More useful responses
             echo json_encode(
                 array(
                     "error"=>"Private user"));

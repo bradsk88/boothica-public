@@ -1,9 +1,6 @@
 $(document).ready(function() {
 
     loadActivity();
-    //TODO: Make this decision depending on login status;
-    loadNewFriendsBooths();
-    loadPublicBooths();
 
 });
 

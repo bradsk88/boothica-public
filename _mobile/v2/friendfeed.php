@@ -6,8 +6,7 @@
  * Time: 9:51 PM
  */
 
-//TODO: Lower this
-error_reporting(E_ALL);
+error_reporting(0);
 require_once("{$_SERVER['DOCUMENT_ROOT']}/userpages/friendbooth_utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");

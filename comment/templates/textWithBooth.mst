@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="textCommentImageRegionWithBooth">
-        <a href="{{baseUrl}}/users/{{username}}">
+        <a href="{{baseUrl}}/users/{{bootherName}}/{{boothNum}}">
             <img src="{{commenterImageUrl}}" class="textCommentImageWithBooth"/>
         </a>
     </div>
