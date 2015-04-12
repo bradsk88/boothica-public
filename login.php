@@ -6,6 +6,8 @@
  * Time: 7:52 PM
  */
 
+require_once "{$_SERVER['DOCUMENT_ROOT']}/pages/LoginPage.php";
+
 $errorMessage = "";
 if (isset($_REQUEST['wrongpass'])) {
     $errorMessage = "Password Incorrect - Try Again";

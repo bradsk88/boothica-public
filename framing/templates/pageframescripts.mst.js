@@ -14,7 +14,7 @@ function loadRandomBooths() {
 
     $.post("{{baseUrl}}/_mobile/v2/randompublicbooths.php", {
         pagenum: 1,
-        numperpage: 9
+        numperpage: 4
     }, function (data) {
         renderSideBoothsFromDataAsync(data, "#firstSideBarContents");
     }, "json")
@@ -33,7 +33,7 @@ function loadNewFriendsBooths() {
 
     $.post("{{baseUrl}}/_mobile/v2/friendfeed.php", {
         pagenum: 1,
-        numperpage: 9
+        numperpage: 4
     }, function (data) {
         renderSideBoothsFromDataAsync(data, "#firstSideBarContents");
     }, "json")
@@ -52,7 +52,7 @@ function loadPublicBooths() {
 
     $.post("{{baseUrl}}/_mobile/v2/publicfeed.php", {
         pagenum: 1,
-        numperpage: 9,
+        numperpage: 4,
         includeFriends: false
     }, function (data) {
         renderSideBoothsFromDataAsync(data, "#lastSideBarContents");

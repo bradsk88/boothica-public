@@ -1,3 +1,36 @@
+.fileUploadPreviewRegion {
+    position: relative;
+    background: #000;
+    min-height: 12rem;
+    border-radius: 0.5rem;
+}
+
+.fileUploadButtons {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.rotation {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    height: 4rem;
+}
+
+.rotation h1 {
+    margin: auto;
+    padding-left: 0.75rem; /* To offset the degree symbol */
+    font-size: 1.5rem;
+}
+
+.newBoothBlurb {
+    box-sizing: border-box;
+    width: 100%;
+    height: 6rem;
+    resize: vertical;
+    margin: 0;
+}
+
 .input_hidden {
     position: absolute;
     left: -9999px;
@@ -7,15 +40,33 @@
     background-color: #fff;
 }
 
+.fileUploadButtonsRegion {
+    margin: 1rem auto 0;
+}
+
 #uploadform label {
-	width: 24%;
-    display: inline-block;
+	width: 25%;
+    flex-shrink: 0;
+    flex-grow: 0;
     cursor: pointer;
 }
 
 
 #uploadform label:hover {
     background-color: #329ca9;
+}
+
+#preview_region canvas {
+    border-radius: 0.25rem;
+}
+
+#progress {
+    margin: 1rem 0 0;
+    display: none;
+}
+
+#blurb {
+    margin: 1rem 0 0;
 }
 
 .three {
@@ -38,4 +89,29 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 
+}
+
+@media all and (min-width: 1024px) {
+    #buttonspot {
+        margin: 0 -1rem;
+        width: auto;
+    }
+
+    .newBooth {
+        padding: 0 1rem 0;
+        margin: -1.5rem auto 0;
+    }
+
+    #submit_button_region {
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+        margin: 0 -1rem;
+        width: auto;
+    }
+}
+
+@media all and (min-width: 1280px) {
+    #newBoothRegion {
+        max-width: 40rem;
+    }
 }

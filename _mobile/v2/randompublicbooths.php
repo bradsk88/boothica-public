@@ -28,12 +28,25 @@ function main() {
         );
         return;
     }
-
     $max = sql_get_expectOneRow($result, "max");
+
+    $sql = "SELECT MIN(`pkNumber`) as 'min' FROM `boothnumbers`";
+    $result = sql_query($sql);
+
+    if (!$result) {
+        echo json_encode(
+            array(
+                "error"=>sql_death1($sql)
+            )
+        );
+        return;
+    }
+    $min = sql_get_expectOneRow($result, "min");
+
     $sql = "SELECT * FROM `boothnumbers` bn WHERE (";
 
     for ($i = 0; $i < $numPerPage+10; $i++) {
-        $sql .= "`pkNumber` = '".rand(1,$max)."' OR ";
+        $sql .= "`pkNumber` = '".rand($min,$max)."' OR ";
     }
 
     $sql = substr($sql, 0, strlen($sql)-4)."
@@ -81,7 +94,7 @@ function main() {
     }
 
     $booths = array();
-    $root = "http://" . $_SERVER['SERVER_NAME'];
+    $root = base();
     while($row = $result->fetch_array()) {
         $booths[] = array(
             'boothnum' => $row['pkNumber'],
