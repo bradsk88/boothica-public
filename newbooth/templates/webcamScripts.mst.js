@@ -21,7 +21,7 @@ $(document).ready(function() {
                 this.cam = null;
                 this.filter_on = false;
                 this.filter_id = 0;
-
+                this.canvas = document.getElementById("preview");
                 // Initialize getUserMedia with options
                 getUserMedia(this.options, this.success, this.deviceError);
 
@@ -51,7 +51,7 @@ $(document).ready(function() {
         // events that are triggered onCapture and onSave (for the fallback)
         // and so on.
         options: {
-            "audio": false, //OTHERWISE FF nightly throws an NOT IMPLEMENTED error
+            "audio": false,
             "video": true,
             el: "webcam",
 
@@ -116,10 +116,18 @@ $(document).ready(function() {
                     video.src = vendorURL ? vendorURL.createObjectURL(stream) : stream;
                 }
 
+                $("#webcam_loading_placeholder").hide();
+
                 video.onerror = function () {
                     stream.stop();
                     streamError();
                 };
+
+                App.enableCountDownButton();
+
+                $("#snap_button").click(function() {
+                    App.getSnapshot();
+                });
 
             } else{
                 // flash context
@@ -128,7 +136,8 @@ $(document).ready(function() {
         },
 
         deviceError: function (error) {
-            alert('No camera available.');
+            $("#webcam_loading_placeholder").hide();
+            $("#webcam_not_found_error").show();
             console.error('An error occurred: [CODE ' + error.code + ']');
         },
 
@@ -141,8 +150,11 @@ $(document).ready(function() {
                 var video = document.getElementsByTagName('video')[0];
                 App.canvas.width = video.videoWidth;
                 App.canvas.height = video.videoHeight;
+                $(video).hide();
+                $(App.canvas).css('display', 'inherit');
                 App.canvas.getContext('2d').drawImage(video, 0, 0);
-
+                $("#base64").val(App.canvas.toDataURL());
+                App.enableAfterSnapButtons();
                 // Otherwise, if the context is Flash, we ask the shim to
                 // directly call window.webcam, where our shim is located
                 // and ask it to capture for us.
@@ -154,10 +166,114 @@ $(document).ready(function() {
             else{
                 alert('No context was supplied to getSnapshot()');
             }
+        },
+
+        enableCountDownButton: function() {
+            $("#count_down_button").click(function() {
+                App.startCountDown(3);
+            });
+            $("#blurb_region").addClass("bottom");
+            $("#finish_buttons").removeClass("bottom");
+            $("#capture_buttons").css('display', 'flex');
+            $("#try_again_buttons").hide();
+            $("#post_button_placeholder").css('display', 'initial');
+            $("#post_button").hide();
+        },
+
+        enableAfterSnapButtons: function() {
+            $("#blurb_region").removeClass("bottom");
+            $("#finish_buttons").addClass("bottom");
+            $("#capture_buttons").hide();
+            $("#try_again_buttons").css('display', 'flex');
+            $("#try_again_buttons").show();
+            $("#post_button_placeholder").hide();
+            $("#post_button").css('display', 'initial');
+            $("#try_again_buttons").click(function() {
+                App.tryAgain();
+            });
+            $("#post_button").click(function() {
+
+                var image = $("#base64").val();
+                if (typeof(image) === "undefined") {
+                    showError("No image detected.  Try snapping again");
+                    return;
+                }
+                App.postViaAPINow(image, $("#blurb").val());
+            });
+        },
+
+        tryAgain: function() {
+            App.enableCountDownButton();
+            $(App.canvas).css('display', 'none');
+            var video = document.getElementsByTagName('video')[0];
+            $(video).show();
+            $("#post_error").slideUp();
+        },
+
+        postViaAPINow: function(imageBase64, blurb) {
+            $.ajax({
+                type: "POST",
+                url: "{{baseUrl}}/_mobile/v2/postbooth.php",
+                data: {
+                    image: imageBase64,
+                    blurb: blurb,
+                    requestHash: window.requestHash
+                },
+                success: function(data) {
+                    if ("undefined" === typeof(data.success)) {
+                        App.showError("undefined" === typeof(data.error) ? "Unexpected Error" : data.error);
+                        $("#finish_buttons").show();
+                        $("#try_again_buttons").show();
+                        return;
+                    }
+                    location.href = data.success.boothUrl;
+                },
+                fail: function(_, o) {
+                    App.showError("Unexpected Error " +  o);
+                    $("#finish_buttons").show();
+                    $("#try_again_buttons").show();
+                },
+                dataType: "json"
+            });
+            $("#finish_buttons").hide();
+            $("#try_again_buttons").hide();
+        },
+
+        startCountDown: function(count) {
+            $("#countDownNumber").each(function(o) {
+                $(o).hide();
+            });
+            if (count == 3) {
+                $("#webcam_count_down_3").css('visibility', 'initial');
+            } else if (count == 2) {
+                $("#webcam_count_down_2").css('visibility', 'initial');
+            } else if (count == 1) {
+                $("#webcam_count_down_1").css('visibility', 'initial');
+                $("#webcam_count_down_1").fadeOut('slow');
+                $("#webcam_count_down_2").fadeOut('slow');
+                $("#webcam_count_down_3").fadeOut('slow');
+            } else {
+                App.getSnapshot();
+                return;
+            }
+            setTimeout(function() {
+                App.startCountDown(count - 1);
+            }, 1000);
+        },
+
+        showError : function(message) {
+            var errorDiv = $("#post_error");
+            if (typeof(errorDiv) === "undefined") {
+                alert(message);
+                return;
+            }
+            errorDiv.show();
+            errorDiv.text(message);
         }
 
     };
 
     App.init();
-
+    loadNewFriendsBooths();
+    loadPublicBooths();
 });

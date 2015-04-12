@@ -40,7 +40,6 @@ OR
   (
     SELECT bootherName FROM (
         SELECT fkUserName as bootherName FROM friendstbl WHERE fkFriendName = '{{username}}'
-      UNION (SELECT fkUserName as bootherName FROM userspublictbl)
     ) A
     WHERE bootherName NOT IN (
       SELECT fkIgnoredName FROM ignorestbl WHERE fkUsername = '{{username}}'
@@ -48,3 +47,4 @@ OR
   )
 )
 ORDER BY A.datetime DESC
+LIMIT {{pageStartIndex}}, {{numPerPage}}

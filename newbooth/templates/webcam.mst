@@ -1,0 +1,85 @@
+<script type = "text/javascript">
+    $(document).ready(function() {
+        window.requestHash = "{{requestHash}}";
+    });
+</script>
+<div class = "phoneAnalog" id = "newBoothRegion">
+    <div class = "newBooth">
+        <div class = "phoneAnalogGreeting">
+            <div class = "webcamHeader">
+                New Booth
+            </div>
+        </div>
+        <div class = "newBoothWebcamRegion">
+            <div class = "newBoothWebcam" id = "webcam">
+                <canvas id = "preview"></canvas>
+            </div>
+            <div class = "newBoothWebcamMessageRegion">
+                <div class = "newBoothWebcamMessage" id = "webcam_loading_placeholder">
+                    Loading Webcam<br/><br/>
+                    Click "Allow" if your browser asks for permission to use your webcam
+                </div>
+            </div>
+            <div class = "newBoothWebcamMessageRegion">
+                <div class = "newBoothWebcamMessage" id = "webcam_not_found_error">
+                    No webcam found<br/><br/>
+                    Please connect your device and refresh this page.
+                </div>
+            </div>
+            <div class = "newBoothWebcamMessageRegion">
+                <div class = "newBoothWebcamMessage countDownNumber" id = "webcam_count_down_3">
+                    3
+                </div>
+                <div class = "newBoothWebcamMessage countDownNumber" id = "webcam_count_down_2">
+                    2
+                </div>
+                <div class = "newBoothWebcamMessage countDownNumber" id = "webcam_count_down_1">
+                    1
+                </div>
+            </div>
+        </div>
+        <div class = "newBoothButtonsRegion" id = "capture_buttons">
+            <div class = "phoneAnalogButton newBoothSnapButtonRegion" id = "leftButton">
+                <button class = "newBoothSnapButton" type="button" id = "snap_button">
+                    Snap!
+                </button>
+            </div>
+            <div class = "phoneAnalogButton newBoothSnapButtonRegion" id = "rightButton">
+                <button class = "newBoothSnapButton" type="button" id = "count_down_button">
+                    Start Snap Timer
+                </button>
+            </div>
+        </div>
+        <div class = "newBoothButtonsRegion" id = "try_again_buttons">
+            <div class = "phoneAnalogButton">
+                <button type="button">
+                    Try Snapping Again
+                </button>
+            </div>
+        </div>
+        <div class = "newBoothBlurbRegion" id = "blurb_region">
+            <textarea class = "newBoothBlurb" id = "blurb"></textarea>
+        </div>
+        <div class = "phoneAnalogSubsectionTitle error" id = "post_error">
+            Errors will show here
+        </div>
+        <textarea id = "base64"></textarea>
+        <div class = "newBoothFinishButtonsRegion" id = "finish_buttons">
+            <div class = "phoneAnalogButton" id = "post_button_region">
+                <button type="button" id = "post_button">
+                    Post this booth!
+                </button>
+                <button type="button" id = "post_button_placeholder">
+                    Snap a photo first
+                </button>
+            </div>
+        </div>
+    </div>
+    <a href = "{{baseUrl}}/newbooth/file">
+        <div class = "phoneAnalogButton" id = "upload_button">
+            <button>
+                Upload an image instead
+            </button>
+        </div>
+    </a>
+</div>

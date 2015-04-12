@@ -17,6 +17,73 @@ a {
     font-weight: bold;
 }
 
+.phoneAnalog {
+    background-color: transparent;
+    background-image: url(/media/bubblebackgroundbig.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Bitter', serif;
+    font-weight: bold;
+    margin: 0 auto;
+    position: relative;
+}
+
+.phoneAnalogGreeting {
+    color: #FFF;
+    padding: 4vw 0 4vw;
+    font-size: 6vw;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+}
+
+.phoneAnalogButton {
+    align-content: space-around;
+    border-bottom-color: rgb(68, 187, 153);
+    border-bottom-style: solid;
+    border-bottom-width: 4vw;
+    box-sizing: border-box;
+    display: flex;
+    cursor: default;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2vw;
+    width: 100%;
+}
+
+.phoneAnalogButton button {
+    align-items: flex-start;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(34, 153, 119);
+    border-style: solid;
+    border-width: 1vw;
+    border-radius: 1vw;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 3.5rem;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    text-shadow: none;
+    text-transform: none;
+    width: 100%;
+}
+
+.phoneAnalogSubsectionTitle {
+    color: #FFF;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+    font-size: 4vw;
+}
+
+.phoneAnalogSubsectionTitle.error {
+    color: #FFF;
+    background-color: #DA7358;
+    padding: 0.5em 0;
+    border-width: 0.1rem 0 0.1rem;
+    border-style: solid none solid;
+    border-top-color: #CB6247;
+    border-bottom-color: #EB8469;
+}
+
 .loaderRegion {
     height: 2rem;
     display: flex;
@@ -77,6 +144,21 @@ a {
     position: absolute;
     right: 0;
     top: 0;
+}
+
+.pageHeaderUsernameRegion {
+    position: absolute;
+    top: 0;
+    right: 4rem;
+    height: 2.5rem;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.pageHeaderUsername {
+    display: inline-block;
+    margin: auto;
+    font-weight: bold;
 }
 
 .headertitle {
@@ -190,6 +272,24 @@ a {
 
 @media all and (min-width: 600px) {
 
+    .phoneAnalog {
+        max-width: 32em;
+        margin: 0 auto 0;
+    }
+
+    .phoneAnalogGreeting {
+        font-size: 2rem;
+        padding: 0;
+    }
+
+    .phoneAnalogButton button {
+        border-width: 0.125rem;
+    }
+
+    .phoneAnalogSubsectionTitle {
+        font-size: 1.5rem;
+    }
+
     .requires_js_warning {
         border: 0.5em solid #F63;
     }
@@ -229,6 +329,44 @@ a {
 
 /* Medium screens */
 @media all and (min-width: 1024px) {
+
+    .phoneAnalog {
+        max-width: 24em;
+        margin: 2rem auto 10rem;
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    .phoneAnalogGreeting {
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .phoneAnalogButton {
+        border-bottom-color: rgb(68, 187, 153);
+        border-bottom-style: solid;
+        border-bottom-width: 1rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 6rem;
+        padding: 1rem;
+        text-align: center;
+    }
+
+
+    .phoneAnalogButton button {
+        align-items: flex-start;
+        background-color: rgb(255, 255, 255);
+        border: none !important;
+        box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
+        height: 3rem;
+        max-width: 16rem;
+        border-radius: 0.5rem;
+    }
 
     .load_more_button {
         display: none;

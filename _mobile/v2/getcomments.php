@@ -31,11 +31,12 @@ class GetCommentsApiResponse extends AbstractUserApiResponse {
         $boothnumber = $_POST['boothnum'];
 
         if (isBoothPublic($boothnumber)) {
-            $this->doGetComments($boothnumber);
+            echo json_encode($this->doGetComments($boothnumber));
             return;
         }
+
         if (isFriendOf($username, getBoothOwner($boothnumber))) {
-            doGetComments($boothnumber);
+            echo json_encode($this->doGetComments($boothnumber));
             return;
         }
 
@@ -44,10 +45,15 @@ class GetCommentsApiResponse extends AbstractUserApiResponse {
     }
 
     function doGetComments($boothnumber) {
-        echo json_encode(array(
-            "success" => $this->toArray(Comments::loadForBooth($boothnumber))
-        ));
-        return;
+        $comments = Comments::loadForBooth($boothnumber);
+
+        if (isset($comments['success'])) {
+            return array(
+                "success" => $this->toArray($comments["success"])
+            );
+        } else {
+            return $comments;
+        }
     }
 
     function toArray($comments) {
@@ -67,7 +73,7 @@ class GetCommentsApiResponse extends AbstractUserApiResponse {
 
             $canDeleteComment = false;
 
-            $root = "http://" . $_SERVER['SERVER_NAME'];
+            $root = base();
             if (isset($_SESSION['username'])) {
                 $canDeleteComment = isAllowedToDeleteCommentNumber($_SESSION['username'], $comment->getCommentNumber());
             }

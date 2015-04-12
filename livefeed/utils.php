@@ -73,9 +73,9 @@ function getNonFriendPublicFeedSQL($username, $pageNum, $numOfPages, $newerThanB
             (
 			bn.`fkUsername`
 			NOT IN (
-				SELECT `fkUsername`
+				SELECT `fkFriendname`
 				FROM `friendstbl`
-				WHERE `fkFriendName` = '" . $username . "')
+				WHERE `fkUsername` = '" . $username . "')
 			)
 		ORDER BY bn.`datetime` DESC
 		".$additionalCheck."

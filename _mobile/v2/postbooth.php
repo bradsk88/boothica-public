@@ -17,12 +17,12 @@ session_start();
 try {
     main();
 } catch (Exception $e) {
-    echo json_encode(array("error" => sql_death1($e->getMessage())));
+    echo json_encode(array("error" => $e->getMessage()));
 }
 
 function main() {
 
-    $link = connect_boothDB();
+    $dblink = connect_boothDB();
     $username = $_POST['username'];
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
@@ -51,7 +51,7 @@ function main() {
     $requestHash = $_POST['requestHash'];
 
 
-    $link->autocommit(false);
+    $dblink->autocommit(false);
 
     $sql = "SELECT requestHash FROM ( SELECT requestHash FROM `boothnumbers` ORDER BY datetime DESC LIMIT 1000 ) a WHERE requestHash = '".$requestHash."' LIMIT 2";
     $query = sql_query($sql);
@@ -59,7 +59,7 @@ function main() {
         echo json_encode(array("error" => sql_death1($sql)));
         return;
     }
-    $link->autocommit(true);
+    $dblink->autocommit(true);
 
     if ($query->num_rows > 0) {
         if ($query->num_rows == 2) {
@@ -82,21 +82,8 @@ function main() {
         $friendsonly = $_POST['friendsonly'];
     }
 
-    list($code, ) = doPostBooth($_SESSION['username'], $_POST['image'], $_POST['blurb'], $friendsonly, $requestHash);
-    if ($code == 0) {
-        echo json_encode(array(
-            'success' => 'booth posted successfully' 
-        ));
-    } else if ($code == 0214150354) {
-        echo json_encode(array(
-            'error' => 'Posting too rapidly.  Wait 1 minutes between posts.'
-        ));
-    } else {
-        echo json_encode(array(
-            'error' => 'the booth could not be posted' #TODO: Better errors
-        ));
-    }
-
+    $result = doPostBooth($_SESSION['username'], $_POST['image'], $_POST['blurb'], $friendsonly, $requestHash);
+    echo $result;
     return;
 
 }

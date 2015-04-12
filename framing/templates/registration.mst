@@ -1,8 +1,8 @@
-<div class = "loginPaneRegion" id = "registrationPaneRegion">
+<div class = "phoneAnalog" id = "registrationPaneRegion">
     <div class = "loginPane">
         {* TODO: change this to actions/dologin.php and re-implement login *}
         <form action="{{baseUrl}}/actions/doregister.php" method="POST">
-            <div class = "loginPaneGreetingRegion">
+            <div class = "phoneAnalogGreeting">
                 <div class = "loginPaneGreeting">
                     Boothi.ca Registration
                 </div>
