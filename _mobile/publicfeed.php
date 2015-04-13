@@ -69,7 +69,7 @@ function getSQL()
             return getMyPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber);
         }
     }
-    return getPublicFeedSQL($pageNum, $newerThanBoothNumber);
+    return getPublicFeedSQL($pageNum, 9, $newerThanBoothNumber);
 }
 
 function getMyPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber=-1) {

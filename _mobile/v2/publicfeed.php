@@ -82,7 +82,7 @@ function getSQL()
 
         }
     }
-    return getPublicFeedSQL($pageNum, $newerThanBoothNumber);
+    return getPublicFeedSQL($pageNum, $numPerPage, $newerThanBoothNumber);
 }
 
 function getMyPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber=-1) {

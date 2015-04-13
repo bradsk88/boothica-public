@@ -15,7 +15,7 @@ function initFileBoothUpload(requestHash) {
     }
     window.requestHash = requestHash;
     submitDefaultColor = $('#submit_button').css('background-color');
-    defaultPreviewHeight = $('#previewspot').css('height');
+    defaultPreviewHeight = $('#preview_region').css('height');
     $('#submit_button').css('background-color', '#AAAAAA').css('cursor', 'default').text('Select an image first');
 
     $('#uploadform input:radio').addClass('input_hidden');
@@ -33,6 +33,7 @@ function initFileBoothUpload(requestHash) {
         console.log("alternative");
         $('#status').html("This browser may not be fully supported.").slideDown(1000, 32);
         var button = document.createElement('button');
+        button.type = "button";
         button.id = "select_file_button";
         button.innerHTML = "Click to select image...";
         $('#buttonspot').empty();
@@ -46,20 +47,21 @@ function initFileBoothUpload(requestHash) {
             filereader: 'files/filereader.swf',
             debugMode: false
         });
-        $('#select_file_button').bind('change', function (evt) {
+        $(button).bind('change', function (evt) {
             $('#submit_button').attr('disabled', 'disabled');
             showPreviewAuto(evt.target.files, wasmobile);
         });
     } else {
         console.log("standard");
-        var button = document.createElement('div');
+        var button = document.createElement('button');
+        button.type = "button";
         button.id = "select_file_button";
         button.innerHTML = "Click to select image...";
         $('#buttonspot').empty();
         $('#buttonspot').append(button);
         $('#select_file_button').addClass('bigbutton');
         $('#select_file_button').bind('click', function (evt) {
-            $('input#file').click();
+            $("#hidden_file_selector").click();
         });
     }
     initialized = true;
@@ -101,7 +103,7 @@ function doShowPreview(reader, rotation, mobile) {
             $('#submit_button').css('background-color', '#FFAAAA').text('Image is too wide or too tall').css('cursor','default');
             $('#status').html("Width: " + imgWidth + ", Height: " + imgHeight).show(1000);
             $('canvas').remove();
-            $('#previewspot').css('height',defaultPreviewHeight);
+            $('#preview_region').css('height',defaultPreviewHeight);
             repositionFlashButton();
             return;
         } else {
@@ -113,7 +115,7 @@ function doShowPreview(reader, rotation, mobile) {
             });
             $('#status').hide(1000);
         }
-        var MAX_WIDTH1 = 640;
+        var MAX_WIDTH1 = 640; // This is not the width used for this preview.  This is the width used for saving.
 
         canvas = document.createElement('canvas');
         canvas.setAttribute('id','preview');
@@ -151,22 +153,17 @@ function doShowPreview(reader, rotation, mobile) {
         ctx.rotate(-angleInRadians);
         ctx.translate(-x, -y);
 
-        $('#previewspot').empty();
+        $('#preview_region').empty();
 
-        if (mobile) {
-            var vwidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-            var canvas2 = document.createElement('canvas');
-            canvas2.width = vwidth;
-            canvas2.height = vwidth*canvas.height/canvas.width;
-            var ctx2 = canvas2.getContext("2d");
-            ctx2.drawImage(canvas, 0, 0, canvas2.width, canvas2.height);
-            $('#previewspot').append(canvas2);
-            $('#previewspot').css('height', canvas2.height);
-            $('#fileReaderSWFObject').offset({ top: offset.top, left: offset.left});
-        } else {
-            $('#previewspot').append(canvas);
-            $('#previewspot').css('height', canvas.height);
-        }
+        var vwidth = $('#preview_region').width();
+        var canvas2 = document.createElement('canvas');
+        canvas2.width = vwidth;
+        canvas2.height = vwidth*canvas.height/canvas.width;
+        var ctx2 = canvas2.getContext("2d");
+        ctx2.drawImage(canvas, 0, 0, canvas2.width, canvas2.height);
+        $('#preview_region').append(canvas2);
+        $('#preview_region').css('height', canvas2.height);
+        $('#fileReaderSWFObject').offset({ top: offset.top, left: offset.left});
         repositionFlashButton();
     }
 }

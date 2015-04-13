@@ -85,7 +85,7 @@ function getNonFriendPublicFeedSQL($username, $pageNum, $numOfPages, $newerThanB
  * @param $pageNum
  * @return string
  */
-function getPublicFeedSQL($pageNum, $newerThanBoothNumber=-1)
+function getPublicFeedSQL($pageNum, $numPerPage = 9, $newerThanBoothNumber=-1)
 {
     $additionalCheck = "";
     if ($newerThanBoothNumber > 0) {
@@ -105,5 +105,5 @@ function getPublicFeedSQL($pageNum, $newerThanBoothNumber=-1)
 			)
         ".$additionalCheck."
 		ORDER BY bn.`datetime` DESC
-		LIMIT " . 10 * ($pageNum - 1) . ", 10;";
+		LIMIT " . $numPerPage * ($pageNum - 1) . ", ".$numPerPage.";";
 }
