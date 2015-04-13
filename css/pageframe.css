@@ -37,7 +37,7 @@ a {
 
 .phoneAnalogButton {
     align-content: space-around;
-    border-bottom-color: rgb(68, 187, 153);
+    border-bottom-color: rgba(68, 187, 153, 0.75);
     border-bottom-style: solid;
     border-bottom-width: 4vw;
     box-sizing: border-box;
@@ -49,10 +49,10 @@ a {
     width: 100%;
 }
 
-.phoneAnalogButton button {
+.phoneAnalogButton button, .phoneAnalogField input {
     align-items: flex-start;
     background-color: rgb(255, 255, 255);
-    border-color: rgb(34, 153, 119);
+    border-color: rgba(34, 153, 119, 0.5);
     border-style: solid;
     border-width: 1vw;
     border-radius: 1vw;
@@ -68,10 +68,28 @@ a {
     width: 100%;
 }
 
-.phoneAnalogSubsectionTitle {
+.phoneAnalogSubsectionTitle, .phoneAnalogText {
     color: #FFF;
     text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+}
+
+.phoneAnalogSubsectionTitle {
     font-size: 4vw;
+}
+
+.phoneAnalogText {
+    font-size: 4vw;
+    background-color: rgba(68, 187, 153, 0.75);
+}
+
+.phoneAnalogField {
+    padding: 1em;
+}
+
+.phoneAnalogField input {
+    font-size: 2rem;
+    padding: 1em;
+    height: 4.5rem;
 }
 
 .phoneAnalogSubsectionTitle.error {
@@ -290,6 +308,16 @@ a {
         font-size: 1.5rem;
     }
 
+    .phoneAnalogText {
+        font-size: 1rem;
+        padding: 1rem 0;
+    }
+
+    .phoneAnalogField input {
+        border-width: 0.25rem;
+        border-radius: 0.5rem;
+    }
+
     .requires_js_warning {
         border: 0.5em solid #F63;
     }
@@ -345,7 +373,7 @@ a {
     }
 
     .phoneAnalogButton {
-        border-bottom-color: rgb(68, 187, 153);
+        border-bottom-color: rgba(68, 187, 153, 0.75);
         border-bottom-style: solid;
         border-bottom-width: 1rem;
         box-sizing: border-box;
@@ -357,6 +385,11 @@ a {
         text-align: center;
     }
 
+    .phoneAnalogButton.bottom {
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+    }
+
 
     .phoneAnalogButton button {
         align-items: flex-start;
@@ -366,6 +399,17 @@ a {
         height: 3rem;
         max-width: 16rem;
         border-radius: 0.5rem;
+    }
+
+    .phoneAnalogField input {
+        padding: 1rem;
+        border-width: 0.125rem;
+        font-size: 1.25rem;
+        height: 3rem;
+    }
+
+    .phoneAnalogField input:focus {
+        outline: none;
     }
 
     .load_more_button {

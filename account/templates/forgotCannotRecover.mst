@@ -1,0 +1,18 @@
+<div class = "phoneAnalog">
+    <div class = 'phoneAnalogGreeting'>
+        Cannot Recover
+    </div>
+    <div class = 'phoneAnalogText error'>
+        <div>
+            Either this account does not exist, or the security settings on the account are too high to allow automated
+            password recovery.
+        </div>
+    </div>
+    <form action = '{{baseUrl}}/info/contact' method = 'get'>
+        <div class = 'phoneAnalogButton bottom'>
+            <button>
+                Having problems?  Contact us!
+            </button>
+        </div>
+    </form>
+</div>

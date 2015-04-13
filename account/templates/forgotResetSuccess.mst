@@ -1,0 +1,17 @@
+<div class = "phoneAnalog">
+    <div class = 'phoneAnalogGreeting'>
+        Email Sent!
+    </div>
+    <div class = 'phoneAnalogText'>
+        Your temporary password has been emailed to {{email}}.<br/>
+        <br/>
+        Make sure you also check your spam folder.
+    </div>
+    <form action = '{{baseUrl}}/info/contact' method = 'get'>
+        <div class = 'phoneAnalogButton bottom'>
+            <button>
+                Having problems?  Contact us!
+            </button>
+        </div>
+    </form>
+</div>

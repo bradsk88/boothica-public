@@ -113,7 +113,7 @@ class PageFrame {
    	    }
 	}
 
-        $headerlink = "/info/news";
+        $headerlink = "/";
         if (isset($_SESSION['username'])) {
             $headerlink = "/activity";
         }
