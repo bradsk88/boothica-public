@@ -1,0 +1,32 @@
+<div class = "phoneAnalog">
+    <div class = "phoneAnalogGreeting">Account Privacy</div>
+    <div class = "phoneAnalogText">Choose a privacy setting below</div>
+
+    <form id = "emailform" action = "{{baseUrl}}/actions/gopublic" method = "post">
+    <div class = "phoneAnalogButton">
+        <button>Public</button>
+        <div class = "phoneAnalogText">
+            Anyone can see your activity
+        </div>
+    </div>
+    </form>
+
+    <form id = "emailform" action = "{{baseUrl}}/actions/gosemipublic" method = "post">
+    <div class = "phoneAnalogButton">
+        <button>Semi-Public</button>
+        <div class = "phoneAnalogText">
+            Only users who are logged in can see your activity
+        </div>
+    </div>
+    </form>
+
+    <form id = "emailform" action = "{{baseUrl}}/actions/goprivate" method = "post">
+    <div class = "phoneAnalogButton bottom">
+        <button>Private</button>
+        <div class = "phoneAnalogText">
+            Only your friends can see your activity
+        </div>
+    </div>
+    </form>
+
+</div>

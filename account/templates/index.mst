@@ -1,0 +1,66 @@
+<div class = "phoneAnalog">
+    <div class = "phoneAnalogGreeting">
+        Account Settings
+    </div>
+    <div class = "phoneAnalogText">
+        Choose an option to configure
+    </div>
+
+    <form action = "{{baseUrl}}/account/changeemailprefs">
+    <div class = "phoneAnalogButton">
+        <button>
+            Email Preferences
+        </button>
+        <div class = "phoneAnalogText">
+            Change how we send emails to you
+        </div>
+    </div>
+    </form>
+
+    <form action = "{{baseUrl}}/account/changeprivacy">
+    <div class = "phoneAnalogButton">
+        <button>
+            Change Privacy
+        </button>
+        <div class = "phoneAnalogText">
+            {% if privacy == 0 %}
+            Your account is currently<br/>
+            <br/>
+            public<br/>
+            <br/>
+            anyone can see your activity
+            {% else %}
+                {%if privacy == 1 %}
+            Your account is currently<br/>
+            <br/>
+            semi-public<br/>
+            <br/>
+            Users who are logged in can see your activity
+                {% else %}
+            Your account is currently<br/>
+            <br/>
+            private<br/>
+            <br/>
+            only your friends can see your activity
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    </form>
+
+    <form action = "{{baseUrl}}/account/changepassword">
+    <div class = "phoneAnalogButton">
+        <button>
+            Change Password
+        </button>
+    </div>
+    </form>
+
+    <form action = "{{baseUrl}}/account/changeemail">
+    <div class = "phoneAnalogButton bottom">
+        <button>
+            Change Email Address
+        </button>
+    </div>
+    </form>
+</div>

@@ -12,9 +12,6 @@ function main() {
     require_common("utils");
     require_asset("UserImage");
 
-    $link = connect_to_boothsite();
-    update_online_presence();
-
     if (parameterIsMissingAndEchoFailureMessage("boothername")) {
         return;
     }

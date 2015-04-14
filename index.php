@@ -48,7 +48,7 @@ class IndexPage
         $page->css($root ."/css/login.css");
         $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");
         $page->loadPublicSidebarsContent();
-
+        $page->excludeLoginNotification();
         $page->echoHtml();
 
     }

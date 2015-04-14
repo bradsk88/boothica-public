@@ -6,8 +6,8 @@ main();
 
 function main() {
 
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/livefeed/utils.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
     require_common("db");
     require_common("utils");
@@ -55,11 +55,12 @@ function main() {
 			(
 			bn.`isPublic` = true
 			AND
-			(SELECT `password` FROM `logintbl` WHERE `username` = bn.`fkUsername`)
+			bn.fkUsername
 			IN (
-				SELECT `fkPassword`
-				FROM `userspublictbl`
+				SELECT fkUsername
+				FROM `usersprivacytbl`
 				WHERE `fkUsername` = bn.`fkUsername`
+				AND privacyDescriptor = 'public'
 			))
     LIMIT ".$numPerPage.";";
 
@@ -122,9 +123,7 @@ function doRandomIntegrityCheck($sql) {
     }
 
     while($row = $r->fetch_array()) {
-        if (isBoothPublic($row['pkNumber'])) {
-            continue;
-        }
+        if (isAllowedToInteractWithBooth($_SESSION['username'], $row['pkNumber']));
         death ("Random public booths included private booth number: ".$row['pkNumber']);
     }
 }

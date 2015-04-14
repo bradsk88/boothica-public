@@ -29,11 +29,9 @@ function isAllowedToInteractWithBooth($username, $boothnum) {
     if (isSuspended($username)) {
         return false;
     }
-    if (isBoothPublic($boothnum)) {
-        return true;
+    $boothowner = getBoothOwner($boothnum);
+    if (doesUserAppearPrivate($boothowner)) {
+        return false;
     }
-    if (isFriendOf($username, getBoothOwner($boothnum))) {
-        return true;
-    }
-    return false;
+    return true;
 }

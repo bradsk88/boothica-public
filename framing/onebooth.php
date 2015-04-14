@@ -21,6 +21,7 @@ function main() {
     $username = $_REQUEST['username'];
     $boothnum = $_REQUEST['boothnum'];
 
+    //TODO: Check if booth is deleted
     //TODO: check if username and booth number are sympatico.  If not, redirect.
     //TODO: Add photo comment display
     //TODO: Add photo comment input
@@ -62,18 +63,7 @@ function main() {
     $page->css($root."/css/oneBooth-page.css");
     $page->css($root."/css/textcomment-nocontext.css");
     $page->css($root."/css/textcomment-input.css");
-    initializeSideBars($page);
+    $page->useDefaultSideBars();
     $page->echoHtml();
 
-}
-
-// TODO: This is duplicated in most pages.  Maybe move it to PageFrame
-function initializeSideBars($page) {
-
-    if (isset($_SESSION['username'])) {
-        $page->firstSideBar("New Friend Booths", false);
-    } else {
-        $page->firstSideBar("Random Booths", false);
-    }
-    $page->lastSideBar("New Public Booths");
 }

@@ -14,6 +14,10 @@ function baseWithoutProtocol() {
     return "localhost";
 }
 
+function basePretty() {
+    return "Boothi.ca LocalHost";
+}
+
 function require_common( $asset ) {
     require_once "{$_SERVER['DOCUMENT_ROOT']}/common/".$asset.".php";
 }
@@ -46,5 +50,5 @@ function isLoggedIn() {
     if (!isset($_SESSION)) {
         session_start();
     }
-    return isset($_SESSION['username']);
+    return isset($_SESSION['username']) && strlen(trim($_SESSION['username'])) > 0;
 }

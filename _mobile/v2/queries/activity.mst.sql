@@ -7,6 +7,7 @@ SELECT
   , C.fkNumber as boothNum
   , C.hasPhoto as hasMedia
   , CONCAT(C.hash, '.', C.extension) AS media
+  , A.datetime as datetime
 FROM
   commentstbl C
 LEFT JOIN
@@ -28,7 +29,16 @@ OR
   (
     SELECT commenterName FROM (
         SELECT fkUserName as commenterName FROM friendstbl WHERE fkFriendName = '{{username}}'
-      UNION (SELECT fkUserName as commenterName FROM userspublictbl)
+      UNION (
+        SELECT fkUserName as commenterName
+        FROM usersprivacytbl
+        WHERE (
+          privacyDescriptor = 'public'
+        {% if isLoggedIn %}
+          OR privacyDescriptor = 'semi-public'
+        {% endif %}
+        )
+      )
     ) A
     WHERE commenterName NOT IN (
       SELECT fkIgnoredName FROM ignorestbl WHERE fkUsername = '{{username}}'
@@ -46,5 +56,7 @@ OR
     )
   )
 )
-ORDER BY A.datetime DESC
+ORDER BY datetime DESC
 LIMIT {{pageStartIndex}}, {{numPerPage}}
+
+/* TODO: The order from this is weird for pubby.  Figure out why. */

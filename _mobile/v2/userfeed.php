@@ -42,13 +42,13 @@ function main()
         return;
     }
 
-    if (!isPublic($bootherName)) {
-        if (!isFriendOf($username, $bootherName)) {
-            echo json_encode(
-                array(
-                    "error" => "Private user"));
-            return;
-        }
+    if (doesUserAppearPrivate($bootherName)) {
+        echo json_encode(
+            array(
+                "error" => "Private user"
+            )
+        );
+        return;
     }
 
     $sql = getSQL();

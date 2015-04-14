@@ -3,7 +3,7 @@
 require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/meta/AbstractUserApiResponse.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
-require_once("{$_SERVER['DOCUMENT_ROOT']}/livefeed/utils.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/userpages/booth_utils.php");
 require_common("db");
 require_common("utils");
@@ -28,20 +28,15 @@ class GetBoothApiResponse extends AbstractUserApiResponse {
         if (!$result) {
             echo
             json_encode(array(
-                "error" => mysql_death1($sql)
+                "error" => sql_death1($sql)
             ));
             return;
         }
 
-        $array = $result->fetch_array();
-        while($row = $array) {
+        while($row = $result->fetch_array()) {
             $boothername = $row['fkUsername'];
             $cansee = false;
-            if (isBoothPublic($boothnum)) {
-                $cansee = true;
-            }
-            $isBootherFollowingMe = isFriendOf($username, $boothername);
-            if (!$cansee && $isBootherFollowingMe) {
+            if (isAllowedToInteractWithBooth($_SESSION['username'], $boothnum)) {
                 $cansee = true;
             }
 
@@ -67,9 +62,15 @@ class GetBoothApiResponse extends AbstractUserApiResponse {
             }
 
 
+            $isBootherFollowingMe = isFriendOf($username, $boothername);
             $root = base();
             $imagePath = "/booths/" . $row['imageTitle'] . "." . $row['filetype'];
             $absoluteImageUrl = $root . $imagePath;
+
+            if (!doesUserAppearPrivate($boothername)) {
+                $cansee = true;
+            }
+
             if ($cansee) {
                 $booth = array(
                     'boothnum' => $boothnum,

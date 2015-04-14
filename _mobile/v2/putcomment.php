@@ -7,7 +7,7 @@
  */
 use comment\CommentObj;
 
-error_reporting(0);
+error_reporting(E_ALL);
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
@@ -35,15 +35,13 @@ class PutCommentApiResponse extends AbstractUserApiResponse {
             echo json_encode(array("error" => "Missing POST parameter commenttext"));
             return;
         }
+
         $commentText = $_POST['commenttext'];
 
         $boother = getBoothOwner($boothNum);
+
         $res = upload_comment(false, $commentText, $boothNum, $boother, ".jpg");
-        if ($res == 0) {
-            echo json_encode(array("success" => array("message" => "The comment was posted successfully")));
-            return;
-        }
-        echo json_encode(array("error" => "General error", "errorcode" => $res));
+        echo json_encode($res);
     }
 }
 

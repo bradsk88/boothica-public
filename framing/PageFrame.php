@@ -35,9 +35,10 @@ class PageFrame {
     private $metaRawScripts = array();
     private $metaCss = array();
     private $metaRemoteCss = array();
-    private $notificationRegion = null;
+    protected  $notificationRegion = null;
     private $excludeLoginNotification = false;
     private $body;
+    private $title = "Boothi.ca - Take a picture every day and make friends";
     private $firstSidebarTitle = null;
     private $firstSidebarCollapsed = false;
     private $firstSidebarLink = null;
@@ -48,7 +49,6 @@ class PageFrame {
     function __construct() {
         $this->includeJQuery();
         $this->initialMeta();
-        $this->script(base()."/common/navigation-scripts.js?version=0.1");
     }
 
     function body($html) {
@@ -69,6 +69,10 @@ class PageFrame {
 
     public function script($absoluteUrl) {
         $this->metaScripts[] = $absoluteUrl;
+    }
+
+    public function title($title) {
+        $this->title = $title;
     }
 
     public function rawScript($fullyTaggedScript) {
@@ -130,7 +134,11 @@ class PageFrame {
             "baseUrl" => base(),
             "firstSidebarTitle" => $this->firstSidebarTitle,
             "lastSidebarTitle" => $this->lastSidebarTitle,
+            "title" => $this->title,
         );
+        if (isset($this->bannerMessage)) {
+            $data['message'] = $this->bannerMessage;
+        }
         if (isset($_SESSION['username'])) {
             $data["username"] = $_SESSION['username'];
         }
@@ -162,7 +170,7 @@ class PageFrame {
         }
     }
 
-    public function setBodyTemplateAndValues($file, $values)
+    public function setBodyTemplateAndValues($file, $values=array())
     {
         $h2o = new h2o($file);
         $html = $h2o->render(array_merge($values, array("baseUrl" => base(), "baseUrlWithoutProtocol" => baseWithoutProtocol())));

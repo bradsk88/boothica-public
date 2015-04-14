@@ -1,65 +1,35 @@
-<?PHP
+<?php
 
-include("{$_SERVER['DOCUMENT_ROOT']}/content/html.php");
-echo "
-	<link rel = 'stylesheet' href = '/css/account.css'  type='text/css' media='screen' />
-";
-include("{$_SERVER['DOCUMENT_ROOT']}/common/smallpage_top.php");
-include("{$_SERVER['DOCUMENT_ROOT']}/common/header.php");
-main();
-echo "
-    </body>
-</html>
-";
+require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+require_once("{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/LoginPage.php");
+require_common("db");
+require_common("utils");
+require_lib("h2o-php/h2o");
 
-function main() {
+class ChangePasswordPage extends PageFrame {
 
-    echo "
-    <form id = \"emailform\" action = \"/actions/changepassword\" method = \"post\">
-    <div class = 'setting'>
-        <stitle>Change Password</stitle><br/>
-        <div class = \"setting-desc\">
-            <div class = \"setting-text\">
-                Current Password:
-            </div>
-            <div style = \"float: left;\">
-                <input type = \"password\" name = \"currentpass\" id = \"currentpass\" style = \"width: 300px;\" />
-            </div>
-            <div style = \"clear: both;\"></div>
-            <br/>
-            <div class = \"setting-text\">
-                New Password:
-            </div>
-            <div style = \"float: left;\">
-                <input type = \"password\" name = \"newpass\" id = \"newpass\" style = \"width: 300px;\" />
-            </div>
-            <div style = \"clear: both;\"></div>
-            <br/>
-            <div class = \"setting-text\">
-                Confirm Password:
-            </div>
-            <div style = \"float: left;\">
-                <input type = \"password\" name = \"newpassconf\" id = \"newpassconf\"  style = \"width: 300px\" />
-            </div>
-            <div style = \"clear: both;\"></div>
-        </div>
-        <div class = \"setting-cur\">
-    ";
-    if (isset($_GET['nomatch'])) {
-        echo "<span style = \"color: red;\">Passwords did not match </span>";
+    function __construct($message = null) {
+        parent::__construct();
+        parent::setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/account/templates/changePassword.mst",
+            array(
+                "message" => $message
+            )
+        );
     }
-    echo "
-            <span id = \"submit\">
-                <img src= \"/media/edit.png\"> Submit Changes
-            </span>
-        </div>
-    </div>
-    </form>
-    <script type = \"text/javascript\">
-        $('#submit').one('click', function() {
-            $('#emailform').submit();
-        });
-    </script>
-    ";
 
+}
+
+if (isLoggedIn()) {
+    if (isset($_REQUEST['nomatch'])) {
+        $page = new ChangePasswordPage("New passwords did not match");
+    } else if (isset($_REQUEST['wrongpass'])) {
+        $page = new ChangePasswordPage("The value provided for \"current password\" was wrong.");
+    } else {
+        $page = new ChangePasswordPage();
+    }
+    $page->echoHtml();
+} else {
+    $page = new LoginPage();
+    echo $page->render();
 }

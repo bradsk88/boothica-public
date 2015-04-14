@@ -6,15 +6,16 @@
 
     function main() {
 
-        require_once("{$_SERVER['DOCUMENT_ROOT']}/livefeed/utils.php");
         require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
         require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
         require_common("db");
         require_common("utils");
+        require_lib("h2o-php/h2o");
 
         $dblink = connect_boothDB();
 
         $sql = getSQL();
+
         $result = $dblink->query($sql);
 
         if (!$result) {
@@ -64,32 +65,29 @@ function getSQL()
         $numPerPage = $_POST['numperpage'];
     }
 
-    if (isset($_SESSION['username'])) {
-        return getMyPublicFeedSQL($_SESSION['username'], $pageNum, $numPerPage);
-    }
-
     $newerThanBoothNumber = -1;
     if (isset($_POST['newer_than_booth_number'])) {
         $newerThanBoothNumber = $_POST['newer_than_booth_number'];
     }
 
-    if (isset($_POST['username'], $_POST['phoneid'], $_POST['loginkey'])) {
-        $username = $_POST['username'];
-        $_SESSION['username'] = $username;
-        $check = isKeyOK($username, $_POST['phoneid'], $_POST['loginkey']);
-        if ($check == OK) {
-            return getMyPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber);
-
+    if (isLoggedIn()) {
+        if (isset($_REQUEST['includeFriends']) && $_REQUEST['includeFriends'] == 'true') {
+            $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/publicfeed-loggedin.mst.sql");
+        } else {
+            $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/publicfeed-loggedin-excludefriends.mst.sql");
         }
+    } else {
+        $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/publicfeed-visitor.mst.sql");
     }
-    return getPublicFeedSQL($pageNum, $numPerPage, $newerThanBoothNumber);
-}
 
-function getMyPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber=-1) {
-    if (isset($_POST['includeFriends'])) {
-        if ($_POST['includeFriends'] == false || $_POST['includeFriends'] == "false") {
-           return getNonFriendPublicFeedSQL($username, $pageNum, $numPerPage, $newerThanBoothNumber);
-        }
+    $values = array(
+        "startIndex" => $pageNum * $numPerPage,
+        "numPerPage" => $numPerPage,
+        "username" => $_SESSION['username'] ? $_SESSION['username'] : null
+    );
+    if ($newerThanBoothNumber > 0) {
+        $values['lowerBound'] = $newerThanBoothNumber;
     }
-    return getUserPublicFeedSQL($username, $pageNum, $numPerPage, 0, $newerThanBoothNumber);
+    return $sqlBuilder->render($values);
+
 }

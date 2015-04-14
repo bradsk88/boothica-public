@@ -77,5 +77,6 @@ function getSQL()
         $numberOfPages = $_POST['numperpage'];
     }
 
+
     return getFriendBoothsSQL($_SESSION['username'], $pageNum, $numberOfPages);
 }
