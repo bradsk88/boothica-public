@@ -1,0 +1,52 @@
+<div class = "section_toggler" id = "user_booth_body_toggler">
+    $username - Booth {{boothNum}}
+</div>
+
+<div class = "userBoothBody">
+    <div id = "user_booth_body"></div>
+
+    {% if allowed %}
+
+    <div class = "userBoothButtonsRegion" id = "booth_buttons">
+
+        <form class = "userBoothButton" id = "prev_booth_form">
+                <button id = "prev_booth_button" disabled=disabled>
+                    Previous
+                </button>
+        </form>
+
+        {% if isOwner %}
+
+        <form class = "userBoothButton" action = "{{baseUrl}}/users/{{username}}/{{boothNumber}}/edit">
+            <button>
+                Edit
+            </button>
+        </form>
+
+        {% else %}
+
+        <form class = "userBoothButton" action = "{{baseUrl}}/users/{{username}}/{{boothNumber}}/like">
+            <button>
+                Like
+            </button>
+        </form>
+
+        {% endif %}
+
+        <form class = "userBoothButton" id = "next_booth_form">
+            <button id = "next_booth_button" disabled=disabled>
+                Next
+            </button>
+        </form>
+
+    </div>
+
+    <div class = "userBoothComments" id = "user_booth_comments"></div>
+    <div id="loadmoreajaxloader" style="display:none;">
+        <center><img src="{{baseUrl}}/media/ajax-loader.gif" /></center>
+    </div>
+    {% autoescape off %}
+    {{commentInput}}
+    {% autoescape on %}
+    {% endif %}
+</div>

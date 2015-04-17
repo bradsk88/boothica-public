@@ -1,0 +1,24 @@
+<div class = "phoneAnalog">
+    <div class = "phoneAnalogGreeting">
+        Oops!
+    </div>
+    <div class = "phoneAnalogText">
+        Booth number<br/><br/>{{boothNumber}}<br/><br/>actually belongs to the user<br/>
+        <br/>
+        {{realOwner}}
+    </div>
+    <form action = "{{baseUrl}}/users/{{realOwner}}/{{boothNumber}}/">
+        <div class = "phoneAnalogButton">
+            <button>
+                Proceed to {{realOwnerDisplayname}}'s booth
+            </button>
+        </div>
+    </form>
+    <form action = "{{baseUrl}}/users/{{givenUsername}}/">
+        <div class = "phoneAnalogButton bottom">
+            <button>
+                Go to {{givenUserDisplayname}}'s profile
+            </button>
+        </div>
+    </form>
+</div>

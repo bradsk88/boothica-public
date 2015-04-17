@@ -30,8 +30,8 @@ AND
 )
 {% endif %}
 ORDER BY booth.datetime DESC
-{% if startIndex %}
-{% if numPerPage %}
+{% if limitsGiven %}
 LIMIT {{startIndex}}, {{numPerPage}}
-{% endif %}
+{% else %}
+LIMIT 0, 5
 {% endif %}

@@ -157,8 +157,8 @@ a {
 }
 
 .pageheaderbg {
-    background-size: contain !important;
-    background: url(/media/topbarbg.png) no-repeat fixed;
+    background-size: cover !important;
+    background: url(/media/topbarbg.png) no-repeat;
     width: 100%;
     height: 2.5em;
     position: fixed;
@@ -203,9 +203,9 @@ a {
 }
 
 .pageHeaderUsername {
-    display: inline-block;
     margin: auto;
     font-weight: bold;
+    display: none;
 }
 
 .headertitle {
@@ -318,6 +318,10 @@ a {
 }
 
 @media all and (min-width: 600px) {
+
+    .pageHeaderUsername {
+        display: inline-block;
+    }
 
     .phoneAnalog {
         max-width: 32em;

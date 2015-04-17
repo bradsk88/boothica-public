@@ -81,8 +81,9 @@ function getSQL()
     }
 
     $values = array(
-        "startIndex" => $pageNum * $numPerPage,
+        "startIndex" => max(($pageNum-1) * $numPerPage, 0),
         "numPerPage" => $numPerPage,
+        "limitsGiven" => true,
         "username" => $_SESSION['username'] ? $_SESSION['username'] : null
     );
     if ($newerThanBoothNumber > 0) {
