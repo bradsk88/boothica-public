@@ -33,3 +33,11 @@
     </form>
     </div>
 </div>
+
+<form action = "{{baseUrl}}/newbooth">
+    <div class = "phoneAnalogButton" id = "upload_button">
+        <button>
+            Upload from webcam instead
+        </button>
+    </div>
+</form>
