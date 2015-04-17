@@ -1,0 +1,40 @@
+<div class = "phoneAnalog">
+<form id = "emailform" action = "{{baseUrl}}/actions/changeemail" method = "post">
+    <div class = "phoneAnalogGreeting">
+        Change Email Address
+    </div>
+
+    <div class = "phoneAnalogText">
+        Please provide a new email address<br/>
+        <br/>
+        We will send a message to the address to confirm it as yours.
+    </div>
+
+    {% if message %}
+    <div class = "phoneAnalogSubsectionTitle error">
+        {{message}}
+    </div>
+    {% endif %}
+
+    <div class = "phoneAnalogField">
+        <div class = "title">
+            Email Address
+        </div>
+        <input type = "text" name = "newemail" id = "newemail" />
+    </div>
+
+    <div class = "phoneAnalogField">
+        <div class = "title">
+            Confirm Email Address
+        </div>
+        <input type = "text" name = "newemailconf" id = "newemailconf" />
+    </div>
+
+    <div class = "phoneAnalogButton bottom">
+        <button type = "submit">
+            Change Email
+        </button>
+    </div>
+
+</form>
+</div>

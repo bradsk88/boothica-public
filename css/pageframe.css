@@ -35,9 +35,9 @@ a {
     text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
 }
 
-.phoneAnalogButton {
+.phoneAnalogButton, .phoneAnalogCheckbox {
     align-content: space-around;
-    border-bottom-color: rgb(68, 187, 153);
+    border-bottom-color: rgba(68, 187, 153, 0.75);
     border-bottom-style: solid;
     border-bottom-width: 4vw;
     box-sizing: border-box;
@@ -48,16 +48,18 @@ a {
     padding: 2vw;
     width: 100%;
 }
-
 .phoneAnalogButton button {
+    cursor: pointer;
+}
+
+.phoneAnalogButton button, .phoneAnalogField input {
     align-items: flex-start;
     background-color: rgb(255, 255, 255);
-    border-color: rgb(34, 153, 119);
+    border-color: rgba(34, 153, 119, 0.5);
     border-style: solid;
     border-width: 1vw;
     border-radius: 1vw;
     box-sizing: border-box;
-    cursor: pointer;
     display: block;
     height: 3.5rem;
     margin: auto;
@@ -68,10 +70,54 @@ a {
     width: 100%;
 }
 
+.phoneAnalogButton .phoneAnalogText {
+    margin-top: 1rem;
+}
+
+
+.phoneAnalogSubsectionTitle, .phoneAnalogText {
+    color: #FFF;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+}
+
 .phoneAnalogSubsectionTitle {
+    font-size: 4vw;
+}
+
+.phoneAnalogText {
+    font-size: 4vw;
+    background-color: rgba(68, 187, 153, 0.95);
+    width: 100%;
+    padding: 3vw;
+    box-sizing: border-box;
+}
+
+.phoneAnalogText.dense{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+    font-weight: normal;
+    text-shadow: none !important;
+    text-align: left;
+}
+
+.phoneAnalogText.dense ol li {
+    padding: 1rem;
+}
+
+.phoneAnalogField {
+    padding: 1em;
+}
+
+.phoneAnalogField .title {
     color: #FFF;
     text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
     font-size: 4vw;
+}
+
+.phoneAnalogField input {
+    font-size: 2rem;
+    padding: 1em;
+    height: 4.5rem;
 }
 
 .phoneAnalogSubsectionTitle.error {
@@ -95,30 +141,31 @@ a {
     margin: auto;
 }
 
-.login_prompt {
+.login_prompt, .messageBanner {
+    border: 3vw solid #DDD;
     margin-top: 2.5em;
     margin-bottom: -2.5em;
-    border: 3vw solid #DDD;
 }
 
 .requires_js_warning {
     border: 3vw solid #F63;
 }
 
-.requires_js_warning, .login_prompt {
+.messageBanner, .requires_js_warning, .login_prompt { /* TODO: Discontinue the use of require_js_warning and login_prompt and replace with messageBanner */
     background-color: white;
     padding: 1em;
 }
 
 .pageheaderbg {
-    background-size: cover !important;
-    background: url(/media/topbarbg.png) top;
+    background-size: contain !important;
+    background: url(/media/topbarbg.png) no-repeat fixed;
     width: 100%;
     height: 2.5em;
     position: fixed;
     top: 0;
     z-index: 9999;
 }
+
 
 .pageheader {
     width: 100%;
@@ -290,11 +337,25 @@ a {
         font-size: 1.5rem;
     }
 
+    .phoneAnalogText {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .phoneAnalogField .title {
+        font-size: 1.5rem;
+    }
+
+    .phoneAnalogField input {
+        border-width: 0.25rem;
+        border-radius: 0.5rem;
+    }
+
     .requires_js_warning {
         border: 0.5em solid #F63;
     }
 
-    .login_prompt {
+    .messageBanner, .login_prompt {
         border: 0.5em solid #EEE;
     }
 
@@ -339,22 +400,34 @@ a {
         border-top-right-radius: 1rem;
     }
 
+    .phoneAnalog.big {
+        max-width: 32rem;
+    }
+
+    .phoneAnalog.massive {
+        max-width: 40rem;
+    }
+
     .phoneAnalogGreeting {
         padding: 1rem;
         font-size: 1.5rem;
     }
 
-    .phoneAnalogButton {
-        border-bottom-color: rgb(68, 187, 153);
+    .phoneAnalogButton, .phoneAnalogCheckbox {
+        border-bottom-color: rgba(68, 187, 153, 0.75);
         border-bottom-style: solid;
         border-bottom-width: 1rem;
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        height: 6rem;
         padding: 1rem;
         text-align: center;
+    }
+
+    .phoneAnalogButton.bottom, .phoneAnalogCheckbox.bottom {
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
     }
 
 
@@ -366,6 +439,22 @@ a {
         height: 3rem;
         max-width: 16rem;
         border-radius: 0.5rem;
+    }
+
+    .phoneAnalogField .title {
+        font-size: 1rem;
+        padding: 0 0 1rem;
+    }
+
+    .phoneAnalogField input {
+        padding: 1rem;
+        border-width: 0.125rem;
+        font-size: 1.25rem;
+        height: 3rem;
+    }
+
+    .phoneAnalogField input:focus {
+        outline: none;
     }
 
     .load_more_button {
@@ -387,7 +476,7 @@ a {
     }
 
     .sidebar_titleandbutton {
-        background-color: #87E1C1;
+        background: #87E1C1 url(/media/topbarbg.png) no-repeat;
         margin-top: 0.5rem;
         border-radius: 0.5rem;
         color: #000;

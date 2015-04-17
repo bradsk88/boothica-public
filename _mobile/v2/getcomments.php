@@ -17,6 +17,7 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/comment_utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
 require_common("utils");
 require_common("internal_utils");
+require_asset("UserImage");
 
 class GetCommentsApiResponse extends AbstractUserApiResponse {
 
@@ -30,12 +31,7 @@ class GetCommentsApiResponse extends AbstractUserApiResponse {
         }
         $boothnumber = $_POST['boothnum'];
 
-        if (isBoothPublic($boothnumber)) {
-            echo json_encode($this->doGetComments($boothnumber));
-            return;
-        }
-
-        if (isFriendOf($username, getBoothOwner($boothnumber))) {
+        if (isAllowedToInteractWithBooth($_SESSION['username'], $boothnumber)) {
             echo json_encode($this->doGetComments($boothnumber));
             return;
         }
@@ -71,13 +67,11 @@ class GetCommentsApiResponse extends AbstractUserApiResponse {
 			WHERE `fkCommentNumber` = ".$comment->getCommentNumber().";";
             $numLikes = sql_get_expectOneRow(sql_query($sql), "num");
 
-            $canDeleteComment = false;
 
             $root = base();
-            if (isset($_SESSION['username'])) {
-                $canDeleteComment = isAllowedToDeleteCommentNumber($_SESSION['username'], $comment->getCommentNumber());
-            }
-            $iconImage = UserImage::getImage($comment->getCommenterName());
+            $canDeleteComment = isAllowedToDeleteCommentNumber($_SESSION['username'], $comment->getCommentNumber());
+            $commenterName = $comment->getCommenterName();
+            $iconImage = UserImage::getImage($commenterName);
             if ($comment->hasPhoto()) {
                 $hash = "/comments/".$comment->getImageHash().".".$comment->getImageExtension();
                 $out[] = array(

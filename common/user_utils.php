@@ -392,15 +392,13 @@ function printAboutMe($boothername) {
 
 }
 
-function getBooths($boothername, $pageNum, $perPage) {
-
-    return mysql_query(getBoothsSQL($boothername, $pageNum, $perPage));
-}
-
 function getBoothsSQL($boothername, $pageNum, $perPage, $newerThanBoothNumber=-1) {
+
+    $dblink = connect_boothDB();
 
     $additionalCheck = "";
     if ($newerThanBoothNumber > 0) {
+        $newerThanBoothNumber = $dblink->real_escape_string($newerThanBoothNumber);
         $additionalCheck = "AND `pkNumber` > ".$newerThanBoothNumber;
     }
     $startnum = $perPage * ($pageNum-1);
@@ -413,14 +411,11 @@ function getBoothsSQL($boothername, $pageNum, $perPage, $newerThanBoothNumber=-1
 			`filetype`,
 			`imageHeightProp`
 			FROM `boothnumbers`
-			WHERE `fkUsername` ='" . $boothername . "'
+			WHERE `fkUsername` ='" . $dblink->real_escape_string($boothername) . "'
     ".$additionalCheck;
-    if (!isFriendOf($_SESSION['username'], $boothername)) {
-        $sql .= " AND `isPublic` = true ";
-    }
     $sql .= "
     ORDER BY `pkNumber` DESC
-			LIMIT " . $startnum . ", " . $perPage . ";";
+			LIMIT " . $dblink->real_escape_string($startnum) . ", " . $dblink->real_escape_string($perPage) . ";";
     return $sql;
 }
 

@@ -31,6 +31,7 @@ EOT;
     $page->body($html);
     $page->useDefaultSideBars();
     $page->script($root."/booth/user-booth-scripts.js");
+    $page->title($_GET['username']." on ".basePretty());
     $pagescripts = new h2o("booths-page-script.mst");
     $page->rawScript($pagescripts->render(array(
         "username" => $_GET['username'],

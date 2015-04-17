@@ -1,0 +1,21 @@
+<div class = "phoneAnalog big">
+    <div class = "loginPane">
+        <div class = "phoneAnalogGreeting">
+            <div class = "loginPaneGreeting">
+                {{title}}
+            </div>
+        </div>
+        <div class = "phoneAnalogText">
+            {% autoescape off %}
+            {{errorMessage}}
+            {% autoescape on %}
+        </div>
+        <form action = "{{nextUrl}}">
+            <div class = "phoneAnalogButton bottom">
+                <button type="submit">
+                    {{nextUrlButtonText}}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

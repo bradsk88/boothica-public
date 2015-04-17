@@ -2,6 +2,8 @@
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_common("db");
+require_asset("UserImage");
+require_asset("BoothImage");
 require_lib("h2o-php/h2o");
 require_once "{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/meta/AbstractUserApiResponse.php";
@@ -53,7 +55,7 @@ class ActivityResponse extends AbstractUserApiResponse {
                 , "commenterImage" => UserImage::getAbsoluteImage($row['commenterName'])
                 , "bootherName" => $row['bootherName']
                 , "bootherDisplayName" => (string) getDisplayName($row['bootherName'])
-                , "bootherImage" => UserImage::getAbsoluteImage($row['bootherName'])
+                , "bootherImage" => BoothImage::getAbsoluteImage($row['boothNum'], $row['bootherName'])
                 , "boothNum" => $row['boothNum']
                 , "hasMedia" => $canSee ? $row['hasMedia'] == 1 : false
                 , "commentMediaImage" => $canSee ? $commentImage : base().UserImage::PRIVATE_USER

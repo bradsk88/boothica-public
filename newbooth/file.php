@@ -1,9 +1,5 @@
 <?PHP
 
-	require_once("{$_SERVER['DOCUMENT_ROOT']}/common/user_utils.php");
-	require_once("{$_SERVER['DOCUMENT_ROOT']}/newbooth/mobile_utils.php");
-	redirectIfMobile();
-	
     require_once("{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
     require_lib("h2o-php/h2o");

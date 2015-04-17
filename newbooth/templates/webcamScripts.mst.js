@@ -240,18 +240,16 @@ $(document).ready(function() {
         },
 
         startCountDown: function(count) {
-            $("#countDownNumber").each(function(o) {
-                $(o).hide();
-            });
+            $("#webcam_count_down_1").hide();
+            $("#webcam_count_down_2").hide();
+            $("#webcam_count_down_3").hide();
             if (count == 3) {
-                $("#webcam_count_down_3").css('visibility', 'initial');
+                $("#webcam_count_down_3").show();
             } else if (count == 2) {
-                $("#webcam_count_down_2").css('visibility', 'initial');
+                $("#webcam_count_down_2").show();
             } else if (count == 1) {
-                $("#webcam_count_down_1").css('visibility', 'initial');
+                $("#webcam_count_down_1").show();
                 $("#webcam_count_down_1").fadeOut('slow');
-                $("#webcam_count_down_2").fadeOut('slow');
-                $("#webcam_count_down_3").fadeOut('slow');
             } else {
                 App.getSnapshot();
                 return;

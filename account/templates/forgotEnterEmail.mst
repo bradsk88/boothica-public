@@ -1,0 +1,24 @@
+<div class = 'phoneAnalog'>
+    <div class = 'phoneAnalogGreeting'>
+        Password Recovery
+    </div>
+    <div class = 'phoneAnalogText'>
+        Enter the email address you used to sign up for this account:
+    </div>
+    <form action = '{{baseUrl}}/account/forgotpassword' method = 'get'>
+        <input type = 'hidden' name = 'un' value = '{{username}}' />
+        <div class = "phoneAnalogField forgotPasswordEmailField">
+            <input type = 'text' name = 'mail' />
+        </div>
+        <div class = "phoneAnalogButton">
+            <button type = 'submit'>Recover</button>
+        </div>
+    </form>
+    <form action = '{{baseUrl}}/info/contact' method = 'get'>
+        <div class = 'phoneAnalogButton bottom'>
+            <button>
+                Having problems?  Contact us!
+            </button>
+        </div>
+    </form>
+</div>
