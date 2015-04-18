@@ -35,8 +35,10 @@ var renderOneBoothFromData = function (data) {
             });
         }
         $("#user_booth_body").html(html);
-        loadOneBoothComments(data.success.boothnum)
+        loadOneBoothComments(data.success.boothnum);
+        loadOneBoothLikes(data.success.likes, data.success.boothnum);
     });
+
 };
 
 var loadOneBoothComments = function (boothnum) {
@@ -80,6 +82,42 @@ var renderOneBoothCommentsFromData = function (data) {
         }
         $("#user_booth_comments").html(html);
     });
+};
+
+var loadOneBoothLikes = function(likesNum, boothNum) {
+    $.post("{{baseUrl}}/_mobile/v2/getboothlikeusers.php", {
+        boothnum: boothNum
+    }, function (data) {
+        renderOneBoothLikesFromData(data);
+    }, "json")
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            $("#user_booth_likes").html("Error while loading comments");
+        })
+};
+
+var renderOneBoothLikesFromData = function(data) {
+    var html = "";
+    if (typeof(data.success) === "undefined") {
+        html = "error: " + data.error;
+    } else {
+        $.each(data.success, function (idx, obj) {
+
+            var likesList = $("<div/>", {
+                class: "likesListHorizontal"
+            });
+
+            $.each(data.success.likeusers, function (idx, obj) {
+                var userImageRegion = $("<div/>", {
+                    class: "likeUserImageRegion"
+                });
+                var userImage = $("<img/>", {
+                    src: obj.userImageAbsoluteUrl
+                });
+                userImage.appendTo(userImageRegion);
+                userImageRegion.appendTo("#user_booth_likes");
+            });
+        });
+    }
 };
 
 function postComment(boothnum, boothername) {

@@ -17,12 +17,14 @@ abstract class AbstractUserApiResponse {
 
     function runAndEcho() {
         foreach ($this->requiredArgs as $arg) {
-            if (parameterIsMissingAndEchoFailureMessage("blurb")) {
-
+            if (parameterIsMissingAndEchoFailureMessage($arg)) {
+                return;
             }
         }
-        if (!isset($_SESSION)) session_start();
         $username = $this->getUsername();
+        if ($username == null) {
+            return;
+        }
         $this->run($username);
     }
 
@@ -32,10 +34,11 @@ abstract class AbstractUserApiResponse {
     protected abstract function run($username);
 
     private function getUsername() {
+        if (isLoggedIn()) {
+            return $_SESSION['username'];
+        }
         $username = isset($_POST['username']) ? $_POST['username'] : null;
-        if (isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-        } else if (isset($_POST['username']) && failsStandardMobileChecksAndEchoFailureMessage()) {
+        if (isset($_POST['username']) && failsStandardMobileChecksAndEchoFailureMessage()) {
             return null;
         }
 

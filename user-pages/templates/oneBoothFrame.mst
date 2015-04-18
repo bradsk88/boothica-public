@@ -41,6 +41,7 @@
 
     </div>
 
+    <div class = "userBoothLikes" id = "user_booth_likes"></div>
     <div class = "userBoothComments" id = "user_booth_comments"></div>
     <div id="loadmoreajaxloader" style="display:none;">
         <center><img src="{{baseUrl}}/media/ajax-loader.gif" /></center>

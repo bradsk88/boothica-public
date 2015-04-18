@@ -64,7 +64,9 @@ function main() {
         "baseUrl" => $root,
         "allowed" => $allowedToInteractWithBooth,
         "isOwner" => $_SESSION['username'] == $username,
-        "commentInput" => $commentInputHTML
+        "commentInput" => $commentInputHTML,
+        "username" => $username,
+        "boothNumber" => $boothnum
     ));
 
     $page = new PageFrame();
