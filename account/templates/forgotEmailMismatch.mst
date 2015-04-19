@@ -1,0 +1,23 @@
+<div class = "phoneAnalog">
+    <div class = 'phoneAnalogGreeting'>
+        Cannot Recover
+    </div>
+    <div class = 'phoneAnalogText'>
+        The email and username combination you provided does not match our records.
+    </div>
+    <form action = "{{baseUrl}}/account/forgotpassword">
+        <input type = "hidden" value = "{{username}}" name = "un"/>
+        <div class = 'phoneAnalogButton'>
+            <button>
+                Try Again
+            </button>
+        </div>
+    </form>
+    <form action = '{{baseUrl}}/info/contact' method = 'get'>
+        <div class = 'phoneAnalogButton bottom'>
+            <button>
+                Having problems?  Contact us!
+            </button>
+        </div>
+    </form>
+</div>

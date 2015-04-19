@@ -1,0 +1,75 @@
+<div class = "phoneAnalog">
+<form id = "emailform" action = "{{baseUrl}}/actions/changeemailprefs" method = "post">
+    <div class = "phoneAnalogGreeting">Email Notifications</div>
+    <div class = "phoneAnalogText">Enable the types of emails you would like to receive</div>
+
+    <div class = "phoneAnalogCheckbox emailPref">
+        <div class = "emailPrefLabel">From moderators</div>
+        <label class="emailPref checkbox">
+            <input type="checkbox" class="checkbox__input" id = 'fromMods' name = 'fromMods' value = 1 {% if fromMods %} checked {%endif%} />
+            <div class="checkbox__switch"></div>
+        </label>
+        <div class = "updateIndicator"><div class = "updateIndicatorText">Updating...</div></div>
+    </div>
+
+    <div class = "phoneAnalogCheckbox emailPref">
+        <div class = "emailPrefLabel">When you receive a new Private Message</div>
+        <label class="emailPref checkbox">
+            <input type="checkbox" class="checkbox__input" id = 'newPM' name = 'newPM' value = 1 {% if newPM %} checked {%endif%} />
+            <div class="checkbox__switch"></div>
+        </label>
+    </div>
+
+    <div class = "phoneAnalogCheckbox emailPref">
+        <div class = "emailPrefLabel">When your friends post new booths</div>
+        <label class="emailPref checkbox">
+            <input type="checkbox" class="checkbox__input" id = 'friendBooth' name = 'friendBooth' value = 1 {% if friendBooth %} checked {%endif%} />
+            <div class="checkbox__switch"></div>
+        </label>
+    </div>
+
+    <div class = "phoneAnalogCheckbox emailPref">
+        <div class = "emailPrefLabel">When someone comments on one of your booths</div>
+        <label class="emailPref checkbox">
+            <input type="checkbox" class="checkbox__input" id = 'boothComment' name = 'boothComment' value = 1 {% if boothComment %} checked {%endif%} />
+            <div class="checkbox__switch"></div>
+        </label>
+    </div>
+
+    <div class = "phoneAnalogCheckbox emailPref">
+        <div class = "emailPrefLabel">When someone mentions you anywhere on the site</div>
+        <label class="emailPref checkbox">
+            <input type="checkbox" class="checkbox__input" id = 'mention' name = 'mention' value = 1 {% if mention %} checked {%endif%} />
+            <div class="checkbox__switch"></div>
+        </label>
+    </div>
+
+    <div class = "phoneAnalogCheckbox emailPref">
+        <div class = "emailPrefLabel">When someone asks to be your friend</div>
+        <label class="emailPref checkbox">
+            <input type="checkbox" class="checkbox__input" id = 'friendRequest' name = 'friendRequest' value = 1 {% if friendRequest %} checked {%endif%} />
+            <div class="checkbox__switch"></div>
+        </label>
+    </div>
+
+    <div class = "phoneAnalogCheckbox emailPref">
+        <div class = "emailPrefLabel">When someone accepts your friend request</div>
+        <label class="emailPref checkbox">
+            <input type="checkbox" class="checkbox__input" id = 'friendAccept' name = 'friendAccept' value = 1 {% if friendAccept %} checked {%endif%} />
+            <div class="checkbox__switch"></div>
+        </label>
+    </div>
+
+    <div class = "phoneAnalogCheckbox emailPref">
+        <div class = "emailPrefLabel">Site Announcements (extremely rare)</div>
+        <label class="emailPref checkbox">
+            <input type="checkbox" class="checkbox__input" id = 'announcements' name = 'announcements' value = 1 {% if announcements %} checked {%endif%} />
+            <div class="checkbox__switch"></div>
+        </label>
+    </div>
+
+    <div class = "phoneAnalogButton bottom">
+        <button type = "submit">Save changes</button>
+    </div>
+</form>
+</div>

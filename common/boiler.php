@@ -11,7 +11,11 @@ function base() {
 }
 
 function baseWithoutProtocol() {
-    return "localhost";
+    return "192.168.1.157";
+}
+
+function basePretty() {
+    return "Boothi.ca LocalHost";
 }
 
 function require_common( $asset ) {
@@ -43,5 +47,8 @@ function include_error( $page ) {
 }
 
 function isLoggedIn() {
-    return isset($_SESSION['username']);
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    return isset($_SESSION['username']) && strlen(trim($_SESSION['username'])) > 0;
 }

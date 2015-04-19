@@ -12,9 +12,6 @@ function main() {
     require_common("utils");
     require_asset("UserImage");
 
-    $link = connect_to_boothsite();
-    update_online_presence();
-
     if (parameterIsMissingAndEchoFailureMessage("boothername")) {
         return;
     }
@@ -27,11 +24,11 @@ function main() {
     }
 
     $displayName = getDisplayName($bootherName);
-    $displayPic = new UserImage($bootherName);
+    $displayPic = UserImage::getAbsoluteImage($bootherName);
 
     echo json_encode(array("success" => array(
         "displayName" => (string) $displayName,
-        "displayPhotoAbsoluteUrl" => base() . $displayPic,
+        "displayPhotoAbsoluteUrl" => $displayPic,
         "warning" => "This endpoint is still under development.  It may change at any time."
     )));
 

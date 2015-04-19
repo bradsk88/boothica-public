@@ -1,0 +1,13 @@
+<div class = "phoneAnalog">
+    <div class = "phoneAnalogGreeting">Success!</div>
+    <form action = "{{baseUrl}}/account" method = "post">
+        <div class = "phoneAnalogButton">
+            <button type = "submit">Back to Account Settings</button>
+        </div>
+    </form>
+    <form action = "{{baseUrl}}/account/changeemailprefs" method = "post">
+        <div class = "phoneAnalogButton bottom">
+            <button type = "submit">Back to Email Preferences</button>
+        </div>
+    </form>
+</div>

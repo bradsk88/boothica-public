@@ -16,6 +16,8 @@ Install php
 Update ``` /etc/httpd/conf/httpd.conf ``` to enable php
 See https://wiki.archlinux.org/index.php/Apache_HTTP_Server#php for details
 
+Make sure to install and enable the gd.so plugin
+
 Install Mysql.  MariaDB is fine: 
 https://wiki.archlinux.org/index.php/PHP#MySQL.2FMariaDB 
 
@@ -44,5 +46,7 @@ ln -sf $BASE_DIR/public/_mobile/ _mobile
 ln -sf $BASE_DIR/public/livefeed/ livefeed
 ln -sf $BASE_DIR/fillers/common/internal_utils.php $BASE_DIR/public/common/internal_utils.php
 ln -sf $BASE_DIR/public/user-registration user-registration
+ln -sf $BASE_DIR/public/comment comment
+ln -sf $BASE_DIR/public/pages pages
 ```
 

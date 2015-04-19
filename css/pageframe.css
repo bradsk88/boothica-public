@@ -4,6 +4,9 @@ body {
     text-align: center;
     padding: 0;
     margin: 0;
+    /*background-color: #515097;*/
+    background: #143B5B;
+    font-family: 'Bitter', serif;
 }
 
 a {
@@ -11,30 +14,163 @@ a {
     color: black;
 }
 
-.login_prompt {
+.bootherLink, .boothLink {
+    font-weight: bold;
+}
+
+.phoneAnalog {
+    background-color: transparent;
+    background-image: url(/media/bubblebackgroundbig.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Bitter', serif;
+    font-weight: bold;
+    margin: 0 auto;
+    position: relative;
+}
+
+.phoneAnalogGreeting {
+    color: #FFF;
+    padding: 4vw 0 4vw;
+    font-size: 6vw;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+}
+
+.phoneAnalogButton, .phoneAnalogCheckbox {
+    align-content: space-around;
+    border-bottom-color: rgba(68, 187, 153, 0.75);
+    border-bottom-style: solid;
+    border-bottom-width: 4vw;
+    box-sizing: border-box;
+    display: flex;
+    cursor: default;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2vw;
+    width: 100%;
+}
+.phoneAnalogButton button {
+    cursor: pointer;
+}
+
+.phoneAnalogButton button:disabled {
+    cursor: not-allowed !important;
+}
+
+.phoneAnalogButton button, .phoneAnalogField input {
+    align-items: flex-start;
+    background-color: rgb(255, 255, 255);
+    border-color: rgba(34, 153, 119, 0.5);
+    border-style: solid;
+    border-width: 1vw;
+    border-radius: 1vw;
+    box-sizing: border-box;
+    display: block;
+    height: 3.5rem;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    text-shadow: none;
+    text-transform: none;
+    width: 100%;
+}
+
+.phoneAnalogButton .phoneAnalogText {
+    margin-top: 1rem;
+}
+
+
+.phoneAnalogSubsectionTitle, .phoneAnalogText {
+    color: #FFF;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+}
+
+.phoneAnalogSubsectionTitle {
+    font-size: 4vw;
+}
+
+.phoneAnalogText {
+    font-size: 4vw;
+    background-color: rgba(68, 187, 153, 0.95);
+    width: 100%;
+    padding: 3vw;
+    box-sizing: border-box;
+}
+
+.phoneAnalogText.dense{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+    font-weight: normal;
+    text-shadow: none !important;
+    text-align: left;
+}
+
+.phoneAnalogText.dense ol li {
+    padding: 1rem;
+}
+
+.phoneAnalogField {
+    padding: 1em;
+}
+
+.phoneAnalogField .title {
+    color: #FFF;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+    font-size: 4vw;
+}
+
+.phoneAnalogField input {
+    font-size: 2rem;
+    padding: 1em;
+    height: 4.5rem;
+}
+
+.phoneAnalogSubsectionTitle.error {
+    color: #FFF;
+    background-color: #DA7358;
+    padding: 0.5em 0;
+    border-width: 0.1rem 0 0.1rem;
+    border-style: solid none solid;
+    border-top-color: #CB6247;
+    border-bottom-color: #EB8469;
+}
+
+.loaderRegion {
+    height: 2rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.loader {
+    margin: auto;
+}
+
+.login_prompt, .messageBanner {
+    border: 3vw solid #DDD;
     margin-top: 2.5em;
     margin-bottom: -2.5em;
-    border: 3vw solid #DDD;
 }
 
 .requires_js_warning {
     border: 3vw solid #F63;
 }
 
-.requires_js_warning, .login_prompt {
+.messageBanner, .requires_js_warning, .login_prompt { /* TODO: Discontinue the use of require_js_warning and login_prompt and replace with messageBanner */
     background-color: white;
     padding: 1em;
 }
 
 .pageheaderbg {
     background-size: cover !important;
-    background: url(/media/topbarbg.png) top;
+    background: url(/media/topbarbg.png) no-repeat;
     width: 100%;
     height: 2.5em;
     position: fixed;
     top: 0;
     z-index: 9999;
 }
+
 
 .pageheader {
     width: 100%;
@@ -60,6 +196,21 @@ a {
     position: absolute;
     right: 0;
     top: 0;
+}
+
+.pageHeaderUsernameRegion {
+    position: absolute;
+    top: 0;
+    right: 4rem;
+    height: 2.5rem;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.pageHeaderUsername {
+    margin: auto;
+    font-weight: bold;
+    display: none;
 }
 
 .headertitle {
@@ -105,7 +256,6 @@ a {
 
 .sidebar_first, .sidebar_last, .body_inside {
     flex: 1 100%;
-    background: #FFF;
 }
 
 .sidebar_body {
@@ -174,11 +324,47 @@ a {
 
 @media all and (min-width: 600px) {
 
+    .pageHeaderUsername {
+        display: inline-block;
+    }
+
+    .phoneAnalog {
+        max-width: 32em;
+        margin: 0 auto 0;
+    }
+
+    .phoneAnalogGreeting {
+        font-size: 2rem;
+        padding: 0;
+    }
+
+    .phoneAnalogButton button {
+        border-width: 0.125rem;
+    }
+
+    .phoneAnalogSubsectionTitle {
+        font-size: 1.5rem;
+    }
+
+    .phoneAnalogText {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .phoneAnalogField .title {
+        font-size: 1.5rem;
+    }
+
+    .phoneAnalogField input {
+        border-width: 0.25rem;
+        border-radius: 0.5rem;
+    }
+
     .requires_js_warning {
         border: 0.5em solid #F63;
     }
 
-    .login_prompt {
+    .messageBanner, .login_prompt {
         border: 0.5em solid #EEE;
     }
 
@@ -214,6 +400,76 @@ a {
 /* Medium screens */
 @media all and (min-width: 1024px) {
 
+    .phoneAnalog {
+        max-width: 24em;
+        margin: 2rem auto 0;
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    .phoneAnalog.big {
+        max-width: 32rem;
+    }
+
+    .phoneAnalog.massive {
+        max-width: 40rem;
+    }
+
+    .phoneAnalogGreeting {
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .phoneAnalogButton, .phoneAnalogCheckbox {
+        border-bottom-color: rgba(68, 187, 153, 0.75);
+        border-bottom-style: solid;
+        border-bottom-width: 1rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .phoneAnalogButton.bottom, .phoneAnalogCheckbox.bottom {
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+    }
+
+    .phoneAnalogButton.floating {
+        border: none;
+    }
+
+
+    .phoneAnalogButton button {
+        align-items: flex-start;
+        background-color: rgb(255, 255, 255);
+        border: none;
+        box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
+        height: 3rem;
+        max-width: 16rem;
+        border-radius: 0.5rem;
+    }
+
+    .phoneAnalogField .title {
+        font-size: 1rem;
+        padding: 0 0 1rem;
+    }
+
+    .phoneAnalogField input {
+        padding: 1rem;
+        border-width: 0.125rem;
+        font-size: 1.25rem;
+        height: 3rem;
+    }
+
+    .phoneAnalogField input:focus {
+        outline: none;
+    }
+
     .load_more_button {
         display: none;
     }
@@ -233,7 +489,9 @@ a {
     }
 
     .sidebar_titleandbutton {
-        background-color: #FFF;
+        background: #87E1C1 url(/media/topbarbg.png) no-repeat;
+        margin-top: 0.5rem;
+        border-radius: 0.5rem;
         color: #000;
     }
 

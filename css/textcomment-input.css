@@ -11,10 +11,6 @@
     }
 }
 
-.textCommentInputRegion {
-    background-color: #F00;
-}
-
 .textCommentInputTextareaRegion {
     padding: 0.125em;
     height: 12em;
@@ -45,7 +41,6 @@
 
 @media all and (min-width: 1024px) {
     .textCommentInputRegion {
-        background-color: #FFF;
         margin-top: 0.5em;
     }
     .textCommentInputSubmitButton input, .textCommentInputSubmitButton button, #post_comment_spinner {

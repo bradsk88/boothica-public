@@ -1,0 +1,184 @@
+#delete_button {
+    border: 1px solid red;
+    color: red;
+}
+
+#newboothbutton {
+    display: none;
+}
+
+#newBoothRegion {
+    max-width: 28rem;
+}
+
+#webcam_count_down_3, #webcam_count_down_2, #webcam_count_down_1 {
+    font-size: 4rem;
+    width:auto;
+    display: none;
+}
+
+#webcam_count_down_3 {
+    background: rgba(0,0,0,1);
+}
+
+#webcam_count_down_2 {
+    background: rgba(0,0,0,0.5);
+}
+
+#webcam_count_down_1 {
+    background: transparent;
+}
+
+#base64, #try_again_button_region {
+    display: none;
+}
+
+#post_button_region {
+    border: none;
+    height: auto;
+}
+
+#upload_button {
+    border: none;
+    position: absolute;
+}
+
+.newBoothWebcamRegion {
+    position: relative;
+    /* top: 0; */
+    /* left: 0; */
+    /* right: 0; */
+    /* bottom: 0; */
+    background: #000;
+    min-height: 12rem;
+}
+
+.newBoothWebcamMessageRegion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #FFF;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.newBoothWebcamMessage {
+    display: inline-block;
+}
+
+.newBoothWebcamMessage, .countDownNumber {
+    margin: auto;
+    cursor: default;
+    width: 10rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    font-weight: normal;
+    background: rgba(255,255,255,0.5);
+}
+
+#webcam_not_found_error {
+    display: none;
+    background: rgba(255,100,100,0.5);
+}
+
+.newBoothWebcam {
+    width: 100%;
+    height: auto;
+}
+
+#webcam video, #webcam #preview {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+#webcam #preview {
+    display: none;
+}
+
+.newBoothFinishButtonsRegion {
+    border-bottom: 2vw solid #4B9;
+    box-sizing: border-box;
+    display: inherit !important;
+}
+
+.newBoothBlurb {
+    box-sizing: border-box;
+    width: 100%;
+    height: 6rem;
+    resize: vertical;
+    margin: 0;
+}
+
+#post_error, #post_button {
+    display: none;
+}
+
+#try_again_buttons {
+    display: none;
+}
+
+#post_button_placeholder {
+    opacity: 0.5;
+}
+
+@media all and (min-width: 600px) {
+}
+
+@media all and (min-width: 1024px) {
+    .newBooth {
+        padding: 0 1rem 0;
+        margin: -1.5rem auto 0;
+    }
+
+    .newBoothWebcamRegion, #webcam #preview {
+        box-sizing: border-box;
+        border-radius: 0.5rem;
+    }
+
+    #webcam #preview, #webcam video {
+        padding: 0.5rem;
+    }
+
+    .newBoothButtonsRegion {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0 -1rem;
+    }
+
+    .newBoothSnapButton {
+        border-radius: 0.25rem;
+    }
+
+    .newBoothSnapButtonRegion {
+        flex-grow: 1;
+        flex-shrink: 0;
+        width: 50%;
+    }
+
+    .newBoothFinishButtonsRegion {
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+        border-bottom: 2rem solid #4B9;
+        margin: 0 -1rem;
+    }
+
+    .newBoothBlurb {
+        max-width: 36rem;
+        border-radius: 0.5rem 0.5rem 0.25rem 0.5rem;
+        margin: 1rem 0 0;
+    }
+
+    #post_error {
+        margin: 0 -1rem;
+    }
+}
+
+@media all and (min-width: 1280px) {
+    #newBoothRegion {
+        max-width: 40rem;
+    }
+}

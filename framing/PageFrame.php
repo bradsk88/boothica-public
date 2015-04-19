@@ -24,8 +24,7 @@ require_common("cookies");
 require_common("utils");
 require_lib("h2o-php/h2o");
 
-// TODO: set error reporting to 0
-error_reporting(E_ALL);
+error_reporting(0);
 if (isset($_SESSION['username']) && $_SESSION['username'] == 'bradsk88') {
     error_reporting(E_ERROR);
 }
@@ -36,20 +35,20 @@ class PageFrame {
     private $metaRawScripts = array();
     private $metaCss = array();
     private $metaRemoteCss = array();
-    private $notificationRegion = null;
+    protected  $notificationRegion = null;
     private $excludeLoginNotification = false;
     private $body;
-    private $firstSidebarTitle = "";
+    private $title = "Boothi.ca - Take a picture every day and make friends";
+    private $firstSidebarTitle = null;
     private $firstSidebarCollapsed = false;
     private $firstSidebarLink = null;
-    private $lastSidebarTitle = "";
+    private $lastSidebarTitle = null;
     private $lastSidebarCollapsed = false;
     private $lastSidebarLink = null;
 
     function __construct() {
         $this->includeJQuery();
         $this->initialMeta();
-        $this->script(base()."/common/navigation-scripts.js?version=0.1");
     }
 
     function body($html) {
@@ -70,6 +69,10 @@ class PageFrame {
 
     public function script($absoluteUrl) {
         $this->metaScripts[] = $absoluteUrl;
+    }
+
+    public function title($title) {
+        $this->title = $title;
     }
 
     public function rawScript($fullyTaggedScript) {
@@ -108,13 +111,13 @@ class PageFrame {
                 return;
             } else if (!$this->excludeLoginNotification ) {
            	    $this->notificationRegion = '
-                <a href = "$baseUrl/login">
+                <a href = "'.base().'/login">
                     <div class = "login_prompt">Please log in</div>
                 </a>';
    	    }
 	}
 
-        $headerlink = "/info/news";
+        $headerlink = "/";
         if (isset($_SESSION['username'])) {
             $headerlink = "/activity";
         }
@@ -130,10 +133,26 @@ class PageFrame {
             "headerlink" => $headerlink,
             "baseUrl" => base(),
             "firstSidebarTitle" => $this->firstSidebarTitle,
-            "lastSidebarTitle" => $this->lastSidebarTitle
+            "lastSidebarTitle" => $this->lastSidebarTitle,
+            "title" => $this->title,
         );
+        if (isset($this->bannerMessage)) {
+            $data['message'] = $this->bannerMessage;
+        }
+        if (isset($_SESSION['username'])) {
+            $data["username"] = $_SESSION['username'];
+        }
         $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/pageFrame.mst");
         return $page->render($data);
+    }
+
+    function loadPublicSidebarsContent() {
+        $this->rawScript("<script type = \"text/javascript\">
+            $(document).ready(function() {
+                loadRandomBooths();
+                loadPublicBooths();
+            });
+        </script>");
     }
 
     private function includeJQuery()
@@ -147,12 +166,11 @@ class PageFrame {
         if (isset($_SESSION['username']) && $_SESSION['username'] == "bradsk88") {
             error_reporting(E_ALL);
         } else {
-            //TODO: lower this
-            error_reporting(E_ALL);
+            error_reporting(0);
         }
     }
 
-    public function setBodyTemplateAndValues($file, $values)
+    public function setBodyTemplateAndValues($file, $values=array())
     {
         $h2o = new h2o($file);
         $html = $h2o->render(array_merge($values, array("baseUrl" => base(), "baseUrlWithoutProtocol" => baseWithoutProtocol())));

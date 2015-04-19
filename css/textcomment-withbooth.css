@@ -1,0 +1,95 @@
+.textCommentRegionWithBooth {
+    min-height: 5em;
+    position: relative;
+    margin: 1rem;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.125);
+    background: #87E1C1 url(/media/bubblebackgroundbig90.png) no-repeat;
+    background-size: cover;
+    border-radius: 0.25rem;
+}
+
+.textCommentImageWithBooth, .textCommentBoothImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2em;
+}
+
+.textCommentImageWithBooth {
+    box-shadow: -0.0rem 0.25rem 0.125rem rgba(0,0,0,0.5);
+}
+
+.textCommentImageRegionWithBooth {
+    position: absolute;
+    top: 0.5rem;
+    left: 1.5rem;
+    height: 4rem;
+    width: 4rem;
+}
+
+.textCommentBoothImageRegion {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.5rem;
+    height: 2em;
+    width: 2em;
+}
+
+.textCommentTextRegionWithBooth {
+    margin-left: 5em;
+    padding: 2.5em 0 1em;
+    text-align: left;
+}
+
+.textCommentHeaderRegionWithBooth {
+    position: absolute;
+    top: 0;
+    left: 4em;
+    right: 0;
+    height: 1em;
+    padding: 0.25em;
+    text-align: left;
+}
+
+.textCommentHeaderWithBooth {
+    text-align: center;
+    display: inherit;
+    padding: 0.125rem 0 0 1.75rem;
+    font-size: 0.75rem;
+    overflow: hidden;
+}
+
+.textCommentTextWithBooth {
+    margin: 0 1em;
+    background-color: #FFF;
+    padding: 0.5em;
+    border-radius: 0.25em;
+}
+
+.textCommentButtonsRegionWithBooth {
+    display: none;
+}
+
+@media all and (min-width: 600px) {
+    .textCommentHeaderWithBooth {
+        display: inline-block;
+    }
+
+    .textCommentTextWithBooth {
+        padding-left: 2rem;
+    }
+
+    .textCommentTextRegionWithBooth {
+        margin-left: 3rem;
+        padding: 1.5em 0 1em;
+    }
+
+    .textCommentRegionWithBooth {
+        background: #87E1C1 url(/media/topbarbg.png) no-repeat;
+    }
+
+    .textCommentRegionWithBooth {
+        max-width: 40rem;
+        margin: 1rem auto;
+    }
+}

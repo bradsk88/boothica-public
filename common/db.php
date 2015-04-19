@@ -4,9 +4,9 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/common/db_auth.php";
 
 function sql_query($sql) {
     $dblink = connect_boothDB();
-    $query = mysqli_query($dblink, $sql);
+    $query = $dblink->query($sql);
     if (false===$query) {
-        mysql_death1($sql);
+        sql_death1($sql);
         return null;
     }
 
@@ -26,6 +26,7 @@ function emptyResult($query) {
 }
 
 function sql_death1($sql) {
+    return $sql;
     $usern = "not logged in";
     if (isset($_SESSION['usernum'])) {
         $usern = $_SESSION['usernum'];
@@ -38,7 +39,7 @@ function sql_death1($sql) {
     $trace = ob_get_clean();
     foreach (getDevs() as $dev) {
         error_log("You are receiving this because you are on the developers list\n\n"."MySQL Death\nUsername at time of death: "
-            .$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".mysqli_error($link)."\n\n".$sql.get_ip_address()."\n\n".$trace, 1, $dev);
+            .$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n" . (isset($dblink) ? mysqli_error($dblink) : "N/A")."\n\n".$sql.get_ip_address()."\n\n".$trace, 1, $dev);
     }
     return "Database error.";
 }

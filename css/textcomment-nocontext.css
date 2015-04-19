@@ -61,4 +61,9 @@
     .textCommentTextRegionNoContext {
         padding: 2em 0;
     }
+
+    .textCommentImageRegionNoContext {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
 }

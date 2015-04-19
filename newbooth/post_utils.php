@@ -11,28 +11,30 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/newbooth/email.php");
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_common("ImageUtils");
 require_common("upload_utils");
+require_common("internal_utils");
 require_common("utils");
+
+//TODO: This needs to be WAAAAY more resilient
 
 function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly, $requestHash = null) {
 
-    error_reporting(0);
-    $link = connect_to_boothsite();
-    if (isset($_SESSION['username']) && isDeveloper($_SESSION['username'])) {
-        error_reporting(E_ALL);
-    }
+    error_reporting(E_ALL);
+    $dblink = connect_boothDB();
 
     $ratelimitsql = "
 SELECT NOW( ) > datetime + INTERVAL 1
 MINUTE AS timePassed
 FROM `boothnumbers`
-WHERE fkUsername = '".$username."'
+WHERE fkUsername = '".$dblink->real_escape_string($username)."'
 ORDER BY datetime DESC
 LIMIT 1 ";
-    $result = sql_query($ratelimitsql);
-    if ($result->num_rows != 0) {
+    $result = $dblink->query($ratelimitsql);
+    if (false && $result->num_rows != 0) { //TODO: Re-enable this for launch
         $rateLimitRow = $result->fetch_assoc();
         if ($rateLimitRow['timePassed'] == 0) {
-            return array(0214150354, null); // User posting too rapidly
+            return json_encode(array(
+                "error" => "User posting too rapidly"
+            ));
         }
     }
 
@@ -40,21 +42,26 @@ LIMIT 1 ";
     $extension = ImageUtils::getExtensionOfEncoded($rawImageBytes);
     $sql = "SELECT `nextIndex`
 			FROM `logintbl`	
-			WHERE `username` = '".$username."'
+			WHERE `username` = '".$dblink->real_escape_string($username)."'
 			LIMIT 1";
-    $nextIndexRes = mysql_query($sql);
-    if (!$nextIndexRes || mysql_num_rows($nextIndexRes) == 0) {
-        echo mysql_death1($sql);
-        return array(-1, null);
+    $nextIndexRes = $dblink->query($sql);
+    if (!$nextIndexRes || $nextIndexRes->num_rows == 0) {
+        return json_encode(array(
+            "error" => sql_death1($sql)
+        ));
     }
-    $row = mysql_fetch_array($nextIndexRes);
+    $row = $nextIndexRes->fetch_array();
     $nextIndex = $row['nextIndex'] + 1;
 
-    $columns = "(`fkUsername`, `source`, `isPublic`)";
-    $values = "('".$username."', 'newbooth/file_upload.php',".(!($friendsonly)).")";
+    $formattedblurb = handle_links($blurb);
+    $formattedblurb = handle_mentions($formattedblurb);
+    $formattedblurb = handle_hashtags($formattedblurb);
+
+    $columns = "(`fkUsername`, `source`, `isPublic`, `blurb`)";
+    $values = "('".$dblink->real_escape_string($username)."', 'newbooth/post_utils.php',".(!($dblink->real_escape_string($friendsonly))).", '".$dblink->real_escape_string($formattedblurb)."')";
     if ($requestHash != null) {
-        $columns = "(`fkUsername`, `source`, `isPublic`, `requestHash`)";
-        $values = "('".$username."', 'newbooth/file_upload.php',".(!($friendsonly)).", '".$requestHash."')";
+        $columns = "(`fkUsername`, `source`, `isPublic`, `blurb`, `requestHash`)";
+        $values = "('".$dblink->real_escape_string($username)."', 'newbooth/post_utils.php',".(!($dblink->real_escape_string($friendsonly))).", '".$dblink->real_escape_string($formattedblurb)."', '".$dblink->real_escape_string($requestHash)."')";
     }
 
     $sql = "INSERT INTO
@@ -62,97 +69,105 @@ LIMIT 1 ";
 			".$columns."
 			VALUES 
 			".$values.";";
-    $insertres = sql_query($sql);
+    $insertres = $dblink->query($sql);
     if (!$insertres) {
-        echo mysql_death1($sql);
-        return array(-1, null);
+        return json_encode(array(
+            "error" => sql_death1($sql)
+        ));
     }
-
-    mysqli_autocommit($link, true);
 
     $sql = "SELECT
 			`pkNumber` 
 			FROM `boothnumbers` 
-			WHERE `fkUsername` = '".$username."' 
+			WHERE `fkUsername` = '".$dblink->real_escape_string($username)."'
 			ORDER BY `pkNumber` DESC LIMIT 1;";
-    $query = mysql_query($sql);
+    $query = $dblink->query($sql);
     if (!$query) {
-        echo mysql_death1($sql);
-        return array(-1, null);
+        return json_encode(array(
+            "error" => sql_death1($sql)
+        ));
     }
 
-    $row = mysql_fetch_array($query);
+    $row = $query->fetch_array();
     $number = $row['pkNumber'];
 
     $sql = "INSERT INTO 
 			`booth_full_record_tbl` 
 			(`fkUsername`, `fkNumber`) 
 			VALUES 
-			('".$username."', ".$number.");";
-    $recordres = mysql_query($sql);
+			('".$dblink->real_escape_string($username)."', ".$dblink->real_escape_string($number).");";
+    $recordres = $dblink->query($sql);
     if (!$recordres) {
-        echo mysql_death1($sql);
-        return array(-1, null);
+        return json_encode(array(
+            "error" => sql_death1($sql)
+        ));
     }
 
     $sql = "UPDATE 
 			`boothnumbers` 
 			SET 
-			`imageTitle` = md5('dagnytajjard".$number."'),
-			`filetype` = '".$extension."'
-			WHERE `pkNumber` = ".$number.";";
-    $makehash = mysql_query($sql);
+			`imageTitle` = md5('".getBoothSalt().$dblink->real_escape_string($number)."'),
+			`filetype` = '".$dblink->real_escape_string($extension)."'
+			WHERE `pkNumber` = ".$dblink->real_escape_string($number).";";
+    $makehash = $dblink->query($sql);
     if (!$makehash) {
         rollback($number);
-        echo mysql_death1($sql);
-        return array(-1, null);
+        return json_encode(array(
+            "error" => sql_death1($sql)
+        ));
     }
 
     $sql = "SELECT 
 			`imageTitle` 
 			FROM `boothnumbers` 
-			WHERE `pkNumber` = ".$number.";";
-    $imgquery = mysql_query($sql);
+			WHERE `pkNumber` = ".$dblink->real_escape_string($number).";";
+    $imgquery = $dblink->query($sql);
     if (!$imgquery) {
         rollback($number);
-        echo mysql_death1($sql);
-        return array(-1, null);
+        return json_encode(array(
+            "error" => sql_death1($sql)
+        ));
     }
 
-    $row = mysql_fetch_array($imgquery);
+    $row = $imgquery->fetch_array();
     $name = $row['imageTitle'];
 
     $filename = "{$_SERVER['DOCUMENT_ROOT']}/booths/".$name.".".$extension;
-    file_put_contents($filename, $uploadedfile);
+    $putOk = file_put_contents($filename, $uploadedfile);
+    if (!$putOk) {
+        rollback($number);
+        return json_encode(array(
+            "error" => "There was a problem uploading the file"
+        ));
+    }
 
     list($width,$height)=getimagesize($filename);
 
     if ($width <= 0 || $height <= 0) {
-        echo "This file appears to have a width or height of 0 pixels.  This is not supported.";
-        return array(-1, null);
+        return json_encode(array(
+            "error" => "This file appears to have a width or height of 0 pixels.  This is not supported."
+        ));
     }
 
     $sql = "UPDATE `boothnumbers` SET 
 			`imageHeightProp` = " . $height/$width . " 
-			WHERE `pkNumber` = " . $number . ";";
-    $propq = mysql_query($sql);
+			WHERE `pkNumber` = " . $dblink->real_escape_string($number) . ";";
+    $propq = $dblink->query($sql);
     if (!$propq) {
-        mysql_death1($sql);
+        sql_death1($sql);
     }
 
-    $filename1 = uploadSmall($name, $extension, $height/$width, $filename, $uploadedfile);
+    $smallResult = uploadSmall($name, $extension, $height/$width, $filename, $uploadedfile);
 
-    $filename2 = uploadTiny($name, $extension, $height/$width, $filename, $uploadedfile);
+    if (isset($smallResult['error'])) {
+        rollback($number);
+        return json_encode($smallResult);
+    }
 
-    $webpagefile = "{$_SERVER['DOCUMENT_ROOT']}/users/".$username."/".$number.'.php';
-    $fh = @fopen($webpagefile, "w") or die("can't open file");
-    $stringdata = "<?PHP include(\"{\$_SERVER['DOCUMENT_ROOT']}/userpages/booth.php\");";
-    $pagewrite = fwrite($fh, $stringdata);
-    fclose($fh);
-    if (!$pagewrite) {
-        death("Failed to write page".$webpagefile);
-        echo "Failed to write booth page.  Try again";
-        return array(-1, null);
+    $tinyResult = uploadTiny($name, $extension, $height/$width, $filename, $uploadedfile);
+    if (isset($tinyResult['error'])) {
+        rollback($number);
+        return json_encode($tinyResult);
     }
 
     //update mentions table if the blurb contained @mentions
@@ -166,60 +181,48 @@ LIMIT 1 ";
 							`fkIndex`, 
 							`fkBoothNumber`) 
 							VALUES 
-							('".$username."',
-							'".strtolower($mention)."', 
+							('".$dblink->real_escape_string($username)."',
+							'".strtolower($dblink->real_escape_string($mention))."',
 							-1, 
-							".$number.");";
-            $mentionq = mysql_query($putmention);
+							".$dblink->real_escape_string($number).");";
+            $mentionq = $dblink->query($putmention);
             if (!$mentionq) {
-                mysql_death1($putmention);
+                sql_death1($putmention);
                 break;
             }
         }
     }
-    $blurb = $_POST['blurb'];
-    $formattedblurb = handle_links($blurb);
-    $formattedblurb = handle_mentions($formattedblurb);
-    $formattedblurb = handle_hashtags($formattedblurb);
 
-    $sql = "UPDATE 
-				`boothnumbers` 
-				SET 
-				blurb = '".mysql_real_escape_string(preg_replace('/(\r\n|\n|\r)/','<br/>',$formattedblurb))."',
-				`userBoothNumber` = ".$nextIndex."
-				WHERE pkNumber = '".$number."';";
-    $blurbq = mysql_query($sql);
-    if (!$blurbq) {
-        mysql_death1($sql);
-        rollbackall($filename, $filename1, $filename2, $number);
-        echo "Error code 8";
-        return array(-1, null);
-    }
-
-    $sql = "INSERT INTO 
+    $sql = "INSERT INTO
 			`activitytbl` 
 			(`fkUsername`, 
 			`fkIndex`, 
 			`type`) 
 			VALUES 
-			('".$username."', 
-			".$number.", 
+			('".$dblink->real_escape_string($username)."',
+			".$dblink->real_escape_string($number).",
 			'booth');";
-    $activityq = mysql_query($sql);
+    $activityq = $dblink->query($sql);
     if (!$activityq) {
-        mysql_death1($sql);
+        sql_death1($sql);
     }
 
     sendNewBoothEmail($username, $number);
 
     $sql = "UPDATE `logintbl` 
-			SET `nextIndex` = ".($nextIndex)." 
-			WHERE `username` = '".$username."';";
-    if (!mysql_query($sql)) {
-        mysql_death1($sql);
+			SET `nextIndex` = ".($dblink->real_escape_string($nextIndex))."
+			WHERE `username` = '".$dblink->real_escape_string($username)."';";
+    if (!$dblink->query($sql)) {
+        sql_death1($sql);
     }
 
-    return array(0, $number);
+    return json_encode(array(
+        "success" => array(
+            "message" => "The booth was uploaded successfully.",
+            "boothnum" => $number,
+            "boothUrl" => base()."/users/".$username."/".$number
+        )
+    ));
 }
 
 /**
@@ -231,35 +234,10 @@ LIMIT 1 ";
  * @param $uploadedfile
  * @return string
  */
-function uploadTiny($name, $extension, $percent2, $filename, $uploadedfile)
+function uploadTiny($name, $extension, $heightOverWidth, $filename, $uploadedfile)
 {
-    $filename2 = "{$_SERVER['DOCUMENT_ROOT']}/booths/tiny/" . $name . "." . $extension;
-    if ($extension == 'jpg') {
-        $normal = imagecreatefromjpeg($filename);
-        $small = ImageUtils::resize($normal, $filename, $percent2, 80);
-        if (!$small) {
-            death("Image resize failed for " . $filename2);
-            file_put_contents($filename2, $uploadedfile);
-            return $filename2;
-        } else {
-            imagejpeg($small, $filename2, 85);
-            return $filename2;
-        }
-    } else if ($extension == 'png') {
-        $normal = imagecreatefrompng($filename);
-        $small = ImageUtils::resize($normal, $filename, $percent2, 80);
-        if (!$small) {
-            death("Image resize failed for " . $filename2);
-            file_put_contents($filename2, $uploadedfile);
-            return $filename2;
-        } else {
-            imagepng($small, $filename2, 4);
-            return $filename2;
-        }
-    } else {
-        file_put_contents($filename2, $uploadedfile);
-        return $filename2;
-    }
+    $resizedFilename = "{$_SERVER['DOCUMENT_ROOT']}/booths/tiny/" . $name . "." . $extension;
+    return uploadResized($extension, $heightOverWidth, $filename, $uploadedfile, 80, $resizedFilename, 80);
 }
 
 /**
@@ -272,39 +250,44 @@ function uploadTiny($name, $extension, $percent2, $filename, $uploadedfile)
  */
 function uploadSmall($name, $extension, $heightOverWidth, $filename, $uploadedfile)
 {
-    $filename1 = "{$_SERVER['DOCUMENT_ROOT']}/booths/small/" . $name . "." . $extension;
+    $resizedFilename = "{$_SERVER['DOCUMENT_ROOT']}/booths/small/" . $name . "." . $extension;
+    return uploadResized($extension, $heightOverWidth, $filename, $uploadedfile, 260, $resizedFilename, 75);
+}
+
+function uploadResized($extension, $heightOverWidth, $filename, $uploadedfile, $newwidth, $filename1, $jpegQuality)
+{
     if ($extension == 'jpg') {
         $normal = imagecreatefromjpeg($filename);
-        $small = ImageUtils::resize($normal, $filename, $heightOverWidth, 260);
+        $small = ImageUtils::resize($normal, $filename, $heightOverWidth, $newwidth);
         if (!$small) {
             death("Image resize failed for " . $filename1);
             file_put_contents($filename1, $uploadedfile);
-            return $filename1;
+            return array("warning" => "Image resize failed for " . $filename1, "filename" => $filename1);
         } else {
-            if (!imagejpeg($small, $filename1, 75)) {
+            if (!imagejpeg($small, $filename1, $jpegQuality)) {
                 death("imagejpeg failed for " . $filename1);
                 file_put_contents($filename1, $uploadedfile);
-                return $filename1;
+                return array("warning" => "imagejpeg failed for " . $filename1, "filename" => $filename1);
             }
-            return $filename1;
+            return array("success" => "uploaded ok", "filename" => $filename1);
         }
     } else if ($extension == 'png') {
         $normal = imagecreatefrompng($filename);
-        $small = ImageUtils::resize($normal, $filename, $heightOverWidth, 260);
+        $small = ImageUtils::resize($normal, $filename, $heightOverWidth, $newwidth);
         if (!$small) {
             death("Image resize failed for " . $filename1);
             file_put_contents($filename1, $uploadedfile);
-            return $filename1;
+            return array("warning" => "imagejpeg failed for " . $filename1, "filename" => $filename1);
         } else {
             if (!imagepng($small, $filename1, 4)) {
                 death("imagepng failed for " . $filename1);
                 file_put_contents($filename1, $uploadedfile);
-                return $filename1;
+                return array("warning" => "imagepng failed for " . $filename1, "filename" => $filename1);
             }
-            return $filename1;
+            return array("success" => "uploaded ok", "filename" => $filename1);
         }
     } else {
         file_put_contents($filename1, $uploadedfile);
-        return $filename1;
+        return array("success" => "uploaded ok", "filename" => $filename1);
     }
 }

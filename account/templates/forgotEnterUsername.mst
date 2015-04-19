@@ -1,0 +1,25 @@
+<div class = 'phoneAnalog'>
+    <div class = 'phoneAnalogGreeting'>
+        Password Recovery
+    </div>
+    <div class = 'phoneAnalogText'>
+        Please enter your account name to begin the password recovery process
+    </div>
+    <div>
+        <form action = '{{baseUrl}}/account/forgotpassword' method = 'get'>
+            <div class = "phoneAnalogField">
+                <input type = 'text' name = 'un'/>
+            </div>
+            <div class = "phoneAnalogButton">
+                <button type = 'submit'>Begin Password Recovery</button>
+            </div>
+        </form>
+    </div>
+    <form action = '{{baseUrl}}/info/contact' method = 'get'>
+        <div class = 'phoneAnalogButton bottom'>
+            <button>
+                Having problems?  Contact us!
+            </button>
+        </div>
+    </form>
+</div>

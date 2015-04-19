@@ -6,8 +6,8 @@ main();
 
 function main() {
 
-    require_once("{$_SERVER['DOCUMENT_ROOT']}/livefeed/utils.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
+    require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
     require_common("db");
     require_common("utils");
@@ -28,12 +28,25 @@ function main() {
         );
         return;
     }
-
     $max = sql_get_expectOneRow($result, "max");
+
+    $sql = "SELECT MIN(`pkNumber`) as 'min' FROM `boothnumbers`";
+    $result = sql_query($sql);
+
+    if (!$result) {
+        echo json_encode(
+            array(
+                "error"=>sql_death1($sql)
+            )
+        );
+        return;
+    }
+    $min = sql_get_expectOneRow($result, "min");
+
     $sql = "SELECT * FROM `boothnumbers` bn WHERE (";
 
     for ($i = 0; $i < $numPerPage+10; $i++) {
-        $sql .= "`pkNumber` = '".rand(1,$max)."' OR ";
+        $sql .= "`pkNumber` = '".rand($min,$max)."' OR ";
     }
 
     $sql = substr($sql, 0, strlen($sql)-4)."
@@ -42,15 +55,16 @@ function main() {
 			(
 			bn.`isPublic` = true
 			AND
-			(SELECT `password` FROM `logintbl` WHERE `username` = bn.`fkUsername`)
+			bn.fkUsername
 			IN (
-				SELECT `fkPassword`
-				FROM `userspublictbl`
+				SELECT fkUsername
+				FROM `usersprivacytbl`
 				WHERE `fkUsername` = bn.`fkUsername`
+				AND privacyDescriptor = 'public'
 			))
     LIMIT ".$numPerPage.";";
 
-    if ($_POST['debug']) {
+    if (isset($_POST['debug']) && $_POST['debug']) {
         echo json_encode(array(
             "debug"=>"Email of SQL sent to devlist",
             "error"=>"Special command recieved. See 'debug'"
@@ -81,7 +95,7 @@ function main() {
     }
 
     $booths = array();
-    $root = "http://" . $_SERVER['SERVER_NAME'];
+    $root = base();
     while($row = $result->fetch_array()) {
         $booths[] = array(
             'boothnum' => $row['pkNumber'],
@@ -100,7 +114,8 @@ function main() {
 }
 
 function doRandomIntegrityCheck($sql) {
-    $r = sql_query($sql);
+    $dblink = connect_boothDB();
+    $r = $dblink->query($sql);
 
     if (!$r) {
         echo json_encode(array("error"=>sql_death1($sql)));
@@ -108,9 +123,7 @@ function doRandomIntegrityCheck($sql) {
     }
 
     while($row = $r->fetch_array()) {
-        if (isBoothPublic($row['pkNumber'])) {
-            continue;
-        }
+        if (isAllowedToInteractWithBooth($_SESSION['username'], $row['pkNumber']));
         death ("Random public booths included private booth number: ".$row['pkNumber']);
     }
 }

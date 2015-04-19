@@ -1,0 +1,8 @@
+<div class = "likesListHorizontal">
+    <div class = likesCountRegion">
+        <div class = "likesCount" id = "likes_count">
+            ?
+        </div>
+    </div>
+    <div class = "likesPeople" id = "likes_people"></div>
+</div>
