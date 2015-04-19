@@ -47,8 +47,6 @@ function main() {
 
     //TODO: Add photo comment display
     //TODO: Add photo comment input
-    //TODO START TONIGHT: Add link to user's profile or booths
-    //TODO: Add follow button
     //TODO: Add like comments
     //TODO: Add delete comments (for boother/mods)
 
@@ -71,7 +69,8 @@ function main() {
         "isOwner" => $_SESSION['username'] == $username,
         "commentInput" => $commentInputHTML,
         "username" => $username,
-        "boothNumber" => $boothnum
+        "boothNumber" => $boothnum,
+        "bootherPosessiveDisplayName" => getPosessiveDisplayName($username)
     ));
 
     $page = new PageFrame();

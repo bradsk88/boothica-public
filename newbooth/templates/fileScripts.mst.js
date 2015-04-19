@@ -113,6 +113,7 @@ function doShowPreview(reader, rotation, mobile) {
             $('#submit_button').bind('click', function() {
                 upload();
             });
+            $("#submit_button").removeAttr("disabled");
             $('#status').hide(1000);
         }
         var MAX_WIDTH1 = 640; // This is not the width used for this preview.  This is the width used for saving.

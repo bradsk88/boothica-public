@@ -28,11 +28,11 @@
             </div>
         </div>
         <div class = "contactOptionLinkRegion">
-            <a href="https://twitter.com/BoothicaNews" class="contactOptionLink twitter-follow-button" data-show-count="false" data-size="large">Follow @BoothicaNews</a>
+            <a href="https://twitter.com/intent/tweet?screen_name=BoothicaNews" class="contactOptionLink twitter-mention-button" data-size="large">Tweet to @BoothicaNews</a>
             <script>
                 !function(d,s,id){
                     var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-                    if(!d.getElementById(id)) {
+                    if(!d.getElementById(id)){
                         js=d.createElement(s);
                         js.id=id;
                         js.src=p+'://platform.twitter.com/widgets.js';
@@ -40,6 +40,7 @@
                     }
                 }(document, 'script', 'twitter-wjs');
             </script>
+
         </div>
     </div>
 

@@ -33,10 +33,7 @@ function loadNewFriendsBooths() {
         numperpage: 4
     }, function (data) {
         renderSideBoothsFromDataAsync(data, "#firstSideBarContents");
-    }, "json")
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus+ " : " +errorThrown);
-        });
+    }, "json");
 
     return html;
 }

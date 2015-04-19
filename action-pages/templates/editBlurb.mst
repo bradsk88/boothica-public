@@ -23,14 +23,19 @@
             Errors will show here
         </div>
         <textarea id = "base64"></textarea>
-            <input type = "hidden" id = "boothnumber" name = "boothnumber" value = "{{boothNumber}}"/>
-            <div class = "newBoothFinishButtonsRegion" id = "finish_buttons">
-                <div class = "phoneAnalogButton" id = "post_button_region">
-                    <button type="submit">
-                        Update Booth
-                    </button>
-                </div>
-            </div>
+        <input type = "hidden" id = "boothnumber" name = "boothnumber" value = "{{boothNumber}}"/>
+        <div class = "phoneAnalogButton floating">
+            <button type="submit">
+                Update Booth
+            </button>
+        </div>
+        </div>
+    </form>
+    <form action = "{{baseUrl}}/users/{{bootherName}}/{{boothNumber}}/" method = "POST">
+        <div class = "phoneAnalogButton bottom">
+            <button type="submit">
+                Cancel
+            </button>
         </div>
     </form>
 </div>

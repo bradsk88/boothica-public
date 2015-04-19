@@ -50,7 +50,6 @@ if (isLoggedIn()) {
     $page->css(base()."/css/webcam.css");
     $page->css(base()."/css/posts.css");
     $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");
-    $page->useDefaultSideBars();
     $page->echoHtml();
 } else {
     $page = new LoginPage();

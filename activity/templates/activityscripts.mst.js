@@ -28,6 +28,18 @@ var loadActivity = function() {
         $("#activity_feed").append($("<img/>", {
             src: "{{baseUrl}}/media/failwhale.png"
         }));
+        var button = $("<button/>", {
+            type: "submit",
+            html: "Contact us"
+        });
+        var formControls = $("<div/>", {
+            class: "phoneAnalogButton floating",
+            html: button
+        });
+            $("#activity_feed").append($("<form/>", {
+                action: "{{baseUrl}}/info/contact",
+                html: formControls
+            }));
     });
 
 };

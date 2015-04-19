@@ -12,11 +12,11 @@ function loadOneBooth(boothnum) {
 var enableNavButtons = function(data) {
     if (data.success.nextnum > 0) {
         $("#next_booth_form").attr("action", "{{baseUrl}}/users/" + data.success.boothername + "/" + data.success.nextnum);
-        $("#next_booth_button").prop("disabled", false);
+        $("#next_booth_button").removeAttr("disabled");
     }
     if (data.success.prevnum > 0) {
         $("#prev_booth_form").attr("action", "{{baseUrl}}/users/" + data.success.boothername + "/" + data.success.prevnum);
-        $("#prev_booth_button").prop("disabled", false);
+        $("#prev_booth_button").removeAttr("disabled");
     }
 };
 
