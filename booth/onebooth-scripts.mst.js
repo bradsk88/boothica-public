@@ -9,12 +9,25 @@ function loadOneBooth(boothnum) {
         })
 }
 
+var enableNavButtons = function(data) {
+    if (data.success.nextnum > 0) {
+        $("#next_booth_form").attr("action", "{{baseUrl}}/users/" + data.success.boothername + "/" + data.success.nextnum);
+        $("#next_booth_button").removeAttr("disabled");
+    }
+    if (data.success.prevnum > 0) {
+        $("#prev_booth_form").attr("action", "{{baseUrl}}/users/" + data.success.boothername + "/" + data.success.prevnum);
+        $("#prev_booth_button").removeAttr("disabled");
+    }
+};
+
 var renderOneBoothFromData = function (data) {
     $.get('{{baseUrl}}/booth/templates/oneBooth.mst', function (template) {
         var html = "";
         if (typeof(data.success) === "undefined") {
             html = "error: " + data.error;
         } else {
+            $("#booth_buttons").css("visibility", "visible");
+            enableNavButtons(data);
             html += Mustache.render(template, {
                 boothImageUrl: data.success.absoluteImageUrl,
                 blurb: data.success.blurb,
@@ -22,8 +35,10 @@ var renderOneBoothFromData = function (data) {
             });
         }
         $("#user_booth_body").html(html);
-        loadOneBoothComments(data.success.boothnum)
+        loadOneBoothComments(data.success.boothnum);
+        loadOneBoothLikes(data.success.likes, data.success.boothnum);
     });
+
 };
 
 var loadOneBoothComments = function (boothnum) {
@@ -67,6 +82,45 @@ var renderOneBoothCommentsFromData = function (data) {
         }
         $("#user_booth_comments").html(html);
     });
+};
+
+var loadOneBoothLikes = function(likesNum, boothNum) {
+    $.post("{{baseUrl}}/_mobile/v2/getboothlikeusers.php", {
+        boothnum: boothNum
+    }, function (data) {
+        renderOneBoothLikesFromData(data);
+    }, "json")
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            $("#user_booth_likes").html("Error while loading comments");
+        })
+};
+
+var renderOneBoothLikesFromData = function(data) {
+    var html = "";
+    if (typeof(data.success) === "undefined") {
+        html = "error: " + data.error;
+    } else {
+        if (data.success.likeusers.length <= 0) {
+            return;
+        }
+        $("#user_booth_likes_region").show();
+        $("#user_booth_likes_count").text(""+data.success.likeusers.length);
+        var likesList = $("<div/>", {
+            class: "likesListHorizontal"
+        });
+
+        $.each(data.success.likeusers, function (idx, obj) {
+            var userImageRegion = $("<div/>", {
+                class: "likeUserImageRegion"
+            });
+            var userImage = $("<img/>", {
+                src: obj.userImageAbsoluteUrl,
+                title: obj.username
+            });
+            userImage.appendTo(userImageRegion);
+            userImageRegion.appendTo("#user_booth_likes");
+        });
+    }
 };
 
 function postComment(boothnum, boothername) {

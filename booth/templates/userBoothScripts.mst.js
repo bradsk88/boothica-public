@@ -19,10 +19,7 @@ function loadBootherConsole(username) {
         } else if (data.error) {
             $("#user_booths_feed").prepend("Error: " + data.error);
         }
-    }, "json")
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
-        })
+    }, "json");
 
 }
 
@@ -34,10 +31,7 @@ function loadUserBooths(username){
         numperpage: 9
     }, function (data) {
         renderBoothsFromData(data);
-    }, "json")
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
-        })
+    }, "json");
 }
 
 var renderBoothsFromData = function(data) {
@@ -71,10 +65,7 @@ var loadCommentCounts = function(boothnum) {
             }
             $("#centerBoothOpenButtonText"+boothnum).text(text);
         }
-    }, "json")
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
-        })
+    }, "json");
 };
 
 
@@ -127,7 +118,6 @@ function loadNextBoothsPage(username, onAdditionalPagesAvailableCallback) {
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            alert(textStatus);
             onAdditionalPagesAvailableCallback.call();
         }});
 }

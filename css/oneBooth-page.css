@@ -1,6 +1,11 @@
+.userBoothBody {
+    background-color: #FFF;
+}
+
 .oneBoothBlurb {
     text-align: left;
     padding: 1em;
+    min-height: 10vw;
 }
 
 .oneBoothImage {
@@ -8,7 +13,7 @@
 }
 
 .oneBoothRegion {
-    background-color: #FFF;
+    min-height: 12rem;
 }
 
 #like_booth_button {
@@ -91,18 +96,33 @@
 }
 
 @media all and (min-width: 1024px) {
+
+    .userBoothBody {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+        max-width: 48rem;
+        margin: 0.5rem auto;
+        padding:0.25rem 0 0;
+    }
+
     .oneBoothImageRegion {
         max-width: 40em;
     }
 
     .oneBoothRegion {
-        margin: 0.5rem auto 0.25rem;
-        padding: 3.5rem 0 0;
+        margin: 0.5rem auto 0;
+        padding: 0 1rem 0;
     }
 
     .oneBoothBlurbRegion {
         margin: 0 auto;
         max-width: 40em;
+    }
+
+    .oneBoothBlurb {
+        min-height: 2rem;
     }
 
 }

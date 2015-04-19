@@ -26,10 +26,18 @@
         <progress id = "progress" max="100" value="0" style = "width: 100%">
         </progress>
         <div class = "phoneAnalogButton" id = "submit_button_region">
-            <button id = 'submit_button'>
+            <button id = 'submit_button' disabled="disabled">
                 Upload Booth
             </button>
         </div>
     </form>
     </div>
 </div>
+
+<form action = "{{baseUrl}}/newbooth">
+    <div class = "phoneAnalogButton floating" id = "upload_button">
+        <button>
+            Upload from webcam instead
+        </button>
+    </div>
+</form>

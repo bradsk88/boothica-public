@@ -75,11 +75,11 @@
             </div>
         </div>
     </div>
-    <a href = "{{baseUrl}}/newbooth/file">
+    <form action = "{{baseUrl}}/newbooth/file">
         <div class = "phoneAnalogButton" id = "upload_button">
             <button>
-                Upload an image instead
+                Upload from file instead
             </button>
         </div>
-    </a>
+    </form>
 </div>

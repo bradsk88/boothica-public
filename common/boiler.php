@@ -11,7 +11,7 @@ function base() {
 }
 
 function baseWithoutProtocol() {
-    return "localhost";
+    return "192.168.1.157";
 }
 
 function basePretty() {

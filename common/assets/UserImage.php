@@ -45,7 +45,7 @@ class UserImage {
             return UserImage::NOIMG;
         } else {
             $row = $result->fetch_array();
-            return  "/booths/tiny/".$row['imageTitle'].".".$row['filetype'];
+            return  "/booths/small/".$row['imageTitle'].".".$row['filetype'];
         }
 
     }

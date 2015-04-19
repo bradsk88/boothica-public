@@ -35,3 +35,14 @@ function isAllowedToInteractWithBooth($username, $boothnum) {
     }
     return true;
 }
+
+function isAllowedToDeleteBooth($username, $boothnum) {
+    if (isModerator($username)) {
+        return true;
+    }
+    $boothowner = getBoothOwner($boothnum);
+    if ($boothowner == $username) {
+        return true;
+    }
+    return false;
+}
