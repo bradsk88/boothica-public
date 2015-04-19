@@ -165,6 +165,7 @@
 
     .userBoothButtonsRegion {
         margin: 0;
+        background: transparent;
     }
 
     .likeUserImageRegion {
@@ -182,7 +183,7 @@
 
     .userBoothLikesCountNumber {
         width: auto;
-        max-width: auto;
+        max-width: inherit;
     }
 
     .userBoothLikesCountNumber {

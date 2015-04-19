@@ -14,8 +14,6 @@ require_common("upload_utils");
 require_common("internal_utils");
 require_common("utils");
 
-//TODO: This needs to be WAAAAY more resilient
-
 function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly, $requestHash = null) {
 
     error_reporting(E_ALL);

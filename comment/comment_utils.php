@@ -46,19 +46,25 @@ function getCommentOwnerByNumber($commentNumber) {
     return sql_get_expectOneRow(sql_query($sql), "fkUsername");
 }
 
-function deleteCommentByNumber($commentNumber, $link, $username) {
+function deleteCommentByNumber($commentNumber) {
     $sql = "SELECT `hash` FROM `commentstbl` WHERE `pkCommentNumber` = '".$commentNumber."' LIMIT 1;";
     $result = sql_query($sql);
     $hash = sql_get_expectOneRow($result, 'hash');
     if ($hash == null) {
-        return false;
+        return array("error" => "No comment found with number ".$commentNumber);
     }
-    $deleted = deleteCommentByHash($hash, $link, $username);
-    return $deleted == 0;
+    $deleted = deleteCommentByHash($hash);
+    return $deleted;
 }
 
+function getBoothNumberByComment($commentNumber) {
+    $sql = "SELECT `fkNumber` FROM `commentstbl` WHERE `pkCommentNumber` = '".$commentNumber."' LIMIT 1;";
+    $result = sql_query($sql);
+    $boothNumber = sql_get_expectOneRow($result, 'fkNumber');
+    return $boothNumber;
+}
 
-function deleteCommentByHash($hash, $link, $username) {
+function deleteCommentByHash($hash) {
     $sql = "DELETE
 
 				FROM `activitytbl`
@@ -71,11 +77,14 @@ function deleteCommentByHash($hash, $link, $username) {
 
 					WHERE `hash` = '" . $hash . "');";
 
-    $result2 = mysql_query($sql);
+    $dblink = connect_boothDB();
+    $result2 = $dblink->query($sql);
 
     if (!$result2) {
 
-        return mysql_death(mysql_error($link) . "\n" . $sql);
+        return array(
+            "error" => sql_death1($sql)
+        );
 
     }
 
@@ -92,11 +101,13 @@ function deleteCommentByHash($hash, $link, $username) {
 
 					WHERE `hash` = '" . $hash . "');";
 
-    $result3 = mysql_query($sql);
+    $result3 = $dblink->query($sql);
 
     if (!$result3) {
 
-        return mysql_death1($sql);
+        return array(
+            "error" => sql_death1($sql)
+        );
 
     }
 
@@ -107,13 +118,17 @@ function deleteCommentByHash($hash, $link, $username) {
 
 				WHERE `hash` = '" . $hash . "';";
 
-    $result = mysql_query($sql);
+    $result = $dblink->query($sql);
 
     if (!$result) {
 
-        return mysql_death(mysql_error($link) . "\n" . $sql);
+        return array(
+            "error" => sql_death1($sql)
+        );
 
     }
 
-    return 0;
+    return array(
+        "success" => "Comment ".$hash." was deleted successfully"
+    );
 }
