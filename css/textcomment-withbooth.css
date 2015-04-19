@@ -3,7 +3,7 @@
     position: relative;
     margin: 1rem;
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.125);
-    background: #87E1C1 url(/media/topbarbg.png) no-repeat;
+    background: #87E1C1 url(/media/bubblebackgroundbig90.png) no-repeat;
     background-size: cover;
     border-radius: 0.25rem;
 }
@@ -81,6 +81,10 @@
 
     .textCommentTextRegionWithBooth {
         margin-left: 3rem;
+    }
+
+    .textCommentRegionWithBooth {
+        background: #87E1C1 url(/media/topbarbg.png) no-repeat;
     }
 
     .textCommentRegionWithBooth {

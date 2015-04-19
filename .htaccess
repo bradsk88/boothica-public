@@ -9,6 +9,7 @@ RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]?$ ./user-pages/booths.php?username=$1
 RewriteRule ^users/([a-zA-Z0-9_-]+)\/booths[\/]?$ ./user-pages/booths.php?username=$1
 RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]([0-9]+)[\/]?$ ./user-pages/onebooth.php?username=$1&boothnum=$2
 RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]([0-9]+)\/like[\/]?$ ./actions/likebooth.php?boothnum=$2
+RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]([0-9]+)\/edit[\/]?$ ./action-pages/editBlurb.php?boothnum=$2
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.js -f

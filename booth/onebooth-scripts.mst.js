@@ -100,22 +100,25 @@ var renderOneBoothLikesFromData = function(data) {
     if (typeof(data.success) === "undefined") {
         html = "error: " + data.error;
     } else {
-        $.each(data.success, function (idx, obj) {
+        if (data.success.likeusers.length <= 0) {
+            return;
+        }
+        $("#user_booth_likes_region").show();
+        $("#user_booth_likes_count").text(""+data.success.likeusers.length);
+        var likesList = $("<div/>", {
+            class: "likesListHorizontal"
+        });
 
-            var likesList = $("<div/>", {
-                class: "likesListHorizontal"
+        $.each(data.success.likeusers, function (idx, obj) {
+            var userImageRegion = $("<div/>", {
+                class: "likeUserImageRegion"
             });
-
-            $.each(data.success.likeusers, function (idx, obj) {
-                var userImageRegion = $("<div/>", {
-                    class: "likeUserImageRegion"
-                });
-                var userImage = $("<img/>", {
-                    src: obj.userImageAbsoluteUrl
-                });
-                userImage.appendTo(userImageRegion);
-                userImageRegion.appendTo("#user_booth_likes");
+            var userImage = $("<img/>", {
+                src: obj.userImageAbsoluteUrl,
+                title: obj.username
             });
+            userImage.appendTo(userImageRegion);
+            userImageRegion.appendTo("#user_booth_likes");
         });
     }
 };

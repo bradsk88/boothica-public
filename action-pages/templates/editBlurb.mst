@@ -1,0 +1,36 @@
+<script type = "text/javascript">
+    $(document).ready(function() {
+        window.requestHash = "{{requestHash}}";
+    });
+</script>
+<div class = "phoneAnalog" id = "newBoothRegion">
+    <form action = "{{baseUrl}}/actions/changeblurb" method = "POST">
+    <div class = "newBooth">
+        <div class = "phoneAnalogGreeting">
+            <div class = "webcamHeader">
+                New Booth
+            </div>
+        </div>
+        <div class = "newBoothWebcamRegion">
+            <div class = "newBoothWebcam" id = "webcam">
+                <img id = "preview" src = "{{boothImageUrl}}" style = "display: inherit;">
+            </div>
+        </div>
+        <div class = "newBoothBlurbRegion" id = "blurb_region">
+            <textarea class = "newBoothBlurb" id = "blurb" name = "blurb">{{blurb}}</textarea>
+        </div>
+        <div class = "phoneAnalogSubsectionTitle error" id = "post_error">
+            Errors will show here
+        </div>
+        <textarea id = "base64"></textarea>
+            <input type = "hidden" id = "boothnumber" name = "boothnumber" value = "{{boothNumber}}"/>
+            <div class = "newBoothFinishButtonsRegion" id = "finish_buttons">
+                <div class = "phoneAnalogButton" id = "post_button_region">
+                    <button type="submit">
+                        Update Booth
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -17,7 +17,7 @@ class BoothImage {
     const NOIMG = "/media/noimage.jpg";
     const PRIVATE_USER = "/media/private.jpg";
 
-    public static function getImage($boothnum, $boothername) {
+    public static function getImage($boothnum, $boothername=null) {
 
         $dblink = connect_boothDB();
 
@@ -26,7 +26,7 @@ class BoothImage {
         }
 
         if (doesUserAppearPrivate($boothername)) {
-            return UserImage::PRIVATE_USER;
+            return BoothImage::PRIVATE_USER;
         }
 
         $sql = "SELECT
@@ -50,7 +50,7 @@ class BoothImage {
 
     }
 
-    public static function getAbsoluteImage($boothnum, $boothername) {
+    public static function getAbsoluteImage($boothnum, $boothername=null) {
         return base().BoothImage::getImage($boothnum, $boothername);
     }
 

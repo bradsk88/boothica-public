@@ -26,7 +26,7 @@
         {% else %}
 
         <form class = "userBoothButton" action = "{{baseUrl}}/users/{{username}}/{{boothNumber}}/like">
-            <button>
+            <button id = "like_button">
                 Like
             </button>
         </form>
@@ -41,7 +41,18 @@
 
     </div>
 
-    <div class = "userBoothLikes" id = "user_booth_likes"></div>
+    <div class = "userBoothLikesRegion" id = "user_booth_likes_region">
+        <div class = "userBoothLikes" id = "user_booth_likes">
+            <div class = "userBoothLikesCountRegion" id = "user_booth_likes_count_region">
+                <div class = "userBoothLikesCountNumber" id = "user_booth_likes_count">
+                    #
+                </div>
+                <div id = "like_count_label">
+                    Likes
+                </div>
+            </div>
+        </div>
+    </div>
     <div class = "userBoothComments" id = "user_booth_comments"></div>
     <div id="loadmoreajaxloader" style="display:none;">
         <center><img src="{{baseUrl}}/media/ajax-loader.gif" /></center>

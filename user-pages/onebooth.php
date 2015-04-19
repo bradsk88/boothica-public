@@ -39,13 +39,10 @@ function main() {
     //TODO: Check if booth is deleted
     //TODO: Add photo comment display
     //TODO: Add photo comment input
-    //TODO START TONIGHT: Add booth liking
     //TODO START TONIGHT: Add link to user's profile or booths
     //TODO: Add follow button
     //TODO: Add like comments
     //TODO: Add delete comments (for boother/mods)
-    //TODO START TONIGHT: Add edit blurb (for boother)
-    //TODO START TONIGHT: Add ability to see who has liked
 
     $allowedToInteractWithBooth = isAllowedToInteractWithBooth($_SESSION['username'], $boothnum);
 
