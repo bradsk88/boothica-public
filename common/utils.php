@@ -239,6 +239,14 @@ function getDisplayName($username) {
     return new DisplayName($username);
 }
 
+function getPosessiveDisplayName($username) {
+    $name = getDisplayName($username);
+    if ('s' == substr($name, -1)) {
+        return $name."'";
+    }
+    return $name."'s";
+}
+
 function doesUserAppearPrivate($username) {
     if (isPrivate($username)) {
         if (isLoggedIn()) {

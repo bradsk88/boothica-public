@@ -5,7 +5,7 @@ body {
     padding: 0;
     margin: 0;
     /*background-color: #515097;*/
-    background: #AEC;
+    background: #143B5B;
     font-family: 'Bitter', serif;
 }
 
@@ -398,7 +398,7 @@ a {
 
     .phoneAnalog {
         max-width: 24em;
-        margin: 2rem auto 10rem;
+        margin: 2rem auto 0;
         border-bottom-left-radius: 3rem;
         border-bottom-right-radius: 3rem;
         border-top-left-radius: 1rem;
@@ -435,11 +435,15 @@ a {
         border-bottom-right-radius: 3rem;
     }
 
+    .phoneAnalogButton.floating {
+        border: none;
+    }
+
 
     .phoneAnalogButton button {
         align-items: flex-start;
         background-color: rgb(255, 255, 255);
-        border: none !important;
+        border: none;
         box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
         height: 3rem;
         max-width: 16rem;

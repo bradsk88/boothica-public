@@ -45,13 +45,17 @@ class BoothImage {
             return BoothImage::NOIMG;
         } else {
             $row = $result->fetch_array();
-            return  "/booths/tiny/".$row['imageTitle'].".".$row['filetype'];
+            return  $row['imageTitle'].".".$row['filetype'];
         }
 
     }
 
     public static function getAbsoluteImage($boothnum, $boothername=null) {
-        return base().BoothImage::getImage($boothnum, $boothername);
+        return base()."/booths/tiny/".BoothImage::getImage($boothnum, $boothername);
+    }
+
+    public static function getAbsoluteImageHiRes($boothnum, $boothername=null) {
+        return base()."/booths/".BoothImage::getImage($boothnum, $boothername);
     }
 
 }

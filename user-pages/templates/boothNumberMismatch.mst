@@ -10,14 +10,14 @@
     <form action = "{{baseUrl}}/users/{{realOwner}}/{{boothNumber}}/">
         <div class = "phoneAnalogButton">
             <button>
-                Proceed to {{realOwnerDisplayname}}'s booth
+                Proceed to {{realOwnerPosessiveDisplayname}} booth
             </button>
         </div>
     </form>
     <form action = "{{baseUrl}}/users/{{givenUsername}}/">
         <div class = "phoneAnalogButton bottom">
             <button>
-                Go to {{givenUserDisplayname}}'s profile
+                Go to {{givenUserPosessiveDisplayname}} profile
             </button>
         </div>
     </form>

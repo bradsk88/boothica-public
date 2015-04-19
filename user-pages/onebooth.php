@@ -6,6 +6,7 @@
  * Time: 9:00 PM
  */
 require_once "{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php";
+require_once "{$_SERVER['DOCUMENT_ROOT']}/pages/ErrorPage.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_common("utils");
 require_once "{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php";
@@ -22,21 +23,28 @@ function main() {
     $boothnum = $_REQUEST['boothnum'];
 
     $boothowner = getBoothOwner($boothnum);
+
+    if ($boothowner == null) {
+        $page = new ErrorPage("This booth has been deleted", base()."/users/".$username,
+                              "Back to ".getPosessiveDisplayName($username)." profile");
+        $page->echoHtml();
+        return;
+    }
+
     if ($username != $boothowner) {
         $page = new PageFrame();
         $page->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/user-pages/templates/boothNumberMismatch.mst",
                                         array(
             "boothNumber" => $boothnum,
             "realOwner" => $boothowner,
-            "realOwnerDisplayname" => getDisplayName($boothowner),
+            "realOwnerPosessiveDisplayname" => getPosessiveDisplayName($boothowner),
             "givenUsername" => $username,
-            "givenUserDisplayname" => getDisplayName($username)
+            "givenUserPosessiveDisplayname" => getPosessiveDisplayName($username)
         ));
         $page->echoHtml();
         return;
     }
 
-    //TODO: Check if booth is deleted
     //TODO: Add photo comment display
     //TODO: Add photo comment input
     //TODO START TONIGHT: Add link to user's profile or booths

@@ -1,37 +1,22 @@
 <?PHP
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/internal_utils.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/LoginPage.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/pages/ErrorPage.php");
-require_asset("BoothImage");
 require_lib("h2o-php/h2o");
-require_common("db");
 
-class EditBlurbPage extends PageFrame {
+class ConfirmDeleteBoothPage extends PageFrame {
 
-    function __construct() {
+    function __construct($owner) {
         parent::__construct();
 
-        $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/action-pages/queries/getBlurb.mst.sql");
-        $sql = $sqlBuilder->render(array(
-            "boothNumber" => $_REQUEST['boothnum']
-        ));
-
-        $dblink = connect_boothDB();
-        $request = $dblink->query($sql);
-        $row = $request->fetch_array();
-        $blurb = $row['blurb'];
-
-        $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/action-pages/templates/editBlurb.mst");
-        $html = $htmlBuilder->render(array(
+        $this->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/action-pages/templates/confirmBoothDelete.mst", array(
             "baseUrl" => base(),
-            "boothImageUrl" => BoothImage::getAbsoluteImageHiRes($_REQUEST['boothnum']),
-            "blurb" => str_replace("<br />", "\n", $blurb),
-            "bootherName" => getBoothOwner($_REQUEST['boothnum']),
-            "boothNumber" => $_REQUEST['boothnum']
+            "boothNumber" => $_REQUEST['boothnum'],
+            "bootherName" => $owner
         ));
-        $this->body($html);
     }
 
 }
@@ -45,8 +30,7 @@ if (isLoggedIn()) {
         $page->echoHtml();
         return;
     }
-
-    $page = new EditBlurbPage();
+    $page = new ConfirmDeleteBoothPage($owner);
     $page->css(base()."/css/webcam.css");
     $page->css(base()."/css/posts.css");
     $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");
