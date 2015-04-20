@@ -47,11 +47,8 @@ function main() {
 
     //TODO: Add photo comment display
     //TODO: Add photo comment input
-    //TODO: Add like comments
-    //TODO: Add delete comments (for boother/mods)
 
     $allowedToInteractWithBooth = isAllowedToInteractWithBooth($_SESSION['username'], $boothnum);
-
 
     if (isLoggedIn() && $allowedToInteractWithBooth) {
         $commentInputH2O = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/textCommentInput.mst");

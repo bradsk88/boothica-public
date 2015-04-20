@@ -35,13 +35,13 @@ var renderOneBoothFromData = function (data) {
             });
         }
         $("#user_booth_body").html(html);
-        loadOneBoothComments(data.success.boothnum);
+        loadOneBoothComments(data.success.boothnum, data.success.boothername);
         loadOneBoothLikes(data.success.likes, data.success.boothnum);
     });
 
 };
 
-var loadOneBoothComments = function (boothnum) {
+var loadOneBoothComments = function (boothnum, boothername) {
     var spinner = $("<img/>", {
         src: "{{baseUrl}}/media/ajax-loader.gif",
         style: "margin: 0 auto;"
@@ -55,7 +55,7 @@ var loadOneBoothComments = function (boothnum) {
     $.post("{{baseUrl}}/_mobile/v2/getcomments.php", {
         boothnum: boothnum
     }, function (data) {
-        renderOneBoothCommentsFromData(data);
+        renderOneBoothCommentsFromData(data, boothnum, boothername);
         $(spinner).hide();
     }, "json")
         .fail(function (jqXHR, textStatus, errorThrown) {
@@ -64,7 +64,7 @@ var loadOneBoothComments = function (boothnum) {
         })
 };
 
-var renderOneBoothCommentsFromData = function (data) {
+var renderOneBoothCommentsFromData = function (data, boothnum, boothername) {
     $.get('{{baseUrl}}/framing/templates/textCommentNoContext.mst', function (template) {
         var html = "";
         if (typeof(data.success) === "undefined") {
@@ -76,7 +76,13 @@ var renderOneBoothCommentsFromData = function (data) {
                     username: obj.commentername,
                     displayName: obj.commenterdisplayname,
                     imageUrl: obj.absoluteIconImageUrl,
-                    baseUrl: "{{baseUrl}}"
+                    commentDatetime: obj.time,
+                    commentNumber: obj.commentnum,
+                    baseUrl: "{{baseUrl}}",
+                    canDelete: obj.canDelete,
+                    hasLikes: obj.likes > 0,
+                    likes: obj.likes,
+                    selfUrl: "{{baseUrl}}/users/" + boothername + "/" + boothnum
                 });
             });
         }
