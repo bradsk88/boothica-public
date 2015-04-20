@@ -2,6 +2,7 @@
     min-height: 5em;
     position: relative;
     background-color: #FFF;
+    border-bottom: 1px solid #000;
 }
 
 .textCommentImageNoContext {
@@ -42,18 +43,19 @@
 
 .textCommentTextNoContext {
     display: inline-block;
-    margin: 0 1em;
+    margin: 0 4vw;
     background-color: #DEF7F2;
-    padding: 0.5em;
-    border-radius: 0.25em;
+    padding: 2vw;
+    border-radius: 1.5vw;
+    border: 1px solid #000;
 }
 
 .textCommentButtonsRegionNoContext {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
-    border-bottom: 1px solid #000;
-    padding: 0 0 2vw;
+    /* border-bottom: 1px solid #000; */
+    padding: 0 0 3vw 30vw;
 }
 
 .textCommentButtonsRegionNoContext .userBoothButton {
@@ -89,25 +91,60 @@
     font-weight: bold;
     box-sizing: border-box;
     margin: 0 1vw;
+    position: absolute;
+    bottom: 4.25vw;
+    /* height: 8vw; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 1.5vw 0;
+}
+
+.commentLikesCountNumber {
+    margin: auto;
+    width: 28vw;
+}
+
+@media all and (min-width: 400px) {
+    .textCommentUsernameNoContext {
+        font-size: 3.5vw;
+    }
 }
 
 @media all and (min-width: 600px) {
     .textCommentUsernameNoContext {
         display: inline-block;
-    }
+    
+        font-size: 1rem;
+}
 
     .textCommentTextRegionNoContext {
-        padding: 2em 0 0 0;
-    }
+        padding: 2.5em 0 0 0;
+    
+        margin: 0 0 0 2rem;
+}
 
     .textCommentImageRegionNoContext {
         top: 0.5rem;
         left: 0.5rem;
     }
 
+    .textCommentImageNoContext {
+       border: 1px solid #000;
+       box-sizing: border-box;
+    }
+
+    .textCommentTextNoContext {
+        margin: 0 2rem 0 -1rem;
+        padding: 0.5rem 0.5rem 0.5rem 2rem;
+        border-radius: 0.25em;
+    }
+
     .textCommentUsernameRegionNoContext {
         font-size: 1rem;
-    }
+    
+        padding: 0.625rem 1.5rem;
+}
 
     .textCommentDateTimeNoContext {
         font-size: 0.625rem;
@@ -119,7 +156,7 @@
     }
 
     .textCommentButtonsRegionNoContext {
-        padding: 0 2rem 1rem 0;
+        padding: 0.5rem 2rem 0.5rem 0;
     }
 
     .textCommentButtonsRegionNoContext .userBoothButton {
@@ -128,11 +165,15 @@
     }
 
     .commentLikesCountRegion {
-        margin: 0.25rem auto;
+        margin: 0.25rem auto 0.25rem 2rem;
         padding: 0.25rem;
         max-width: 10rem;
         border-radius: 0.25rem;
         box-shadow: 0 0 0.25rem rgba(0,255,0,0.5);
+        bottom: 0.25rem;
     }
 
+    .textCommentRegionNoContext {
+        padding: 0 0 0 2rem;
+    }
 }

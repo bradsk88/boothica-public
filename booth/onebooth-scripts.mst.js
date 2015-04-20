@@ -66,27 +66,34 @@ var loadOneBoothComments = function (boothnum, boothername) {
 
 var renderOneBoothCommentsFromData = function (data, boothnum, boothername) {
     $.get('{{baseUrl}}/framing/templates/textCommentNoContext.mst', function (template) {
-        var html = "";
-        if (typeof(data.success) === "undefined") {
-            html = "error: " + data.error;
-        } else {
-            $.each(data.success, function (idx, obj) {
-                html += Mustache.render(template, {
-                    text: obj.commenttext,
-                    username: obj.commentername,
-                    displayName: obj.commenterdisplayname,
-                    imageUrl: obj.absoluteIconImageUrl,
-                    commentDatetime: obj.time,
-                    commentNumber: obj.commentnum,
-                    baseUrl: "{{baseUrl}}",
-                    canDelete: obj.canDelete,
-                    hasLikes: obj.likes > 0,
-                    likes: obj.likes,
-                    selfUrl: "{{baseUrl}}/users/" + boothername + "/" + boothnum
+        $.get('{{baseUrl}}/comment/templates/photoNoContext.mst', function (photoTemplate) {
+            var html = "";
+            if (typeof(data.success) === "undefined") {
+                html = "error: " + data.error;
+            } else {
+                $.each(data.success, function (idx, obj) {
+                    var useTemplate = template;
+                    if (obj.mediaType == 'photo') {
+                        useTemplate = photoTemplate;
+                    }
+                    html += Mustache.render(useTemplate, {
+                        text: obj.commenttext,
+                        username: obj.commentername,
+                        displayName: obj.commenterdisplayname,
+                        iconUrl: obj.absoluteIconImageUrl,
+                        imageUrl: obj.absoluteImageUrl,
+                        commentDatetime: obj.time,
+                        commentNumber: obj.commentnum,
+                        baseUrl: "{{baseUrl}}",
+                        canDelete: obj.canDelete,
+                        hasLikes: obj.likes > 0,
+                        likes: obj.likes,
+                        selfUrl: "{{baseUrl}}/users/" + boothername + "/" + boothnum
+                    });
                 });
-            });
-        }
-        $("#user_booth_comments").html(html);
+            }
+            $("#user_booth_comments").html(html);
+        });
     });
 };
 

@@ -12,9 +12,27 @@
         <input type="hidden" id="boothername_value" name="boother" value="{{boothername}}"/>
         <input type="hidden" name="nextUrl" value="{{baseUrl}}/users/{{boothername}}/{{boothnum}}"/>
     </form>
-    <div class="textCommentInputSubmitButtonRegion" id = "post_comment_button" >
-        <div class="phoneAnalogButton bottom">
-            <button onclick = "postComment({{boothnum}}, '{{boothername}}')">Post Comment</button>
+    <div class="textCommentInputButtonsRegion" id = "post_comment_button" >
+        <div class = "textCommentInputButtons">
+            <!--
+            <form class="commentSideButton phoneAnalogButton floating" action = "{{baseUrl}}/users/{{boothername}}/{{boothnum}}/comment/file" target = "_blank">
+                <button type="submit">
+                    <svg viewBox="0 0 200 150">
+                        <polygon points="0,50 50,50 50,0 200,0 200,150 0,150" class = "commentButtonGraphic"/>
+                        <line x1 = "0" y1 = "50" x2 = "50" y2 = "0" class = "commentButtonGraphic"/>
+                        <circle cx = "100" cy = "80" r = "30" class = "commentButtonGraphic"/>
+                    </svg>
+                </button>
+            </form>
+            TODO: File coming soon -->
+            <div class="commentButton phoneAnalogButton floating">
+                <button onclick = "postComment({{boothnum}}, '{{boothername}}')">Post Comment</button>
+            </div>
+            <form class="commentSideButton phoneAnalogButton floating" action = "{{baseUrl}}/users/{{boothername}}/{{boothnum}}/comment/webcam" target = "_blank">
+                <button type="submit">
+                    Webcam
+                </button>
+            </form>
         </div>
     </div>
 </div>

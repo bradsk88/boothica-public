@@ -1,7 +1,7 @@
 <div class="textCommentRegionNoContext">
     <div class="textCommentImageRegionNoContext">
         <a href={{baseUrl}}/users/{{username}}>
-            <img src="{{imageUrl}}" class="textCommentImageNoContext"/>
+            <img src="{{iconUrl}}" class="textCommentImageNoContext"/>
         </a>
     </div>
     <div class="textCommentUsernameRegionNoContext">

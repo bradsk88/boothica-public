@@ -1,3 +1,4 @@
+<!--TODO: Move this out of newbooth because it is also used by webcamComment -->
 <script type = "text/javascript">
     $(document).ready(function() {
         window.requestHash = "{{requestHash}}";
@@ -7,7 +8,7 @@
     <div class = "newBooth">
         <div class = "phoneAnalogGreeting">
             <div class = "webcamHeader">
-                New Booth
+                {{headerText}}
             </div>
         </div>
         <div class = "newBoothWebcamRegion">
@@ -67,7 +68,7 @@
         <div class = "newBoothFinishButtonsRegion" id = "finish_buttons">
             <div class = "phoneAnalogButton" id = "post_button_region">
                 <button type="button" id = "post_button">
-                    Post this booth!
+                    {{postButtonText}}
                 </button>
                 <button type="button" id = "post_button_placeholder">
                     Snap a photo first

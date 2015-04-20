@@ -31,9 +31,13 @@ class CommentObj {
         checkNotNull_Msg($commentNumber, "Comment number is null");
         $this->hasPhoto = $hasPhoto;
         if ($this->hasPhoto()) {
-            checkNotNull_Msg($prop, "Comment prop is null");
-            checkNotNull_Msg($hash, "Comment hash is null");
-            checkNotNull_Msg($ext, "Comment ext is null");
+            if ($prop == null) {
+                $prop = 1;
+            }
+            if ($hash == null || $ext ==  null) {
+                $hash = "error";
+                $ext = "png";
+            }
         }
         $this->commentername = $commentername;
         $this->commentBody = $commentBody;

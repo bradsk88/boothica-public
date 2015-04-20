@@ -67,8 +67,8 @@
     <div id="loadmoreajaxloader" style="display:none;">
         <center><img src="{{baseUrl}}/media/ajax-loader.gif" /></center>
     </div>
+    {% endif %}
     {% autoescape off %}
     {{commentInput}}
     {% autoescape on %}
-    {% endif %}
 </div>

@@ -8,6 +8,6 @@ require_common("utils");
 
 $scriptBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/newbooth/templates/webcamScripts.mst.js");
 $script = $scriptBuilder->render(array(
-    "baseUrl" => base(),
+    "baseUrl" => base()
 ));
 echo $script;

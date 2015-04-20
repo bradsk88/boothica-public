@@ -195,10 +195,10 @@ $(document).ready(function() {
 
                 var image = $("#base64").val();
                 if (typeof(image) === "undefined") {
-                    showError("No image detected.  Try snapping again");
+                    App.tryShowError("No image detected.  Try snapping again");
                     return;
                 }
-                App.postViaAPINow(image, $("#blurb").val());
+                postViaAPINow(image, $("#blurb").val());
             });
         },
 
@@ -208,35 +208,6 @@ $(document).ready(function() {
             var video = document.getElementsByTagName('video')[0];
             $(video).show();
             $("#post_error").slideUp();
-        },
-
-        postViaAPINow: function(imageBase64, blurb) {
-            $.ajax({
-                type: "POST",
-                url: "{{baseUrl}}/_mobile/v2/postbooth.php",
-                data: {
-                    image: imageBase64,
-                    blurb: blurb,
-                    requestHash: window.requestHash
-                },
-                success: function(data) {
-                    if ("undefined" === typeof(data.success)) {
-                        App.showError("undefined" === typeof(data.error) ? "Unexpected Error" : data.error);
-                        $("#finish_buttons").show();
-                        $("#try_again_buttons").show();
-                        return;
-                    }
-                    location.href = data.success.boothUrl;
-                },
-                fail: function(_, o) {
-                    App.showError("Unexpected Error " +  o);
-                    $("#finish_buttons").show();
-                    $("#try_again_buttons").show();
-                },
-                dataType: "json"
-            });
-            $("#finish_buttons").hide();
-            $("#try_again_buttons").hide();
         },
 
         startCountDown: function(count) {
@@ -259,19 +230,15 @@ $(document).ready(function() {
             }, 1000);
         },
 
-        showError : function(message) {
-            var errorDiv = $("#post_error");
-            if (typeof(errorDiv) === "undefined") {
+        tryShowError : function(message) {
+            if ("undefined" === typeof(showError)) {
                 alert(message);
                 return;
             }
-            errorDiv.show();
-            errorDiv.text(message);
+            showError();
         }
 
     };
 
     App.init();
-    loadNewFriendsBooths();
-    loadPublicBooths();
 });
