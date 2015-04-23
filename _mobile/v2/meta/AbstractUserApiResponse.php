@@ -9,7 +9,7 @@ require_common("utils");
  */
 abstract class AbstractUserApiResponse {
 
-    private $requiredArgs;
+    protected $requiredArgs;
 
     function __construct($requiredArgs=array()) {
         $this->requiredArgs = $requiredArgs;
@@ -21,11 +21,15 @@ abstract class AbstractUserApiResponse {
                 return;
             }
         }
-        $username = $this->getUsername();
-        if ($username == null) {
+        $username = null;
+        if ($this->requiresLogin() && ($username = $this->getUsername()) == null) {
             return;
         }
         $this->run($username);
+    }
+
+    protected function requiresLogin() {
+        return true;
     }
 
     /**

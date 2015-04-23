@@ -59,7 +59,10 @@
 
     .oneBoothImage {
         border-radius: 0.25em;
-    }
+    
+        object-fit: contain;
+        max-height: 38rem;
+}
 
     .userBoothButtonsRegion {
         position: relative;
@@ -108,8 +111,9 @@
     }
 
     .oneBoothImageRegion {
-        max-width: 40em;
-    }
+        max-width: 36em;
+    
+}
 
     .oneBoothRegion {
         margin: 0.5rem auto 0;

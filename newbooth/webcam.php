@@ -12,7 +12,9 @@
             $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/newbooth/templates/webcam.mst");
             $html = $htmlBuilder->render(array(
                 "baseUrl" => base(),
-                "requestHash" => generateUserUniqueHash($_SESSION['username'])
+                "requestHash" => generateUserUniqueHash($_SESSION['username']),
+                "headerText" => "New Booth",
+                "postButtonText" => "Post this booth!",
             ));
             $this->body($html);
         }
@@ -23,6 +25,8 @@
         $page = new WebcamPage();
         $page->script(base()."/newbooth/webcam.js");
         $page->script(base()."/lib/getUserMedia.js");
+        $pageScriptBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/newbooth/scripts/webcam-page.mst");
+        $page->rawScript($pageScriptBuilder->render(array()));
         $page->css(base()."/css/webcam.css");
         $page->css(base()."/css/posts.css");
         $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");

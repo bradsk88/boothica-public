@@ -44,13 +44,10 @@ function main() {
         $page->echoHtml();
         return;
     }
+    $allowedToInteractWithBooth = isLoggedIn() && isAllowedToInteractWithBooth($_SESSION['username'], $boothnum);
 
-    //TODO: Add photo comment display
-    //TODO: Add photo comment input
-
-    $allowedToInteractWithBooth = isAllowedToInteractWithBooth($_SESSION['username'], $boothnum);
-
-    if (isLoggedIn() && $allowedToInteractWithBooth) {
+    $commentInputHTML = "<div style = \"padding: 1rem;\">Log in to view and add comments<br/></div>"; //TODO: make this pretty?
+    if ($allowedToInteractWithBooth) {
         $commentInputH2O = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/textCommentInput.mst");
         $commentInputHTML = $commentInputH2O->render(array(
             "baseUrl" => $root,
@@ -63,7 +60,7 @@ function main() {
     $html = $htmlBuilder->render(array(
         "baseUrl" => $root,
         "allowed" => $allowedToInteractWithBooth,
-        "isOwner" => $_SESSION['username'] == $username,
+        "isOwner" => isLoggedIn() && doesBoothBelongTo($boothnum, $_SESSION['username']),
         "commentInput" => $commentInputHTML,
         "username" => $username,
         "boothNumber" => $boothnum,
@@ -77,11 +74,12 @@ function main() {
     $page->rawScript($pagescripts->render(array(
         "username" => $username,
         "boothnum" => $boothnum,
-        "loggedIn" => isset($_SESSION['username'])
+        "loggedIn" => isLoggedIn()
     )));
     $page->css($root."/css/posts.css");
     $page->css($root."/css/oneBooth-page.css");
     $page->css($root."/css/booth.css");
+    $page->css($root."/css/photocomment-nocontext.css");
     $page->css($root."/css/textcomment-nocontext.css");
     $page->css($root."/css/textcomment-input.css");
     $page->useDefaultSideBars();

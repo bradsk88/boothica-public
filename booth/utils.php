@@ -23,6 +23,7 @@ function getBoothOwner($number) {
 }
 
 function isAllowedToInteractWithBooth($username, $boothnum) {
+
     if (isBanned($username)) {
         return false;
     }

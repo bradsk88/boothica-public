@@ -86,7 +86,9 @@ class GetCommentsApiResponse extends AbstractUserApiResponse {
                     'likes' => $numLikes,
                     'time' => $comment->getDateTimeStringReally(),
                     'absoluteImageUrl' => $root.$hash,
-                    'absoluteIconImageUrl' => $root.$iconImage);
+                    'absoluteIconImageUrl' => $root.$iconImage,
+                    'mediaType' => 'photo'
+                );
             } else {
                 $out[] = array(
                     'commentnum' => $comment->getCommentNumber(),
@@ -97,7 +99,10 @@ class GetCommentsApiResponse extends AbstractUserApiResponse {
                     'iconImage' => UserImage::getImage($comment->getCommenterName()),
                     'likes' => $numLikes,
                     'time' => $comment->getDateTimeStringReally(),
-                    'absoluteIconImageUrl' => $root.$iconImage);
+                    'absoluteIconImageUrl' => $root.$iconImage,
+                    'mediaType' => 'none'
+                );
+
             }
         }
         return $out;

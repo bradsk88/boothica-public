@@ -16,7 +16,9 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/CommentObj.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/Comments.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/actions/comment/utils.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/actions/comment/CommentFileUpload.php");
 require_common("utils");
+require_common("ImageUtils");
 require_common("internal_utils");
 
 class PutCommentApiResponse extends AbstractUserApiResponse {
@@ -36,12 +38,39 @@ class PutCommentApiResponse extends AbstractUserApiResponse {
             return;
         }
 
+        if (!isset($_POST['mediatype'])) {
+            echo json_encode(array("error" => "Missing POST parameter mediatype.  Must be one of: [\"photo\",]"));
+            return;
+        }
+
+        if (!isset($_POST['image'])) {
+            echo json_encode(array("error" => "Missing POST parameter image"));
+            return;
+        }
+
         $commentText = $_POST['commenttext'];
+        $image = $_POST['image'];
 
         $boother = getBoothOwner($boothNum);
 
-        $res = upload_comment(false, $commentText, $boothNum, $boother, "jpg");
-        echo json_encode($res);
+        $img = ImageUtils::makeFromEncoded($image);
+        if (!$img) {
+            death("decode failed");
+            echo json_encode(array("error" => "Unexpected problem"));
+            return;
+        }
+        $ext = ImageUtils::getExtensionOfEncoded($image);
+        if ($ext == null) {
+            echo json_encode(array(
+                "error" => "Unable to determine filetype from: ".substr($image, 0, 10)."..."
+            ));
+            return;
+        }
+        $uploadok = CommentFileUpload::doFileUpload64($img, $ext, $commentText, $boothNum, $boother);
+        if (isset($uploadok['success'])) {
+            $uploadok['success']['boothUrl'] = base() . "/users/" . $boother . "/" . $boothNum;
+        }
+        echo json_encode($uploadok);
     }
 }
 

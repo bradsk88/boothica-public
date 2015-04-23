@@ -11,6 +11,7 @@ RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]([0-9]+)[\/]?$ ./user-pages/onebooth.php?
 RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]([0-9]+)\/like[\/]?$ ./actions/likebooth.php?boothnum=$2
 RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]([0-9]+)\/edit[\/]?$ ./action-pages/editBlurb.php?boothnum=$2
 RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]([0-9]+)\/delete[\/]?$ ./action-pages/confirmBoothDelete.php?boothnum=$2
+RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]([0-9]+)\/comment\/webcam[\/]?$ ./action-pages/webcamComment.php?boothnum=$2
 RewriteRule ^comments/([0-9]+)\/like[\/]?$ ./actions/likecomment.php?commentnumber=$1
 RewriteRule ^comments/([0-9]+)\/delete[\/]?$ ./action-pages/confirmCommentDelete.php?commentnumber=$1
 

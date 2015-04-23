@@ -64,7 +64,12 @@ class Comments {
 
         if ($result1) {
             while($row = $result1->fetch_array()) {
-                $comments[] = CommentObj::fromSQL($row);
+                try {
+                    $comments[] = CommentObj::fromSQL($row);
+                } catch (\Exception $e) {
+                    death("Unable to parse comment from row: .".$row);
+                    continue;
+                }
             }
         } else {
             return array("error" => sql_death1($sql));

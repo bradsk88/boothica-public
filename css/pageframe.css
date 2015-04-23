@@ -53,6 +53,10 @@ a {
     cursor: pointer;
 }
 
+.phoneAnalogButton button svg {
+    height: 100%;
+}
+
 .phoneAnalogButton button:disabled {
     cursor: not-allowed !important;
 }

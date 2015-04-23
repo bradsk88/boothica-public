@@ -1,6 +1,6 @@
 <?php
 
-require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/meta/AbstractUserApiResponse.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/meta/AbstractPublicApiResponse.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
@@ -8,12 +8,12 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/userpages/booth_utils.php");
 require_common("db");
 require_common("utils");
 
-class GetBoothApiResponse extends AbstractUserApiResponse {
+class GetBoothApiResponse extends AbstractPublicApiResponse {
 
     /**
      * This should be implemented by descendants but should not be called directly.  Use runAndEcho.
      */
-    protected function run($username)
+    protected function runMaybeLoggedIn()
     {
         $dblink = connect_boothDB();
 
@@ -36,7 +36,7 @@ class GetBoothApiResponse extends AbstractUserApiResponse {
         while($row = $result->fetch_array()) {
             $boothername = $row['fkUsername'];
             $cansee = false;
-            if (isAllowedToInteractWithBooth($_SESSION['username'], $boothnum)) {
+            if (!doesUserAppearPrivate($boothername)) {
                 $cansee = true;
             }
 
@@ -62,7 +62,7 @@ class GetBoothApiResponse extends AbstractUserApiResponse {
             }
 
 
-            $isBootherFollowingMe = isFriendOf($username, $boothername);
+            $isBootherFollowingMe = isFriendOf(parent::getUsernameIfSet(), $boothername);
             $root = base();
             $imagePath = "/booths/" . $row['imageTitle'] . "." . $row['filetype'];
             $absoluteImageUrl = $root . $imagePath;
@@ -88,7 +88,7 @@ class GetBoothApiResponse extends AbstractUserApiResponse {
                     'nextnum' => $nextBooth,
                     'likes' => $likes,
                     'isfriend' => $isBootherFollowingMe,
-                    'is_current_user_following' => isFriendOf($boothername, $username),
+                    'is_current_user_following' => isFriendOf($boothername, parent::getUsernameIfSet()),
                     'datetime' => $row['datetime'],
                     'hoursago' => $row['hours'],
                     'minutesago' => $row['minutes'],
@@ -116,7 +116,7 @@ class GetBoothApiResponse extends AbstractUserApiResponse {
                     'nextnum' => $nextBooth,
                     'likes' => 0,
                     'isfriend' => $isBootherFollowingMe,
-                    'isCurrentUserFollowing' => isFriendOf($boothername, $username),
+                    'isCurrentUserFollowing' => isFriendOf($boothername, parent::getUsernameIfSet()),
                     'datetime' => $row['datetime'],
                     'hoursago' => $row['hours'],
                     'minutesago' => $row['minutes'],
