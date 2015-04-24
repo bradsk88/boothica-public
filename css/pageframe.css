@@ -9,9 +9,10 @@ body {
     font-family: 'Bitter', serif;
 }
 
-a {
+.friendUsername {
     text-decoration: none;
     color: black;
+    /* background: #FFF; */
 }
 
 .bootherLink, .boothLink {

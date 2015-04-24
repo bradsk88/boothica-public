@@ -9,20 +9,80 @@
     border-radius: 4vw;
 }
 
+.friendUsernameRegion {
+    background: #FFF;
+    font-size: 0.6rem;
+}
+
 @media all and (min-width: 250px) {
     .friendCard {
         padding: 0.5rem;
-    
         /* background: #AAA; */
         /* position: absolute; */
-}
+    }
 
     .friendCardImage {
         border-radius: 0.5rem;
+        height: 32vw;
+        object-fit: cover;
     }
 
     .friendCardImageRegion {
         height: 0;
         margin: 0 0 80% 0;
+        /* z-index: 1; */
+    }
+
+    .friendUsernameRegion {
+        font-size: 2.5vw;
+    }
+}
+
+@media all and (min-width: 500px) {
+    .friendCardImage {
+        height: 22vw;
+    }
+}
+
+@media all and (min-width: 600px) {
+    .friendCardImage {
+        height: 16vw;
+    }
+
+    .friendUsernameRegion {
+        font-size: 0.75rem;
+    }
+}
+
+@media all and (min-width: 800px) {
+    .friendCardImage {
+        height: 13vw;
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .friendCardImage {
+        height: 8.5vw;
+    }
+
+    .friendUsernameRegion {
+        font-size: 0.7rem;
+    }
+}
+
+@media all and (min-width: 1080px) {
+    .friendCardImage {
+        height: 9vw;
+    }
+
+}
+
+@media all and (min-width: 1120px) {
+    .friendCardImage {
+        height: 6.5rem;
+    }
+
+    .friendUsernameRegion {
+        font-size: 0.75rem;
     }
 }
