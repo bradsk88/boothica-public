@@ -1,0 +1,12 @@
+<a href = "{{baseUrl}}/users/{{bootherName}}" class = "smallCard">
+    <div class = "friendCard">
+        <div class = "friendCardImageRegion">
+            <img class = "friendCardImage" src = "{{bootherImageUrl}}"/>
+        </div>
+        <div class = "friendUsernameRegion">
+            <div class = "friendUsername">
+                {{bootherDisplayname}}
+            </div>
+        </div>
+    </div>
+</a>

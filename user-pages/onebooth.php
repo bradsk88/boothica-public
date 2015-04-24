@@ -26,7 +26,7 @@ function main() {
 
     if ($boothowner == null) {
         $page = new ErrorPage("This booth has been deleted", base()."/users/".$username,
-                              "Back to ".getPosessiveDisplayName($username)." profile");
+                              "Back to ".getPossessiveDisplayName($username)." profile");
         $page->echoHtml();
         return;
     }
@@ -37,9 +37,9 @@ function main() {
                                         array(
             "boothNumber" => $boothnum,
             "realOwner" => $boothowner,
-            "realOwnerPosessiveDisplayname" => getPosessiveDisplayName($boothowner),
+            "realOwnerPosessiveDisplayname" => getPossessiveDisplayName($boothowner),
             "givenUsername" => $username,
-            "givenUserPosessiveDisplayname" => getPosessiveDisplayName($username)
+            "givenUserPosessiveDisplayname" => getPossessiveDisplayName($username)
         ));
         $page->echoHtml();
         return;
@@ -64,7 +64,7 @@ function main() {
         "commentInput" => $commentInputHTML,
         "username" => $username,
         "boothNumber" => $boothnum,
-        "bootherPosessiveDisplayName" => getPosessiveDisplayName($username)
+        "bootherPosessiveDisplayName" => getPossessiveDisplayName($username)
     ));
 
     $page = new PageFrame();

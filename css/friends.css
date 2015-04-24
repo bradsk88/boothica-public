@@ -1,144 +1,28 @@
-.friendcard {
-
-	border-top: 1px solid #e3e5f4;
-	border-right: 1px solid #e3e5f4;
-	border-bottom: 1px solid #e3e5f4;
-	width: 100% !important;
-    height:80px !important;
-	
-	background: #ffffff; /* Old browsers */
-	background: -moz-linear-gradient(top,  #ffffff 0%, #e3e5f4 82%, #f9f9f9 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(82%,#e3e5f4), color-stop(100%,#f9f9f9)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #ffffff 0%,#e3e5f4 82%,#f9f9f9 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #ffffff 0%,#e3e5f4 82%,#f9f9f9 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #ffffff 0%,#e3e5f4 82%,#f9f9f9 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #ffffff 0%,#e3e5f4 82%,#f9f9f9 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9f9f9',GradientType=0 ); /* IE6-9 */
-	position: relative;
-	
+.friendCard {
+    width: 100%;
+    padding: 2vw;
+    box-sizing: border-box;
 }
 
-.onlinefriendcard {
-
-	border-top: 1px solid #e3e5f4;
-	border-right: 1px solid #e3e5f4;
-	border-bottom: 1px solid #e3e5f4;
-	width: 100% !important;
-    height:80px !important;
-	min-height: 80px;
-	overflow: hidden;
-	background: #ffffff; /* Old browsers */
-	background: -moz-linear-gradient(top,  #ffffff 0%, #87ffcf 82%, #bcffde 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(82%,#87ffcf), color-stop(100%,#bcffde)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #ffffff 0%,#87ffcf 82%,#bcffde 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #ffffff 0%,#87ffcf 82%,#bcffde 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #ffffff 0%,#87ffcf 82%,#bcffde 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #ffffff 0%,#87ffcf 82%,#bcffde 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#bcffde',GradientType=0 ); /* IE6-9 */
-
-
-
-
+.friendCardImage {
+    width: 100%;
+    border-radius: 4vw;
 }
 
-.frienddeletebutton a {
-
-	color: white;
-
+@media all and (min-width: 250px) {
+    .friendCard {
+        padding: 0.5rem;
+    
+        /* background: #AAA; */
+        /* position: absolute; */
 }
 
-.frienddeletebutton a:visited {
+    .friendCardImage {
+        border-radius: 0.5rem;
+    }
 
-	color: white;
-
-}
-
-.frienddeletebutton:hover  {
-
-	opacity: 1;
-	font-size: 12px;
-	padding-left: 5px;
-	padding-right: 5px;
-	width: 40px;
-	height: 30px;
-	background-color: red; 
-	position: absolute; 
-	bottom: 5px; 
-	right: 10px;
-	border-top-right-radius: 5px 5px;
-	border-top-left-radius: 5px 5px;
-
-}
-
-.frienddeletebutton {
-
-	opacity: 0.5;
-	padding-left: 5px;
-	padding-right: 5px;
-	font-size: 12px;
-	width: 40px;
-	height: 20px;
-	background-color: red; 
-	position: absolute; 
-	bottom: 5px; 
-	right: 10px;
-	border-top-right-radius: 5px 5px;
-	border-top-left-radius: 5px 5px;
-
-}
-
-.friendcardleftcell {
-
-	border-left: 1px solid #e3e5f4;
-	padding-left: 5px;
-	padding-right: 5px;
-	height: 100%;
-	float:left;
-
-}
-
-.friendcardsectiontext {
-
-	padding: 30px;
-	height: 20px;
-
-}
-
-.friendcardrightcell {
-
-	border-left: 1px solid #e3e5f4;
-	text-align: center;
-	height: 100%;
-	min-width: 100px;
-	float: right;
-
-}
-
-.friendcardalerttab {
-
-	background: red;
-	text-align: center;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	width: 40px;
-	position: absolute;
-	top: 0px;
-	right: -40px;
-	margin-top: 2px;
-	padding-top: 10px;
-	font-size: 20px;
-	padding-bottom: 10px;
-	color: white;
-
-}
-
-.friendicon {
-
-	margin: 10px !important;
-	background-size: cover !important;
-	background-position: center !important;
-	width: 60px !important;
-	height: 60px !important;
-	float: left !important;
-
+    .friendCardImageRegion {
+        height: 0;
+        margin: 0 0 80% 0;
+    }
 }

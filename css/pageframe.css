@@ -139,6 +139,19 @@ a {
     border-bottom-color: #EB8469;
 }
 
+.denseGrid {
+    display: flex;
+    flex-flow: row wrap;
+    /* justify-content: space-around; */
+}
+
+.smallCard {
+    width: 100%;
+    background: #FFF;
+    border-radius: 4vw;
+    margin: 0 0 4vw 0;
+}
+
 .loaderRegion {
     height: 2rem;
     display: flex;
@@ -299,7 +312,6 @@ a {
     display: none; /* Enable on a per-page basis */
 }
 
-
 @media all and (max-width: 599px) {
     #newboothbutton {
         position: fixed;
@@ -318,12 +330,39 @@ a {
     }
 }
 
+@media all and (min-width: 250px) {
+
+    .smallCard {
+        flex: 0 0 47.5%;
+        box-sizing: border-box;
+        margin: 2.5% 2.5% 0 0;
+        border-radius: 1rem;
+    
+        /* position: relative; */
+}
+
+    .denseGrid {
+        padding: 0 0 1rem 2.5%;
+    }
+
+}
+
 /* Medium screens */
 @media all and (min-width: 500px) {
     #newboothbutton {
         left: auto;
         right: 1em;
     }
+
+    .denseGrid {
+        padding: 0 0 0 1%;
+    }
+
+    .smallCard {
+        flex: 0 0 32.25%;
+        margin: 1% 1% 0 0;
+    }
+
 }
 
 @media all and (min-width: 600px) {
@@ -364,6 +403,15 @@ a {
         border-radius: 0.5rem;
     }
 
+    .denseGrid {
+        padding: 0 0 0 1%;
+    }
+
+    .smallCard {
+        flex: 0 0 24%;
+        margin: 1% 1% 0 0;
+    }
+
     .requires_js_warning {
         border: 0.5em solid #F63;
     }
@@ -399,6 +447,17 @@ a {
         visibility: inherit;
     }
 
+}
+
+@media all and (min-width: 800px) and (max-width: 1024px) {
+    .denseGrid {
+        padding: 0 0 0 1%;
+    }
+
+    .smallCard {
+        flex: 0 0 19%;
+        margin: 1% 1% 0 0;
+    }
 }
 
 /* Medium screens */
@@ -474,6 +533,11 @@ a {
         outline: none;
     }
 
+    .denseGrid {
+        max-width: 40rem;
+        margin: 0 auto;
+    }
+
     .load_more_button {
         display: none;
     }
@@ -531,4 +595,5 @@ a {
         margin-left: 1em;
         /*border-left: 1em solid rgba(107, 219, 179, 0.15); *//*6bdbb3*/
     }
+
 }

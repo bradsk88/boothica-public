@@ -239,7 +239,7 @@ function getDisplayName($username) {
     return new DisplayName($username);
 }
 
-function getPosessiveDisplayName($username) {
+function getPossessiveDisplayName($username) {
     $name = getDisplayName($username);
     if ('s' == substr($name, -1)) {
         return $name."'";
