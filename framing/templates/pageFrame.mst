@@ -48,9 +48,9 @@
             <div style="clear: both;"></div>
         </form>
         <div class = "pageHeaderUsernameRegion">
-            <div class = "pageHeaderUsername">
+            <a class = "pageHeaderUsername" href = "{{baseUrl}}/users/{{username}}">
                 {{username}}
-            </div>
+            </a>
         </div>
         <a href="{{baseUrl}}/menu">
             <canvas id='headgear' class='headerbutton' onclick='openSettings()'>

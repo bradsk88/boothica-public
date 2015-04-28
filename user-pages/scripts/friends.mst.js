@@ -1,12 +1,13 @@
 function loadFriendsList(username) {
     $.post("{{baseUrl}}/_mobile/v2/getfriendsof", {
-        username: username
+        boothername: username
     }, function(data) {
         if ("undefined" === typeof(data.success)) {
             showError(data.error);
+            return;
         }
         renderFromData(data);
-    }, "json").fail(function() {
+    }, "json").fail(function(a, b) {
         showError("API Failure");
     });
 }
@@ -19,7 +20,6 @@ var renderFromData = function(data) {
                 bootherImageUrl: obj.bootherImageUrl,
                 bootherDisplayname: obj.bootherDisplayName,
                 bootherName: obj.bootherName
-
             });
             $("#friends_list").append(html);
         });
@@ -27,5 +27,5 @@ var renderFromData = function(data) {
 };
 
 function showError(error) {
-    alert(error);
+    //alert(error);
 }

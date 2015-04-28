@@ -46,7 +46,7 @@ function main() {
     }
     $allowedToInteractWithBooth = isLoggedIn() && isAllowedToInteractWithBooth($_SESSION['username'], $boothnum);
 
-    $commentInputHTML = "<div style = \"padding: 1rem;\">Log in to view and add comments<br/></div>"; //TODO: make this pretty?
+    $commentInputHTML = "<div style = \"padding: 1rem;\">Log in to view and add comments<br/></div>";
     if ($allowedToInteractWithBooth) {
         $commentInputH2O = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/textCommentInput.mst");
         $commentInputHTML = $commentInputH2O->render(array(

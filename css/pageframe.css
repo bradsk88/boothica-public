@@ -362,6 +362,7 @@ body {
     .smallCard {
         flex: 0 0 32.25%;
         margin: 1% 1% 0 0;
+        box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
     }
 
 }
@@ -384,6 +385,11 @@ body {
 
     .phoneAnalogButton button {
         border-width: 0.125rem;
+    }
+
+    .phoneAnalogButton {
+        border-bottom-width: 1rem;
+        padding: 1rem;
     }
 
     .phoneAnalogSubsectionTitle {

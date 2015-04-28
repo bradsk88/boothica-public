@@ -45,7 +45,7 @@ class BoothImage {
             return base().BoothImage::NOIMG;
         } else {
             $row = $result->fetch_array();
-            return  base().$size.$row['imageTitle'].".".$row['filetype'];
+            return  base().'/booths'.$size.$row['imageTitle'].".".$row['filetype'];
         }
 
     }

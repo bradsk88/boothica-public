@@ -9,6 +9,7 @@ function loadBootherConsole(username) {
             $.get(baseUrl + '/framing/templates/bootherConsole.mst', function(template) {
                 html = Mustache.render(template, {
                     baseUrl: baseUrl,
+                    username: data.apiUsername,
                     bootherName: username,
                     bootherDisplayPhoto: data.success.displayPhotoAbsoluteUrl,
                     bootherDisplayName: data.success.displayName,

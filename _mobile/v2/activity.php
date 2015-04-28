@@ -16,7 +16,7 @@ class ActivityResponse extends AbstractUserApiResponse {
     protected function run($username)
     {
         $items = $this->getItemsMethod1($username);
-        echo json_encode(array("success" => $items));
+        $this->markCallAsSuccessful("Activity get OK", array("data" => $items));
     }
 
     /**

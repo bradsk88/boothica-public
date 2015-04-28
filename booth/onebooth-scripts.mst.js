@@ -71,7 +71,7 @@ var renderOneBoothCommentsFromData = function (data, boothnum, boothername) {
             if (typeof(data.success) === "undefined") {
                 html = "error: " + data.error;
             } else {
-                $.each(data.success, function (idx, obj) {
+                $.each(data.success.comments, function (idx, obj) {
                     var useTemplate = template;
                     if (obj.mediaType == 'photo') {
                         useTemplate = photoTemplate;

@@ -27,3 +27,24 @@
     font-weight: bold;
     box-shadow: 0 1rem 1rem rgba(0,0,0,0.125);
 }
+
+.friendRequestActivity {
+    position: relative;
+    margin: 1rem;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.125);
+    background: #FFF;
+    background-size: cover;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+
+@media all and (min-width: 600px) {
+    .friendRequestActivity {
+        max-width: 40rem;
+        margin: 1rem auto;
+    }
+}

@@ -1,9 +1,5 @@
 <?PHP
 
-main();
-
-function main() {
-
-	echo "<!DOCTYPE html>404 - Unrecognized API Call</html>";
-}
-
+echo json_encode(array(
+    "error" => "Unrecognized API endpoint"
+));

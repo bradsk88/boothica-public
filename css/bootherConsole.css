@@ -38,6 +38,16 @@
     min-height: 4em;
 }
 
+.bootherConsoleListFriendsButton, .bootherConsoleFriendRequestButton, .bootherConsolePrivateMessageButton {
+    text-align: center;
+    width: 100%;
+    color: #000;
+}
+
+.bootherConsoleButtons a {
+    text-decoration: none;
+}
+
 @media all and (max-width: 1024px) {
     .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
         border-top: 1px solid #DDD;
@@ -56,6 +66,8 @@
         height: 6em;
         background-color: #FFF;
         padding: 1em 3em;
+        margin: 0.5rem 0 0;
+        border-radius: 0.25rem;
     }
 
     .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {

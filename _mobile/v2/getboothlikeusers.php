@@ -32,10 +32,9 @@ class LikeUsersApiResponse extends AbstractUserApiResponse {
                 "username" => $row['fkUsername']
             );
         }
-        echo json_encode(array("success" => array(
+        $this->markCallAsSuccessful("Get booth likes OK", array(
             "likeusers" => $out
-        )));
-
+        ));
     }
 }
 

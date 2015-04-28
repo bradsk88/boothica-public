@@ -250,7 +250,10 @@ function getPossessiveDisplayName($username) {
 function doesUserAppearPrivate($username) {
     if (isPrivate($username)) {
         if (isLoggedIn()) {
-            return $_SESSION['username'] != $username;
+            if ($_SESSION['username'] == $username) {
+                return false;
+            }
+            return !isFriendOf($_SESSION['username'], $username);
         }
         return true;
     }

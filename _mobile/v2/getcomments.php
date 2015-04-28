@@ -21,22 +21,28 @@ require_asset("UserImage");
 
 class GetCommentsApiResponse extends AbstractUserApiResponse {
 
+    function __construct() {
+        parent::__construct(array("boothnum"));
+    }
+
     /**
      * This should be implemented by descendants but should not be called directly.  Use runAndEcho.
      */
     protected function run($username)
     {
-        if (parameterIsMissingAndEchoFailureMessage("boothnum")) {
-            return;
-        }
         $boothnumber = $_POST['boothnum'];
 
         if (isAllowedToInteractWithBooth($_SESSION['username'], $boothnumber)) {
-            echo json_encode($this->doGetComments($boothnumber));
+            $getComments = $this->doGetComments($boothnumber);
+            if (isset($getComments['success'])) {
+                $this->markCallAsSuccessful("Comments get OK", array("comments" => $getComments['success']));
+            } else {
+                $this->markCallAsFailure($getComments['error']);
+            }
             return;
         }
 
-        echo json_encode(array("error" => $username." is not allowed to view comments on booth ".$boothnumber));
+        $this->markCallAsFailure($username." is not allowed to view comments on booth ".$boothnumber);
         return;
     }
 

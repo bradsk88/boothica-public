@@ -26,10 +26,7 @@ class GetBoothApiResponse extends AbstractPublicApiResponse {
         $result = $dblink->query($sql);
 
         if (!$result) {
-            echo
-            json_encode(array(
-                "error" => sql_death1($sql)
-            ));
+            $this->markCallAsFailure(sql_death1($sql));
             return;
         }
 
@@ -95,9 +92,7 @@ class GetBoothApiResponse extends AbstractPublicApiResponse {
                     'absoluteImageUrl' => $absoluteImageUrl,
                     'allowed' => $cansee,
                 );
-                echo json_encode(array(
-                    "success" => $booth
-                ));
+                $this->markCallAsSuccessful("Booth get OK", $booth);
                 return;
             } else {
                 $booth = array(
@@ -123,9 +118,7 @@ class GetBoothApiResponse extends AbstractPublicApiResponse {
                     'absoluteImageUrl' => base()."/media/private.jpg",
                     'allowed' => false,
                 );
-                echo json_encode(array(
-                    "success" => $booth
-                ));
+                $this->markCallAsSuccessful("Booth get OK", $booth);
                 return;
             }
         }

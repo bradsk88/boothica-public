@@ -147,12 +147,21 @@ class PageFrame {
     }
 
     function loadPublicSidebarsContent() {
-        $this->rawScript("<script type = \"text/javascript\">
+        if (isLoggedIn()) {
+            $this->rawScript("<script type = \"text/javascript\">
+            $(document).ready(function() {
+                loadNewFriendsBooths();
+                loadPublicBooths();
+            });
+        </script>");
+        } else {
+            $this->rawScript("<script type = \"text/javascript\">
             $(document).ready(function() {
                 loadRandomBooths();
                 loadPublicBooths();
             });
         </script>");
+        }
     }
 
     private function includeJQuery()

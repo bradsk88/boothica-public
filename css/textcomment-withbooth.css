@@ -8,6 +8,11 @@
     border-radius: 0.25rem;
 }
 
+.textCommentRegionWithBooth a {
+    text-decoration: none;
+    color: #000;
+}
+
 .textCommentImageWithBooth, .textCommentBoothImage {
     width: 100%;
     height: 100%;

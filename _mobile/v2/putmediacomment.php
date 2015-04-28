@@ -23,33 +23,24 @@ require_common("internal_utils");
 
 class PutCommentApiResponse extends AbstractUserApiResponse {
 
+    function __construct() {
+        parent::__construct(array("boothnum", "commenttext", "mediatype", "image"));
+    }
+
     /**
      * This should be implemented by descendants but should not be called directly.  Use runAndEcho.
      */
     protected function run($username)
     {
-        if (parameterIsMissingAndEchoFailureMessage("boothnum")) {
-            return;
-        }
-        $boothNum = $_POST['boothnum'];
 
-        if (!isset($_POST['commenttext'])) {
-            echo json_encode(array("error" => "Missing POST parameter commenttext"));
-            return;
-        }
-
-        if (!isset($_POST['mediatype'])) {
+        if (!in_array($_POST['mediatype'], array("photo"))) {
             echo json_encode(array("error" => "Missing POST parameter mediatype.  Must be one of: [\"photo\",]"));
-            return;
-        }
-
-        if (!isset($_POST['image'])) {
-            echo json_encode(array("error" => "Missing POST parameter image"));
             return;
         }
 
         $commentText = $_POST['commenttext'];
         $image = $_POST['image'];
+        $boothNum = $_POST['boothnum'];
 
         $boother = getBoothOwner($boothNum);
 

@@ -30,9 +30,7 @@ class FriendFeedActivity extends AbstractUserApiResponse {
         $result = $dblink->query($sql);
 
         if (!$result) {
-            echo json_encode(
-                array(
-                    "error" => sql_death1($sql)));
+            $this->markCallAsFailure(sql_death1($sql));
             return;
         }
 
@@ -49,13 +47,12 @@ class FriendFeedActivity extends AbstractUserApiResponse {
                 'absoluteImageUrlThumbnail' => $root . '/booths/small/' . $row['imageTitle'] . '.' . $row['filetype']);
             $newestBooth = $row['pkNumber'];
         }
-        echo json_encode(
-            array("success" =>
-                array(
-                    "booths" => $booths),
-                "next_batch_start_booth_number" => isset($newestBooth) ? $newestBooth : null
-            )
+
+        $data = array(
+            "booths" => $booths,
+            "next_batch_start_booth_number" => isset($newestBooth) ? $newestBooth : null
         );
+        $this->markCallAsSuccessful("Booth get OK", $data);
     }
 }
 

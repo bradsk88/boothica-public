@@ -8,24 +8,17 @@ require_lib("h2o-php/h2o");
 require_asset("UserImage");
 
 class FriendListActivity extends AbstractUserApiResponse {
+
+    function __construct() {
+        parent::__construct(array("boothername"));
+    }
+
     protected function run($username)
     {
-        if (!isLoggedIn()) {
-            echo json_encode(array(
-                "error" => "Must be logged in to view friend lists."
-            ));
-            return;
-        }
+        $boothername = $_REQUEST['boothername'];
 
-        if (parameterIsMissingAndEchoFailureMessage('username')) {
-            return;
-        }
-        $boothername = $_REQUEST['username'];
-
-        if (doesUserAppearPrivate($username)) {
-            echo json_encode(array(
-                "error" => getDisplayName($username)." is not allowed to view ".getPossessiveDisplayName($boothername)." friends."
-            ));
+        if (doesUserAppearPrivate($boothername)) {
+            $this->markCallAsFailure(getDisplayName($username)." is not allowed to view ".getPossessiveDisplayName($boothername)." friends.");
             return;
         }
 
@@ -46,11 +39,7 @@ class FriendListActivity extends AbstractUserApiResponse {
             );
         }
 
-        echo json_encode(array(
-            "success" => array(
-                "boothers" => $boothers
-            )
-        ));
+        $this->markCallAsSuccessful("Friends get OK", array("boothers" => $boothers));
     }
 }
 
