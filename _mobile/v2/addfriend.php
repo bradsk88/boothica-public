@@ -36,9 +36,11 @@ class AddFriendResponse extends AbstractUserApiResponse {
             return;
         }
 
-        //TODO: Send email
-
         $this->markCallAsSuccessful("Friend request to ".getDisplayName($otherUser)." sent successfully.");
+
+        $email = getEmail($otherUser);
+        $msg = "You have a new friend request"; //TODO: Write this email message
+        sendBoothicaEmail($email, "Friend Request: ".getDisplayName($username), $msg);
         return;
 
     }
