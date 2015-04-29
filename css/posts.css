@@ -69,7 +69,10 @@
 
     .centerBooth {
         justify-content: flex-end;
-    }
+    
+        padding: 1rem;
+        box-sizing: border-box;
+}
 
     .centerBoothImage, .sideBoothImage {
         border-radius: 0.25em;
@@ -226,8 +229,10 @@
     .centerBoothRegion {
         background-color: #FFF;
         padding: 1em 3em;
-        margin: 0.5em 0;
-    }
+        margin: 0.5em auto;
+    
+        max-width: 40rem;
+}
 
     .centerBoothOpenButton {
         right: -2em;

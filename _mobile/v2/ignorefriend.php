@@ -19,12 +19,12 @@ class AddFriendResponse extends AbstractUserApiResponse {
             return;
         }
 
-        if (isFriendOf($otherUser, $_SESSION['username'])) {
-            $this->markCallAsSuccessful("Already sent friend request to ".getDisplayName($otherUser));
+        if (!isFriendOf($_SESSION['username'], $otherUser)) {
+            $this->markCallAsFailure("Cannot ignore a request that hasn't been made".getDisplayName($otherUser));
             return;
         }
 
-        $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/addFriend.mst.sql");
+        $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/ignoreFriend.mst.sql");
         $sql = $sqlBuilder->render(array(
             "username" => $username,
             "friendUsername" => $otherUser
@@ -36,9 +36,7 @@ class AddFriendResponse extends AbstractUserApiResponse {
             return;
         }
 
-        //TODO: Send email
-
-        $this->markCallAsSuccessful("Friend request to ".getDisplayName($otherUser)." sent successfully.");
+        $this->markCallAsSuccessful("Friend request from ".getDisplayName($otherUser)." ignored successfully.");
         return;
 
     }

@@ -35,6 +35,11 @@
     justify-content: flex-end;
 }
 
+.userBoothComments a {
+    text-decoration: none;
+    color: #000;
+}
+
 .likeUserImageRegion {
     width: 16vw;
     height: 16vw;
@@ -163,6 +168,7 @@
         padding: 0.5rem 0;
         border-radius: 0.25rem;
         box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
+        border: none;
     }
 
     .userBoothButtonsRegion {

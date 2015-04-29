@@ -1,5 +1,5 @@
 REPLACE INTO
   friendstbl
-  (fkUsername, fkFriendname)
+  (fkUsername, fkFriendname, ignored)
 VALUES
-  ("{{username}}", "{{friendUsername}}")
+  ("{{username}}", "{{friendUsername}}", 0)

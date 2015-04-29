@@ -26,7 +26,7 @@ body {
     background-repeat: no-repeat;
     font-family: 'Bitter', serif;
     font-weight: bold;
-    margin: 0 auto;
+    margin: 0 auto 10vw;
     position: relative;
 }
 
@@ -49,6 +49,7 @@ body {
     flex-wrap: wrap;
     padding: 2vw;
     width: 100%;
+    text-decoration: none;
 }
 .phoneAnalogButton button {
     cursor: pointer;
@@ -164,17 +165,25 @@ body {
     margin: auto;
 }
 
-.login_prompt, .messageBanner {
+.messageBanner {
     border: 3vw solid #DDD;
     margin-top: 2.5em;
     margin-bottom: -2.5em;
+}
+
+.messageBanner a {
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+    text-align: center;
+    display: block;
 }
 
 .requires_js_warning {
     border: 3vw solid #F63;
 }
 
-.messageBanner, .requires_js_warning, .login_prompt { /* TODO: Discontinue the use of require_js_warning and login_prompt and replace with messageBanner */
+.messageBanner, .requires_js_warning { /* TODO: Discontinue the use of require_js_warning and login_prompt and replace with messageBanner */
     background-color: white;
     padding: 1em;
 }
@@ -197,6 +206,11 @@ body {
     margin-left: auto;
     margin-right: auto;
     position: relative;
+}
+
+.pageheader a {
+    text-decoration: none;
+    color: #000;
 }
 
 .headerbutton, .pageheader, .headertitle {
@@ -394,11 +408,18 @@ body {
 
     .phoneAnalogSubsectionTitle {
         font-size: 1.5rem;
-    }
+    
+        padding: 1rem;
+}
 
     .phoneAnalogText {
         font-size: 1rem;
         padding: 1rem;
+    }
+
+    .phoneAnalogText.bottom {
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
     }
 
     .phoneAnalogField .title {
@@ -504,8 +525,11 @@ body {
         text-align: center;
     }
 
-    .phoneAnalogButton.bottom, .phoneAnalogCheckbox.bottom {
+    .phoneAnalogButton.bottom, .phoneAnalogCheckbox.bottom, .phoneAnalogButton.bottomleft, .phoneAnalogCheckbox.bottomleft {
         border-bottom-left-radius: 3rem;
+    }
+
+    .phoneAnalogButton.bottom, .phoneAnalogCheckbox.bottom, .phoneAnalogButton.bottomright, .phoneAnalogCheckbox.bottomright {
         border-bottom-right-radius: 3rem;
     }
 

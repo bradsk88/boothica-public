@@ -1,29 +1,5 @@
 var baseUrl = "{{baseUrl}}";
 
-function loadBootherConsole(username) {
-
-    $.post(baseUrl + "/_mobile/vBeta/getuser.php", {
-        boothername: username
-    }, function (data) {
-        if (data.success) {
-            $.get(baseUrl + '/framing/templates/bootherConsole.mst', function(template) {
-                html = Mustache.render(template, {
-                    baseUrl: baseUrl,
-                    username: data.apiUsername,
-                    bootherName: username,
-                    bootherDisplayPhoto: data.success.displayPhotoAbsoluteUrl,
-                    bootherDisplayName: data.success.displayName,
-                    bootherPluralName: data.success.pluralDisplayName
-                });
-                $("#user_booths_feed").prepend(html);
-            });
-        } else if (data.error) {
-            $("#user_booths_feed").prepend("Error: " + data.error);
-        }
-    }, "json");
-
-}
-
 //declare event to run when div is visible
 function loadUserBooths(username){
     $.post(baseUrl + "/_mobile/v2/userfeed.php", {

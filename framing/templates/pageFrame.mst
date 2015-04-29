@@ -49,7 +49,7 @@
         </form>
         <div class = "pageHeaderUsernameRegion">
             <a class = "pageHeaderUsername" href = "{{baseUrl}}/users/{{username}}">
-                {{username}}
+                {{userDisplayName}}
             </a>
         </div>
         <a href="{{baseUrl}}/menu">
@@ -67,7 +67,7 @@
 </div>
 {% endif %}
 <div class="page_frame">
-    <div class="body_inside">
+    <div class="body_inside" id = "inner_body">
         <div class="requires_js_warning" id = "requires_js_warning">
             This website requires JavaScript.  While some features may work, there are no guarantees.
         </div>

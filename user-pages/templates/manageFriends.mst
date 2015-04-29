@@ -1,11 +1,18 @@
 <div class = "phoneAnalog massive">
-    <div class = "phoneAnalogGreeting">
-        Friend Requests
-    </div>
-    <div class = "phoneAnalogSubsectionTitle">New Requests</div>
+    <div class = "phoneAnalogGreeting">New Friend Requests</div>
     <div id = "inbound_requests"></div>
-    <div class = "phoneAnalogSubsectionTitle">Outbound Requests</div>
+</div>
+<div class = "phoneAnalog big">
+    <div class = "phoneAnalogGreeting">Outbound Friend Requests</div>
     <div id = "outbound_requests"></div>
-    <div class = "phoneAnalogSubsectionTitle">Ignored Requests</div>
-    <div id = "ignored_requests"></div>
+</div>
+<div class = "phoneAnalog big">
+    <div class = "phoneAnalogGreeting">Ignored Friend Requests</div>
+    <div id = "ignored_requests">
+        <div class = "phoneAnalogButton bottom">
+            <button onclick = "loadIgnoredFriendRequests('{{username}}');">
+                Click to load
+            </button>
+        </div>
+    </div>
 </div>

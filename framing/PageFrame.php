@@ -111,9 +111,11 @@ class PageFrame {
                 return;
             } else if (!$this->excludeLoginNotification ) {
            	    $this->notificationRegion = '
+           	    <div class = "messageBanner">
                 <a href = "'.base().'/login">
-                    <div class = "login_prompt">Please log in</div>
-                </a>';
+                    Please log in
+                </a>
+                </div>';
    	    }
 	}
 
@@ -141,6 +143,7 @@ class PageFrame {
         }
         if (isset($_SESSION['username'])) {
             $data["username"] = $_SESSION['username'];
+            $data["userDisplayName"] = getDisplayName($_SESSION['username']);
         }
         $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/pageFrame.mst");
         return $page->render($data);
@@ -184,20 +187,6 @@ class PageFrame {
         $h2o = new h2o($file);
         $html = $h2o->render(array_merge($values, array("baseUrl" => base(), "baseUrlWithoutProtocol" => baseWithoutProtocol())));
         $this->body($html);
-    }
-
-    private function footer() {
-        //TODO: Bring this back
-        return "";
-//        return "
-//        <div class = 'subheader' id = 'bottomlinks'>
-//            <a href = '".base()."/info/news'><span class = 'subheadernavbutton'>News</span></a>
-//            <a href = '".base()."/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
-//            <a href = '".base()."/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
-//            <a href = '".base()."/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
-//            <a href = '".base()."/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
-//            <a href = '".base()."/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
-//        </div>";
     }
 
     private function initialMeta()

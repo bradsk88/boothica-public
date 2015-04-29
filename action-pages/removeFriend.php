@@ -8,7 +8,7 @@ echo "TODO";
 $strCookie = 'PHPSESSID=' . $_COOKIE['PHPSESSID'] . '; path=/';
 session_write_close();
 
-$url = base()."/_mobile/v2/addfriend.php";
+$url = base()."/_mobile/v2/removefriend.php";
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_URL, $url);
@@ -34,7 +34,7 @@ if (isset($result['success'])) {
         header("Location: ".$_REQUEST['nextUrl']);
         return;
     }
-    header("Location: ".base()."/users/". $friendName);
+    header("Location: ".base()."/users/". $result['apiUsername']."/friends");
     return;
 }
 

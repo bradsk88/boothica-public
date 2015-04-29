@@ -9,7 +9,13 @@
 require_once "{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 
-main();
+if (isLoggedIn()) {
+    main();
+} else {
+    require_page("LoginPage");
+    $page = new LoginPage();
+    echo $page->render();
+}
 
 function main() {
 
@@ -21,6 +27,14 @@ function main() {
         "baseURl" => $root
     )));
     $page->css($root."/css/menu.css");
+    $page->css($root."/css/bootherConsole.css");
+
+    $page->script(base()."/user-pages/scripts/bootherConsole.js");
+    $page->rawScript("<script type = \"text/javascript\">
+        $(document).ready(function() {
+            loadOwnerConsole(\"".$_SESSION['username']."\");
+        });
+        </script>");
     $page->echoHtml();
 
 }

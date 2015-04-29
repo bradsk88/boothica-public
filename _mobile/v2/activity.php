@@ -45,7 +45,7 @@ class ActivityResponse extends AbstractUserApiResponse {
 
         $output = array();
         while ($row = $result->fetch_array()) {
-            $commentImage = base()."/comments/".$row['media'];
+            $commentImage = $row['ext'] ? base()."/comments/".$row['media'] : base()."/media/error.png";
             $canSee = isAllowedToInteractWithBooth($username, $row['boothNum']);
             $output[] = array(
                 "currentUserName" => $username
@@ -58,7 +58,7 @@ class ActivityResponse extends AbstractUserApiResponse {
                 , "bootherImage" => BoothImage::getAbsoluteImage($row['boothNum'], $row['bootherName'])
                 , "boothNum" => $row['boothNum']
                 , "hasMedia" => $canSee ? $row['hasMedia'] == 1 : false
-                , "commentMediaImage" => $canSee ? $commentImage : base().UserImage::PRIVATE_USER
+                , "commentMediaImage" => $commentImage
             );
         }
         return $output;

@@ -2,6 +2,9 @@
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php");
 
+//TODO: File comment upload
+//TODO: Make it more obvious this isn't a booth
+
 $page = new PageFrame();
 $page->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/newbooth/templates/webcam.mst", array(
     "headerText" => "Photo Comment",

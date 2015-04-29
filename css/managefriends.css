@@ -1,5 +1,4 @@
 .friendRequestRegion {
-    background: rgba(255,255,255,0.5);
 }
 
 .friendRequestRegion a {
@@ -7,7 +6,23 @@
     color: #000;
 }
 
+.friendRequestButtons .phoneAnalogButton {
+    height: 100%;
+}
+
 @media all and (min-width: 600px) {
+
+    .friendRequestButtons {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end; 
+    }
+
     .friendRequest {
         display: flex;
         flex-flow: row;
@@ -17,7 +32,9 @@
     .friendRequestIdentityRegion, .friendRequestButtonsRegion {
         flex: 1 0 0;
         max-width: 50%;
-    }
+    
+        position: relative;
+}
 
     .friendRequestImage {
         /* width: 100%; */
@@ -51,5 +68,9 @@
     
         padding: 0 1rem 1rem;
         box-sizing: border-box;
-}
+    }
+
+    .friendRequestImageRegion.bottomleft {
+        border-bottom-left-radius: 3rem;
+    }
 }

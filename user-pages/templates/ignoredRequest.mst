@@ -14,14 +14,9 @@
         </div>
         <div class = "friendRequestButtonsRegion">
             <div class = "friendRequestButtons">
-                <form action = "{{baseUrl}}/users/{{username}}/friends/add/{{requesterName}}" class = "phoneAnalogButton floating">
+                <form action = "{{baseUrl}}/users/{{username}}/friends/add/{{requesterName}}" class = "phoneAnalogButton {{#bottom}} bottomright{{/bottom}}">
                     <button type = "submit">
-                        Accept
-                    </button>
-                </form>
-                <form action = "{{baseUrl}}/users/{{username}}/friends/ignore/{{requesterName}}" class = "phoneAnalogButton {{#bottom}} bottomright{{/bottom}}">
-                    <button type = "submit">
-                        Ignore
+                        Accept Friend Request
                     </button>
                 </form>
             </div>

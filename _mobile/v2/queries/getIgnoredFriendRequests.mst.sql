@@ -5,11 +5,7 @@ FROM
 WHERE
   fkFriendname = "{{username}}"
   AND fkFriendname != fkUsername
-  AND ignored = 0
-  AND fkUsername NOT IN
-  (
-    SELECT fkFriendname FROM friendstbl WHERE fkUsername = "{{username}}"
-  )
+  AND ignored = 1
 {% if limitsGiven %}
 LIMIT {{startIndex}}, {{numPerPage}}
 {% else %}

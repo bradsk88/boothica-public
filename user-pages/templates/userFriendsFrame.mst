@@ -11,7 +11,8 @@
 </div>
 {% else %}
 <div class = "phoneAnalog">
-    <div class = "phoneAnalogGreeting">
+    <br/>
+    <div class = "phoneAnalogText bottom">
         Log in to see {{userPossessiveDisplayName}} friends
     </div>
 </div>
