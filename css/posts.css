@@ -8,6 +8,10 @@
     background-color: #FFF;
 }
 
+.sideBoothRegion {
+    background: #FFF;
+}
+
 .centerBoothRegion a, .sideBoothRegion a {
     text-decoration: none;
     color: #000;
@@ -173,8 +177,9 @@
 
     .centerBoothRegion {
         padding: 0;
-    
         border-radius: 0.25rem;
+        max-width: 40rem;
+        margin: 0.5rem auto;
 }
 
     .centerBoothText, .sideBoothText {
@@ -229,9 +234,6 @@
     .centerBoothRegion {
         background-color: #FFF;
         padding: 1em 3em;
-        margin: 0.5em auto;
-    
-        max-width: 40rem;
 }
 
     .centerBoothOpenButton {
