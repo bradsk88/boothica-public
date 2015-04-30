@@ -86,6 +86,12 @@
     display: none;
 }
 
+@media all and (min-width: 600px) {
+    .photoCommentRegionWithBooth {
+        margin: 0.5rem auto;
+    }
+}
+
 @media all and (min-width: 1024px) {
 
     .photoCommentImageRegionWithBooth, .photoCommentTextRegionWithBooth {

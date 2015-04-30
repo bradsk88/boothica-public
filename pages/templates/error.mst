@@ -6,7 +6,9 @@
             </div>
         </div>
         <div class = "phoneAnalogSubsectionTitle error">
+            {% autoescape off %}
             {{errorMessage}}
+            {% autoescape on %}
         </div>
         <form action = "{{nextUrl}}">
             <div class = "phoneAnalogButton">

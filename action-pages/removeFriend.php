@@ -2,8 +2,26 @@
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_page("ErrorPage");
+require_page("InfoPage");
+require_page("LoginPage");
 
-echo "TODO";
+if (!isLoggedIn()) {
+    $page = new LoginPage();
+    echo $page->render();
+    return;
+}
+
+if (!isset($_REQUEST['friendname'])) {
+    $page = new ErrorPage("Missing parameter: friendname");
+    $page->echoHtml();
+    return;
+}
+
+if (!(isset($_REQUEST['confirm']) && $_REQUEST['confirm'])) {
+    $page = new InfoPage("Remove Friend", "Are you sure you want to un-friend ".$_REQUEST['friendname'], base()."/users/".$_SESSION['username']."/friends/remove/".$_REQUEST['friendname']."/confirm", "Confirm");
+    $page->echoHtml();
+    return;
+}
 
 $strCookie = 'PHPSESSID=' . $_COOKIE['PHPSESSID'] . '; path=/';
 session_write_close();

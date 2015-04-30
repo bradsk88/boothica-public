@@ -2,6 +2,19 @@
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_page("ErrorPage");
+require_page("LoginPage");
+
+if (!isLoggedIn()) {
+    $page = new LoginPage();
+    echo $page->render();
+    return;
+}
+
+if (!isset($_REQUEST['friendname'])) {
+    $page = new ErrorPage("Missing parameter: friendname");
+    $page->echoHtml();
+    return;
+}
 
 $strCookie = 'PHPSESSID=' . $_COOKIE['PHPSESSID'] . '; path=/';
 session_write_close();

@@ -2,8 +2,19 @@
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_page("ErrorPage");
+require_page("LoginPage");
 
-echo "TODO";
+if (!isLoggedIn()) {
+    $page = new LoginPage();
+    echo $page->render();
+    return;
+}
+
+if (!isset($_REQUEST['friendname'])) {
+    $page = new ErrorPage("Missing parameter: friendname");
+    $page->echoHtml();
+    return;
+}
 
 $strCookie = 'PHPSESSID=' . $_COOKIE['PHPSESSID'] . '; path=/';
 session_write_close();
@@ -16,7 +27,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt( $ch, CURLOPT_COOKIE, $strCookie );
 $friendName = $_REQUEST['friendname'];
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
-    'boothername' => $friendName
+    'boothername' => $friendName,
+    'unignore' => isset($_REQUEST['unignore']) ? $_REQUEST['unignore'] : false
 )));
 $result = curl_exec($ch);
 

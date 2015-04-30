@@ -24,17 +24,10 @@ function main() {
 
     $page = new PageFrame();
     $page->body($htmlBuilder->render(array(
-        "baseURl" => $root
+        "baseURl" => $root,
+        "username" => $_SESSION['username']
     )));
     $page->css($root."/css/menu.css");
-    $page->css($root."/css/bootherConsole.css");
-
-    $page->script(base()."/user-pages/scripts/bootherConsole.js");
-    $page->rawScript("<script type = \"text/javascript\">
-        $(document).ready(function() {
-            loadOwnerConsole(\"".$_SESSION['username']."\");
-        });
-        </script>");
     $page->echoHtml();
 
 }

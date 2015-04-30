@@ -4,14 +4,11 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php";
 require_page("LoginPage");
 
-//TODO: Add 'remove friend' button
-
 if (!isLoggedIn()) {
     $page = new LoginPage();
     echo $page->render();
     return;
 }
-
 
 $username = $_REQUEST['username'];
 if (strlen($username) > 0 && strtolower($username) != strtolower($_SESSION['username'])) {

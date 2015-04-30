@@ -19,17 +19,35 @@ class AddFriendResponse extends AbstractUserApiResponse {
             return;
         }
 
-        if (isFriendOf($otherUser, $_SESSION['username'])) {
-            $this->markCallAsSuccessful("Already sent friend request to ".getDisplayName($otherUser));
-            return;
+        $skip = true;
+        if (isset($_REQUEST['unignore']) && $_REQUEST['unignore']) {
+            $skip = false;
+        }
+        if ($skip) {
+            if (isFriendOf($otherUser, $_SESSION['username'])) {
+                $this->markCallAsSuccessful("Already sent friend request to " . getDisplayName($otherUser));
+                return;
+            }
         }
 
         $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/addFriend.mst.sql");
         $sql = $sqlBuilder->render(array(
             "username" => $username,
-            "friendUsername" => $otherUser
+            "friendUsername" => $otherUser,
+            "unignore" => $_REQUEST['unignore']
         ));
         $dblink = connect_boothDB();
+        $query = $dblink->query($sql);
+        if (!$query) {
+            $this->markCallAsFailure(sql_death1($sql));
+            return;
+        }
+
+        $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/unignoreFriend.mst.sql");
+        $sql = $sqlBuilder->render(array(
+            "username" => $username,
+            "friendUsername" => $otherUser
+        ));
         $query = $dblink->query($sql);
         if (!$query) {
             $this->markCallAsFailure(sql_death1($sql));

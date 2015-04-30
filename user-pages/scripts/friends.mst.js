@@ -19,7 +19,8 @@ var renderFromData = function(data) {
                 baseUrl: "{{baseUrl}}",
                 bootherImageUrl: obj.bootherImageUrl,
                 bootherDisplayname: obj.bootherDisplayName,
-                bootherName: obj.bootherName
+                bootherName: obj.bootherName,
+                username: data.apiUsername
             });
             $("#friends_list").append(html);
         });

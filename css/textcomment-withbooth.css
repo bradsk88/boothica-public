@@ -86,7 +86,7 @@
 
     .textCommentTextRegionWithBooth {
         margin-left: 3rem;
-        padding: 1.5em 0 1em;
+        padding: 0.5em 0 1em;
     }
 
     .textCommentRegionWithBooth {
@@ -95,6 +95,6 @@
 
     .textCommentRegionWithBooth {
         max-width: 40rem;
-        margin: 1rem auto;
+        margin: 0.5rem auto;
     }
 }
