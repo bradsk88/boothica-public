@@ -8,6 +8,11 @@
     border-radius: 0.25rem;
 }
 
+.textCommentRegionWithBooth a {
+    text-decoration: none;
+    color: #000;
+}
+
 .textCommentImageWithBooth, .textCommentBoothImage {
     width: 100%;
     height: 100%;
@@ -36,8 +41,8 @@
 }
 
 .textCommentTextRegionWithBooth {
-    margin-left: 5em;
-    padding: 2.5em 0 1em;
+    margin-left: 3rem;
+    padding: 1em 0 1em;
     text-align: left;
 }
 
@@ -54,15 +59,15 @@
 .textCommentHeaderWithBooth {
     text-align: center;
     display: inherit;
-    padding: 0.125rem 0 0 1.75rem;
+    padding: 0.25rem 0 0 1.75rem;
     font-size: 0.75rem;
     overflow: hidden;
 }
 
 .textCommentTextWithBooth {
-    margin: 0 1em;
+    margin: 0.75rem 1em 0;
     background-color: #FFF;
-    padding: 0.5em;
+    padding: 0.5em 0 0.5rem 2rem;
     border-radius: 0.25em;
 }
 
@@ -77,11 +82,11 @@
 
     .textCommentTextWithBooth {
         padding-left: 2rem;
+        margin: 0.5rem 1em 0;
     }
 
     .textCommentTextRegionWithBooth {
-        margin-left: 3rem;
-        padding: 1.5em 0 1em;
+        padding: 1.75rem 0 1em;
     }
 
     .textCommentRegionWithBooth {
@@ -90,6 +95,10 @@
 
     .textCommentRegionWithBooth {
         max-width: 40rem;
-        margin: 1rem auto;
+        margin: 0.5rem auto;
+    }
+
+    .textCommentHeaderRegionWithBooth {
+        padding: 0.5rem 0.25rem;
     }
 }

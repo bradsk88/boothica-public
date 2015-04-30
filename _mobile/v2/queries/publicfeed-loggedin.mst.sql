@@ -6,7 +6,7 @@ SELECT * FROM (
   , booth.blurb as blurb
   , booth.imageTitle as imageTitle
   , booth.filetype as filetype
-  , datetime
+  , booth.datetime
   FROM boothnumbers AS booth
   LEFT JOIN usersprivacytbl AS privacy
   ON booth.fkUsername = privacy.fkUsername

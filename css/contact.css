@@ -42,6 +42,12 @@
 
 .contactOptionLink {
     margin: auto;
+    color: #FFF;
+    background: #009988;
+    box-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.5);
+    text-align: center;
+    padding: 1rem;
+    display: block;
 }
 
 @media all and (min-width: 600px) {
@@ -61,7 +67,9 @@
 
     .contactOptionTitle, .contactOptionBrief, .contactOptionLink {
         font-size: 1.5rem;
-    }
+    
+        border-radius: 0.25rem;
+}
 
     .contactOptionTitle {
         padding: 2rem 0 2rem;
@@ -70,12 +78,22 @@
         max-width: 32em;
         margin: 0 auto 0;
     }
+
+    .contactOptionBrief {
+        padding: 0 1rem 0;
+    }
+
+    .contactOptionLink {
+        margin: -1rem auto 0;
+    }
 }
 
 @media all and (min-width: 1024px) {
     .contactOptionTitle, .contactOptionBrief, .contactOptionLink {
         font-size: 1rem;
-    }
+    
+        /* margin: -1rem auto 0; */
+}
     .contactRegion {
         max-width: 24rem;
     }

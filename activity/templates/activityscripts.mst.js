@@ -7,6 +7,8 @@ $(document).ready(function() {
 var loadActivity = function() {
 
     $("activity_loader").show();
+
+    loadNotificationsThenActivity();
     $.post("{{baseUrl}}/_mobile/v2/activity.php", {
     },
     function(data) {
@@ -17,7 +19,7 @@ var loadActivity = function() {
         }
 
         if (data.success) {
-            renderActivityFeed(data.success);
+            renderActivityFeed(data.success.data);
             return;
         }
 
@@ -43,6 +45,72 @@ var loadActivity = function() {
     });
 
 };
+
+var loadNotificationsThenActivity = function() {
+    $.post("{{baseUrl}}/_mobile/v2/getnotifications.php", {
+        },
+        function(data) {
+            $("activity_loader").hide();
+            if (data == null || "undefined" === typeof(data.success)) {
+                $("#activity_feed").append("Error contacting server");
+                return;
+            }
+
+            if (data.success) {
+                $.each(data.success.data, function(_, obj) {
+                    $("#activity_feed").append($("<a/>", {
+                        html: obj.text,
+                        class: "friendRequestActivity",
+                        href: obj.url
+                    }));
+                });
+                return;
+            }
+
+            $("#activity_feed").append("failure: " + data.error);
+
+        }, "json")
+        .fail(function(_, s) {
+            doLoadActivity();
+        });
+};
+
+var doLoadActivity = function() {
+    $.post("{{baseUrl}}/_mobile/v2/activity.php", {
+        },
+        function(data) {
+            $("activity_loader").hide();
+            if (data == null || "undefined" === typeof(data.success)) {
+                $("#activity_feed").append("Error contacting server");
+                return;
+            }
+
+            if (data.success) {
+                renderActivityFeed(data.success.data);
+                return;
+            }
+
+            $("#activity_feed").append("failure: " + data.error);
+
+        }, "json")
+        .fail(function(_, s) {
+            $("#activity_feed").append($("<img/>", {
+                src: "{{baseUrl}}/media/failwhale.png"
+            }));
+            var button = $("<button/>", {
+                type: "submit",
+                html: "Contact us"
+            });
+            var formControls = $("<div/>", {
+                class: "phoneAnalogButton floating",
+                html: button
+            });
+            $("#activity_feed").append($("<form/>", {
+                action: "{{baseUrl}}/info/contact",
+                html: formControls
+            }));
+        });
+}
 
 var renderActivityFeed = function(items) {
 

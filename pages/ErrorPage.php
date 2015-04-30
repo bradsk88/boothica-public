@@ -8,7 +8,7 @@ class ErrorPage extends PageFrame {
     function __construct($errorMessage="", $nextUrl=null, $nextUrlButtonText="Try again later") {
         parent::__construct();
         parent::setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/pages/templates/error.mst", array(
-            "nextUrl" => $nextUrl,
+            "nextUrl" => $nextUrl ? $nextUrl : base(),
             "nextUrlButtonText" => $nextUrlButtonText,
             "errorMessage" => $errorMessage,
         ));

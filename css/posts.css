@@ -8,6 +8,15 @@
     background-color: #FFF;
 }
 
+.sideBoothRegion {
+    background: #FFF;
+}
+
+.centerBoothRegion a, .sideBoothRegion a {
+    text-decoration: none;
+    color: #000;
+}
+
 .centerBoothImageRegion, .centerBoothText, .sideBoothImageRegion, .sideBoothText {
     flex: 0 1 50%;
     max-width: 50%
@@ -64,7 +73,10 @@
 
     .centerBooth {
         justify-content: flex-end;
-    }
+    
+        padding: 1rem;
+        box-sizing: border-box;
+}
 
     .centerBoothImage, .sideBoothImage {
         border-radius: 0.25em;
@@ -165,7 +177,10 @@
 
     .centerBoothRegion {
         padding: 0;
-    }
+        border-radius: 0.25rem;
+        max-width: 40rem;
+        margin: 0.5rem auto;
+}
 
     .centerBoothText, .sideBoothText {
         max-height: inherit;
@@ -219,8 +234,7 @@
     .centerBoothRegion {
         background-color: #FFF;
         padding: 1em 3em;
-        margin: 0.5em 0;
-    }
+}
 
     .centerBoothOpenButton {
         right: -2em;

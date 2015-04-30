@@ -11,6 +11,11 @@
     max-width: 40rem;
 }
 
+.photoCommentRegionWithBooth a {
+    text-decoration: none;
+    color: #000;
+}
+
 .photoCommentHeaderRegionWithBooth {
     flex: 0 1 100%;
     order: 1;
@@ -79,6 +84,12 @@
 
 #commentLikeButton, #commentDeleteButton {
     display: none;
+}
+
+@media all and (min-width: 600px) {
+    .photoCommentRegionWithBooth {
+        margin: 0.5rem auto;
+    }
 }
 
 @media all and (min-width: 1024px) {

@@ -4,7 +4,7 @@ SELECT
   , booth.blurb as blurb
   , booth.imageTitle as imageTitle
   , booth.filetype as filetype
-  , datetime
+  , booth.datetime
 FROM
   boothnumbers booth
 WHERE

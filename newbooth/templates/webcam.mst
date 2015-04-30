@@ -1,9 +1,3 @@
-<!--TODO: Move this out of newbooth because it is also used by webcamComment -->
-<script type = "text/javascript">
-    $(document).ready(function() {
-        window.requestHash = "{{requestHash}}";
-    });
-</script>
 <div class = "phoneAnalog" id = "newBoothRegion">
     <div class = "newBooth">
         <div class = "phoneAnalogGreeting">

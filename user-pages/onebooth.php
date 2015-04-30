@@ -26,7 +26,7 @@ function main() {
 
     if ($boothowner == null) {
         $page = new ErrorPage("This booth has been deleted", base()."/users/".$username,
-                              "Back to ".getPosessiveDisplayName($username)." profile");
+                              "Back to ".getPossessiveDisplayName($username)." profile");
         $page->echoHtml();
         return;
     }
@@ -37,16 +37,16 @@ function main() {
                                         array(
             "boothNumber" => $boothnum,
             "realOwner" => $boothowner,
-            "realOwnerPosessiveDisplayname" => getPosessiveDisplayName($boothowner),
+            "realOwnerPosessiveDisplayname" => getPossessiveDisplayName($boothowner),
             "givenUsername" => $username,
-            "givenUserPosessiveDisplayname" => getPosessiveDisplayName($username)
+            "givenUserPosessiveDisplayname" => getPossessiveDisplayName($username)
         ));
         $page->echoHtml();
         return;
     }
     $allowedToInteractWithBooth = isLoggedIn() && isAllowedToInteractWithBooth($_SESSION['username'], $boothnum);
 
-    $commentInputHTML = "<div style = \"padding: 1rem;\">Log in to view and add comments<br/></div>"; //TODO: make this pretty?
+    $commentInputHTML = "<div style = \"padding: 1rem;\">Log in to view and add comments<br/></div>";
     if ($allowedToInteractWithBooth) {
         $commentInputH2O = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/textCommentInput.mst");
         $commentInputHTML = $commentInputH2O->render(array(
@@ -64,7 +64,7 @@ function main() {
         "commentInput" => $commentInputHTML,
         "username" => $username,
         "boothNumber" => $boothnum,
-        "bootherPosessiveDisplayName" => getPosessiveDisplayName($username)
+        "bootherPosessiveDisplayName" => getPossessiveDisplayName($username)
     ));
 
     $page = new PageFrame();

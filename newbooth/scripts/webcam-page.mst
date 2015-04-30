@@ -5,18 +5,13 @@ $(document).ready(function() {
 });
 
 function postViaAPINow(imageBase64, commentText) {
-    if ("undefined" === typeof(window.boothNum)) {
-        alert("Unrecoverable error: no boothNum");
-        return;
-    }
     $.ajax({
         type: "POST",
-        url: "{{baseUrl}}/_mobile/v2/putmediacomment",
+        url: "{{baseUrl}}/_mobile/v2/postbooth",
         data: {
             image: imageBase64,
-            commenttext: commentText,
-            boothnum: window.boothNum,
-            mediatype: "photo"
+            blurb: commentText,
+            requestHash: window.requestHash
         },
         success: function(data) {
             if ("undefined" === typeof(data.success)) {

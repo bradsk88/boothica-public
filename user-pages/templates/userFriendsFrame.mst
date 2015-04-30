@@ -1,0 +1,19 @@
+{% if isLoggedIn %}
+<div class = "phoneAnalogGreeting">
+    {{userPossessiveDisplayName}} Friends
+</div>
+<form class = "phoneAnalogButton floating" action = "{{baseUrl}}/users/{{username}}" style = "padding: 0 0 1rem;">
+    <button>
+        Go to {{userPossessiveDisplayName}} profile
+    </button>
+</form>
+<div class = "denseGrid" id = "friends_list">
+</div>
+{% else %}
+<div class = "phoneAnalog">
+    <br/>
+    <div class = "phoneAnalogText bottom">
+        Log in to see {{userPossessiveDisplayName}} friends
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,25 @@
+<div class = "friendRequestRegion">
+    <div class = "friendRequest">
+        <div class = "friendRequestIdentityRegion">
+            <div class = "friendRequestUsernameRegion">
+                <a class = "friendRequestUsername" href = "{{baseUrl}}/users/{{requesterName}}">
+                    {{requesterDisplayName}}
+                </a>
+            </div>
+            <div class = "friendRequestImageRegion {{#bottom}} bottomleft{{/bottom}}">
+                <a  href = "{{baseUrl}}/users/{{requesterName}}">
+                    <img class = "friendRequestImage" src = "{{requesterImage}}"/>
+                </a>
+            </div>
+        </div>
+        <div class = "friendRequestButtonsRegion">
+            <div class = "friendRequestButtons">
+                <form action = "{{baseUrl}}/users/{{username}}/friends/unignore/{{requesterName}}" class = "phoneAnalogButton {{#bottom}} bottomright{{/bottom}}">
+                    <button type = "submit">
+                        Accept Friend Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

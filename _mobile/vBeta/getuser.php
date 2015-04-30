@@ -26,11 +26,16 @@ function main() {
     $displayName = getDisplayName($bootherName);
     $displayPic = UserImage::getAbsoluteImage($bootherName);
 
-    echo json_encode(array("success" => array(
-        "displayName" => (string) $displayName,
+    $data = array(
+        "displayName" => (string)$displayName,
         "displayPhotoAbsoluteUrl" => $displayPic,
         "warning" => "This endpoint is still under development.  It may change at any time."
-    )));
+    );
+    $success = array("success" => $data);
+    if (isLoggedIn()) {
+        $success['apiUsername'] = $_SESSION['username'];
+    }
+    echo json_encode($success);
 
 
 }

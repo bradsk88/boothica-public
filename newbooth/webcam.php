@@ -12,7 +12,6 @@
             $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/newbooth/templates/webcam.mst");
             $html = $htmlBuilder->render(array(
                 "baseUrl" => base(),
-                "requestHash" => generateUserUniqueHash($_SESSION['username']),
                 "headerText" => "New Booth",
                 "postButtonText" => "Post this booth!",
             ));
@@ -27,6 +26,12 @@
         $page->script(base()."/lib/getUserMedia.js");
         $pageScriptBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/newbooth/scripts/webcam-page.mst");
         $page->rawScript($pageScriptBuilder->render(array()));
+        $page->rawScript("<script type = \"text/javascript\">
+            $(document).ready(function() {
+                window.requestHash = \"".generateUserUniqueHash($_SESSION['username'])."\";
+            });
+        </script>");
+
         $page->css(base()."/css/webcam.css");
         $page->css(base()."/css/posts.css");
         $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");

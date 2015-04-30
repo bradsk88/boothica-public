@@ -9,7 +9,13 @@
 require_once "{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 
-main();
+if (isLoggedIn()) {
+    main();
+} else {
+    require_page("LoginPage");
+    $page = new LoginPage();
+    echo $page->render();
+}
 
 function main() {
 
@@ -18,7 +24,8 @@ function main() {
 
     $page = new PageFrame();
     $page->body($htmlBuilder->render(array(
-        "baseURl" => $root
+        "baseURl" => $root,
+        "username" => $_SESSION['username']
     )));
     $page->css($root."/css/menu.css");
     $page->echoHtml();

@@ -239,7 +239,7 @@ function getDisplayName($username) {
     return new DisplayName($username);
 }
 
-function getPosessiveDisplayName($username) {
+function getPossessiveDisplayName($username) {
     $name = getDisplayName($username);
     if ('s' == substr($name, -1)) {
         return $name."'";
@@ -250,7 +250,10 @@ function getPosessiveDisplayName($username) {
 function doesUserAppearPrivate($username) {
     if (isPrivate($username)) {
         if (isLoggedIn()) {
-            return $_SESSION['username'] != $username;
+            if ($_SESSION['username'] == $username) {
+                return false;
+            }
+            return !isFriendOf($_SESSION['username'], $username);
         }
         return true;
     }

@@ -7,6 +7,7 @@ SELECT
   , C.fkNumber as boothNum
   , C.hasPhoto as hasMedia
   , CONCAT(C.hash, '.', C.extension) AS media
+  , C.extension AS ext
   , A.datetime as datetime
 FROM
   commentstbl C
@@ -55,8 +56,14 @@ OR
       SELECT fkIgnoredName FROM ignorestbl WHERE fkUsername = '{{username}}'
     )
   )
+  AND
+  B.fkUsername
+  IN
+  (
+    SELECT bootherName FROM (
+      SELECT fkFriendName as bootherName FROM friendstbl WHERE fkUsername = '{{username}}'
+    ) D
+  )
 )
 ORDER BY datetime DESC
 LIMIT {{pageStartIndex}}, {{numPerPage}}
-
-/* TODO: The order from this is weird for pubby.  Figure out why. */

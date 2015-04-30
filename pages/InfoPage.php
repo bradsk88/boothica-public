@@ -7,7 +7,7 @@ class InfoPage extends PageFrame {
     function __construct($title, $errorMessage="", $nextUrl=null, $nextUrlButtonText="Continue") {
         parent::__construct();
         parent::setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/pages/templates/info.mst", array(
-            "nextUrl" => $nextUrl,
+            "nextUrl" => $nextUrl ? $nextUrl : base(),
             "nextUrlButtonText" => $nextUrlButtonText,
             "errorMessage" => $errorMessage,
             "title" => $title

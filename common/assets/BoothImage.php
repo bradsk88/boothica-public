@@ -17,7 +17,7 @@ class BoothImage {
     const NOIMG = "/media/noimage.jpg";
     const PRIVATE_USER = "/media/private.jpg";
 
-    public static function getImage($boothnum, $boothername=null) {
+    public static function getImage($boothnum, $boothername=null, $size) {
 
         $dblink = connect_boothDB();
 
@@ -26,7 +26,7 @@ class BoothImage {
         }
 
         if (doesUserAppearPrivate($boothername)) {
-            return BoothImage::PRIVATE_USER;
+            return base().BoothImage::PRIVATE_USER;
         }
 
         $sql = "SELECT
@@ -39,23 +39,23 @@ class BoothImage {
         $result = $dblink->query($sql);
         if (!$result) {
             sql_death1($sql);
-            return BoothImage::NOIMG;
+            return base().BoothImage::NOIMG;
         }
         if ($result->num_rows == 0) {
-            return BoothImage::NOIMG;
+            return base().BoothImage::NOIMG;
         } else {
             $row = $result->fetch_array();
-            return  $row['imageTitle'].".".$row['filetype'];
+            return  base().'/booths'.$size.$row['imageTitle'].".".$row['filetype'];
         }
 
     }
 
     public static function getAbsoluteImage($boothnum, $boothername=null) {
-        return base()."/booths/tiny/".BoothImage::getImage($boothnum, $boothername);
+        return BoothImage::getImage($boothnum, $boothername, "/tiny/");
     }
 
     public static function getAbsoluteImageHiRes($boothnum, $boothername=null) {
-        return base()."/booths/".BoothImage::getImage($boothnum, $boothername);
+        return BoothImage::getImage($boothnum, $boothername, "/");
     }
 
 }
