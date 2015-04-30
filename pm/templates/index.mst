@@ -1,2 +1,6 @@
 <!--TODO: Implement this-->
-Coming Soon
+<div class = "phoneAnalog">
+    <div class = "phoneAnalogGreeting">
+        Coming Soon
+    </div>
+</div>

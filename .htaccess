@@ -5,7 +5,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.+)$ $1.php [L,QSA]
 RewriteRule ^newbooth[\/]?$ ./newbooth/webcam
-RewriteRule ^pm[\/]?$ ./messages
 RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]?$ ./user-pages/booths.php?username=$1
 RewriteRule ^users/([a-zA-Z0-9_-]+)/booths[\/]?$ ./user-pages/booths.php?username=$1
 RewriteRule ^users/([a-zA-Z0-9_-]+)/friends[\/]?$ ./user-pages/friends.php?username=$1
