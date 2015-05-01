@@ -1,0 +1,65 @@
+<div class = "envelope alert">
+    <svg class = "envelopeFlap" viewBox="0 0 204 104">
+        <rect x = "2" y = "2" width = "200" height = "100" rx = "10" ry = "10" class = "envelopeBorder"/>
+        <line x1 = "4" y1 = "4" x2 = "101" y2 = "54" class = "envelopeLine"/>
+        <line x1 = "99" y1 = "54" x2 = "196" y2 = "4" class = "envelopeLine"/>
+    </svg>
+    <div class = "waxSeal" style = "background: url({{userImageUrl}});"></div>
+</div>
+<!-- TODO: Remove the second one -->
+<div class = "envelope">
+    <svg class = "envelopeFlap" viewBox="0 0 204 104">
+        <rect x = "2" y = "2" width = "200" height = "100" rx = "10" ry = "10" class = "envelopeBorder"/>
+        <line x1 = "4" y1 = "4" x2 = "101" y2 = "54" class = "envelopeLine"/>
+        <line x1 = "99" y1 = "54" x2 = "196" y2 = "4" class = "envelopeLine"/>
+    </svg>
+    <div class = "waxSeal" style = "background: url({{userImageUrl}});"></div>
+</div>
+<div class = "envelope">
+    <svg class = "envelopeFlap" viewBox="0 0 204 104">
+        <rect x = "2" y = "2" width = "200" height = "100" rx = "10" ry = "10" class = "envelopeBorder"/>
+        <line x1 = "4" y1 = "4" x2 = "101" y2 = "54" class = "envelopeLine"/>
+        <line x1 = "99" y1 = "54" x2 = "196" y2 = "4" class = "envelopeLine"/>
+    </svg>
+    <div class = "waxSeal" style = "background: url({{userImageUrl}});"></div>
+</div>
+<div class = "envelope">
+    <svg class = "envelopeFlap" viewBox="0 0 204 104">
+        <rect x = "2" y = "2" width = "200" height = "100" rx = "10" ry = "10" class = "envelopeBorder"/>
+        <line x1 = "4" y1 = "4" x2 = "101" y2 = "54" class = "envelopeLine"/>
+        <line x1 = "99" y1 = "54" x2 = "196" y2 = "4" class = "envelopeLine"/>
+    </svg>
+    <div class = "waxSeal" style = "background: url({{userImageUrl}});"></div>
+</div>
+<div class = "envelope">
+    <svg class = "envelopeFlap" viewBox="0 0 204 104">
+        <rect x = "2" y = "2" width = "200" height = "100" rx = "10" ry = "10" class = "envelopeBorder"/>
+        <line x1 = "4" y1 = "4" x2 = "101" y2 = "54" class = "envelopeLine"/>
+        <line x1 = "99" y1 = "54" x2 = "196" y2 = "4" class = "envelopeLine"/>
+    </svg>
+    <div class = "waxSeal" style = "background: url({{userImageUrl}});"></div>
+</div>
+<div class = "envelope">
+    <svg class = "envelopeFlap" viewBox="0 0 204 104">
+        <rect x = "2" y = "2" width = "200" height = "100" rx = "10" ry = "10" class = "envelopeBorder"/>
+        <line x1 = "4" y1 = "4" x2 = "101" y2 = "54" class = "envelopeLine"/>
+        <line x1 = "99" y1 = "54" x2 = "196" y2 = "4" class = "envelopeLine"/>
+    </svg>
+    <div class = "waxSeal" style = "background: url({{userImageUrl}});"></div>
+</div>
+<div class = "envelope">
+    <svg class = "envelopeFlap" viewBox="0 0 204 104">
+        <rect x = "2" y = "2" width = "200" height = "100" rx = "10" ry = "10" class = "envelopeBorder"/>
+        <line x1 = "4" y1 = "4" x2 = "101" y2 = "54" class = "envelopeLine"/>
+        <line x1 = "99" y1 = "54" x2 = "196" y2 = "4" class = "envelopeLine"/>
+    </svg>
+    <div class = "waxSeal" style = "background: url({{userImageUrl}});"></div>
+</div>
+<div class = "envelope">
+    <svg class = "envelopeFlap" viewBox="0 0 204 104">
+        <rect x = "2" y = "2" width = "200" height = "100" rx = "10" ry = "10" class = "envelopeBorder"/>
+        <line x1 = "4" y1 = "4" x2 = "101" y2 = "54" class = "envelopeLine"/>
+        <line x1 = "99" y1 = "54" x2 = "196" y2 = "4" class = "envelopeLine"/>
+    </svg>
+    <div class = "waxSeal" style = "background: url({{userImageUrl}});"></div>
+</div>

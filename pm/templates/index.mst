@@ -1,6 +1,6 @@
 <!--TODO: Implement this-->
-<div class = "phoneAnalog">
-    <div class = "phoneAnalogGreeting">
+<div class = "denseGrid">
+    <div class = "smallCard">
         Coming Soon
     </div>
 </div>
