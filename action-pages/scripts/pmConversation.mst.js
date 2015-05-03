@@ -20,11 +20,14 @@ var renderPrivateMessageConversationFromData = function(data) {
         showError("No messages");
         return;
     }
-    $.each(data.success.messages, function(idx, obj) {
-        html = Mustache.render("{{baseUrl}}/action-pages/templates/pmConversationCell.mst", {
-            userDisplayName: obj.userDisplayName,
-            text: obj.text
-        })
+    $.get("{{baseUrl}}/action-pages/templates/pmConversationCell.mst", function(template) {
+        $.each(data.success.messages, function (idx, obj) {
+            var html = Mustache.render(template, {
+                userDisplayName: obj.userDisplayName,
+                text: obj.text
+            });
+            $("#pm_convo_list").append(html);
+        });
     });
 };
 

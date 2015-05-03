@@ -4,7 +4,9 @@ INSERT INTO privatemsgtbl
 )
 VALUES
 (
+  {% autoescape off %}
   '{{message}}',
+  {% autoescape on %}
   '{{username}}',
   '{{otherUsername}}'
 )
