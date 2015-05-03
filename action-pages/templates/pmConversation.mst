@@ -1,0 +1,24 @@
+<div class = "phoneAnalogGreeting">
+    Private Conversation with {{userDisplayName}}
+</div>
+<form class = "phoneAnalogButton floating" action = "{{baseUrl}}/users/{{username}}" style = "padding: 0 0 1rem;">
+    <button>
+        Go to {{userPossessiveDisplayName}} profile
+    </button>
+</form>
+<div class = "privateMessageConversationRegion">
+    <div class = "privateMessageConversation" id = "pm_convo_list"></div>
+</div>
+<div class = "privateMessageInputRegion">
+    <form action = "{{baseUrl}}/users/{{username}}/messages/send" method = "POST" class = "privateMessageInput">
+        <input type = "hidden" name = "otherusername" id = "otherusername" value = "{{username}}"/>
+        <div class = "privateMessageInputTextareaRegion">
+            <textarea placeholder="Enter a private message to send to {{userDisplayName}}" name = "text" id = "text"></textarea>
+        </div>
+        <div class = "privateMessageButtonRegion">
+            <button>
+                Click to send
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,8 @@
+<div class = "envelope">
+    <svg class = "envelopeFlap" viewBox="0 0 204 104">
+        <rect x = "2" y = "2" width = "200" height = "100" rx = "10" ry = "10" class = "envelopeBorder"/>
+        <line x1 = "2" y1 = "12" x2 = "104" y2 = "78" class = "envelopeLine"/>
+        <line x1 = "102" y1 = "78" x2 = "202" y2 = "12" class = "envelopeLine"/>
+    </svg>
+    <div class = "waxSeal" style = "background: url({{userImageUrl}});"></div>
+</div>

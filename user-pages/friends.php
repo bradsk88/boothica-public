@@ -16,15 +16,16 @@
     $possessiveName = getPossessiveDisplayName($boothername);
 
     $page = new PageFrame();
-    $page->setBodyTemplateAndValues(
-        "{$_SERVER['DOCUMENT_ROOT']}/user-pages/templates/userFriendsFrame.mst",
-        array(
-            "isLoggedIn" => isLoggedIn(),
-            "userPossessiveDisplayName" => $possessiveName,
-            "userImageUrl" => UserImage::getAbsoluteImage($boothername),
-            "username" => getDisplayName($boothername)
-        )
+    $values = array(
+        "userPossessiveDisplayName" => $possessiveName,
+        "userImageUrl" => UserImage::getAbsoluteImage($boothername),
+        "username" => getDisplayName($boothername)
     );
+    if (isLoggedIn()) {
+        $page->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/user-pages/templates/userFriendsFrame.mst", $values);
+    } else {
+        $page->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/user-pages/templates/userFriendsFrame-LoggedOut.mst", $values);
+    }
     $page->useDefaultSideBars();
     $page->css(base()."/css/friends.css");
     $page->script(base()."/user-pages/friends-scripts.js");
