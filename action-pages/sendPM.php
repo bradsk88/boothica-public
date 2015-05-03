@@ -53,7 +53,7 @@ if (isset($result['success'])) {
         header("Location: ".$_REQUEST['nextUrl']);
         return;
     }
-    header("Location: ".base()."/users/". $result['apiUsername']."/messages");
+    header("Location: ".base()."/users/". $result['otherusername']."/messages");
     return;
 }
 
