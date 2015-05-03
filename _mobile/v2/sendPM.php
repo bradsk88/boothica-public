@@ -5,6 +5,7 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/meta/AbstractUserApiRespons
 require_lib("h2o-php/h2o");
 require_common("utils");
 require_common("internal_utils");
+require_common("db");
 
 class SendPMResponse extends AbstractUserApiResponse {
 
@@ -24,13 +25,16 @@ class SendPMResponse extends AbstractUserApiResponse {
         $processed = preProcessPrivateMessage($_POST['text']);
         $encryptPrivateMessage = encryptPrivateMessage($processed);
 
+        $dblink = connect_boothDB();
+
         $sql = $sqlBuilder->render(array(
-            "username" => $username,
-            "otherUsername" => $otherUser,
-            "message" => $encryptPrivateMessage
+            "username" => $dblink->real_escape_string($username),
+            "otherUsername" => $dblink->real_escape_string($otherUser),
+            "message" => $dblink->real_escape_string($encryptPrivateMessage)
         ));
 
-        $dblink = connect_boothDB();
+
+
         $query = $dblink->query($sql);
         if (!$query) {
             $this->markCallAsFailure(sql_death1($sql));
