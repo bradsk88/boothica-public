@@ -34,7 +34,7 @@ class PutCommentApiResponse extends AbstractUserApiResponse {
     {
 
         if (!in_array($_POST['mediatype'], array("photo"))) {
-            echo json_encode(array("error" => "Missing POST parameter mediatype.  Must be one of: [\"photo\",]"));
+            $this->markCallAsFailure("Missing POST parameter mediatype.  Must be one of: [\"photo\",]");
             return;
         }
 
@@ -47,21 +47,19 @@ class PutCommentApiResponse extends AbstractUserApiResponse {
         $img = ImageUtils::makeFromEncoded($image);
         if (!$img) {
             death("decode failed");
-            echo json_encode(array("error" => "Unexpected problem"));
+            $this->markCallAsFailure("Unexpected problem.  It has been recorded.");
             return;
         }
         $ext = ImageUtils::getExtensionOfEncoded($image);
         if ($ext == null) {
-            echo json_encode(array(
-                "error" => "Unable to determine filetype from: ".substr($image, 0, 10)."..."
-            ));
+            $this->markCallAsFailure("Unable to determine filetype from: ".substr($image, 0, 10)."...");
             return;
         }
         $uploadok = CommentFileUpload::doFileUpload64($img, $ext, $commentText, $boothNum, $boother);
         if (isset($uploadok['success'])) {
             $uploadok['success']['boothUrl'] = base() . "/users/" . $boother . "/" . $boothNum;
         }
-        echo json_encode($uploadok);
+        $this->markCallAsSuccessful("Post OK", $uploadok['success']);
     }
 }
 
