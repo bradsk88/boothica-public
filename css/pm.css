@@ -1,6 +1,6 @@
 .envelope {
-    height: 100px;
-    width: 200px;
+    height: 6rem;
+    width: 12rem;
     position: relative;
     margin: 1rem auto 0;
 }
@@ -29,8 +29,8 @@
 .waxSeal {
     height: 4rem;
     width: 4rem;
-    background: #F00;
     background-size: cover !important;
+    background-position: center !important;
     box-shadow: inset 0 0 1.5rem 1rem rgba(0, 0, 0, 0.5);
     position: absolute;
     left: 50%;
@@ -69,4 +69,31 @@
 
 .envelope.alert .envelopeLine {
     stroke: #F00;
+}
+
+.privateMessagesRegion {
+    width: 100%;
+}
+
+.privateMessages {
+    margin: 0 auto;
+}
+
+.privateMessageError {
+    margin: 1rem auto;
+    height: 4rem;
+    width: 12rem;
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 0.75rem;
+    text-align: center;
+    background: #FFF;
+    border: 0.25rem solid #F00;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.privateMessageErrorTest {
+    display: inline-block;
+    margin: auto;
 }

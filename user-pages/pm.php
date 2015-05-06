@@ -10,7 +10,7 @@ class PrivateMessagePage extends PageFrame {
 
     function __construct() {
         parent::__construct();
-        parent::setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/pm/templates/index.mst", array(
+        parent::setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/user-pages/templates/privateMessagesFrame.mst", array(
             "baseUrl" => base(),
             "requestHash" => generateUserUniqueHash($_SESSION['username'])
         ));
@@ -22,11 +22,7 @@ if (isLoggedIn()) {
     $page = new PrivateMessagePage();
     $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");
     $page->css(base()."/css/pm.css");
-    $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/pm/templates/privateMessage.mst");
-    $html = $htmlBuilder->render(array(
-        "userImageUrl" => UserImage::getAbsoluteImage("roze")
-    ));
-    $page->body($html);
+    $page->script(base()."/user-pages/scripts/pmScripts.js");
     $page->echoHtml();
 } else {
     $page = new LoginPage();

@@ -11,13 +11,13 @@
     </div>
     <div class="bootherConsoleButtons">
         <a href = "{{baseUrl}}/users/{{username}}/friends/manage" class="bootherConsoleFriendRequestRegion">
-            <div class="bootherConsoleFriendRequestButton">View friend requests</div>
+            <div class="bootherConsoleFriendRequestButton">Friend requests</div>
         </a>
         <a href = "{{baseUrl}}/pm" class="bootherConsolePrivateMessageRegion">
-            <div class="bootherConsoleListFriendsButton">View private messages</div>
+            <div class="bootherConsoleListFriendsButton">Private messages</div>
         </a>
         <a href = "{{baseUrl}}/users/{{bootherName}}/friends" class="bootherConsoleListFriendsRegion">
-            <div class="bootherConsoleListFriendsButton">See your friend list</div>
+            <div class="bootherConsoleListFriendsButton">Friend list</div>
         </a>
     </div>
 </div>

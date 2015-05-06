@@ -17,7 +17,7 @@
             <div class="bootherConsoleListFriendsButton">Send private message</div>
         </a>
         <a href = "{{baseUrl}}/users/{{bootherName}}/friends" class="bootherConsoleListFriendsRegion">
-            <div class="bootherConsoleListFriendsButton">See {{bootherPluralName}} friends</div>
+            <div class="bootherConsoleListFriendsButton">{{bootherPluralName}} friends</div>
         </a>
     </div>
 </div>
