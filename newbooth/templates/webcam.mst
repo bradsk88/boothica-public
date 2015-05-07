@@ -1,5 +1,5 @@
-<div class = "phoneAnalog" id = "newBoothRegion">
-    <div class = "newBooth">
+<div class = "phoneAnalog" id = "newBoothRegion" style = "margin-bottom: 5.5rem">
+    <div class = "newBooth" >
         <div class = "phoneAnalogGreeting">
             <div class = "webcamHeader">
                 {{headerText}}

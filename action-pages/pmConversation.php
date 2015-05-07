@@ -12,6 +12,13 @@ class PrivateMessageConversationPage extends PageFrame {
             "userDisplayName" => getDisplayName($username),
             "username" => $username
         ));
+        $this->script(base()."/action-pages/scripts/pmConversation.js");
+        $this->rawScript("
+    <script type = \"text/javascript\">
+        loadPMs(\"".$_REQUEST['username']."\");
+    </script>
+");
+        $this->css(base()."/css/pmConversation.css");
     }
 
 }
@@ -30,10 +37,4 @@ if (!isset($_REQUEST['username'])) {
 }
 
 $page = new PrivateMessageConversationPage($_REQUEST['username']);
-$page->script(base()."/action-pages/scripts/pmConversation.js");
-$page->rawScript("
-    <script type = \"text/javascript\">
-        loadPMs(\"".$_REQUEST['username']."\");
-    </script>
-");
 $page->echoHtml();

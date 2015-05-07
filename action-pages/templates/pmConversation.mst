@@ -15,7 +15,7 @@
         <div class = "privateMessageInputTextareaRegion">
             <textarea placeholder="Enter a private message to send to {{userDisplayName}}" name = "text" id = "text"></textarea>
         </div>
-        <div class = "privateMessageButtonRegion">
+        <div class = "phoneAnalogButton floating">
             <button>
                 Click to send
             </button>

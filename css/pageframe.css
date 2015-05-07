@@ -69,16 +69,20 @@ body {
     border-color: rgba(34, 153, 119, 0.5);
     border-style: solid;
     border-width: 1vw;
-    border-radius: 1vw;
+    border-radius: 4vw;
     box-sizing: border-box;
     display: block;
-    height: 3.5rem;
-    margin: auto;
+    height: 16vw;
+    margin: 0 4vw;
     padding: 0;
     text-align: center;
     text-shadow: none;
     text-transform: none;
     width: 100%;
+}
+
+.phoneAnalogButton.floating {
+    border: none;
 }
 
 .phoneAnalogButton .phoneAnalogText {
@@ -242,13 +246,12 @@ body {
 .pageHeaderUsername {
     margin: auto;
     font-weight: bold;
-    display: none;
 }
 
 .headertitle {
     background-image: url(/media/title.png);
     background-repeat: no-repeat;
-    width: 20em;
+    width: 6rem;
     display: block;
 }
 
@@ -383,6 +386,12 @@ body {
 
 @media all and (min-width: 600px) {
 
+    .headertitle {
+        background-image: url(/media/title.png);
+        background-repeat: no-repeat;
+        width: 20em;
+    }
+
     .pageHeaderUsername {
         display: inline-block;
     }
@@ -397,8 +406,11 @@ body {
         padding: 0;
     }
 
-    .phoneAnalogButton button {
+    .phoneAnalogButton button, .phoneAnalogField input {
         border-width: 0.125rem;
+        height: 3.5rem;
+        border-radius: 1vw;
+        margin: auto;
     }
 
     .phoneAnalogButton {
@@ -523,6 +535,10 @@ body {
         flex-wrap: wrap;
         padding: 1rem;
         text-align: center;
+    }
+
+    .phoneAnalogButton button, .phoneAnalogField input {
+        margin: 0 auto;
     }
 
     .phoneAnalogButton.bottom, .phoneAnalogCheckbox.bottom, .phoneAnalogButton.bottomleft, .phoneAnalogCheckbox.bottomleft {

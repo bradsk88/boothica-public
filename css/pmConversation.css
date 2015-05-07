@@ -1,0 +1,39 @@
+html {
+    padding: 0 0 24vw;
+}
+
+.privateMessageInputTextareaRegion {
+    width: 100%;
+}
+
+.privateMessageInputTextareaRegion {
+    padding: 4vw;
+    box-sizing: border-box;
+}
+
+.privateMessageInputTextareaRegion textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 16vw;
+    resize: vertical;
+}
+
+.pmConversationCell {
+    background: #ADF;
+    margin: 1vw 4vw;
+    padding: 1vw;
+    border-radius: 1vw;
+    text-align: left;
+}
+
+.pmConversationCellRegion.mine .pmConversationCell {
+    background: #CFC;
+}
+
+.pmConversationCellUsername {
+    font-size: 3vw;
+}
+
+.pmConversationCellText {
+    padding: 0 0 0 2vw;
+}

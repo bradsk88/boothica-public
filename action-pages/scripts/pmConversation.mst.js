@@ -23,8 +23,9 @@ var renderPrivateMessageConversationFromData = function(data) {
     $.get("{{baseUrl}}/action-pages/templates/pmConversationCell.mst", function(template) {
         $.each(data.success.messages, function (idx, obj) {
             var html = Mustache.render(template, {
-                userDisplayName: obj.userDisplayName,
-                text: obj.text
+                userDisplayName: obj.otherUserDisplayName,
+                text: obj.text,
+                mine: data.apiUsername == obj.otherUsername
             });
             $("#pm_convo_list").append(html);
         });

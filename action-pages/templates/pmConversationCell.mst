@@ -1,4 +1,4 @@
-<div class = "pmConversationCellRegion">
+<div class = "pmConversationCellRegion{{#mine}} mine{{/mine}}">
     <div class = "pmConversationCell">
         <div class = "pmConversationCellUsernameRegion">
             <div class = "pmConversationCellUsername">
