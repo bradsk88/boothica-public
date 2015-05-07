@@ -1,7 +1,8 @@
 function loadPMs(otherUserName) {
 
     $.post("{{baseUrl}}/_mobile/v2/getprivatemessages", {
-        otherUsername: otherUserName
+        otherUsername: otherUserName,
+        markread: true
     }, function(data) {
         renderPrivateMessageConversationFromData(data);
     }, "json").

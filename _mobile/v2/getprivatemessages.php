@@ -50,6 +50,20 @@ class GetPrivateMessagesResponse extends AbstractUserApiResponse {
                 "text" => decryptPrivateMessage($row['message'])
             );
         }
+
+        if (isset($_REQUEST['markread']) && $_REQUEST['markread']) {
+            $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/markUsersPMsRead.mst.sql");
+            $sql = $sqlBuilder->render(array(
+                "username" => $username,
+                "otherUsername" => $_POST['otherUsername']
+            ));
+            $query = $dblink->query($sql);
+            if (!$query) {
+                $this->markCallAsFailure(sql_death1($sql));
+                return;
+            }
+        }
+
         $this->markCallAsSuccessful("User PM Conversation get OK", array("messages" => $out));
     }
 }
