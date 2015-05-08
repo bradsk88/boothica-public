@@ -187,7 +187,7 @@ body {
     border: 3vw solid #F63;
 }
 
-.messageBanner, .requires_js_warning { /* TODO: Discontinue the use of require_js_warning and login_prompt and replace with messageBanner */
+.messageBanner, .requires_js_warning {
     background-color: white;
     padding: 1em;
 }
@@ -277,7 +277,7 @@ body {
     padding: 1em;
     background-color: #DDD;
     cursor: pointer;
-    display: none; /* TODO: Make these sections collapsible */
+    display: none; /* TODO: Make these sections collapsible on mobile */
 }
 
 .page_frame {

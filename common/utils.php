@@ -839,10 +839,8 @@ function parameterIsMissingAndEchoFailureMessage($param) {
 }
 
 function sendBoothicaEmail($emailAddress, $subject, $message) {
-    //TODO: Re-enable emails before launch
-    return;
-//    $headers = "From: Boothi.ca<no-reply>\r\n";
-//    $headers .= "MIME-Version: 1.0\r\n";
-//    $headers .= "Content-type: text/html; charset=utf-8\r\n";
-//    mail($emailAddress, $subject, $message, $headers);
+    $headers = "From: Boothi.ca<no-reply>\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=utf-8\r\n";
+    mail($emailAddress, $subject, $message, $headers);
 }
