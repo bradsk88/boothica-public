@@ -7,6 +7,9 @@
 
 class NotificationsResponse extends AbstractUserApiResponse {
 
+    # TODO: Private message notification
+    # TODO: Mention notification
+
     protected function run($username)
     {
         $output = array();
