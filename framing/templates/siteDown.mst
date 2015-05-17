@@ -1,0 +1,17 @@
+<html>
+<head>
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="{{baseUrl}}/css/pageframe.css" type="text/css" media="screen"/>
+</head>
+<body>
+    <div class = "phoneAnalog">
+        <img src = "{{baseUrl}}/media/MailHeader.png" style="width: 100%; border-top-left-radius: 1rem; border-top-right-radius: 1rem;"/>
+        <div class = "phoneAnalogText">Boothi.ca is down for maintenance.</div>
+        <form class = "phoneAnalogButton bottom" action = "{{baseUrl}}/info/contact">
+            <button>Contact Info</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -10,6 +10,9 @@
         </div>
     </div>
     <div class="bootherConsoleButtons">
+        <a href = "{{baseUrl}}/mentions" class="bootherConsoleMentionsRegion" id = "mentions_console_button">
+            <div class="bootherConsoleMentionsButton">Mentions</div>
+        </a>
         <a href = "{{baseUrl}}/users/{{username}}/friends/manage" class="bootherConsoleFriendRequestRegion">
             <div class="bootherConsoleFriendRequestButton">Friend requests</div>
         </a>

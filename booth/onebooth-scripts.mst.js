@@ -53,7 +53,8 @@ var loadOneBoothComments = function (boothnum, boothername) {
     $("#user_booth_comments").append(loader);
 
     $.post("{{baseUrl}}/_mobile/v2/getcomments.php", {
-        boothnum: boothnum
+        boothnum: boothnum,
+        clearmentions: true
     }, function (data) {
         renderOneBoothCommentsFromData(data, boothnum, boothername);
         $(spinner).hide();

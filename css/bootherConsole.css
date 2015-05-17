@@ -33,13 +33,13 @@
     flex: 1 100%;
 }
 
-.bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
+.bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion, .bootherConsoleMentionsRegion {
     display: flex;
     width: 100%;
     min-height: 4em;
 }
 
-.bootherConsoleListFriendsButton, .bootherConsoleFriendRequestButton, .bootherConsolePrivateMessageButton {
+.bootherConsoleListFriendsButton, .bootherConsoleFriendRequestButton, .bootherConsolePrivateMessageButton, .bootherConsoleMentionsButton {
     text-align: center;
     width: 100%;
     color: #000;
@@ -50,14 +50,20 @@
 }
 
 @media all and (max-width: 1024px) {
-    .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
+    .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion, .bootherConsoleMentionsRegion {
         border-top: 1px solid #DDD;
         border-bottom: 1px solid #BBB;
         margin: 1em 0;
     }
 
-    .bootherConsoleFriendRequestButton, .bootherConsolePrivateMessageButton, .bootherConsoleListFriendsButton {
+    .bootherConsoleFriendRequestButton, .bootherConsolePrivateMessageButton, .bootherConsoleListFriendsButton, .bootherConsoleMentionsButton {
         margin: auto;
+    }
+}
+
+@media all and (min-width: 600px) {
+    #mentions_console_button {
+        display: none;
     }
 }
 

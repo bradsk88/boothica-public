@@ -9,8 +9,8 @@ class ContactPage {
     private $delegate;
 
     function __construct() {
-        $this->delegate = new PageFrame();
-        $this->delegate->useDefaultSideBars();
+        $this->delegate = new PageFrame(true);
+        $this->delegate->excludeLoginNotification();
         $this->delegate->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/info/templates/contact.mst", array());
     }
 

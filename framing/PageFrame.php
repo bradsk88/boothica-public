@@ -45,8 +45,10 @@ class PageFrame {
     private $lastSidebarTitle = null;
     private $lastSidebarCollapsed = false;
     private $lastSidebarLink = null;
+    private $availableWhenSiteDown = false;
 
-    function __construct() {
+    function __construct($availableWhenSiteDown = false) {
+        $this->availableWhenSiteDown = $availableWhenSiteDown;
         $this->includeJQuery();
         $this->initialMeta();
     }
@@ -96,15 +98,14 @@ class PageFrame {
     }
 
     function render() {
-        if (!isset($_SESSION)) session_start();
         $this->setErrorReporting();
-        $link = connect_boothDB();
-        if (!$link) {
+        $dblink = connect_boothDB();
+        if (!$dblink) {
             die ("<script type = 'text/javascript'>document.write('There was a problem connecting to the database.  Probably the server just went down :(<p>Please try again in a few minutes.');</script></head></html>");
         }
 
         //session not started, check for remembrance cookie
-        if (!isset($_SESSION['username'])) {
+        if (!isLoggedIn()) {
             if (isset($_COOKIE['userid']) && cookie_set() == 0) {
                 echo "Reloading. (This site requires JavaScript)";
                 echo "<script>parent.window.location.reload(true);</script>";
@@ -116,12 +117,19 @@ class PageFrame {
                     Please log in
                 </a>
                 </div>';
-   	    }
-	}
+            }
+        }
 
         $headerlink = "/";
         if (isset($_SESSION['username'])) {
             $headerlink = "/activity";
+        }
+
+        if ((!$this->availableWhenSiteDown) && doesSiteAppearDown()) {
+            $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/siteDown.mst");
+            return $page->render(array(
+                "baseUrl" => base()
+            ));
         }
 
         $data = array(

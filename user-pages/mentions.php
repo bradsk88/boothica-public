@@ -6,11 +6,11 @@ require_lib("h2o-php/h2o");
 require_common("internal_utils");
 require_asset("UserImage");
 
-class PrivateMessagePage extends PageFrame {
+class MentionsPage extends PageFrame {
 
     function __construct() {
         parent::__construct();
-        parent::setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/user-pages/templates/privateMessagesFrame.mst", array(
+        parent::setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/user-pages/templates/mentionsFrame.mst", array(
             "baseUrl" => base(),
         ));
     }
@@ -18,12 +18,15 @@ class PrivateMessagePage extends PageFrame {
 }
 
 if (isLoggedIn()) {
-    $page = new PrivateMessagePage();
+    $page = new MentionsPage();
     $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");
-    $page->css(base()."/css/pm.css");
-    $page->script(base()."/user-pages/scripts/pmScripts.js");
+    $page->css(base()."/css/error.css");
+    $page->css(base()."/css/mentions.css");
+    $page->css(base()."/css/textcomment-withbooth.css");
+    $page->script(base()."/user-pages/scripts/mentionsScripts.js");
     $page->echoHtml();
 } else {
     $page = new LoginPage();
     echo $page->render();
 }
+

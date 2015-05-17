@@ -1,7 +1,5 @@
 <?PHP
 
-# This is the most recent version of the "user booths" scriptset as of Feb 25, 2015.
-
 header('Content-Type: application/javascript');
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");

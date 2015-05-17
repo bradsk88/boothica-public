@@ -109,7 +109,7 @@ $(document).ready(function() {
                         video.src = stream;
                     }
 
-                    return video.play();
+                    video.play();
 
                 } else {
                     var vendorURL = window.URL || window.webkitURL;
@@ -137,8 +137,12 @@ $(document).ready(function() {
 
         deviceError: function (error) {
             $("#webcam_loading_placeholder").hide();
-            $("#webcam_not_found_error").show();
-            console.error('An error occurred: [CODE ' + error.code + ']');
+            if (error.name == 'PermissionDeniedError') {
+                $("#webcam_not_allowed_error").show();
+            } else {
+                $("#webcam_not_found_error").show();
+            }
+            console.error('An error occurred: [CODE ' + error.name + ']');
         },
 
         getSnapshot: function () {

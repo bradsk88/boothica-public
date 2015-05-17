@@ -1,4 +1,4 @@
-<div class = "phoneAnalog" id = "newBoothRegion" style = "margin-bottom: 5.5rem">
+<div class = "phoneAnalog {% if specialClass %}{{ specialClass }}{% endif %}" id = "newBoothRegion" style = "margin-bottom: 5.5rem">
     <div class = "newBooth" >
         <div class = "phoneAnalogGreeting">
             <div class = "webcamHeader">
@@ -19,6 +19,13 @@
                 <div class = "newBoothWebcamMessage" id = "webcam_not_found_error">
                     No webcam found<br/><br/>
                     Please connect your device and refresh this page.
+                </div>
+            </div>
+            <div class = "newBoothWebcamMessageRegion">
+                <div class = "newBoothWebcamMessage" id = "webcam_not_allowed_error">
+                    <img src = "{{baseUrl}}/media/camdisabled.png"/>
+                    <br/>
+                    Your browser has blocked webcam access.
                 </div>
             </div>
             <div class = "newBoothWebcamMessageRegion">

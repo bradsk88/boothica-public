@@ -27,7 +27,7 @@ WHERE fkUsername = '".$dblink->real_escape_string($username)."'
 ORDER BY datetime DESC
 LIMIT 1 ";
     $result = $dblink->query($ratelimitsql);
-    if (false && $result->num_rows != 0) { //TODO: Re-enable this for launch
+    if ($result->num_rows != 0) {
         $rateLimitRow = $result->fetch_assoc();
         if ($rateLimitRow['timePassed'] == 0) {
             return json_encode(array(
@@ -63,7 +63,7 @@ LIMIT 1 ";
     }
 
     $sql = "INSERT INTO
-			`boothnumbers` 
+			`boothnumbers`
 			".$columns."
 			VALUES 
 			".$values.";";

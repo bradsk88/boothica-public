@@ -52,9 +52,13 @@
                 {{userDisplayName}}
             </a>
         </div>
+        <a href="{{baseUrl}}/mentions">
+            <div id = 'header_mentions' class = "headerbutton">
+                <span>@</span>
+            </div>
+        </a>
         <a href="{{baseUrl}}/menu">
-            <canvas id='headgear' class='headerbutton' onclick='openSettings()'>
-            </canvas>
+            <span id='headgear' class='headerbutton'>&equiv;</span>
         </a>
         {% endif %}
     </div>

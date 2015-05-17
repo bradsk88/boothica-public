@@ -1,7 +1,7 @@
 .bigBlock404Region {
     display: flex;
     flex-flow: row wrap;
-    margin: 6vw;
+    margin: 6vw 6vw 2vw;
     background: #DDD;
     border-radius: 4vw;
     padding: 3vw;
@@ -40,7 +40,10 @@
 
 .longError {
     font-size: 0.75rem;
-    padding-bottom: 1em;
+    padding: 1rem;
+    margin: 0 6vw;
+    background: #FFF;
+    border-radius: 4vw;
 }
 
 .button {
@@ -56,11 +59,13 @@
 @media all and (min-width: 600px) {
 
     .bigBlock404Region {
-        margin: 0 auto;
+        margin: 1rem auto 2rem;
         background: #FFF;
-        padding: 0;
+        padding: 1rem;
         cursor: default;
-        padding-bottom: 2em;
+        border-radius: 2rem;
+        width: auto;
+        display: inline-block;
     }
 
     .bigBlockErrorTitle {
@@ -82,5 +87,13 @@
     .searchForm input {
         flex: 1 50% !important;
         padding: 1em;
+    }
+
+    .bigBlockShortError {
+        font-size: 2rem;
+    }
+
+    .longError {
+        border-radius: 0.5rem;
     }
 }

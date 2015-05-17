@@ -7,9 +7,6 @@
 
 class NotificationsResponse extends AbstractUserApiResponse {
 
-    # TODO: Private message notification
-    # TODO: Mention notification
-
     protected function run($username)
     {
         $output = array();
@@ -43,16 +40,16 @@ class NotificationsResponse extends AbstractUserApiResponse {
         }
 
         // Private messages
-        $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/getUnreadPrivateMessageCount.mst.sql");
+        $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/getUncheckedMentionsCount.mst.sql");
         $sql = $sqlBuilder->render(array("username" => $username));
         $dblink = connect_boothDB();
         $query = $dblink->query($sql);
         $num = sql_get_expectOneRow($query, "count");
         if ($num > 0) {
             $output[] = array(
-                "text" => "You have new private messages",
-                "type" => "private_messages",
-                "url" => base()."/pm"
+                "text" => "You have been mentioned",
+                "type" => "mentions",
+                "url" => base()."/mentions"
             );
         }
 

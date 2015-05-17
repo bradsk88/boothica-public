@@ -9,8 +9,8 @@
 <div class = "longError">
     {{longError}}
 </div>
-<a href = "{{baseUrl}}/activity">
-    <div class = "button" id = "backToActivityButton">Back to activity</div>
+<form class = "phoneAnalogButton action = "{{baseUrl}}/activity">
+    <button id = "backToActivityButton">Back to activity</button>
 </a>
 <form action = "{{baseUrl}}/searchresults">
     <div class = "searchForm">

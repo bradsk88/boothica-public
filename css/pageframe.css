@@ -6,7 +6,7 @@ body {
     margin: 0;
     /*background-color: #515097;*/
     background: #143B5B;
-    font-family: 'Bitter', serif;
+    /*font-family: 'Bitter', serif;*/
 }
 
 .friendUsername {
@@ -79,6 +79,7 @@ body {
     text-shadow: none;
     text-transform: none;
     width: 100%;
+    max-width: 40rem;
 }
 
 .phoneAnalogButton.floating {
@@ -218,34 +219,37 @@ body {
 }
 
 .headerbutton, .pageheader, .headertitle {
-    height: 2.500em;
+    height: 2.500rem;
 }
 
 .headerbutton {
-    width: 2.500em;
+    width: 2.500rem;
 }
 
 #headgear {
-    background-image: url(/media/settings.png);
-    background-size: contain;
-    background-position: center;
     position: absolute;
     right: 0;
     top: 0;
 }
 
+#headgear {
+    font-size: 2rem;
+}
+
 .pageHeaderUsernameRegion {
     position: absolute;
     top: 0;
-    right: 4rem;
+    right: 2.5rem;
     height: 2.5rem;
     display: flex;
     flex-flow: row wrap;
+    padding: 0 0.5rem;
 }
 
 .pageHeaderUsername {
     margin: auto;
     font-weight: bold;
+    line-height: 1.5rem;
 }
 
 .headertitle {
@@ -328,6 +332,14 @@ body {
     border-radius: 0.25em;
     max-width: 16em;
     display: none; /* Enable on a per-page basis */
+}
+
+#header_mentions {
+    display: none;
+}
+
+#header_mentions:hover, #headgear:hover, .pageHeaderUsernameRegion:hover {
+    background-color: rgba(200, 255, 220, 0.8);
 }
 
 @media all and (max-width: 599px) {
@@ -485,6 +497,28 @@ body {
     .collapsed {
         height: auto;
         visibility: inherit;
+    }
+
+    #header_mentions {
+        position: absolute;
+        right: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        top: 0;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    #header_mentions span {
+        margin: auto;
+        font-size: 1.5rem;
+        width: 2rem;
+        height: 2rem;
+        line-height: 1.825rem;
+    }
+
+    .pageHeaderUsernameRegion {
+        right: 5rem;
     }
 
 }
