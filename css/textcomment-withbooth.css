@@ -57,7 +57,6 @@
 }
 
 .textCommentHeaderWithBooth {
-    text-align: center;
     display: inherit;
     padding: 0.25rem 0 0 1.75rem;
     font-size: 0.75rem;
@@ -73,6 +72,20 @@
 
 .textCommentButtonsRegionWithBooth {
     display: none;
+}
+
+.textCommentHeaderActionDescription {
+    display: none;
+}
+
+@media all and (min-width: 500px) {
+    .textCommentHeaderActionDescription {
+        display: inline-block;
+    }
+
+    .textCommentHeaderActionDescriptionCompact {
+        display: none;
+    }
 }
 
 @media all and (min-width: 600px) {

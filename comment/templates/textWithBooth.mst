@@ -12,12 +12,17 @@
     <div class="textCommentHeaderRegionWithBooth">
         <div class="textCommentHeaderWithBooth">
             <a href = "{{baseUrl}}/users/{{username}}" class = "bootherLink">{{commenterDisplayName}}</a>
+            <span class = "textCommentHeaderActionDescription">
     {{# actionDescription }}
         {{ actionDescription }}
     {{/ actionDescription }}
     {{^ actionDescription }}
         commented
     {{/ actionDescription }} on
+            </span>
+            <span class = "textCommentHeaderActionDescriptionCompact">
+                on
+            </span>
             <a href = "{{baseUrl}}/users/{{bootherName}}/{{boothNum}}" class = "boothLink">{{boothShortDescription}}</a>
         </div>
     </div>
