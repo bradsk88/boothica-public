@@ -4,6 +4,8 @@ $(document).ready(function() {
 
 });
 
+// TODO: Add pagination
+
 var loadActivity = function() {
 
     $("activity_loader").show();

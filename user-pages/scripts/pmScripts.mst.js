@@ -7,6 +7,8 @@ $(document).ready(function() {
     });
 });
 
+// TODO: Add pagination
+
 var renderPrivateMessageFaces = function(data) {
     if ("undefined" === typeof(data.success)) {
         showError("undefined" === typeof(data.error) ? "Unexpected Error" : data.error);

@@ -22,7 +22,8 @@ $page = new PageFrame();
 $page->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/newbooth/templates/webcam.mst", array(
     "headerText" => "Photo Comment",
     "postButtonText" => "Upload photo comment!",
-    "specialClass" => "commentSnap"
+    "specialClass" => "commentSnap",
+    "fileSupported" => false
 ));
 $page->css(base()."/css/webcam.css");
 $page->css(base()."/css/webcamcomment.css");

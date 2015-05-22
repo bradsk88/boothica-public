@@ -24,7 +24,7 @@ require_common("internal_utils");
 class PutCommentApiResponse extends AbstractUserApiResponse {
 
     function __construct() {
-        parent::__construct(array("boothnum", "commenttext", "mediatype", "image"));
+        parent::__construct(array("boothnum", "mediatype", "image"));
     }
 
     /**
@@ -38,7 +38,7 @@ class PutCommentApiResponse extends AbstractUserApiResponse {
             return;
         }
 
-        $commentText = $_POST['commenttext'];
+        $commentText = $_POST['commenttext'] ? $_POST['commenttext'] : '';
         $image = $_POST['image'];
         $boothNum = $_POST['boothnum'];
 

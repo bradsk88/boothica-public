@@ -90,26 +90,6 @@ function go_to_and_post($relativepage, $vars, $fallbackmessage) {
 
 }
 
-function go_to_404() {
-    //TODO: Discontinue all of these methods
-    echo "<script = 'text/javascript'>location.href='/errors/404page';</script>";
-
-}
-
-function go_to_login() {
-    echo "<script = 'text/javascript'>location.href='/errors/loginpage';</script>";
-}
-
-function go_to_banned() {
-    echo "<script = 'text/javascript'>location.href='/errors/bannedpage';</script>";
-}
-
-function go_to_suspended() {
-
-    echo "<script = 'text/javascript'>location.href='/errors/suspendedpage';</script>";
-
-}
-
 function go_to_unexpected_error() {
 
     if (isset($down) && $down) {
@@ -545,19 +525,6 @@ function isSuspended($username) {
         sql_death1($sql);
         return false;
     }
-
-}
-
-function doBanSuspendCheck($username) {
-
-    if (isBanned($username)) {
-        go_to_banned();
-        return false;
-    } else if (isSuspended($username)){
-        go_to_suspended();
-        return false;
-    }
-    return true;
 
 }
 
