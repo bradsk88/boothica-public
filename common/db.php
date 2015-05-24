@@ -26,7 +26,6 @@ function emptyResult($query) {
 }
 
 function sql_death1($sql) {
-    return $sql;
     $usern = "not logged in";
     if (isset($_SESSION['usernum'])) {
         $usern = $_SESSION['usernum'];

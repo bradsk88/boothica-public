@@ -14,11 +14,32 @@ class AddFriendResponse extends AbstractUserApiResponse {
      */
     protected function run($username)
     {
+        $pagenum = 1;
+        if (isset($_REQUEST['pagenum'])) {
+            $pagenum = $_REQUEST['pagenum'];
+        }
+
+        $limitsGiven = false;
+        $numperpage = 10;
+        if (isset($_REQUEST['numperpage'])) {
+            $limitsGiven = true;
+            $numperpage = $_REQUEST['numperpage'];
+        }
+
         $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/getMentions.mst.sql");
         $dblink = connect_boothDB();
-        $sql = $sqlBuilder->render(array(
-            "username" => $dblink->real_escape_string($username)
-        ));
+
+        $values = array(
+            "username" => $dblink->real_escape_string($username),
+            "limitsGiven" => $limitsGiven
+        );
+
+        if ($limitsGiven) {
+            $values['startIndex'] = ($pagenum-1) * $numperpage;
+            $values['numPerPage'] = $dblink->real_escape_string($numperpage);
+        }
+
+        $sql = $sqlBuilder->render($values);
         $query = $dblink->query($sql);
         if (!$query) {
             $this->markCallAsFailure(sql_death1($sql));

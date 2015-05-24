@@ -97,3 +97,13 @@
     display: inline-block;
     margin: auto;
 }
+
+.load_more_button {
+    display: inherit;
+}
+
+@media all and (min-width: 800px) {
+    .load_more_button {
+        display: none;
+    }
+}

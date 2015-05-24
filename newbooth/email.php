@@ -5,7 +5,6 @@
 	//methods for sending emails to friends after posting a booth
 	function sendNewBoothEmail($username, $number) {
 
-        return; //TODO: Bring this back for prod
         $dblink = connect_boothDB();
 		$sql = "SELECT 
 			`email` 

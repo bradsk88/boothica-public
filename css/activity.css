@@ -42,7 +42,11 @@
     display: block;
 }
 
-@media all and (min-width: 600px) {
+.load_more_button {
+    display: inherit;
+}
+
+@media all and (min-width: 800px) {
     .friendRequestActivity {
         max-width: 40rem;
         margin: 1rem auto;
@@ -50,5 +54,9 @@
 
     .activityHeader {
         margin: 0.5rem auto 0;
+    }
+
+    .load_more_button {
+        display: none;
     }
 }

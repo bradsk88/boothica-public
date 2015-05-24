@@ -5,4 +5,4 @@ FROM
 WHERE
   fkMentionedName = "{{username}}"
 AND
-  hasBeenViewed = 0
+  isNew = 1

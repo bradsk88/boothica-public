@@ -3,6 +3,10 @@
     flex-flow: row wrap;
     height: auto;
     background: #FFF;
+    max-width: 40rem;
+    margin: 0.5rem auto 0;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0 0;
 }
 
 .bootherConsolePhotoRegion, .bootherConsoleNameRegion {
@@ -17,6 +21,7 @@
 
 .bootherConsolePhotoResource {
     object-fit: cover;
+    border-radius: 0.25rem;
 }
 
 .bootherConsoleNameRegion {
@@ -67,17 +72,15 @@
     }
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 800px) {
 
     .bootherConsole {
         height: 6em;
         background-color: #FFF;
-        padding: 1em 3em;
+        padding: 1em 1em;
         margin: 0.5rem auto 0;
         border-radius: 0.25rem;
-    
-        max-width: 40rem;
-}
+    }
 
     .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
         max-width: 20em;
@@ -105,5 +108,11 @@
 
     .bootherConsoleNameRegion {
         flex: 1 1 auto;
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .bootherConsole {
+        padding: 1em 3em;
     }
 }

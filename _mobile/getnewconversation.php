@@ -8,7 +8,7 @@ function main() {
 
     echo json_encode(array(
         "error" => "This endpoint has been sunset",
-        "alternate" => base()."/_mobile/v2/activity.php"
+        "alternate" => base()."/_mobile/v2/getactivity.php"
     ));
 
 }

@@ -14,8 +14,6 @@ function loadIncomingFriendRequests(username) {
     });
 }
 
-//TODO: Add pagination
-
 function loadOutboundFriendRequests(username) {
     $("#outbound_requests").html(makeSpinner());
     $.post("{{baseUrl}}/_mobile/v2/getoutboundfriendrequests", {
