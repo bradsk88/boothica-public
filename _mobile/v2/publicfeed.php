@@ -55,15 +55,6 @@
 
 function getSQL()
 {
-    $pageNum = 1;
-    if (isset($_POST['pagenum'])) {
-        $pageNum = $_POST['pagenum'];
-    }
-
-    $numPerPage = 9;
-    if (isset($_POST['numperpage'])) {
-        $numPerPage = $_POST['numperpage'];
-    }
 
     $newerThanBoothNumber = -1;
     if (isset($_POST['newer_than_booth_number'])) {
@@ -80,12 +71,29 @@ function getSQL()
         $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/publicfeed-visitor.mst.sql");
     }
 
+    $pagenum = 1;
+    if (isset($_REQUEST['pagenum'])) {
+        $pagenum = $_REQUEST['pagenum'];
+    }
+
+    $limitsGiven = false;
+    $numperpage = 10;
+    if (isset($_REQUEST['numperpage'])) {
+        $limitsGiven = true;
+        $numperpage = $_REQUEST['numperpage'];
+    }
+
     $values = array(
-        "startIndex" => max(($pageNum-1) * $numPerPage, 0),
-        "numPerPage" => $numPerPage,
-        "limitsGiven" => true,
-        "username" => $_SESSION['username'] ? $_SESSION['username'] : null
+        "username" => $_SESSION['username'] ? $_SESSION['username'] : null,
+        "limitsGiven" => $limitsGiven
     );
+
+    $dblink = connect_boothDB();
+    if ($limitsGiven) {
+        $values['startIndex'] = ($pagenum-1) * $numperpage;
+        $values['numPerPage'] = $dblink->real_escape_string($numperpage);
+    }
+
     if ($newerThanBoothNumber > 0) {
         $values['lowerBound'] = $newerThanBoothNumber;
     }

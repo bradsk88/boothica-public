@@ -3,8 +3,6 @@ numPerPage = 10;
 $(document).ready(function() {
 
     loadActivity();
-    $("#body_load_more_button")[0].onclick = null;
-    $("#body_load_more_button").click(function() { loadNextActivityPage(function(){}) });
 
 });
 
@@ -24,7 +22,11 @@ var loadActivity = function() {
         }
 
         if (data.success) {
+
             renderActivityFeed(data);
+            $("#body_load_more_button")[0].onclick = null;
+            $("#body_load_more_button").click(function() { loadNextActivityPage(function(){}) });
+            enableInfiniteScroll();
             return;
         }
 

@@ -18,11 +18,11 @@ function base() {
 }
 
 function baseWithoutProtocol() {
-    return "192.168.1.157";
+    return "boothi.ca";
 }
 
 function basePretty() {
-    return "Boothi.ca LocalHost";
+    return "Boothi.ca";
 }
 
 function require_common( $asset ) {

@@ -47,8 +47,8 @@ class PageFrame {
     private $lastSidebarLink = null;
     private $availableWhenSiteDown = false;
 
-    function __construct($availableWhenSiteDown = false) {
-        $this->availableWhenSiteDown = $availableWhenSiteDown;
+    public function __construct($available=false) {
+        $this->availableWhenSiteDown = $available;
         $this->includeJQuery();
         $this->initialMeta();
     }
@@ -125,11 +125,14 @@ class PageFrame {
             $headerlink = "/activity";
         }
 
-        if ((!$this->availableWhenSiteDown) && doesSiteAppearDown()) {
-            $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/siteDown.mst");
-            return $page->render(array(
-                "baseUrl" => base()
-            ));
+        if ($this->availableWhenSiteDown == false) {
+            if (doesSiteAppearDown()) {
+                $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/siteDown.mst");
+                unset($_SESSION);
+                return $page->render(array(
+                    "baseUrl" => base()
+                ));
+            }
         }
 
         $data = array(
