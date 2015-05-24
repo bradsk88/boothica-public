@@ -64,7 +64,7 @@ function main() {
         "commentInput" => $commentInputHTML,
         "username" => $username,
         "boothNumber" => $boothnum,
-        "bootherPosessiveDisplayName" => getPossessiveDisplayName($username)
+        "bootherPosessiveDisplayname" => getPossessiveDisplayName($username)
     ));
 
     $page = new PageFrame();

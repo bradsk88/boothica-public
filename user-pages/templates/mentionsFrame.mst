@@ -1,0 +1,7 @@
+<div class = "mentionsRegion">
+    <div class = "phoneAnalogGreeting">
+        Mentions
+    </div>
+    <div class = "mentions" id = "mentions">
+    </div>
+</div>

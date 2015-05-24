@@ -14,6 +14,10 @@
     font-size: 0.6rem;
 }
 
+.load_more_button {
+    display: inherit;
+}
+
 @media all and (min-width: 250px) {
     .friendCard {
         padding: 0.5rem;
@@ -84,5 +88,11 @@
 
     .friendUsernameRegion {
         font-size: 0.75rem;
+    }
+}
+
+@media all and (min-width: 800px) {
+    .load_more_button {
+        display: none;
     }
 }

@@ -1,0 +1,3 @@
+<div class = "privateMessageError">
+    <div class = "privateMessageErrorTest">{{message}}</div>
+</div>

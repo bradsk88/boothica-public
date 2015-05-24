@@ -5,8 +5,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.+)$ $1.php [L,QSA]
 RewriteRule ^newbooth[\/]?$ ./newbooth/webcam
-RewriteRule ^pm[\/]?$ ./messages
+RewriteRule ^pm[\/]?$ ./user-pages/pm.php
+RewriteRule ^mentions[\/]?$ ./user-pages/mentions.php
+RewriteRule ^mentions/clearall[\/]?$ ./action-pages/clearAllMentions.php
 RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]?$ ./user-pages/booths.php?username=$1
+RewriteRule ^users/([a-zA-Z0-9_-]+)/messages[\/]?$ ./action-pages/pmConversation.php?username=$1
+RewriteRule ^users/([a-zA-Z0-9_-]+)/messages/send[\/]?$ ./action-pages/sendPM.php
 RewriteRule ^users/([a-zA-Z0-9_-]+)/booths[\/]?$ ./user-pages/booths.php?username=$1
 RewriteRule ^users/([a-zA-Z0-9_-]+)/friends[\/]?$ ./user-pages/friends.php?username=$1
 RewriteRule ^users/([a-zA-Z0-9_-]+)/friends/add\/([a-zA-Z0-9_-]+)[\/]?$ ./action-pages/addFriend.php?username=$1&friendname=$2

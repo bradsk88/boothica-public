@@ -29,13 +29,32 @@ class ActivityResponse extends AbstractUserApiResponse {
             return array();
         }
 
+        $pagenum = 1;
+        if (isset($_REQUEST['pagenum'])) {
+            $pagenum = $_REQUEST['pagenum'];
+        }
+
+        $limitsGiven = false;
+        $numperpage = 10;
+        if (isset($_REQUEST['numperpage'])) {
+            $limitsGiven = true;
+            $numperpage = $_REQUEST['numperpage'];
+        }
+
         $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/activity.mst.sql");
 
-        $sql = $sqlBuilder->render(array(
-            "username"=>$dblink->real_escape_string($username),
-            "pageStartIndex" => $numPerPage * ($pageNum - 1),
-            "numPerPage"=>$dblink->real_escape_string($numPerPage)
-        ));
+        $values = array(
+            "username" => $dblink->real_escape_string($username),
+            "limitsGiven" => $limitsGiven
+        );
+
+        if ($limitsGiven) {
+            $values['startIndex'] = ($pagenum-1) * $numperpage;
+            $values['numPerPage'] = $dblink->real_escape_string($numperpage);
+        }
+
+
+        $sql = $sqlBuilder->render($values);
 
         $result = $dblink->query($sql);
         if (!$result) {

@@ -22,13 +22,33 @@ class FriendListActivity extends AbstractUserApiResponse {
             return;
         }
 
+        $pagenum = 1;
+        if (isset($_REQUEST['pagenum'])) {
+            $pagenum = $_REQUEST['pagenum'];
+        }
+
+        $limitsGiven = false;
+        $numperpage = 10;
+        if (isset($_REQUEST['numperpage'])) {
+            $limitsGiven = true;
+            $numperpage = $_REQUEST['numperpage'];
+        }
+
         $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/friendList.mst.sql");
-
-        $sql = $sqlBuilder->render(array(
-            "bootherName" => $boothername
-        ));
-
         $dblink = connect_boothDB();
+
+        $values = array(
+            "bootherName" => $dblink->real_escape_string($boothername),
+            "limitsGiven" => $limitsGiven
+        );
+
+        if ($limitsGiven) {
+            $values['startIndex'] = ($pagenum-1) * $numperpage;
+            $values['numPerPage'] = $dblink->real_escape_string($numperpage);
+        }
+
+        $sql = $sqlBuilder->render($values);
+
         $query = $dblink->query($sql);
         $boothers = array();
         while ($row = $query->fetch_array()) {

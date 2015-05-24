@@ -17,14 +17,16 @@ if (!isset($_REQUEST['boothnum'])) {
 }
 
 //TODO: File comment upload
-//TODO: Make it more obvious this isn't a booth
 
 $page = new PageFrame();
 $page->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/newbooth/templates/webcam.mst", array(
     "headerText" => "Photo Comment",
-    "postButtonText" => "Upload photo comment!"
+    "postButtonText" => "Upload photo comment!",
+    "specialClass" => "commentSnap",
+    "fileSupported" => false
 ));
 $page->css(base()."/css/webcam.css");
+$page->css(base()."/css/webcamcomment.css");
 $page->script(base()."/action-pages/scripts/webcamComment.js");
 $page->script(base()."/action-pages/scripts/webcamComment-page.js");
 $page->script(base()."/lib/getUserMedia.js");

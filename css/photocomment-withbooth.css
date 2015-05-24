@@ -3,7 +3,7 @@
     flex-flow: row wrap;
     justify-content: flex-start;
     padding: 0 1rem 1rem;
-    margin: 1rem auto;
+    margin: 4vw 2vw;
     position: relative;
     background-color: #87E1C1;
     border-radius: 0.25rem;
@@ -58,10 +58,10 @@
     box-sizing: border-box;
     text-align: left;
     order: 2;
-    font-size: 0.75rem;
+    font-size: 1rem;
     max-height: 20em;
     overflow: hidden;
-    padding: 0.5rem;
+    padding: 1rem 0.5rem;
 }
 
 .photoCommentBoothImageRegion {

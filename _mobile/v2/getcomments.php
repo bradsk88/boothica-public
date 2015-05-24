@@ -18,6 +18,7 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
 require_common("utils");
 require_common("internal_utils");
 require_asset("UserImage");
+require_lib("h2o-php/h2o");
 
 class GetCommentsApiResponse extends AbstractUserApiResponse {
 
@@ -35,6 +36,19 @@ class GetCommentsApiResponse extends AbstractUserApiResponse {
         if (isAllowedToInteractWithBooth($_SESSION['username'], $boothnumber)) {
             $getComments = $this->doGetComments($boothnumber);
             if (isset($getComments['success'])) {
+
+                if (isset($_REQUEST['clearmentions']) && $_REQUEST['clearmentions']) {
+                    $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/clearBoothMentions.mst.sql");
+                    $dblink = connect_boothDB();
+                    $sql = $sqlBuilder->render(array(
+                        "username" => $dblink->real_escape_string($username),
+                        "boothnumber" => $boothnumber
+                    ));
+                    if (!$dblink->query($sql)) {
+                        sql_death1($sql);
+                    }
+                }
+
                 $this->markCallAsSuccessful("Comments get OK", array("comments" => $getComments['success']));
             } else {
                 $this->markCallAsFailure($getComments['error']);

@@ -67,6 +67,7 @@
 
 .newBoothWebcamMessage {
     display: inline-block;
+    margin: auto;
 }
 
 .newBoothWebcamMessage, .countDownNumber {
@@ -79,7 +80,7 @@
     background: rgba(255,255,255,0.5);
 }
 
-#webcam_not_found_error {
+#webcam_not_found_error, #webcam_not_allowed_error {
     display: none;
     background: rgba(255,100,100,0.5);
 }

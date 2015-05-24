@@ -46,10 +46,10 @@
     box-sizing: border-box;
     text-align: left;
     order: 2;
-    font-size: 0.75rem;
+    font-size: 1rem;
     max-height: 20em;
     overflow: hidden;
-    padding: 0.5rem;
+    padding: 1rem;
 }
 
 .centerBoothOpenButtonRegion, .sideBoothOpenButtonRegion {
@@ -67,16 +67,22 @@
         padding-top: 1em;
     }
 
-    .centerBoothRegion {
-        padding: 0 3em;
+    .centerBoothRegion, .sideBoothRegion {
+        padding: 3vw auto 0;
+    }
+
+    .centerBooth, .sideBooth {
+        justify-content: flex-end;
+        box-sizing: border-box;
     }
 
     .centerBooth {
-        justify-content: flex-end;
-    
         padding: 1rem;
-        box-sizing: border-box;
-}
+    }
+
+    .sideBooth {
+        padding: 0rem 1rem 1rem;
+    }
 
     .centerBoothImage, .sideBoothImage {
         border-radius: 0.25em;
@@ -97,17 +103,17 @@
         order: 2;
     }
 
-    .centerBoothOpenButtonRegion {
+    .centerBoothOpenButtonRegion, .sideBoothOpenButtonRegion {
         text-align: right;
         padding-right: 1em;
         order: 3;
     }
 
-    .centerBoothOpenButton {
+    .centerBoothOpenButton, .sideBoothOpenButton {
         width: 10em;
         background-color: #F00;
         position: absolute;
-        right: 0em;
+        right: 0;
         bottom: 0;
         box-shadow: 0 0 0.5em #DDD;
         border-top-left-radius: 0.25em;
@@ -118,7 +124,7 @@
         border-bottom-right-radius: 0.25em;
     }
 
-    .centerBoothOpenButtonText {
+    .centerBoothOpenButtonText, .sideBoothOpenButtonText {
         background-color: #FFF;
         position: absolute;
         right: 0;
@@ -130,67 +136,66 @@
         padding-top: 0.2em;
         text-align: center;
     }
-}
-
-@media all and (min-width: 500px) and (max-width: 1024px) {
-
-    .sideBoothRegion {
-        padding: 0 3em;
-    }
-
-    .sideBooth {
-        justify-content: flex-end;
-    }
-
-    .sideBoothImage {
-        border-radius: 0.25em;
-    }
-
-    .sideBoothImageRegion {
-        padding-bottom: 0;
-        border-radius: 0.1em;
-    }
-
-    .sideBoothText {
-        padding: 1em 1em 2em;
-        font-size: 1rem;
-    }
-
-    .sideBoothText {
-        order: 2;
-    }
 
     .sideBoothOpenButtonRegion {
-        text-align: right;
-        padding-right: 1em;
-        order: 3;
+        width: 100%;
     }
-
 }
 
-/* Medium screens */
-@media all and (min-width: 1024px) {
+/*@media all and (min-width: 500px) and (max-width: 1024px) {*/
+
+    /*.sideBoothRegion {*/
+        /*padding: 0 3em;*/
+    /*}*/
+
+    /*.sideBooth {*/
+        /*justify-content: flex-end;*/
+    /*}*/
+
+    /*.sideBoothImage {*/
+        /*border-radius: 0.25em;*/
+    /*}*/
+
+    /*.sideBoothImageRegion {*/
+        /*padding-bottom: 0;*/
+        /*border-radius: 0.1em;*/
+    /*}*/
+
+    /*.sideBoothText {*/
+        /*padding: 1em 1em 2em;*/
+        /*font-size: 1rem;*/
+    /*}*/
+
+    /*.sideBoothText {*/
+        /*order: 2;*/
+    /*}*/
+
+    /*.sideBoothOpenButtonRegion {*/
+        /*text-align: right;*/
+        /*padding-right: 1em;*/
+        /*order: 3;*/
+    /*}*/
+
+/*}*/
+
+ /*Medium screens*/
+@media all and (min-width: 600px) {
 
     .primary_booths_feed {
         padding: 0;
     }
 
-    .centerBoothRegion {
+    .centerBoothRegion, .sideBoothRegion {
         padding: 0;
         border-radius: 0.25rem;
         max-width: 40rem;
         margin: 0.5rem auto;
 }
 
-    .centerBoothText, .sideBoothText {
+    .centerBoothText {
         max-height: inherit;
         overflow: hidden;
         padding-bottom: 2em;
-    }
-
-    .sideBoothImageRegion, .sideBoothText, .sideBoothOpenButtonRegion {
-        flex: 1 100% ! important;
-        max-width: 100%;
     }
 
     .sideBoothOpenButtonRegion {
@@ -208,11 +213,14 @@
     }
 
     .sideBoothRegion {
-        border-radius: 0.5rem;
         padding: 0 0.25em;
         box-shadow: 0 1rem 1rem rgba(0,0,0,0.125);
         background-color: white;
-        margin: 0.5em 0;
+        margin: 0.5em auto;
+    }
+
+    .centerBooth {
+        border-radius: 0.25rem;
     }
 
     .sideBooth {
@@ -224,20 +232,41 @@
     }
 }
 
-/* Bigger screens */
-@media all and (min-width: 1280px) {
+@media all and (min-width: 800px) {
 
-    .body_inside {
-        background: none;
+    .sideBoothImageRegion, .sideBoothText, .sideBoothOpenButtonRegion {
+        flex: 1 100% ! important;
+        max-width: 100%;
     }
 
-    .centerBoothRegion {
-        background-color: #FFF;
-        padding: 1em 3em;
-}
+    .sideBoothOpenButtonText {
+        background: inherit;
+        height: 100%;
+    }
 
-    .centerBoothOpenButton {
-        right: -2em;
+    .sideBoothOpenButton {
+        background: inherit;
+        border: none;
+        width: 100%;
+        box-shadow: none;
+        position: relative;
+    }
+
+    .sideBoothOpenButtonRegion {
+        height: 1.4rem;
+    }
+
+    .sideBoothText {
+        font-size: 0.75rem;
+        padding: 0.25rem;
+    }
+
+    .sideBoothImage {
+        margin-bottom: 0.5rem;
+    }
+
+    .sideBooth {
+        padding: 0.25rem;
     }
 
 }

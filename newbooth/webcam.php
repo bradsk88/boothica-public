@@ -14,6 +14,7 @@
                 "baseUrl" => base(),
                 "headerText" => "New Booth",
                 "postButtonText" => "Post this booth!",
+                "fileSupported" => true
             ));
             $this->body($html);
         }

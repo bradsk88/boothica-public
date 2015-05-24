@@ -6,7 +6,7 @@ body {
     margin: 0;
     /*background-color: #515097;*/
     background: #143B5B;
-    font-family: 'Bitter', serif;
+    /*font-family: 'Bitter', serif;*/
 }
 
 .friendUsername {
@@ -69,20 +69,30 @@ body {
     border-color: rgba(34, 153, 119, 0.5);
     border-style: solid;
     border-width: 1vw;
-    border-radius: 1vw;
+    border-radius: 4vw;
     box-sizing: border-box;
     display: block;
-    height: 3.5rem;
-    margin: auto;
+    height: 16vw;
+    margin: 0 4vw;
     padding: 0;
     text-align: center;
     text-shadow: none;
     text-transform: none;
     width: 100%;
+    max-width: 40rem;
+}
+
+.phoneAnalogButton.floating {
+    border: none;
 }
 
 .phoneAnalogButton .phoneAnalogText {
     margin-top: 1rem;
+}
+
+.phoneAnalogButton.small button {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 
@@ -183,7 +193,7 @@ body {
     border: 3vw solid #F63;
 }
 
-.messageBanner, .requires_js_warning { /* TODO: Discontinue the use of require_js_warning and login_prompt and replace with messageBanner */
+.messageBanner, .requires_js_warning {
     background-color: white;
     padding: 1em;
 }
@@ -214,41 +224,43 @@ body {
 }
 
 .headerbutton, .pageheader, .headertitle {
-    height: 2.500em;
+    height: 2.500rem;
 }
 
 .headerbutton {
-    width: 2.500em;
+    width: 2.500rem;
 }
 
 #headgear {
-    background-image: url(/media/settings.png);
-    background-size: contain;
-    background-position: center;
     position: absolute;
     right: 0;
     top: 0;
 }
 
+#headgear {
+    font-size: 2rem;
+}
+
 .pageHeaderUsernameRegion {
     position: absolute;
     top: 0;
-    right: 4rem;
+    right: 2.5rem;
     height: 2.5rem;
     display: flex;
     flex-flow: row wrap;
+    padding: 0 0.5rem;
 }
 
 .pageHeaderUsername {
     margin: auto;
     font-weight: bold;
-    display: none;
+    line-height: 1.5rem;
 }
 
 .headertitle {
     background-image: url(/media/title.png);
     background-repeat: no-repeat;
-    width: 20em;
+    width: 6rem;
     display: block;
 }
 
@@ -274,7 +286,7 @@ body {
     padding: 1em;
     background-color: #DDD;
     cursor: pointer;
-    display: none; /* TODO: Make these sections collapsible */
+    display: none; /* TODO: Make these sections collapsible on mobile */
 }
 
 .page_frame {
@@ -319,12 +331,21 @@ body {
 
 .load_more_button {
     text-align: center;
-    margin: 0 auto;
+    margin: 3vw auto 3vw;
     background: #DDD;
     padding: 0.75em;
     border-radius: 0.25em;
     max-width: 16em;
     display: none; /* Enable on a per-page basis */
+    cursor: pointer;
+}
+
+#header_mentions {
+    display: none;
+}
+
+#header_mentions:hover, #headgear:hover, .pageHeaderUsernameRegion:hover {
+    background-color: rgba(200, 255, 220, 0.8);
 }
 
 @media all and (max-width: 599px) {
@@ -383,6 +404,12 @@ body {
 
 @media all and (min-width: 600px) {
 
+    .headertitle {
+        background-image: url(/media/title.png);
+        background-repeat: no-repeat;
+        width: 20em;
+    }
+
     .pageHeaderUsername {
         display: inline-block;
     }
@@ -397,8 +424,11 @@ body {
         padding: 0;
     }
 
-    .phoneAnalogButton button {
+    .phoneAnalogButton button, .phoneAnalogField input {
         border-width: 0.125rem;
+        height: 3.5rem;
+        border-radius: 1vw;
+        margin: auto;
     }
 
     .phoneAnalogButton {
@@ -454,7 +484,7 @@ body {
         background-repeat: no-repeat;
         cursor: pointer;
         height: 100%;
-        left: 20em;
+        left: 16em;
         padding-left: 1em;
         padding-right: 1em;
         position: absolute;
@@ -475,21 +505,43 @@ body {
         visibility: inherit;
     }
 
-}
-
-@media all and (min-width: 800px) and (max-width: 1024px) {
-    .denseGrid {
-        padding: 0 0 0 1%;
+    #header_mentions {
+        position: absolute;
+        right: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        top: 0;
+        display: flex;
+        flex-flow: row wrap;
     }
 
-    .smallCard {
-        flex: 0 0 19%;
-        margin: 1% 1% 0 0;
+    #header_mentions span {
+        margin: auto;
+        font-size: 1.5rem;
+        width: 2rem;
+        height: 2rem;
+        line-height: 1.825rem;
     }
+
+    .pageHeaderUsernameRegion {
+        right: 5rem;
+    }
+
 }
+
+/*@media all and (min-width: 800px) and (max-width: 1024px) {*/
+    /*.denseGrid {*/
+        /*padding: 0 0 0 1%;*/
+    /*}*/
+
+    /*.smallCard {*/
+        /*flex: 0 0 19%;*/
+        /*margin: 1% 1% 0 0;*/
+    /*}*/
+/*}*/
 
 /* Medium screens */
-@media all and (min-width: 1024px) {
+@media all and (min-width: 800px) {
 
     .phoneAnalog {
         max-width: 24em;
@@ -523,6 +575,10 @@ body {
         flex-wrap: wrap;
         padding: 1rem;
         text-align: center;
+    }
+
+    .phoneAnalogButton button, .phoneAnalogField input {
+        margin: 0 auto;
     }
 
     .phoneAnalogButton.bottom, .phoneAnalogCheckbox.bottom, .phoneAnalogButton.bottomleft, .phoneAnalogCheckbox.bottomleft {

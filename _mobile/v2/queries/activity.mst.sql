@@ -66,4 +66,8 @@ OR
   )
 )
 ORDER BY datetime DESC
-LIMIT {{pageStartIndex}}, {{numPerPage}}
+{% if limitsGiven %}
+LIMIT {{startIndex}}, {{numPerPage}}
+{% else %}
+LIMIT 0, 5
+{% endif %}

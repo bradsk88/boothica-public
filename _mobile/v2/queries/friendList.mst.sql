@@ -17,4 +17,8 @@ WHERE
   )
 ORDER BY
   lastonline DESC
-LIMIT 10;
+{% if limitsGiven %}
+LIMIT {{startIndex}}, {{numPerPage}}
+{% else %}
+LIMIT 0, 5
+{% endif %}

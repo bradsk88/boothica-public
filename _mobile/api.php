@@ -5,7 +5,6 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/content/ContentPage.php");
 error_reporting(0);
 main();
 
-//TODO: Finish the rest of the reference guide
 function main() {
 
 $body =

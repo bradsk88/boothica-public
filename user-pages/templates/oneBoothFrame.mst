@@ -8,7 +8,7 @@
     <div class = "userBoothButtonsRegion">
         <form class = "userBoothButton" action = "{{baseUrl}}/users/{{username}}/">
             <button>
-                Click to go to {{bootherPosessiveDisplayName}} profile
+                Click to go to {{bootherPosessiveDisplayname}} profile
             </button>
         </form>
     </div>
