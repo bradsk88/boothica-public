@@ -7,15 +7,22 @@ $(document).ready(function() {
 });
 
 var loadActivity = function() {
-
-    $("activity_loader").show();
+    var spinner = $("<img/>", {
+        src: "{{baseUrl}}/media/ajax-loader.gif",
+        style: "margin: 0 auto;"
+    });
+    var loader = $("<div/>", {
+        id: "loadmoreajaxloader",
+        html: spinner
+    });
+    $("#activity_feed").append(loader);
 
     loadNotificationsThenActivity();
     $.post("{{baseUrl}}/_mobile/v2/getactivity.php", {
             numperpage: numPerPage
     },
     function(data) {
-        $("activity_loader").hide();
+        loader.remove();
         if (data == null || "undefined" === typeof(data.success)) {
             $("#activity_feed").append("Error contacting server");
             return;
@@ -193,7 +200,15 @@ function enableInfiniteScroll() {
 }
 
 function loadNextActivityPage(onAdditionalPagesAvailableCallback) {
-    $('div#loadmoreajaxloader').show();
+    var spinner = $("<img/>", {
+        src: "{{baseUrl}}/media/ajax-loader.gif",
+        style: "margin: 0 auto;"
+    });
+    var loader = $("<div/>", {
+        id: "loadmoreajaxloader",
+        html: spinner
+    });
+    $("#activity_feed").append(loader);
     $.ajax({
         url: "{{baseUrl}}/_mobile/v2/getactivity.php",
         data: {
@@ -206,7 +221,7 @@ function loadNextActivityPage(onAdditionalPagesAvailableCallback) {
         {
             if (json.success) {
                 page++;
-                $('div#loadmoreajaxloader').hide();
+                $('#loadmoreajaxloader').remove();
                 renderActivityFeed(json);
                 onAdditionalPagesAvailableCallback.call();
             } else if (json.error) {
