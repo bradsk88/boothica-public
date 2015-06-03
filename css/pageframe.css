@@ -318,6 +318,7 @@ body {
     background-color: black;
     color: white;
     text-align: center;
+    position: relative;
 }
 
 .sidebar_title {
@@ -326,7 +327,15 @@ body {
 }
 
 .sidebar_button {
-    padding: 1em;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    margin-top: -0.75rem;
+}
+
+.sidebar_button a {
+    text-decoration: none;
+    color: #000;
 }
 
 .load_more_button {

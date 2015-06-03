@@ -147,6 +147,8 @@ class PageFrame {
             "baseUrl" => base(),
             "firstSidebarTitle" => $this->firstSidebarTitle,
             "lastSidebarTitle" => $this->lastSidebarTitle,
+            "firstSidebarLink" => $this->firstSidebarLink,
+            "lastSidebarLink" => $this->lastSidebarLink,
             "title" => $this->title,
         );
         if (isset($this->bannerMessage)) {
@@ -210,11 +212,11 @@ class PageFrame {
     function useDefaultSideBars() {
 
         if (isset($_SESSION['username'])) {
-            $this->firstSideBar("New Friend Booths", false);
+            $this->firstSideBar("New Friend Booths", false, base()."/friendfeed");
         } else {
             $this->firstSideBar("Random Booths", false);
         }
-        $this->lastSideBar("New Public Booths");
+        $this->lastSideBar("New Public Booths", false, base()."/publicfeed");
     }
 
 }

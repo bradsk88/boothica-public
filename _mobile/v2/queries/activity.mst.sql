@@ -10,10 +10,11 @@ SELECT
   , C.extension AS ext
   , A.datetime as datetime
 
-FROM `activitytbl` Auserfeed
+FROM `activitytbl` A
   LEFT JOIN `commentstbl` C ON A.`fkIndex` = C.`pkCommentNumber`
   LEFT JOIN `boothnumbers` B ON C.`fkNumber` = B.`pkNumber`
-WHERE A.`fkUsername` IN (
+WHERE A.`datetime` > NOW() - INTERVAL 6 MONTH
+AND A.`fkUsername` IN (
   SELECT `fkFriendName`
   FROM `friendstbl`
   WHERE `fkUsername` = "{{username}}"
@@ -88,4 +89,4 @@ LIMIT {{startIndex}}, {{numPerPage}}
 LIMIT 0, 5
 {% endif %}
 
-
+/* TODO: Allow API user to override the 6 month maximum backreach */
