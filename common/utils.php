@@ -197,7 +197,7 @@ function record_ip($type) {
 			('".get_ip_address()."', '".$type."');";
     $result = $dblink->query($sql);
     if (!$result) {
-        sql_death1("Hack report is broken. IP: ".get_ip_address()." TYPE: ".$type);
+        sql_death1("Hack report is broken. IP: ".get_ip_address()." TYPE: ".$type."\n".$sql);
     }
 
 }

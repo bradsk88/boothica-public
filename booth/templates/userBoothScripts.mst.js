@@ -1,11 +1,13 @@
 var baseUrl = "{{baseUrl}}";
 
+numPerPage = 3;
+
 //declare event to run when div is visible
 function loadUserBooths(username){
     $.post(baseUrl + "/_mobile/v2/userfeed.php", {
         boothername: username,
         pagenum: 1,
-        numperpage: 9
+        numperpage: numPerPage
     }, function (data) {
         renderBoothsFromData(data);
     }, "json");
@@ -76,7 +78,8 @@ function loadNextBoothsPage(username, onAdditionalPagesAvailableCallback) {
         url: baseUrl + "/_mobile/v2/userfeed.php",
         data: {
             boothername: username,
-            pagenum: page + 1
+            pagenum: page + 1,
+            numperpage: numPerPage
         },
         type: "POST",
         dataType: "json",

@@ -12,10 +12,11 @@
 <a href = "{{baseUrl}}/activity">
     <div class = "button" id = "backToActivityButton">Back to activity</div>
 </a>
+<!-- TODO Bring this back
 <form action = "{{baseUrl}}/searchresults">
     <div class = "searchForm">
         <input type = "text" name = "q" placeholder = "Search for users..."/><br/>
         <input type = "hidden" name = "scope" value = "user"/>
         <input type = "submit" value = "Search"/>
     </div>
-</form>
+</form>-->

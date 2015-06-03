@@ -1,4 +1,4 @@
-numPerPage = 1;
+numPerPage = 6;
 
 function loadFriendsList(username) {
     $.post("{{baseUrl}}/_mobile/v2/getfriendsof", {
