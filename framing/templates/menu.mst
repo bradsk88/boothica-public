@@ -1,0 +1,9 @@
+<div class = "phoneAnalog">
+    <div class = "phoneAnalogGreeting">
+        Main Menu
+    </div>
+    <form class  = "phoneAnalogButton" action = "{{baseUrl}}/account"><button>Account Settings</button></form>
+    <form class  = "phoneAnalogButton" action = "{{baseUrl}}/users/{{username}}/friends/manage"><button>Friend Requests</button></form>
+    <form class  = "phoneAnalogButton" action = "{{baseUrl}}/pm"><button>Private Messages</button></form>
+    <form class  = "phoneAnalogButton" action= "{{baseUrl}}/dologout" id = "logoutButton"><button>Log Out</button></form>
+</div>

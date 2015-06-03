@@ -1,0 +1,109 @@
+.envelope {
+    height: 6rem;
+    width: 12rem;
+    position: relative;
+    margin: 1rem auto 0;
+}
+
+.envelopeFlap {
+    stroke-width: 4;
+    stroke: #AAA;
+}
+
+.envelopeLine {
+    stroke: #444;
+    stroke-width: 1rem;
+}
+
+.envelopeBorder {
+    stroke-width: 4;
+    stroke: #444;
+    fill: #CCC;
+    background: transparent;
+}
+
+.envelope.alert .envelopeBorder {
+    fill: #FFF;
+}
+
+.waxSeal {
+    height: 4rem;
+    width: 4rem;
+    background-size: cover !important;
+    background-position: center !important;
+    box-shadow: inset 0 0 1.5rem 1rem rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -2rem;
+    margin-top: -2rem;
+    border-radius: 2rem;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.envelope.alert .envelopeFlap {
+    box-shadow: 0 0.5rem 0.25rem rgba(0,0,0,0.25);
+}
+
+.envelope .envelopeFlap {
+    width: 96%;
+    box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
+    background: transparent;
+    border-radius: 0.75rem;
+}
+
+.envelope.alert .envelopeFlap {
+    width: 100%;
+}
+
+.envelope.alert .waxSeal {
+    box-shadow: inset 0 0 0 0.25rem rgba(255, 0, 0, 0.5);
+    -webkit-filter: none;
+    filter: none;
+}
+
+.envelope.alert .envelopeBorder {
+    stroke: #F00;
+}
+
+.envelope.alert .envelopeLine {
+    stroke: #F00;
+}
+
+.privateMessagesRegion {
+    width: 100%;
+}
+
+.privateMessages {
+    margin: 0 auto;
+}
+
+.privateMessageError {
+    margin: 1rem auto;
+    height: 4rem;
+    width: 12rem;
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 0.75rem;
+    text-align: center;
+    background: #FFF;
+    border: 0.25rem solid #F00;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.privateMessageErrorTest {
+    display: inline-block;
+    margin: auto;
+}
+
+.load_more_button {
+    display: inherit;
+}
+
+@media all and (min-width: 800px) {
+    .load_more_button {
+        display: none;
+    }
+}

@@ -9,21 +9,24 @@
 require_once "{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 
-main();
+if (isLoggedIn()) {
+    main();
+} else {
+    require_page("LoginPage");
+    $page = new LoginPage();
+    echo $page->render();
+}
 
 function main() {
 
     $root = base();
-
-    $html = <<<EOT
-    <div class = "mainMenuButtonsRegion">
-    <a href = "$root/account"><div class = "mainMenuButton">Account Settings</div></a>
-    <a href = "$root/dologout"><div class = "mainMenuButton">Log Out</div></a>
-    </div>
-EOT;
+    $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/menu.mst");
 
     $page = new PageFrame();
-    $page->body($html);
+    $page->body($htmlBuilder->render(array(
+        "baseURl" => $root,
+        "username" => $_SESSION['username']
+    )));
     $page->css($root."/css/menu.css");
     $page->echoHtml();
 

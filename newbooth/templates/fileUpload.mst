@@ -1,0 +1,43 @@
+<div class = "phoneAnalog" id = "newBoothRegion">
+    <div class = "newBooth">
+        <div class = "phoneAnalogGreeting">
+            Upload Booth
+        </div>
+    <div class = "fileUploadPreviewRegion" id = "preview_region"></div>
+    <form id = "uploadform" method = null>
+        <div id = "fileselectsection" style = "position: absolute; opacity: 0; z-index: -1; width: 0px; height: 0px;">
+        <input type="file" name="file" id="hidden_file_selector" onchange = "showPreviewAuto(this.files, false)" />
+        </div>
+        <div id = "buttonspot" class = "phoneAnalogButton">
+        </div>
+        <div class = "fileUploadButtonsRegion">
+            <div class = "fileUploadButtons">
+                <input type = "radio" name = "rotation" id = "0" value = 0 checked />
+                <label class = "rotation selected" for="0"><h1>0&deg;</h1></label>
+                <input type = "radio" name = "rotation" id = "90"  value = 90 />
+                <label class = "rotation" for="90"><h1>90&deg;</h1></label>
+                <input type = "radio" name = "rotation" id = "180"  value = 180 />
+                <label class = "rotation" for="180"><h1>180&deg;</h1></label>
+                <input type = "radio" name = "rotation" id = "270"  value = 270 />
+                <label class = "rotation" for="270"><h1>270&deg;</h1></label>
+            </div>
+        </div>
+        <textarea class = 'newBoothBlurb' id = "blurb" name='blurb' placeholder='Write a blurb to go with this picture'></textarea><br />
+        <progress id = "progress" max="100" value="0" style = "width: 100%">
+        </progress>
+        <div class = "phoneAnalogButton" id = "submit_button_region">
+            <button type = "button" id = 'submit_button' disabled="disabled">
+                Upload Booth
+            </button>
+        </div>
+    </form>
+    </div>
+</div>
+
+<form action = "{{baseUrl}}/newbooth">
+    <div class = "phoneAnalogButton floating" id = "upload_button">
+        <button>
+            Upload from webcam instead
+        </button>
+    </div>
+</form>

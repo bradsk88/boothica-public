@@ -24,8 +24,7 @@ require_common("cookies");
 require_common("utils");
 require_lib("h2o-php/h2o");
 
-// TODO: set error reporting to 0
-error_reporting(E_ALL);
+error_reporting(0);
 if (isset($_SESSION['username']) && $_SESSION['username'] == 'bradsk88') {
     error_reporting(E_ERROR);
 }
@@ -36,20 +35,22 @@ class PageFrame {
     private $metaRawScripts = array();
     private $metaCss = array();
     private $metaRemoteCss = array();
-    private $notificationRegion = null;
+    protected  $notificationRegion = null;
     private $excludeLoginNotification = false;
     private $body;
-    private $firstSidebarTitle = "";
+    private $title = "Boothi.ca - Take a picture every day and make friends";
+    private $firstSidebarTitle = null;
     private $firstSidebarCollapsed = false;
     private $firstSidebarLink = null;
-    private $lastSidebarTitle = "";
+    private $lastSidebarTitle = null;
     private $lastSidebarCollapsed = false;
     private $lastSidebarLink = null;
+    private $availableWhenSiteDown = false;
 
-    function __construct() {
+    public function __construct($available=false) {
+        $this->availableWhenSiteDown = $available;
         $this->includeJQuery();
         $this->initialMeta();
-        $this->script(base()."/common/navigation-scripts.js?version=0.1");
     }
 
     function body($html) {
@@ -70,6 +71,10 @@ class PageFrame {
 
     public function script($absoluteUrl) {
         $this->metaScripts[] = $absoluteUrl;
+    }
+
+    public function title($title) {
+        $this->title = $title;
     }
 
     public function rawScript($fullyTaggedScript) {
@@ -93,30 +98,41 @@ class PageFrame {
     }
 
     function render() {
-        if (!isset($_SESSION)) session_start();
         $this->setErrorReporting();
-        $link = connect_boothDB();
-        if (!$link) {
+        $dblink = connect_boothDB();
+        if (!$dblink) {
             die ("<script type = 'text/javascript'>document.write('There was a problem connecting to the database.  Probably the server just went down :(<p>Please try again in a few minutes.');</script></head></html>");
         }
 
         //session not started, check for remembrance cookie
-        if (!isset($_SESSION['username'])) {
+        if (!isLoggedIn()) {
             if (isset($_COOKIE['userid']) && cookie_set() == 0) {
                 echo "Reloading. (This site requires JavaScript)";
                 echo "<script>parent.window.location.reload(true);</script>";
                 return;
             } else if (!$this->excludeLoginNotification ) {
            	    $this->notificationRegion = '
-                <a href = "$baseUrl/login">
-                    <div class = "login_prompt">Please log in</div>
-                </a>';
-   	    }
-	}
+           	    <div class = "messageBanner">
+                <a href = "'.base().'/login">
+                    Please log in
+                </a>
+                </div>';
+            }
+        }
 
-        $headerlink = "/info/news";
+        $headerlink = "/";
         if (isset($_SESSION['username'])) {
             $headerlink = "/activity";
+        }
+
+        if ($this->availableWhenSiteDown == false) {
+            if (doesSiteAppearDown()) {
+                $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/siteDown.mst");
+                unset($_SESSION);
+                return $page->render(array(
+                    "baseUrl" => base()
+                ));
+            }
         }
 
         $data = array(
@@ -130,10 +146,36 @@ class PageFrame {
             "headerlink" => $headerlink,
             "baseUrl" => base(),
             "firstSidebarTitle" => $this->firstSidebarTitle,
-            "lastSidebarTitle" => $this->lastSidebarTitle
+            "lastSidebarTitle" => $this->lastSidebarTitle,
+            "title" => $this->title,
         );
+        if (isset($this->bannerMessage)) {
+            $data['message'] = $this->bannerMessage;
+        }
+        if (isset($_SESSION['username'])) {
+            $data["username"] = $_SESSION['username'];
+            $data["userDisplayName"] = getDisplayName($_SESSION['username']);
+        }
         $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/pageFrame.mst");
         return $page->render($data);
+    }
+
+    function loadPublicSidebarsContent() {
+        if (isLoggedIn()) {
+            $this->rawScript("<script type = \"text/javascript\">
+            $(document).ready(function() {
+                loadNewFriendsBooths();
+                loadPublicBooths();
+            });
+        </script>");
+        } else {
+            $this->rawScript("<script type = \"text/javascript\">
+            $(document).ready(function() {
+                loadRandomBooths();
+                loadPublicBooths();
+            });
+        </script>");
+        }
     }
 
     private function includeJQuery()
@@ -147,30 +189,15 @@ class PageFrame {
         if (isset($_SESSION['username']) && $_SESSION['username'] == "bradsk88") {
             error_reporting(E_ALL);
         } else {
-            //TODO: lower this
-            error_reporting(E_ALL);
+            error_reporting(0);
         }
     }
 
-    public function setBodyTemplateAndValues($file, $values)
+    public function setBodyTemplateAndValues($file, $values=array())
     {
         $h2o = new h2o($file);
         $html = $h2o->render(array_merge($values, array("baseUrl" => base(), "baseUrlWithoutProtocol" => baseWithoutProtocol())));
         $this->body($html);
-    }
-
-    private function footer() {
-        //TODO: Bring this back
-        return "";
-//        return "
-//        <div class = 'subheader' id = 'bottomlinks'>
-//            <a href = '".base()."/info/news'><span class = 'subheadernavbutton'>News</span></a>
-//            <a href = '".base()."/info/rules'><span class = 'subheadernavbutton'>Site Rules</span></a>
-//            <a href = '".base()."/info/contact'><span class = 'subheadernavbutton'>Contact</span></a>
-//            <a href = '".base()."/info/reportform?type=bug'><span class = 'subheadernavbutton'>Report Bug</span></a>
-//            <a href = '".base()."/info/reportform?type=feat'><span class = 'subheadernavbutton'>Request Feature</span></a>
-//            <a href = '".base()."/info/mission'><span class = 'subheadernavbutton'>Mission Statement</span></a>
-//        </div>";
     }
 
     private function initialMeta()

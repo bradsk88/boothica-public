@@ -6,12 +6,23 @@
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/universal_utils.php";
 
+function doesSiteAppearDown() {
+    if (isLoggedIn() && $_SESSION['username'] == 'bradsk88') {  # TODO: Don't just use Brad.
+        return false;
+    }
+    return false; # toggle this to shut down the site
+}
+
 function base() {
     return "http://".baseWithoutProtocol();
 }
 
 function baseWithoutProtocol() {
-    return "localhost";
+    return "boothi.ca";
+}
+
+function basePretty() {
+    return "Boothi.ca";
 }
 
 function require_common( $asset ) {
@@ -43,5 +54,8 @@ function include_error( $page ) {
 }
 
 function isLoggedIn() {
-    return isset($_SESSION['username']);
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    return isset($_SESSION['username']) && strlen(trim($_SESSION['username'])) > 0;
 }

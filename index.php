@@ -47,11 +47,8 @@ class IndexPage
         $page->css($root ."/css/posts.css");
         $page->css($root ."/css/login.css");
         $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");
-        $page->rawScript("<script type = \"text/javascript\">
-            loadRandomBooths();
-            loadPublicBooths();
-        </script>");
-
+        $page->loadPublicSidebarsContent();
+        $page->excludeLoginNotification();
         $page->echoHtml();
 
     }

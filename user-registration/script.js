@@ -38,7 +38,7 @@ $(document).ready(function() {
                 obj['e' + type + fn] = fn;
                 obj[type + fn] = function () {
                     obj['e' + type + fn](window.event);
-                }
+                };
                 obj.attachEvent('on' + type, obj[type + fn]);
             } else {
                 obj.addEventListener(type, fn, false);
@@ -51,22 +51,17 @@ $(document).ready(function() {
         // events that are triggered onCapture and onSave (for the fallback)
         // and so on.
         options: {
-            "audio": false, //OTHERWISE FF nightlxy throws an NOT IMPLEMENTED error
+            "audio": false, //OTHERWISE FF nightly throws an NOT IMPLEMENTED error
             "video": true,
             el: "webcam",
 
             extern: null,
             append: true,
-
-            // noFallback:true, use if you don't require a fallback
-
-            width: 320,
-            height: 240,
-
+            width: 640,
+            height: 480,
             mode: "callback",
-            // callback | save | stream
             swffile: "../dist/fallback/jscam_canvas_only.swf", //TODO: download this
-            quality: 85,
+            quality: 100,
             context: "",
 
             debug: function () {},

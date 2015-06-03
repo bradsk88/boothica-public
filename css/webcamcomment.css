@@ -1,0 +1,15 @@
+.phoneAnalog.commentSnap {
+    background: #DDD;
+    border-left: 2px solid #F00;
+    border-right: 2px solid #F00;
+}
+
+.commentSnap .phoneAnalogButton, .commentSnap .newBoothFinishButtonsRegion {
+    border-color: #AAA;
+}
+
+.commentSnap .phoneAnalogButton button {
+    border-color: #F00;
+}
+
+

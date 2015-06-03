@@ -23,16 +23,26 @@ function getBoothOwner($number) {
 }
 
 function isAllowedToInteractWithBooth($username, $boothnum) {
+
     if (isBanned($username)) {
         return false;
     }
     if (isSuspended($username)) {
         return false;
     }
-    if (isBoothPublic($boothnum)) {
+    $boothowner = getBoothOwner($boothnum);
+    if (doesUserAppearPrivate($boothowner)) {
+        return false;
+    }
+    return true;
+}
+
+function isAllowedToDeleteBooth($username, $boothnum) {
+    if (isModerator($username)) {
         return true;
     }
-    if (isFriendOf($username, getBoothOwner($boothnum))) {
+    $boothowner = getBoothOwner($boothnum);
+    if ($boothowner == $username) {
         return true;
     }
     return false;

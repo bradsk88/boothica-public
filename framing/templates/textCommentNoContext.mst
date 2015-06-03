@@ -1,7 +1,7 @@
 <div class="textCommentRegionNoContext">
     <div class="textCommentImageRegionNoContext">
         <a href={{baseUrl}}/users/{{username}}>
-            <img src="{{imageUrl}}" class="textCommentImageNoContext"/>
+            <img src="{{iconUrl}}" class="textCommentImageNoContext"/>
         </a>
     </div>
     <div class="textCommentUsernameRegionNoContext">
@@ -16,12 +16,32 @@
             {{{text}}}
         </div>
     </div>
-    <div class="textCommentButtonsRegionNoContext">
-        <div class="textCommentLikeButtonRegionNoContext">
-            <div class = "textCommentLikeButtonNoContext" id = "commentLikeButton">Like</div>
+    {{#hasLikes}}
+    <div class = "commentLikesCountRegion" id = "comment_{{commentNumber}}_likes_count_region">
+        <div class = "commentLikesCountNumber" id = "comment_{{commentNumber}}_likes_count">
+            {{likes}} likes
         </div>
-        <div class="textCommentDeleteButtonRegionNoContext">
-            <div class = "textCommentDeleteButtonNoContext" id = "commentDeleteButton">Delete</div>
+    </div>
+    {{/hasLikes}}
+    <div class="textCommentButtonsRegionNoContext">
+        <form class="userBoothButton" action = "{{baseUrl}}/comments/{{commentNumber}}/like" method = "POST">
+        {{#selfUrl}}
+            <input type = "hidden" name = "nextUrl" id = "nextUrl" value = "{{selfUrl}}"/>
+        {{/selfUrl}}
+            <button type = "submit" id = "comment_like_button">Like Comment</button>
+        </form>
+        {{#canDelete}}
+        <form class="userBoothButton" action = "{{baseUrl}}/comments/{{commentNumber}}/delete" method = "POST">
+            {{#selfUrl}}
+                <input type = "hidden" name = "nextUrl" id = "nextUrl" value = "{{selfUrl}}"/>
+            {{/selfUrl}}
+            <button type = "submit" id = "comment_delete_button">Delete</button>
+        </form>
+        {{/canDelete}}
+    </div>
+    <div class = "textCommentDateTimeRegionNoContext">
+        <div class = "textCommentDateTimeNoContext">
+            {{commentDatetime}}
         </div>
     </div>
 </div>

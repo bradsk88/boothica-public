@@ -9,7 +9,6 @@
 require_once "{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php";
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 
-//TODO: Lower error level
 error_reporting(0);
 if (!isset($_SESSION['username'])) session_start();
 main();

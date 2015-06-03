@@ -2,6 +2,11 @@
     display: flex;
     flex-flow: row wrap;
     height: auto;
+    background: #FFF;
+    max-width: 40rem;
+    margin: 0.5rem auto 0;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0 0;
 }
 
 .bootherConsolePhotoRegion, .bootherConsoleNameRegion {
@@ -16,6 +21,7 @@
 
 .bootherConsolePhotoResource {
     object-fit: cover;
+    border-radius: 0.25rem;
 }
 
 .bootherConsoleNameRegion {
@@ -32,30 +38,48 @@
     flex: 1 100%;
 }
 
-.bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
+.bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion, .bootherConsoleMentionsRegion {
     display: flex;
     width: 100%;
     min-height: 4em;
 }
 
+.bootherConsoleListFriendsButton, .bootherConsoleFriendRequestButton, .bootherConsolePrivateMessageButton, .bootherConsoleMentionsButton {
+    text-align: center;
+    width: 100%;
+    color: #000;
+}
+
+.bootherConsoleButtons a {
+    text-decoration: none;
+}
+
 @media all and (max-width: 1024px) {
-    .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
+    .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion, .bootherConsoleMentionsRegion {
         border-top: 1px solid #DDD;
         border-bottom: 1px solid #BBB;
         margin: 1em 0;
     }
 
-    .bootherConsoleFriendRequestButton, .bootherConsolePrivateMessageButton, .bootherConsoleListFriendsButton {
+    .bootherConsoleFriendRequestButton, .bootherConsolePrivateMessageButton, .bootherConsoleListFriendsButton, .bootherConsoleMentionsButton {
         margin: auto;
     }
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 600px) {
+    #mentions_console_button {
+        display: none;
+    }
+}
+
+@media all and (min-width: 800px) {
 
     .bootherConsole {
         height: 6em;
         background-color: #FFF;
-        padding: 1em 3em;
+        padding: 1em 1em;
+        margin: 0.5rem auto 0;
+        border-radius: 0.25rem;
     }
 
     .bootherConsoleFriendRequestRegion, .bootherConsolePrivateMessageRegion, .bootherConsoleListFriendsRegion {
@@ -84,5 +108,11 @@
 
     .bootherConsoleNameRegion {
         flex: 1 1 auto;
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .bootherConsole {
+        padding: 1em 3em;
     }
 }

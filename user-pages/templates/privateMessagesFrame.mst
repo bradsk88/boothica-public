@@ -1,0 +1,4 @@
+<div class = "privateMessagesRegion">
+    <div class = "privateMessages" id = "private_messages">
+    </div>
+</div>

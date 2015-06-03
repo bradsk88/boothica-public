@@ -1,370 +1,213 @@
-.widebooth {
-    width: 100%;
-    position: relative;
+#booth_buttons {
+    visibility: hidden;
+    border-bottom: 1px solid #000;
+    padding: 0 0 2vw;
 }
 
-.wideboothdatestamp {
-    position: absolute;
-    bottom: 1em;
-    right: 1em;
-    color: rgba(255, 180, 100, 1);
-    font-family: 'Digital';
-    font-weight: bold;
-    text-shadow: 0 0 0.25em rgba(255, 0, 0, 0.75);
-    transform: rotate(0.5deg);
-    font-size: 75%;
-        
+#user_booth_likes_region {
+    display: none;
 }
 
-.wideboothtext {
-    font-size: 1em;
-    width: 100%;
-    padding: 1em;
+.userBoothButtonsRegion {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    background: #FFF;
 }
 
-.wideboothpad {
-    height: 1em;
-    width: 100%;
+.userBoothButton {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    flex-basis: 0;
+    margin: 1vw;
 }
 
-.blurbedit {
-    width: 100%;
-	height: 24em;
-    border: 1;
-    resize: vertical;
-    padding: 1em 4em 0 4em;
+.userBoothLikes {
+    display: flex;
+    flex-flow: row;
+    overflow: hidden;
+    border-bottom: 1px solid #000;
+    margin-bottom: 1rem;
+    border-top: 1px solid #000;
+    margin-top: 1rem;
+    justify-content: flex-end;
 }
 
-.wideboothcell {
-    padding-top: 0.500em;
-    display: inline-block;
-    width: 100%;
-    position: relative;
+.userBoothComments a {
+    text-decoration: none;
+    color: #000;
 }
 
-.wideboothcell-tall {
-    width: auto;
-    margin-left: 4em;
-    margin-right: 4em;
-    position: relative;
+.likeUserImageRegion {
+    width: 16vw;
+    height: 16vw;
+    max-width: 16vw;
+    max-height: 16vw;
+    padding: 2vw 2vw 2vw 0;
+    font-size: 4vw;
+    overflow: hidden;
 }
 
-.wideboothimg {
-    border-top-left-radius: 1.250em;
+.userBoothLikesCountRegion {
+    display: flex;
+    flex-flow: column;
+    border: 1px solid #000;
+    margin: 2vw;
+    width: 16vw;
+    height: 16vw;
+    max-width: 16vw;
+    max-height: 16vw;
+    font-size: 4vw;
+    box-sizing: border-box;
+    box-shadow: 0.125rem 0.125rem 0.5rem rgba(0,0,0,0.125);
 }
 
-.wideboothbuttons {
-    width: 100%;
-    height: 2.25em;
-    border-bottom-right-radius: 2em;
-    box-shadow: 0 -20px 2em rgba(0, 100, 80, 0.2);
-}
-
-.wideboothbuttonshalf {
-    position: relative;
-    width: 50%;
-    float: left;
-    cursor: default;
-}
-
-.wideboothbuttonslefthalf {
-    text-align: left;
-    padding-left: 1em;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
-}
-
-.boothbutton {
-    min-width: 6em;
-    float: right;
-    height: 2em;
+.userBoothLikesCountNumber {
+    height: 3.5rem;
+    width: 16vw;
+    max-width: 16vw;
+    max-height: 16vw;
+    font-size: 10vw;
+    margin: 0 auto;
     text-align: center;
-    cursor: pointer;
+    display: inline-block;
 }
 
-.navbuttons {
-    align-content: center;
-    width: 30em;
+#like_count_label {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1.5vw;
 }
 
-.navbuttonright, .navbuttonleft, .navbuttoncenter, .navbutton {
-    float: left;
-    width: 4em;
+.likeUserImageRegion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0.125rem 0.125rem 0.5rem rgba(0,0,0,0.125);
+    box-sizing: border-box;
+    border: 1px solid #000;
 }
 
-.navbutton {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-
-.navbuttoncenter {
-    width: 10em;
-}
-
-.navbuttonleft, .navbuttonright {
-    width: 6em;
-}
-
-.navbuttonright {
-    border-right: 0.050em solid #DDDDDD;
-    border-bottom-right-radius: 1.250em;
-}
-
-.navbuttonleft {
-    border-bottom-left-radius: 1.250em;
-}
-
-.boothcommenterimage, .boothcommenterimagesmall {
-    border-radius: 2.000em;
-    z-index: 501;
-    background-position: top;
-    background-size: cover;
-    border-left: 0.175em solid white;
-    border-bottom: 0.175em solid white;
-    box-shadow: inset 0px 2px 4px #000;
-    position: absolute;
+.userBoothButton button {
+    width: 100%;
+    padding: 2vw 0;
+    background: #FFF;
+    border: 1px solid #000;
+    margin: 0 0 0vw 0;
     cursor: pointer;
 }
 
-.boothcommenterimagesmall {
-    height: 1em;
-    width: 1em;
-}
-
-.boothcommenterimage {
-    height: 4.000em;
-    width: 4.000em;
-    top: 0.5em;
-}
-
-.boothcommenterimageuploaded {
-    width: 16em;
-    background-size: cover;
-    top: 0.5em;
-    position: absolute;
-    border-radius: 1em;
-    margin-top: 1em;
-}
-
-.boothcommentername {
-    position: absolute;
-    top: 0px;
-    left: 5em;
-    background-color: #FFF;
-    padding: 0.75em 0.75em 0.25em;
-    border-radius: 0.5em;
-    cursor: pointer;
-}
-
-.boothlikes {
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.secondcommentbutton {
-    right: 6em !important;
-}
-
-.boothcommentlike {
+.userBoothButton button:disabled {
+    color: rgba(0,0,0,0.5);
+    border-color: rgba(0,0,0,0.5);
     cursor: default;
-    font-size: 70%;
 }
 
-.boothcomments {
-    width: 100%;
-    border-bottom: none;
-}
-
-#boothcomments {
-    padding-top: 0em;
-}
-
-.boothcommenttext, .boothcommenttextwithimage {
-    padding: 0.5em;
-    margin-top: 1.75em;
-}
-
-.boothcommenttext {
-    margin-left: 5em;
-}
-
-
-.boothcommenttime {
-    position: absolute;
-    font-size: 60%;
-    top: 2em;
-    right: 1.5em;
-}
-
-.boothcommenttextwithimage {
-    margin-left: 16em;
-}
-
-.boothcommenttextbg {
-    background-color: #DEF7F2;
-    border-radius: 0.5em;
-    padding: 0.5em 0.5em 1em;
-}
-
-.boothcommentrightside {
-    position: absolute;
-    top: 0;
-    left: 5em;
-}
-
-.boothcommentbuttons {
-    width: 100%;
-    height: 1em;
-    position: relative;
-}
-
-.boothcommentbutton, .boothcommentlikebutton {
-    font-size: 0.75em;
-    position: absolute;
-    right: 0.8em;
-    top: 0;
-    margin-top: -0.8em;
-    background-color: #FFF;
-    border-left: 0.2em solid #DEF7F2;
-    border-right: 0.2em solid #DEF7F2;
-    border-bottom: 0.2em solid #ABA;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    border-bottom-left-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
-    cursor: pointer;
-    min-width: 3.2em;
-    text-align: center;
-}
-
-.boothcommentlikebutton {
-    border-bottom: 0.2em solid #6bdbb3;
-}
-
-.boothcommenterlikes, .boothcommenterlikeswithupload {
-    border: 0.3em solid #6BDBB3;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 1em;
-    padding: 0.2em;
-    width: 0.75em;
-    height: 0.75em;
-    line-height: 0.75em;
-    position: absolute;
-    background-color: #FFF;
-    z-index: 900;
-    top: 3em;
-}
-
-.boothlikewrap {
-    border: 0.3em solid #6BDBB3;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 1em;
-    padding: 0.2em;
-    width: 0.75em;
-    height: 0.75em;
-    line-height: 0.75em;
-    position: absolute;
-    background-color: #FFF;
-    z-index: 900;
-    top: -0.3em;
-    right: 0;
-}
-
-.boothlike {
-    font-size: 70%;
-}
-
-.boothlikeslabel {
-    position: absolute;
-    right: 2em;
-    top: 0;
-}
-
-.boothcommenterlikes {
-    left: 3em;
-}
-
-.boothcommenterlikeswithupload {
-    left: 14em;
-}
-
-.boothcommenterlikeseffect, .boothcommenterlikeseffectwithupload {
-    position: absolute;
-    width: 3em;
-    height: 3em;
-    background-color: #2F2;
-    border-radius: 3em;
-    display: none;
-    top: 2.4em;
-}
-
-.boothcommenterlikeseffect {
-    left: 2.4em;
-}
-
-.bootheffect {
-    position: absolute;
-    background-color: #2F2;
-    border-radius: 3em;
-    display: none;
-    width: 6em;
-    height: 6em;
-    top: -2.5em;
-    right: -2.25em;
-}
-
-.boothcommenterlikeseffectwithupload {
-    left: 13.4em;
-}
-
-/* Desktop */
-@media screen and (min-width: 1440px) {
-    .narrowboothtextwrapper, .wideboothtext {
-        font-size: 1.0em; 
-	}	
-	
-	.narrowboothtextwrapper  { 
-		height: 6em;
-		overflow: hidden;
-		position: relative;
-	}	
-	
-	.narrowbooth-text {
-        font-size: 1.0em;
-		position: absolute;
-		overflow: hidden;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
-	
-	.narrowboothtextwrapper {
-		font-size: 1.0em;
-		height: 6em;
-		position: relative;
-		overflow: hidden;
-	}
-	
-	.narrowbooth-textshadow {
-		background: linear-gradient( 0deg, rgba(255,255,255,1), rgba(255,255,255,0), rgba(255,255,255,0) );
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
-	
-    .widebooth {
-        width: auto;
-        margin-left: 4em;
-        margin-right: 4em;
+@media all and (min-width: 400px) {
+    .likeUserImageRegion {
+        width: 12vw;
+        height: 12vw;
+        padding: 1vw;
+        font-size: 2vw;
     }
 
+    .userBoothLikesCountRegion {
+        width: 12vw;
+        height: 12vw;
+        padding: 0;
+        font-size: 3vw;
+    }
+
+    .userBoothLikesCountRegion {
+        margin: 1vw;
+    }
+
+    .userBoothLikesCountNumber {
+        width: 10vw;
+        max-width: 10vw;
+        font-size: 8vw;
+    }
+}
+
+@media all and (min-width: 500px) {
+    .likeUserImageRegion {
+        width: 10vw;
+        height: 10vw;
+        padding: 1vw;
+        font-size: 2vw;
+    }
+
+    .userBoothLikesCountRegion {
+        width: 10vw;
+        height: 10vw;
+        padding: 0;
+        font-size: 2.5vw;
+    }
+
+    .userBoothLikesCountRegion {
+        margin: 1vw;
+    }
+
+    .userBoothLikesCountNumber {
+        width: 10vw;
+        max-width: 10vw;
+        font-size: 6.5vw;
+    
+}
+}
+
+@media all and (min-width: 600px) {
+
+    .userBoothButton {
+        margin: 0.25rem 2rem;
+    }
+
+    .userBoothButton button {
+        padding: 0.5rem 0;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
+        border: none;
+    }
+
+    .userBoothButtonsRegion {
+        margin: 0;
+        background: transparent;
+    }
+
+    .likeUserImageRegion {
+        width: 3rem;
+        height: 3rem;
+        padding: 0.5rem 0.5rem 0.5rem 0;
+    }
+
+    .userBoothLikesCountRegion  {
+        width: 3rem;
+        height: 3rem;
+        padding: 0rem;
+        margin: 0.5rem;
+    }
+
+    .userBoothLikesCountNumber {
+        width: auto;
+        max-width: inherit;
+    }
+
+    .userBoothLikesCountNumber {
+        height: 3.5rem;
+        font-size: 1.75rem;
+    
+        margin-left: auto;
+        margin-right: auto;
+        width: 2.5rem;
+        overflow: hidden;
+        text-align: center;
+}
+
+    #like_count_label {
+        bottom: 0.25rem;
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
 }

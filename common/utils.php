@@ -15,7 +15,7 @@
 // }
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
-require_asset('DisplayName'); require_asset('UserIcon');
+require_asset('DisplayName');
 require_common('db');
 require_common('db_auth');
 
@@ -90,26 +90,6 @@ function go_to_and_post($relativepage, $vars, $fallbackmessage) {
 
 }
 
-function go_to_404() {
-
-    echo "<script = 'text/javascript'>location.href='/errors/404page';</script>";
-
-}
-
-function go_to_login() {
-    echo "<script = 'text/javascript'>location.href='/errors/loginpage';</script>";
-}
-
-function go_to_banned() {
-    echo "<script = 'text/javascript'>location.href='/errors/bannedpage';</script>";
-}
-
-function go_to_suspended() {
-
-    echo "<script = 'text/javascript'>location.href='/errors/suspendedpage';</script>";
-
-}
-
 function go_to_unexpected_error() {
 
     if (isset($down) && $down) {
@@ -121,13 +101,13 @@ function go_to_unexpected_error() {
 
 function go_to_db_error($sql) {
     if (isset($down) && $down) {
-        echo(mysql_error($sql));
+        echo(sql_error($sql));
         return;
     }
     if (isset($_SESSION['username']) && isModerator($_SESSION['username'])) {
         go_to_error($sql);
     } else {
-        go_to_error(mysql_death1($sql));
+        go_to_error(sql_death1($sql));
     }
 }
 
@@ -146,8 +126,6 @@ function go_to_error($msg) {
 include("{$_SERVER['DOCUMENT_ROOT']}/utils/devlist.php");
 
 function mysql_death2($link,$sql) {
-    //TODO: Re-enable
-    return;
     $usern = "not logged in";
     if (isset($_SESSION['username'])) {
         $usern = $_SESSION['username'];
@@ -169,32 +147,6 @@ function mysql_deathm($sql, $msg) {
     }
     foreach (getDevs() as $dev) {
         error_log("You are receiving this because you are on the developers list\n\n"."MySQL Death\nUsername at time of death: ".$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \n".mysql_error()."\n".$sql."\n".$msg."\n\n".get_ip_address(), 1, $dev);
-    }
-    return "Database error.";
-}
-
-function mysql_death1($sql) {
-    //TODO: Re-enable
-    return;
-    if (isset($down) && $down) {
-        echo(mysql_error($sql));
-        return "Site is down";
-    }
-    $usern = "not logged in";
-    if (isset($_SESSION['username'])) {
-        $usern = $_SESSION['username'];
-    }
-    ob_start();
-    debug_print_backtrace();
-    $trace = ob_get_clean();
-    $old_error = mysql_error();
-    if (isset($link)) {
-        $new_error = mysqli_errno($link).": ".mysqli_error($link);
-    }
-
-    foreach (getDevs() as $dev) {
-        error_log("You are receiving this because you are on the developers list\n\n"."MySQL Death\nUsername at time of death: "
-            .$usern."\nRequest page: ".$_SERVER['REQUEST_URI']."\nScript page: ".__FILE__.": \nMySQL ".$old_error."\nMySQLi ".$new_error."\n\nSQL:".$sql.get_ip_address()."\n\n".$trace, 1, $dev);
     }
     return "Database error.";
 }
@@ -245,7 +197,7 @@ function record_ip($type) {
 			('".get_ip_address()."', '".$type."');";
     $result = $dblink->query($sql);
     if (!$result) {
-        sql_death1("Hack report is broken. IP: ".get_ip_address()." TYPE: ".$type);
+        sql_death1("Hack report is broken. IP: ".get_ip_address()." TYPE: ".$type."\n".$sql);
     }
 
 }
@@ -267,37 +219,58 @@ function getDisplayName($username) {
     return new DisplayName($username);
 }
 
-function isPublic($username) {
+function getPossessiveDisplayName($username) {
+    $name = getDisplayName($username);
+    if ('s' == substr($name, -1)) {
+        return $name."'";
+    }
+    return $name."'s";
+}
 
-    $sql = "SELECT
-			`username`,
-			`password`
-			FROM `logintbl`
-			WHERE `username` = '".$username."'
-			LIMIT 1;";
-    $dblink = connect_boothDB();
-    $result = $dblink->query($sql);
-    if (!$result) {
-        sql_death1($sql);
+function doesUserAppearPrivate($username) {
+    if (isPrivate($username)) {
+        if (isLoggedIn()) {
+            if ($_SESSION['username'] == $username) {
+                return false;
+            }
+            return !isFriendOf($_SESSION['username'], $username);
+        }
+        return true;
+    }
+    if (isPublic($username)) {
         return false;
     }
+    if (isSemiPublic($username)) {
+        if (isLoggedIn()) {
+            return false;
+        }
+    }
+    return true;
+}
 
-    $loginarray= $result->fetch_array();
-    $passwordhash = $loginarray['password'];
+function isPublic($username) {
 
-    $sql = "SELECT `fkPassword`
-			FROM `userspublictbl`
+    $dblink = connect_boothDB();
+    $sql = "SELECT `privacyDescriptor`
+			FROM `usersprivacytbl`
 			WHERE `fkUsername` = '" . $username . "'
-			LIMIT 1;";
+			LIMIT 2;";
     $result2 = $dblink->query($sql);
     if (!$result2) {
         sql_death1($sql);
         return false;
     }
-    $numrows = $result->num_rows;
+    $numrows = $result2->num_rows;
     if ($numrows == 1) {
-        $publichasharray = $result2->fetch_array();
-        $publichash = $publichasharray['fkPassword'];
+
+        $row = $result2->fetch_array();
+
+        if ($row['privacyDescriptor'] == 'public') {
+            return true;
+        }
+
+        return false;
+
     } else {
         if ($result2->num_rows > 1) {
             record_ip('".$commentername.": muliple entries in public table');
@@ -305,11 +278,72 @@ function isPublic($username) {
         return false;
     }
 
-    if ( $publichash == $passwordhash) {
+}
+
+function isPrivate($username) {
+    $dblink = connect_boothDB();
+    $sql = "SELECT `privacyDescriptor`
+			FROM `usersprivacytbl`
+			WHERE `fkUsername` = '" . $username . "'
+			LIMIT 2;";
+    $result2 = $dblink->query($sql);
+    if (!$result2) {
+        sql_death1($sql);
+        return false;
+    }
+    $numrows = $result2->num_rows;
+    if ($numrows == 1) {
+
+        $row = $result2->fetch_array();
+
+        // Accounts are assumed to be private unless there is strong evidence otherwise
+
+        if ($row['privacyDescriptor'] == 'semi-public' && isset($_SESSION['username'])) {
+            return false;
+        }
+
+        if ($row['privacyDescriptor'] == 'public') {
+            return false;
+        }
+
+        return true;
+
+    } else {
+        if ($result2->num_rows > 1) {
+            record_ip('".$commentername.": muliple entries in public table');
+        }
         return true;
     }
-    return false;
+}
 
+function isSemiPublic($username) {
+    $dblink = connect_boothDB();
+    $sql = "SELECT `privacyDescriptor`
+			FROM `usersprivacytbl`
+			WHERE `fkUsername` = '" . $username . "'
+			LIMIT 2;";
+    $result2 = $dblink->query($sql);
+    if (!$result2) {
+        sql_death1($sql);
+        return false;
+    }
+    $numrows = $result2->num_rows;
+    if ($numrows == 1) {
+
+        $row = $result2->fetch_array();
+
+        if ($row['privacyDescriptor'] == 'semi-public') {
+            return true;
+        }
+
+        return false;
+
+    } else {
+        if ($result2->num_rows > 1) {
+            record_ip('".$commentername.": muliple entries in public table');
+        }
+        return false;
+    }
 }
 
 function mutualFriends($user1,$user2) {
@@ -398,26 +432,43 @@ function isIgnoring($user1,$user2) {
 			WHERE `fkUsername` = '".$user1."'
 			AND `fkIgnoredName` = '" . $user2 . "'
 			LIMIT 2;";
-    $result = mysql_query($sql);
+    $dblink = connect_boothDB();
+    $result = $dblink->query($sql);
     if ($result) {
-        $num = mysql_num_rows($result);
+        $num = $result->num_rows;
         if ($num == 1) {
             return true;
         } else if ($num > 1) {
             record_ip("ignoreship ".$user1."->".$user2." exists in database more than once.");
         }
     } else {
-        mysql_death1($sql);
+        sql_death1($sql);
     }
     return false;
 
+}
+
+function isAllowedToInteractWith($viewingUser,$otherUser) {
+    if (isFriendOf($viewingUser, $otherUser)) {
+        return true;
+    }
+
+    if (isPublic($otherUser)) {
+        return true;
+    }
+
+    if (isSemiPublic($otherUser) && isset($_SESSION['username'])) {
+        return true;
+    }
+
+    return false;
 }
 
 function userExists($username) {
     if (strlen($username) == 0) {
         return false;
     }
-    if (!isset($link)) $link = connect_to_boothsite();
+    if (!isset($dblink)) $dblink = connect_boothDB();
     $sql = "SELECT `username` FROM `logintbl` WHERE `username` = '".$username."' LIMIT 1";
     return !emptyResult(sql_query($sql));
 }
@@ -455,42 +506,13 @@ function isIndividualBoothPrivate($boothnumber) {
     return true;
 }
 
-function isBoothPublic($boothnumber) {
-
-    if (isIndividualBoothPrivate($boothnumber)) {
-        return false;
-    }
-    $sql = "SELECT `fkUsername`
-			FROM `userspublictbl`
-			WHERE `fkUsername` =
-				(SELECT `fkUsername`
-					FROM `boothnumbers`
-					WHERE `pkNumber` = ".$boothnumber."
-					LIMIT 1 )
-			LIMIT 2";
-    $result = mysql_query($sql);
-    if ($result) {
-        $num = mysql_num_rows($result);
-        if ($num == 1) {
-            return true;
-        } else if ($num == 0) {
-            return false;
-        } else {
-            death("Multiple entries in usersbannedtbl.  Name: ".$username.", IP:".get_ip_address());
-            return false;
-        }
-    } else {
-        mysql_death2($link,$sql);
-        return false;
-    }
-}
-
 function isSuspended($username) {
 
+    $dblink = connect_boothDB();
     $sql = "SELECT `fkUsername` FROM `userssuspendedtbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
-    $result = mysql_query($sql);
+    $result = $dblink->query($sql);
     if ($result) {
-        $num = mysql_num_rows($result);
+        $num = $result->num_rows;
         if ($num == 1) {
             return true;
         } else if ($num == 0) {
@@ -500,22 +522,9 @@ function isSuspended($username) {
             return true;
         }
     } else {
-        mysql_death2($link,$sql);
+        sql_death1($sql);
         return false;
     }
-
-}
-
-function doBanSuspendCheck($username) {
-
-    if (isBanned($username)) {
-        go_to_banned();
-        return false;
-    } else if (isSuspended($username)){
-        go_to_suspended();
-        return false;
-    }
-    return true;
 
 }
 
@@ -717,15 +726,15 @@ function hasNoEmail($username) {
 }
 
 function getEmail($username) {
-    if (!isset($link)) $link = connect_to_boothsite();
+    $dblink = connect_boothDB();
     $sql = "SELECT `email` FROM `emailtbl` WHERE `fkUsername` = '".$username."' LIMIT 1;";
-    $result = mysql_query($sql);
+    $result = $dblink->query($sql);
     if (!$result) {
-        mysql_death1($sql);
+        sql_death1($sql);
         return "ERROR";
     }
 
-    $row = mysql_fetch_array($result);
+    $row = $result->fetch_array();
     return $row['email'];
 
 }
@@ -741,15 +750,14 @@ function isModerator($username) {
         death("Attempted to check moderator status when user not logged in IP:".get_ip_address());
         return false;
     }
-    if (!isset($link)) $link = connect_to_boothsite();
+    if (!isset($dblink)) $dblink = connect_boothDB();
     $sql = "SELECT `isAdmin` FROM `logintbl` WHERE `username` = '".$username."' LIMIT 2";
-    $result = mysql_query($sql);
+    $result = $dblink->query($sql);
     if ($result) {
-        $num = mysql_num_rows($result);
+        $num = $result->num_rows;
         if ($num == 1) {
-            $row = mysql_fetch_array($result);
+            $row = $result->fetch_array();
             $isAdmin = ($row['isAdmin'] == 1);
-
             if ($isAdmin) {
                 return true;
             } else {
@@ -765,36 +773,10 @@ function isModerator($username) {
             return false;
         }
     } else {
-        mysql_death1($sql);
+        sql_death1($sql);
         return false;
     }
 
-}
-
-function isDeveloper($username) {
-
-    if ($username == "" || $username == null) {
-        death("Attempted to check developer status when user not logged in IP:".get_ip_address());
-        return false;
-    }
-    //TODO Check hash -BJ
-    if (!isset($link)) $link = connect_to_boothsite();
-    $sql = "SELECT true FROM `usersdevstbl` WHERE `fkUsername` = '".$username."' LIMIT 2";
-    $result = mysql_query($sql);
-    if ($result) {
-        $num = mysql_num_rows($result);
-        if ($num == 1) {
-            return true;
-        } else if ($num == 0) {
-            return false;
-        } else {
-            death("Multiple entries in logintbl.  Name: ".$username.", IP:".get_ip_address());
-            return false;
-        }
-    } else {
-        mysql_death1($sql);
-        return false;
-    }
 }
 
 function create_generic_header($string) {
@@ -824,10 +806,8 @@ function parameterIsMissingAndEchoFailureMessage($param) {
 }
 
 function sendBoothicaEmail($emailAddress, $subject, $message) {
-    //TODO: Re-enable emails
-    return;
-//    $headers = "From: Boothi.ca<no-reply>\r\n";
-//    $headers .= "MIME-Version: 1.0\r\n";
-//    $headers .= "Content-type: text/html; charset=utf-8\r\n";
-//    mail($emailAddress, $subject, $message, $headers);
+    $headers = "From: Boothi.ca<no-reply>\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=utf-8\r\n";
+    mail($emailAddress, $subject, $message, $headers);
 }

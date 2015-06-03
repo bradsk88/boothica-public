@@ -1,0 +1,7 @@
+<div class = "noActivityRegion">
+    <div class = "noActivity">
+        There is no activity to show.<br/>
+        <br/>
+        Check out the <a href = "{{baseUrl}}/publicfeed">Public Feed</a> to meet some folks!
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="photoCommentRegionNoContext">
+    <div class="photoCommentImageRegionNoContext">
+        <img src="{{imageUrl}}" class="photoCommentImageNoContext"/>
+    </div>
+    <div class="photoCommentUsernameRegionNoContext">
+        <a href={{baseUrl}}/users/{{username}}  class="photoCommentUsernameNoContext">
+            <div>
+                {{displayName}}
+            </div>
+        </a>
+    </div>
+    <div class="photoCommentTextRegionNoContext">
+        <div class="photoCommentTextNoContext">
+            {{{text}}}
+        </div>
+    </div>
+    {{#hasLikes}}
+        <div class = "commentLikesCountRegion" id = "comment_{{commentNumber}}_likes_count_region">
+            <div class = "commentLikesCountNumber" id = "comment_{{commentNumber}}_likes_count">
+                {{likes}} likes
+            </div>
+        </div>
+    {{/hasLikes}}
+    <div class="photoCommentButtonsRegion">
+        <form class="userBoothButton" action = "{{baseUrl}}/comments/{{commentNumber}}/like" method = "POST">
+            {{#selfUrl}}
+                <input type = "hidden" name = "nextUrl" id = "nextUrl" value = "{{selfUrl}}"/>
+            {{/selfUrl}}
+            <button type = "submit" id = "comment_like_button">Like Comment</button>
+        </form>
+        {{#canDelete}}
+            <form class="userBoothButton" action = "{{baseUrl}}/comments/{{commentNumber}}/delete" method = "POST">
+                {{#selfUrl}}
+                    <input type = "hidden" name = "nextUrl" id = "nextUrl" value = "{{selfUrl}}"/>
+                {{/selfUrl}}
+                <button type = "submit" id = "comment_delete_button">Delete</button>
+            </form>
+        {{/canDelete}}
+    </div>
+    <div class = "textCommentDateTimeRegionNoContext">
+        <div class = "textCommentDateTimeNoContext">
+            {{commentDatetime}}
+        </div>
+    </div>
+</div>

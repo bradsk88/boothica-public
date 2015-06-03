@@ -8,111 +8,129 @@
 use comment\Comments;
 use comment\CommentObj;
 
-require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/meta/AbstractUserApiResponse.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/CommentObj.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/Comments.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/comment_utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/booth/utils.php");
 require_common("utils");
 require_common("internal_utils");
-error_reporting(0);
-$link = connect_to_boothsite();
-update_online_presence();
-getComments();
+require_asset("UserImage");
+require_lib("h2o-php/h2o");
 
-function getComments() {
+class GetCommentsApiResponse extends AbstractUserApiResponse {
 
-    if (!isset($_SESSION)) session_start();
-
-    $username = isset($_POST['username']) ? $_POST['username'] : null;
-    if (isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
-    } else if (isset($_POST['username']) && failsStandardMobileChecksAndEchoFailureMessage()) {
-        return;
+    function __construct() {
+        parent::__construct(array("boothnum"));
     }
-    $_SESSION['username'] = $username;
-
-    if (parameterIsMissingAndEchoFailureMessage("boothnum")) {
-        return;
-    }
-    $boothnumber = $_POST['boothnum'];
-
-    if (isBoothPublic($boothnumber)) {
-        doGetComments($boothnumber);
-        return;
-    }
-    if (isFriendOf($username, getBoothOwner($boothnumber))) {
-        doGetComments($boothnumber);
-        return;
-    }
-
-    echo json_encode(array("error" => $username." is not allowed to view comments on booth ".$boothnumber));
-    return;
-
-}
-
-function doGetComments($boothnumber) {
-    echo json_encode(array(
-        "success" => toArray(Comments::loadForBooth($boothnumber))
-    ));
-    return;
-}
-
-
-function toArray($comments) {
-
-    $out = array();
 
     /**
-     * @var $comment CommentObj
+     * This should be implemented by descendants but should not be called directly.  Use runAndEcho.
      */
-    foreach ($comments as $comment) {
+    protected function run($username)
+    {
+        $boothnumber = $_POST['boothnum'];
 
-        $sql = "SELECT
+        if (isAllowedToInteractWithBooth($_SESSION['username'], $boothnumber)) {
+            $getComments = $this->doGetComments($boothnumber);
+            if (isset($getComments['success'])) {
+
+                if (isset($_REQUEST['clearmentions']) && $_REQUEST['clearmentions']) {
+                    $sqlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/clearBoothMentions.mst.sql");
+                    $dblink = connect_boothDB();
+                    $sql = $sqlBuilder->render(array(
+                        "username" => $dblink->real_escape_string($username),
+                        "boothnumber" => $boothnumber
+                    ));
+                    if (!$dblink->query($sql)) {
+                        sql_death1($sql);
+                    }
+                }
+
+                $this->markCallAsSuccessful("Comments get OK", array("comments" => $getComments['success']));
+            } else {
+                $this->markCallAsFailure($getComments['error']);
+            }
+            return;
+        }
+
+        $this->markCallAsFailure($username." is not allowed to view comments on booth ".$boothnumber);
+        return;
+    }
+
+    function doGetComments($boothnumber) {
+        $comments = Comments::loadForBooth($boothnumber);
+
+        if (isset($comments['success'])) {
+            return array(
+                "success" => $this->toArray($comments["success"])
+            );
+        } else {
+            return $comments;
+        }
+    }
+
+    function toArray($comments) {
+
+        $out = array();
+
+        /**
+         * @var $comment CommentObj
+         */
+        foreach ($comments as $comment) {
+
+            $sql = "SELECT
 			COUNT(*) as `num`
 			FROM `likes_commentstbl`
 			WHERE `fkCommentNumber` = ".$comment->getCommentNumber().";";
-        $numLikes = sql_get_expectOneRow(sql_query($sql), "num");
+            $numLikes = sql_get_expectOneRow(sql_query($sql), "num");
 
-        $canDeleteComment = false;
 
-        $root = "http://" . $_SERVER['SERVER_NAME'];
-        if (isset($_SESSION['username'])) {
+            $root = base();
             $canDeleteComment = isAllowedToDeleteCommentNumber($_SESSION['username'], $comment->getCommentNumber());
-        }
-        $iconImage = UserImage::getImage($comment->getCommenterName());
-        if ($comment->hasPhoto()) {
-            $hash = "/comments/".$comment->getImageHash().".".$comment->getImageExtension();
-            $out[] = array(
-                'commentnum' => $comment->getCommentNumber(),
-                'commentername' => $comment->getCommenterName(),
-                'commenterdisplayname' => (string)getDisplayName($comment->getCommenterName()),
-                'commenttext' => $comment->getCommentBody(),
-                'canDelete' => $canDeleteComment,
-                'iconImage' => $iconImage,
-                'imageHash' => $hash,
-                'imageRatio' => $comment->getImageHeightWidthProp(),
-                'likes' => $numLikes,
-                'time' => $comment->getDateTimeStringReally(),
-                'absoluteImageUrl' => $root.$hash,
-                'absoluteIconImageUrl' => $root.$iconImage);
-        } else {
-            $out[] = array(
-                'commentnum' => $comment->getCommentNumber(),
-                'commentername' => $comment->getCommenterName(),
-                'commenterdisplayname' => (string)getDisplayName($comment->getCommenterName()),
-                'commenttext' => $comment->getCommentBody(),
-                'canDelete' => $canDeleteComment,
-                'iconImage' => UserImage::getImage($comment->getCommenterName()),
-                'likes' => $numLikes,
-                'time' => $comment->getDateTimeStringReally(),
-                'absoluteIconImageUrl' => $root.$iconImage);
-        }
+            $commenterName = $comment->getCommenterName();
+            $iconImage = UserImage::getImage($commenterName);
+            if ($comment->hasPhoto()) {
+                $hash = "/comments/".$comment->getImageHash().".".$comment->getImageExtension();
+                $out[] = array(
+                    'commentnum' => $comment->getCommentNumber(),
+                    'commentername' => $comment->getCommenterName(),
+                    'commenterdisplayname' => (string)getDisplayName($comment->getCommenterName()),
+                    'commenttext' => $comment->getCommentBody(),
+                    'canDelete' => $canDeleteComment,
+                    'iconImage' => $iconImage,
+                    'imageHash' => $hash,
+                    'imageRatio' => $comment->getImageHeightWidthProp(),
+                    'likes' => $numLikes,
+                    'time' => $comment->getDateTimeStringReally(),
+                    'absoluteImageUrl' => $root.$hash,
+                    'absoluteIconImageUrl' => $root.$iconImage,
+                    'mediaType' => 'photo'
+                );
+            } else {
+                $out[] = array(
+                    'commentnum' => $comment->getCommentNumber(),
+                    'commentername' => $comment->getCommenterName(),
+                    'commenterdisplayname' => (string)getDisplayName($comment->getCommenterName()),
+                    'commenttext' => $comment->getCommentBody(),
+                    'canDelete' => $canDeleteComment,
+                    'iconImage' => UserImage::getImage($comment->getCommenterName()),
+                    'likes' => $numLikes,
+                    'time' => $comment->getDateTimeStringReally(),
+                    'absoluteIconImageUrl' => $root.$iconImage,
+                    'mediaType' => 'none'
+                );
 
-
+            }
+        }
+        return $out;
     }
-
-    return $out;
-
 }
+
+if (!isset($_SESSION)) session_start();
+error_reporting(0);
+
+$page = new GetCommentsApiResponse();
+$page->runAndEcho();

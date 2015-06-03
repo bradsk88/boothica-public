@@ -4,37 +4,210 @@ body {
     text-align: center;
     padding: 0;
     margin: 0;
+    /*background-color: #515097;*/
+    background: #143B5B;
+    /*font-family: 'Bitter', serif;*/
 }
 
-a {
+.friendUsername {
     text-decoration: none;
     color: black;
+    /* background: #FFF; */
 }
 
-.login_prompt {
+.bootherLink, .boothLink {
+    font-weight: bold;
+}
+
+.phoneAnalog {
+    background-color: transparent;
+    background-image: url(/media/bubblebackgroundbig.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Bitter', serif;
+    font-weight: bold;
+    margin: 0 auto 10vw;
+    position: relative;
+}
+
+.phoneAnalogGreeting {
+    color: #FFF;
+    padding: 4vw 0 4vw;
+    font-size: 6vw;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+}
+
+.phoneAnalogButton, .phoneAnalogCheckbox {
+    align-content: space-around;
+    border-bottom-color: rgba(68, 187, 153, 0.75);
+    border-bottom-style: solid;
+    border-bottom-width: 4vw;
+    box-sizing: border-box;
+    display: flex;
+    cursor: default;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2vw;
+    width: 100%;
+    text-decoration: none;
+}
+.phoneAnalogButton button {
+    cursor: pointer;
+}
+
+.phoneAnalogButton button svg {
+    height: 100%;
+}
+
+.phoneAnalogButton button:disabled {
+    cursor: not-allowed !important;
+}
+
+.phoneAnalogButton button, .phoneAnalogField input {
+    align-items: flex-start;
+    background-color: rgb(255, 255, 255);
+    border-color: rgba(34, 153, 119, 0.5);
+    border-style: solid;
+    border-width: 1vw;
+    border-radius: 4vw;
+    box-sizing: border-box;
+    display: block;
+    height: 16vw;
+    margin: 0 4vw;
+    padding: 0;
+    text-align: center;
+    text-shadow: none;
+    text-transform: none;
+    width: 100%;
+    max-width: 40rem;
+}
+
+.phoneAnalogButton.floating {
+    border: none;
+}
+
+.phoneAnalogButton .phoneAnalogText {
+    margin-top: 1rem;
+}
+
+.phoneAnalogButton.small button {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+.phoneAnalogSubsectionTitle, .phoneAnalogText {
+    color: #FFF;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+}
+
+.phoneAnalogSubsectionTitle {
+    font-size: 4vw;
+}
+
+.phoneAnalogText {
+    font-size: 4vw;
+    background-color: rgba(68, 187, 153, 0.95);
+    width: 100%;
+    padding: 3vw;
+    box-sizing: border-box;
+}
+
+.phoneAnalogText.dense{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+    font-weight: normal;
+    text-shadow: none !important;
+    text-align: left;
+}
+
+.phoneAnalogText.dense ol li {
+    padding: 1rem;
+}
+
+.phoneAnalogField {
+    padding: 1em;
+}
+
+.phoneAnalogField .title {
+    color: #FFF;
+    text-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.75);
+    font-size: 4vw;
+}
+
+.phoneAnalogField input {
+    font-size: 2rem;
+    padding: 1em;
+    height: 4.5rem;
+}
+
+.phoneAnalogSubsectionTitle.error {
+    color: #FFF;
+    background-color: #DA7358;
+    padding: 0.5em 0;
+    border-width: 0.1rem 0 0.1rem;
+    border-style: solid none solid;
+    border-top-color: #CB6247;
+    border-bottom-color: #EB8469;
+}
+
+.denseGrid {
+    display: flex;
+    flex-flow: row wrap;
+    /* justify-content: space-around; */
+}
+
+.smallCard {
+    width: 100%;
+    background: #FFF;
+    border-radius: 4vw;
+    margin: 0 0 4vw 0;
+}
+
+.loaderRegion {
+    height: 2rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.loader {
+    margin: auto;
+}
+
+.messageBanner {
+    border: 3vw solid #DDD;
     margin-top: 2.5em;
     margin-bottom: -2.5em;
-    border: 3vw solid #DDD;
+}
+
+.messageBanner a {
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+    text-align: center;
+    display: block;
 }
 
 .requires_js_warning {
     border: 3vw solid #F63;
 }
 
-.requires_js_warning, .login_prompt {
+.messageBanner, .requires_js_warning {
     background-color: white;
     padding: 1em;
 }
 
 .pageheaderbg {
     background-size: cover !important;
-    background: url(/media/topbarbg.png) top;
+    background: url(/media/topbarbg.png) no-repeat;
     width: 100%;
     height: 2.5em;
     position: fixed;
     top: 0;
     z-index: 9999;
 }
+
 
 .pageheader {
     width: 100%;
@@ -45,27 +218,49 @@ a {
     position: relative;
 }
 
+.pageheader a {
+    text-decoration: none;
+    color: #000;
+}
+
 .headerbutton, .pageheader, .headertitle {
-    height: 2.500em;
+    height: 2.500rem;
 }
 
 .headerbutton {
-    width: 2.500em;
+    width: 2.500rem;
 }
 
 #headgear {
-    background-image: url(/media/settings.png);
-    background-size: contain;
-    background-position: center;
     position: absolute;
     right: 0;
     top: 0;
 }
 
+#headgear {
+    font-size: 2rem;
+}
+
+.pageHeaderUsernameRegion {
+    position: absolute;
+    top: 0;
+    right: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0 0.5rem;
+}
+
+.pageHeaderUsername {
+    margin: auto;
+    font-weight: bold;
+    line-height: 1.5rem;
+}
+
 .headertitle {
     background-image: url(/media/title.png);
     background-repeat: no-repeat;
-    width: 20em;
+    width: 6rem;
     display: block;
 }
 
@@ -91,7 +286,7 @@ a {
     padding: 1em;
     background-color: #DDD;
     cursor: pointer;
-    display: none; /* TODO: Make these sections collapsible */
+    display: none; /* TODO: Make these sections collapsible on mobile */
 }
 
 .page_frame {
@@ -105,7 +300,6 @@ a {
 
 .sidebar_first, .sidebar_last, .body_inside {
     flex: 1 100%;
-    background: #FFF;
 }
 
 .sidebar_body {
@@ -137,14 +331,22 @@ a {
 
 .load_more_button {
     text-align: center;
-    margin: 0 auto;
+    margin: 3vw auto 3vw;
     background: #DDD;
     padding: 0.75em;
     border-radius: 0.25em;
     max-width: 16em;
     display: none; /* Enable on a per-page basis */
+    cursor: pointer;
 }
 
+#header_mentions {
+    display: none;
+}
+
+#header_mentions:hover, #headgear:hover, .pageHeaderUsernameRegion:hover {
+    background-color: rgba(200, 255, 220, 0.8);
+}
 
 @media all and (max-width: 599px) {
     #newboothbutton {
@@ -164,21 +366,115 @@ a {
     }
 }
 
+@media all and (min-width: 250px) {
+
+    .smallCard {
+        flex: 0 0 47.5%;
+        box-sizing: border-box;
+        margin: 2.5% 2.5% 0 0;
+        border-radius: 1rem;
+    
+        /* position: relative; */
+}
+
+    .denseGrid {
+        padding: 0 0 1rem 2.5%;
+    }
+
+}
+
 /* Medium screens */
 @media all and (min-width: 500px) {
     #newboothbutton {
         left: auto;
         right: 1em;
     }
+
+    .denseGrid {
+        padding: 0 0 0 1%;
+    }
+
+    .smallCard {
+        flex: 0 0 32.25%;
+        margin: 1% 1% 0 0;
+        box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
+    }
+
 }
 
 @media all and (min-width: 600px) {
+
+    .headertitle {
+        background-image: url(/media/title.png);
+        background-repeat: no-repeat;
+        width: 20em;
+    }
+
+    .pageHeaderUsername {
+        display: inline-block;
+    }
+
+    .phoneAnalog {
+        max-width: 32em;
+        margin: 0 auto 0;
+    }
+
+    .phoneAnalogGreeting {
+        font-size: 2rem;
+        padding: 0;
+    }
+
+    .phoneAnalogButton button, .phoneAnalogField input {
+        border-width: 0.125rem;
+        height: 3.5rem;
+        border-radius: 1vw;
+        margin: auto;
+    }
+
+    .phoneAnalogButton {
+        border-bottom-width: 1rem;
+        padding: 1rem;
+    }
+
+    .phoneAnalogSubsectionTitle {
+        font-size: 1.5rem;
+    
+        padding: 1rem;
+}
+
+    .phoneAnalogText {
+        font-size: 1rem;
+        padding: 2rem;
+    }
+
+    .phoneAnalogText.bottom {
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+    }
+
+    .phoneAnalogField .title {
+        font-size: 1.5rem;
+    }
+
+    .phoneAnalogField input {
+        border-width: 0.25rem;
+        border-radius: 0.5rem;
+    }
+
+    .denseGrid {
+        padding: 0 0 0 1%;
+    }
+
+    .smallCard {
+        flex: 0 0 24%;
+        margin: 1% 1% 0 0;
+    }
 
     .requires_js_warning {
         border: 0.5em solid #F63;
     }
 
-    .login_prompt {
+    .messageBanner, .login_prompt {
         border: 0.5em solid #EEE;
     }
 
@@ -188,7 +484,7 @@ a {
         background-repeat: no-repeat;
         cursor: pointer;
         height: 100%;
-        left: 20em;
+        left: 16em;
         padding-left: 1em;
         padding-right: 1em;
         position: absolute;
@@ -209,10 +505,134 @@ a {
         visibility: inherit;
     }
 
+    #header_mentions {
+        position: absolute;
+        right: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        top: 0;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    #header_mentions span {
+        margin: auto;
+        font-size: 1.5rem;
+        width: 2rem;
+        height: 2rem;
+        line-height: 1.825rem;
+    }
+
+    .pageHeaderUsernameRegion {
+        right: 5rem;
+    }
+
 }
 
+/*@media all and (min-width: 800px) and (max-width: 1024px) {*/
+    /*.denseGrid {*/
+        /*padding: 0 0 0 1%;*/
+    /*}*/
+
+    /*.smallCard {*/
+        /*flex: 0 0 19%;*/
+        /*margin: 1% 1% 0 0;*/
+    /*}*/
+/*}*/
+
 /* Medium screens */
-@media all and (min-width: 1024px) {
+@media all and (min-width: 800px) {
+
+    .phoneAnalog {
+        max-width: 24em;
+        margin: 2rem auto 0;
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    .phoneAnalog.big {
+        max-width: 32rem;
+    }
+
+    .phoneAnalog.massive {
+        max-width: 40rem;
+    }
+
+    .phoneAnalogGreeting {
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .phoneAnalogButton, .phoneAnalogCheckbox {
+        border-bottom-color: rgba(68, 187, 153, 0.75);
+        border-bottom-style: solid;
+        border-bottom-width: 1rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .phoneAnalogButton button, .phoneAnalogField input {
+        margin: 0 auto;
+    }
+
+    .phoneAnalogButton.bottom, .phoneAnalogCheckbox.bottom, .phoneAnalogButton.bottomleft, .phoneAnalogCheckbox.bottomleft {
+        border-bottom-left-radius: 3rem;
+    }
+
+    .phoneAnalogButton.bottom, .phoneAnalogCheckbox.bottom, .phoneAnalogButton.bottomright, .phoneAnalogCheckbox.bottomright {
+        border-bottom-right-radius: 3rem;
+    }
+
+    .phoneAnalogButton.floating {
+        border: none;
+    }
+
+    .phoneAnalogButton.small {
+        padding: 0;
+    }
+
+    .phoneAnalogButton.small button {
+        padding: 0.5rem;
+        height: auto;
+}
+
+
+    .phoneAnalogButton button {
+        align-items: flex-start;
+        background-color: rgb(255, 255, 255);
+        border: none;
+        box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.25);
+        height: 3rem;
+        max-width: 16rem;
+        border-radius: 0.5rem;
+    }
+
+    .phoneAnalogField .title {
+        font-size: 1rem;
+        padding: 0 0 1rem;
+    }
+
+    .phoneAnalogField input {
+        padding: 1rem;
+        border-width: 0.125rem;
+        font-size: 1.25rem;
+        height: 3rem;
+    }
+
+    .phoneAnalogField input:focus {
+        outline: none;
+    }
+
+    .denseGrid {
+        max-width: 40rem;
+        margin: 0 auto;
+    }
 
     .load_more_button {
         display: none;
@@ -233,7 +653,9 @@ a {
     }
 
     .sidebar_titleandbutton {
-        background-color: #FFF;
+        background: #87E1C1 url(/media/topbarbg.png) no-repeat;
+        margin-top: 0.5rem;
+        border-radius: 0.5rem;
         color: #000;
     }
 
@@ -269,4 +691,5 @@ a {
         margin-left: 1em;
         /*border-left: 1em solid rgba(107, 219, 179, 0.15); *//*6bdbb3*/
     }
+
 }

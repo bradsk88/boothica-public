@@ -1,0 +1,26 @@
+<div class="bootherConsole">
+    <div class="bootherConsolePhotoRegion">
+        <div class="bootherConsolePhoto">
+            <img class = "bootherConsolePhotoResource" width=100% height=100% src="{{bootherDisplayPhoto}}"/>
+        </div>
+    </div>
+    <div class="bootherConsoleNameRegion">
+        <div class="bootherConsoleName">
+            {{bootherDisplayName}}
+        </div>
+    </div>
+    <div class="bootherConsoleButtons">
+        <a href = "{{baseUrl}}/mentions" class="bootherConsoleMentionsRegion" id = "mentions_console_button">
+            <div class="bootherConsoleMentionsButton">Mentions</div>
+        </a>
+        <a href = "{{baseUrl}}/users/{{username}}/friends/manage" class="bootherConsoleFriendRequestRegion">
+            <div class="bootherConsoleFriendRequestButton">Friend requests</div>
+        </a>
+        <a href = "{{baseUrl}}/pm" class="bootherConsolePrivateMessageRegion">
+            <div class="bootherConsoleListFriendsButton">Private messages</div>
+        </a>
+        <a href = "{{baseUrl}}/users/{{bootherName}}/friends" class="bootherConsoleListFriendsRegion">
+            <div class="bootherConsoleListFriendsButton">Friend list</div>
+        </a>
+    </div>
+</div>

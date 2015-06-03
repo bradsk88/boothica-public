@@ -1,0 +1,28 @@
+<div class = "phoneAnalog">
+    <div class = "loginPane">
+        <div class = "phoneAnalogGreeting">
+            <div class = "loginPaneGreeting">
+                error
+            </div>
+        </div>
+        <div class = "phoneAnalogSubsectionTitle error">
+            {% autoescape off %}
+            {{errorMessage}}
+            {% autoescape on %}
+        </div>
+        <form action = "{{nextUrl}}">
+            <div class = "phoneAnalogButton">
+                <button type="submit">
+                    {{nextUrlButtonText}}
+                </button>
+            </div>
+        </form>
+        <form action = "{{baseUrl}}/info/contact">
+            <div class = "phoneAnalogButton bottom">
+                <button type="submit">
+                    Contact us
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

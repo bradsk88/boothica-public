@@ -15,7 +15,9 @@
         <a class="sideBoothOpenButtonRegion" href="{{boothUrl}}">
             <div>
                 <div class="sideBoothOpenButton">
-			Open
+                    <div class='sideBoothOpenButtonText' id="sideBoothOpenButtonText">
+			            Open
+                    </div>
                 </div>
             </div>
         </a>

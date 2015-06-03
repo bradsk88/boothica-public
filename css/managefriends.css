@@ -1,0 +1,76 @@
+.friendRequestRegion {
+}
+
+.friendRequestRegion a {
+    text-decoration: none;
+    color: #000;
+}
+
+.friendRequestButtons .phoneAnalogButton {
+    height: 100%;
+}
+
+@media all and (min-width: 600px) {
+
+    .friendRequestButtons {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end; 
+    }
+
+    .friendRequest {
+        display: flex;
+        flex-flow: row;
+        /* margin-top: 0rem; */
+    }
+
+    .friendRequestIdentityRegion, .friendRequestButtonsRegion {
+        flex: 1 0 0;
+        max-width: 50%;
+    
+        position: relative;
+}
+
+    .friendRequestImage {
+        /* width: 100%; */
+    
+        height: 100%;
+        object-fit: contain;
+        border-radius: 0.25rem;
+}
+
+    .friendRequestUsernameRegion {
+        height: 2rem;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    .friendRequestUsername {
+        margin: auto;
+    }
+
+    .friendRequestImageRegion {
+        height: 10rem;
+        overflow: hidden;
+    
+        border-bottom: 1rem solid rgba(68, 187, 153, 0.75);
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .friendRequestImageRegion {
+        height: 9rem;
+    
+        padding: 0 1rem 1rem;
+        box-sizing: border-box;
+    }
+
+    .friendRequestImageRegion.bottomleft {
+        border-bottom-left-radius: 3rem;
+    }
+}

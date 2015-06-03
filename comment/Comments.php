@@ -10,26 +10,31 @@ namespace comment;
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_common("utils");
+require_common("db");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/comment/CommentObj.php");
 
 class Comments {
 
     public static function loadForBooth($boothnumber) {
 
+        $dblink = connect_boothDB();
         $sql = "SELECT
 					`fkOldestComment`, `fkNewestComment`
 					FROM `boothcommentrangetbl`
 					WHERE `fkBoothNumber` = ".$boothnumber."
 					LIMIT 1;";
-        $result0 = mysql_query($sql);
+        $result0 = $dblink->query($sql);
+
         if (!$result0) {
-            go_to_db_error($sql);
-            return;
+            return array("error" => sql_death1($sql));
         }
-        if (mysql_num_rows($result0) == 0) {
-            return;
+        if ($result0->num_rows == 0) {
+            return array(
+                "success" => array()
+            );
         }
-        $row = mysql_fetch_array($result0);
+
+        $row = $result0->fetch_array();
 
         $dtcol = "`datetime`";
         if (isset($_SESSION['time_zone'])) {
@@ -52,17 +57,24 @@ class Comments {
 					AND `pkCommentNumber` <= ".$row['fkNewestComment']."
 					ORDER BY `pkCommentNumber` ASC
 					;";
-        $result1 = mysql_query($sql);
+
+        $result1 = $dblink->query($sql);
 
         $comments = array();
+
         if ($result1) {
-            while ($row = mysql_fetch_array($result1)) {
-                $comments[] = CommentObj::fromSQL($row);
+            while($row = $result1->fetch_array()) {
+                try {
+                    $comments[] = CommentObj::fromSQL($row);
+                } catch (\Exception $e) {
+                    death("Unable to parse comment from row: .".$row);
+                    continue;
+                }
             }
         } else {
-            echo mysql_death1($sql);
+            return array("error" => sql_death1($sql));
         }
-        return $comments;
+        return array("success" => $comments);
     }
 
 } 

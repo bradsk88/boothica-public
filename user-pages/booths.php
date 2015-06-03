@@ -30,12 +30,32 @@ EOT;
     $page = new PageFrame();
     $page->body($html);
     $page->useDefaultSideBars();
+    $page->loadPublicSidebarsContent();
     $page->script($root."/booth/user-booth-scripts.js");
-    $pagescripts = new h2o("booths-page-script.mst");
-    $page->rawScript($pagescripts->render(array(
-        "username" => $_GET['username'],
-        "loggedIn" => isset($_SESSION['username'])
-    )));
+    $page->script($root."/user-pages/scripts/bootherConsole.js");
+    $username = $_GET['username'];
+    $page->title($username ." on ".basePretty());
+    if (isLoggedIn() && $_SESSION['username'] == $username) {
+        $page->rawScript("<script type = \"text/javascript\">
+        $(document).ready(function() {
+            loadOwnerConsole(\"".$username."\");
+        });
+        </script>");
+    } else {
+        $page->rawScript("<script type = \"text/javascript\">
+        $(document).ready(function() {
+            loadBootherConsole(\"".$username."\");
+        });
+        </script>");
+    }
+    $page->rawScript("<script type = \"text/javascript\">
+        $(document).ready(function() {
+            loadUserBooths(\"".$username."\");
+            $(\"#body_load_more_button\")[0].onclick = null;
+            $(\"#body_load_more_button\").click(function() { loadNextBoothsPage(\"".$username."\", function(){}) });
+            enableInfiniteScroll(\"".$username."\");
+        });
+    </script>");
     $page->css($root."/css/posts.css");
     $page->css($root."/css/posts-page.css");
     $page->css($root."/css/bootherConsole.css");

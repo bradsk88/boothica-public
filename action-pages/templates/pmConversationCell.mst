@@ -1,0 +1,12 @@
+<div class = "pmConversationCellRegion{{#mine}} mine{{/mine}}">
+    <div class = "pmConversationCell">
+        <div class = "pmConversationCellUsernameRegion">
+            <div class = "pmConversationCellUsername">
+                {{userDisplayName}}
+            </div>
+        </div>
+        <div class = "pmConversationCellTextRegion">
+            <div class = "pmConversationCellText">{{text}}</div>
+        </div>
+    </div>
+</div>

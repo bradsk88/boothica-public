@@ -5,14 +5,25 @@
 #post_comment_spinner {
 }
 
+.textCommentInputButtons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.commentButton {
+}
+
+.commentButtonGraphic {
+    stroke: #000;
+    stroke-width: 4.5;
+    fill: #FFF;
+}
+
 @media all and (max-width: 599px) {
     #newboothbutton {
         display: none;
     }
-}
-
-.textCommentInputRegion {
-    background-color: #F00;
 }
 
 .textCommentInputTextareaRegion {
@@ -43,9 +54,35 @@
     cursor: pointer;
 }
 
+@media all and (min-width: 600px) {
+    .commentButton, .commentSideButton {
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+
+    .commentButton {
+        max-width: 13rem;
+    }
+
+    .commentSideButton {
+        width: 4rem;
+        max-width: 8rem;
+    }
+
+    .commentButton button {
+        margin: 0;
+    }
+
+    .commentSideButton button {
+        margin: 0 auto 0 0;
+    
+        padding: 0.5rem;
+}
+
+}
+
 @media all and (min-width: 1024px) {
     .textCommentInputRegion {
-        background-color: #FFF;
         margin-top: 0.5em;
     }
     .textCommentInputSubmitButton input, .textCommentInputSubmitButton button, #post_comment_spinner {
@@ -54,5 +91,10 @@
 
     .textCommentInputTextarea {
         border: 1px solid #000;
+    }
+
+    .textCommentInputTextareaRegion {
+        height: 8rem;
+        margin: 0 1.875rem;
     }
 }
