@@ -9,33 +9,37 @@
             <div class = "newBoothWebcam" id = "webcam">
                 <canvas id = "preview"></canvas>
             </div>
-            <div class = "newBoothWebcamMessageRegion">
-                <div class = "newBoothWebcamMessage" id = "webcam_loading_placeholder">
+            <div class = "newBoothWebcamMessageRegion" id = "webcam_loading_placeholder">
+                <div class = "newBoothWebcamMessage">
                     Loading Webcam<br/><br/>
                     Click "Allow" if your browser asks for permission to use your webcam
                 </div>
             </div>
-            <div class = "newBoothWebcamMessageRegion">
-                <div class = "newBoothWebcamMessage" id = "webcam_not_found_error">
+            <div class = "newBoothWebcamMessageRegion" id = "webcam_not_found_error">
+                <div class = "newBoothWebcamMessage">
                     No webcam found<br/><br/>
                     Please connect your device and refresh this page.
                 </div>
             </div>
-            <div class = "newBoothWebcamMessageRegion">
-                <div class = "newBoothWebcamMessage" id = "webcam_not_allowed_error">
+            <div class = "newBoothWebcamMessageRegion" id = "webcam_not_allowed_error">
+                <div class = "newBoothWebcamMessage">
                     <img src = "{{baseUrl}}/media/camdisabled.png"/>
                     <br/>
                     Your browser has blocked webcam access.
                 </div>
             </div>
-            <div class = "newBoothWebcamMessageRegion">
-                <div class = "newBoothWebcamMessage countDownNumber" id = "webcam_count_down_3">
+            <div class = "newBoothWebcamMessageRegion" id = "webcam_count_down_3">
+                <div class = "newBoothWebcamMessage countDownNumber">
                     3
                 </div>
-                <div class = "newBoothWebcamMessage countDownNumber" id = "webcam_count_down_2">
+            </div>
+            <div class = "newBoothWebcamMessageRegion" id = "webcam_count_down_2">
+                <div class = "newBoothWebcamMessage countDownNumber">
                     2
                 </div>
-                <div class = "newBoothWebcamMessage countDownNumber" id = "webcam_count_down_1">
+            </div>
+            <div class = "newBoothWebcamMessageRegion" id = "webcam_count_down_1">
+                <div class = "newBoothWebcamMessage countDownNumber">
                     1
                 </div>
             </div>
@@ -76,6 +80,7 @@
                 </button>
             </div>
         </div>
+        <!--<canvas id = "preview" style = "visibility: hidden; height: 0; width: 0;"></canvas>-->
     </div>
     {% if fileSupported %}
     <form action = "{{baseUrl}}/newbooth/file">
@@ -87,3 +92,4 @@
     </form>
     {% endif %}
 </div>
+<small>Internet Explorer is not currently supported.</small>

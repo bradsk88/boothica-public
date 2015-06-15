@@ -7,7 +7,7 @@ function openSnapNewBooth() {
         window.history.pushState("string", "Title", newLocation);
     }
     $("#centerpane").html(
-        "<script language=\"JavaScript\" src=\"/webcam/webcam.js\"></script>" +
+        "<script language=\"JavaScript\" src=\"/webcam/webcam.js?version=1\"></script>" +
         "<script type='text/javascript' src='/common/cookies.js'></script>" +
         "<center>" +
             "<div class = \"plainbutton\" style = \"margin-bottom: 4em;\" onclick=\"openFileNewBooth()\"> ... or Upload From File</div>" +

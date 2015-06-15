@@ -126,6 +126,10 @@
     opacity: 0.5;
 }
 
+#webcam_loading_placeholder {
+    display: none;
+}
+
 @media all and (min-width: 600px) {
 }
 

@@ -11,17 +11,14 @@ $(document).ready(function() {
 
         init: function () {
 
-            // The shim requires options to be supplied for it's configuration,
-            // which can be found lower down in this file. Most of the below are
-            // demo specific and should be used for reference within this context
-            // only
             if ( !!this.options ) {
 
                 this.pos = 0;
-                this.cam = null;
-                this.filter_on = false;
-                this.filter_id = 0;
                 this.canvas = document.getElementById("preview");
+                this.ctx = this.canvas.getContext("2d");
+                this.img = new Image();
+                this.ctx.clearRect(0, 0, this.options.width, this.options.height);
+                this.image = this.ctx.getImageData(0, 0, this.options.width, this.options.height);
                 // Initialize getUserMedia with options
                 getUserMedia(this.options, this.success, this.deviceError);
 
@@ -60,7 +57,7 @@ $(document).ready(function() {
             width: 640,
             height: 480,
             mode: "callback",
-            swffile: "../dist/fallback/jscam_canvas_only.swf", //TODO: download this
+            swffile: "../dist/fallback/jscam_canvas_only.swf",
             quality: 100,
             context: "",
 
@@ -87,17 +84,20 @@ $(document).ready(function() {
                 }
 
                 if (App.pos >= 4 * w * h) {
-                    App.ctx.putImageData(img, 0, 0);
+                    this.canvas.getContext("2d").putImageData(img, 0, 0);
                     App.pos = 0;
                 }
 
             },
-            onLoad: function () {}
+            onLoad: function () {
+            }
         },
 
         success: function (stream) {
 
             if (App.options.context === 'webrtc') {
+
+                $("#webcam_loading_placeholder").css('display', 'inline-block');
 
                 var video = App.options.videoEl;
                 $(video).css("margin", "auto");
@@ -122,13 +122,6 @@ $(document).ready(function() {
                     stream.stop();
                     streamError();
                 };
-
-                App.enableCountDownButton();
-
-                $("#snap_button").click(function() {
-                    App.getSnapshot();
-                });
-
             } else{
                 // flash context
             }
@@ -137,6 +130,9 @@ $(document).ready(function() {
 
         deviceError: function (error) {
             $("#webcam_loading_placeholder").hide();
+            if ("undefined" === typeof(error)) {
+                return; // no error, use fallback hopefully
+            }
             if (error.name == 'PermissionDeniedError') {
                 $("#webcam_not_allowed_error").show();
             } else {
@@ -163,9 +159,7 @@ $(document).ready(function() {
                 // directly call window.webcam, where our shim is located
                 // and ask it to capture for us.
             } else if(App.options.context === 'flash'){
-
                 window.webcam.capture();
-                App.changeFilter();
             }
             else{
                 alert('No context was supplied to getSnapshot()');
@@ -245,4 +239,10 @@ $(document).ready(function() {
     };
 
     App.init();
+
+    App.enableCountDownButton();
+
+    $("#snap_button").click(function() {
+        App.getSnapshot();
+    });
 });
