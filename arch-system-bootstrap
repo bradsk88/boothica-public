@@ -1,0 +1,84 @@
+if ! [ -x "$(command -v pacman)" ]; then
+	echo "ERROR: This script was designed for use with Arch Linux but the executable 'pacman' was not found." >&2; 
+	echo "Will not continue"
+	exit 1; 
+fi
+
+RERUN="Re-run this script as su with the -p flag to install 'apache', 'mysql' and 'php' executables."
+
+if [ "$1" == "-p" ]; then
+	if [[ $EUID -ne 0 ]]; then
+	   echo "This script must be run as a superuser (root) when the 'p' flag is used." 1>&2
+	   exit 1
+	fi
+
+	pacman -Su
+	pacman -S apache php php-apache
+	echo ""
+	echo "IMPORTANT: Setup is not finished!"
+	echo "The required software has been installed.  Please run this script again as your normal user and DO NOT include the -p flag"
+	exit
+fi
+
+if [[ $EUID -eq 0 ]]; then
+	if [ "$1" != "-f" ]; then
+	    echo "WARNING: This script should be run as a normal user (ie: not root)." 1>&2
+		echo "If you plan to use the root account for development, run this script with the -f flag" 1>&2
+		exit 1
+	fi
+fi
+
+if [ ! -x "$(command -v httpd)" ]; then
+	echo "ERROR: Missing apache.  $RERUN"
+	exit
+fi
+
+if [ ! -x "$(command -v mysql)" ]; then
+	echo "ERROR: Missing mysql.  $RERUN"
+	exit
+fi
+
+if [ ! -x "$(command -v php)" ]; then
+	echo "ERROR: Missing php.  $RERUN"
+	exit
+fi
+
+echo ""
+echo "((( Thanks for helping us make Boothi.ca better.  We will now set up your local instance )))"
+echo ""
+
+# Make
+echo "Jumping to $HOME"
+cd $HOME
+
+if [ -d $HOME/boothica-public ]; then
+	echo "Boothi.ca public source code is present.  OK"
+else
+	git clone https://github.com/bradsk88/boothica-public.git
+fi
+
+if [ ! -d $HOME/boothica-public ]; then
+	echo "There was a problem downloading the Boothi.ca public source code."
+	echo "Will not continue"
+	exit
+fi
+
+FILLERS_GOOD="Boothi.ca propriertary code fillers are present.  OK"
+
+if [ -d $HOME/boothica-public-fillers ]; then
+	echo "$FILLERS_GOOD"
+else
+	git clone https://github.com/bradsk88/boothica-public-fillers.git
+	
+	if [ ! -d $HOME/boothica-public-fillers ]; then
+		echo "There was a problem downloading the Boothi.ca proprietary code fillers."
+		echo "Will not continue"
+		exit
+	fi
+
+	echo $FILLERS_GOOD
+fi
+
+echo "Configuring Apache, MySQL, and PHP"
+
+exit
