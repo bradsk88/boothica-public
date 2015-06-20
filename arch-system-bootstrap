@@ -82,3 +82,8 @@ fi
 echo "Configuring Apache, MySQL, and PHP"
 
 exit
+
+# TODO: Change give httpd access to user's home/username directory and to the boothica-public and boothica-public-fillers directories
+# TODO: Enable php in httpd.conf
+# ln -sf /home/username/boothica-public /srv/httpd/boothica
+
