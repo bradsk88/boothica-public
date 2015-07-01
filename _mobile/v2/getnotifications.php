@@ -44,6 +44,12 @@ class NotificationsResponse extends AbstractUserApiResponse {
         $sql = $sqlBuilder->render(array("username" => $username));
         $dblink = connect_boothDB();
         $query = $dblink->query($sql);
+
+        if (!$query) {
+            $this->markCallAsFailure(sql_death1($sql));
+            return;
+        }
+
         $num = sql_get_expectOneRow($query, "count");
         if ($num > 0) {
             $output[] = array(

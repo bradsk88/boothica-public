@@ -65,8 +65,6 @@ class RegistrationPage {
         $page->css($root ."/css/login.css");
         $page->css($root ."/css/registration.css");
         $page->css("http://fonts.googleapis.com/css?family=Bitter:400,700");
-        $page->script($root."/lib/getUserMedia.js");
-        $page->script($root."/user-registration/script.js");
         $page->excludeLoginNotification();
         return $page->render();
 

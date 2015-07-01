@@ -1,5 +1,6 @@
 SELECT
-  COUNT(*) as count
+  COUNT(*) as count,
+  , not m.hasBeenViewed as isNew
 FROM
   mentionstbl
 WHERE

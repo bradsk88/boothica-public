@@ -7,11 +7,11 @@
  */
 
 error_reporting(0);
-require_once("{$_SERVER['DOCUMENT_ROOT']}/userpages/friendbooth_utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");
 require_common("db");
 require_common("utils");
+require_lib("h2o-php/h2o");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/meta/AbstractUserApiResponse.php");
 
 class FriendFeedActivity extends AbstractUserApiResponse {
@@ -21,12 +21,13 @@ class FriendFeedActivity extends AbstractUserApiResponse {
      */
     protected function run($username)
     {
-        $sql = getSQL();
+        $dblink = connect_boothDB();
+
+        $sql = getSQL($dblink, $username);
         if ($sql == -1) {
             return;
         }
 
-        $dblink = connect_boothDB();
         $result = $dblink->query($sql);
 
         if (!$result) {
@@ -59,8 +60,9 @@ class FriendFeedActivity extends AbstractUserApiResponse {
 $page = new FriendFeedActivity();
 $page->runAndEcho();
 
-function getSQL()
+function getSQL($dblink, $username)
 {
+    //TODO: Add paging
     $pageNum = 1;
     if (isset($_POST['pagenum'])) {
         $pageNum = $_POST['pagenum'];
@@ -74,6 +76,16 @@ function getSQL()
         $numberOfPages = $_POST['numperpage'];
     }
 
+    $template = "{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/friendfeed-tofriend.mst.sql";
+    if (isLoggedIn() && $_SESSION['username'] == $username) {
+        $template = "{$_SERVER['DOCUMENT_ROOT']}/_mobile/v2/queries/friendfeed-owner.mst.sql";
+    }
+    $sqlBuilder = new h2o($template);
 
-    return getFriendBoothsSQL($_SESSION['username'], $pageNum, $numberOfPages);
+
+    $sql = $sqlBuilder->render(array(
+        "username" => $dblink->real_escape_string($username),
+        "current_username" => $dblink->real_escape_string($_SESSION['username'])
+    ));
+    return $sql;
 }
