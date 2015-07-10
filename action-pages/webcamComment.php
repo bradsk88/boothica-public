@@ -18,8 +18,11 @@ if (!isset($_REQUEST['boothnum'])) {
 
 //TODO: File comment upload
 
+
 $page = new PageFrame();
-$page->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/newbooth/templates/webcam.mst", array(
+$page->script(base()."/capture/webcam.js");
+$page->script(base()."/capture/scripts/webcam.js");
+$page->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/capture/templates/webcam.mst.html", array(
     "headerText" => "Photo Comment",
     "postButtonText" => "Upload photo comment!",
     "specialClass" => "commentSnap",
@@ -27,9 +30,7 @@ $page->setBodyTemplateAndValues("{$_SERVER['DOCUMENT_ROOT']}/newbooth/templates/
 ));
 $page->css(base()."/css/webcam.css");
 $page->css(base()."/css/webcamcomment.css");
-$page->script(base()."/action-pages/scripts/webcamComment.js");
 $page->script(base()."/action-pages/scripts/webcamComment-page.js");
-$page->script(base()."/lib/getUserMedia.js");
 $page->rawScript("<script type = \"text/javascript\">
     window.boothNum = ".$_REQUEST['boothnum'].";
 </script>");

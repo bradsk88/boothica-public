@@ -1,3 +1,19 @@
+$(window).load(function() {
+
+    initializeWebcam("#webcam", function(base64Image) {
+        $("#base64").val(base64Image);
+        enableAfterSnapButtons(function() {
+            var image = $("#base64").val();
+            if (typeof(image) === "undefined") {
+                showError("No image detected.  Try snapping again");
+                return;
+            }
+            postViaAPINow(image, $("#blurb").val());
+        });
+    });
+
+});
+
 function postViaAPINow(imageBase64, commentText) {
     if ("undefined" === typeof(window.boothNum)) {
         alert("Unrecoverable error: no boothNum");
