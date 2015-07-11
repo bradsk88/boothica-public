@@ -82,6 +82,7 @@ var enableAfterSnapButtons = function(onPostButtonClicked) {
     $("#capture_buttons").hide();
     $("#try_again_buttons").css('display', 'flex');
     $("#try_again_buttons").show();
+    $("#post_button").off();
     $("#try_again_button").removeAttr('disabled');
     $("#post_button_placeholder").hide();
     $("#post_button").css('display', 'block');
