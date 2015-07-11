@@ -172,7 +172,7 @@ function mentionSpecificPerson($boothnumber, $boother, $username, $mention, $com
 
     if (!$countQuery) {
         sql_death1($sql);
-        return;
+        return false;
     }
     $count = sql_get_expectOneRow($countQuery, "num");
 
@@ -284,7 +284,7 @@ function sendEmails($boothnumber, $boother, $username )
     $email = getEmail($boother);
     $displayname = getDisplayName($username);
 
-    $msg = "$displayname commented on <a href= '$site/users/$boother/$boothnumber.php'>Your booth</a>.";
+    $msg = "$displayname commented on <a href= '$site/users/$boother/$boothnumber'>Your booth</a>.";
     sendBoothicaEmail($email, "Booth # $boothnumber New comment!", $msg);
 }
 
@@ -340,7 +340,7 @@ function makeMentionMessage($name, $site, $number, $boother) {
     $randomDiv = generateRandomString();
     $msg = "$name mentioned you on $boother's booth<br/>
 				<br/>
-				<a href = \"http://$site/users/$boother/$number.php\">
+				<a href = \"http://$site/users/$boother/$number\">
 					<div id = \"$randomDiv\" style = \"background: #6bdbb3; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; border: 1px black solid; cursor: pointer; color: black; padding-top: 10px;  padding-bottom: 10px; text-decoration:none; max-width: 400px;\">
 						<center>Click To View</center>
 					</div>

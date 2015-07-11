@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca153bc9-cbf4-4492-8a60-61abd39714bd" name="Default" comment="dontcommit">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/actions/comment/CommentFileUpload.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/actions/comment/queries/getCommentNumber.mst.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/actions/comment/queries/insertComment.mst.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/actions/comment/queries/updateCommentRange.mst.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/actions/comment/queries/updateImageName.mst.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/actions/comment/utils.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newbooth/webcam.php" afterPath="$PROJECT_DIR$/newbooth/webcam.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/action-pages/scripts/webcamComment-page.mst.js" afterPath="$PROJECT_DIR$/action-pages/scripts/webcamComment-page.mst.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/action-pages/webcamComment.php" afterPath="$PROJECT_DIR$/action-pages/webcamComment.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="ca153bc9-cbf4-4492-8a60-61abd39714bd" name="Default" comment="Switched webcam comment to use IE-compatible library.">
+      <change type="DELETED" beforePath="C:\wamp\www\.idea\workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/upload_utils.php" afterPath="$PROJECT_DIR$/common/upload_utils.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/actions/comment/utils.php" afterPath="$PROJECT_DIR$/actions/comment/utils.php" />
     </list>
     <list id="2f6dd334-9c3e-473f-a083-0c9ab9db0008" name="dontcommit" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/boiler.php" afterPath="$PROJECT_DIR$/common/boiler.php" />
@@ -49,39 +42,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="webcam.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/capture/webcam.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4417" max-vertical-offset="11866">
-              <caret line="289" column="4" selection-start-line="289" selection-start-column="4" selection-end-line="289" selection-end-column="4" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <marker date="1436139456682" expanded="true" signature="9705:9714" placeholder="..." />
-                <marker date="1436139456682" expanded="true" signature="10033:10042" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="webcamComment-page.mst.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/action-pages/scripts/webcamComment-page.mst.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+            <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="986">
               <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="webcam.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newbooth/webcam.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.653846" vertical-offset="274" max-vertical-offset="867">
-              <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
-              <folding>
-                <marker date="1436502308774" expanded="true" signature="1311:1480" placeholder="..." />
-                <marker date="1436502308774" expanded="true" signature="1354:1461" placeholder="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -89,7 +55,7 @@
       <file leaf-file-name="webcam-page.mst" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newbooth/scripts/webcam-page.mst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="1173">
+            <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1173">
               <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
               <folding />
             </state>
@@ -99,7 +65,7 @@
       <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/boothsite/actions/comment/utils.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615" vertical-offset="255" max-vertical-offset="6069">
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="6069">
               <caret line="37" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
               <folding>
                 <marker date="1436503382029" expanded="true" signature="435:516" placeholder="SELECT COUNT..." />
@@ -118,28 +84,38 @@
       <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/boothica-public/actions/comment/utils.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/actions/comment/utils.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="10.033275" vertical-offset="153" max-vertical-offset="6069">
-              <caret line="346" column="22" selection-start-line="346" selection-start-column="22" selection-end-line="346" selection-end-column="22" />
+            <state vertical-scroll-proportion="-3.6923077" vertical-offset="5752" max-vertical-offset="6069">
+              <caret line="344" column="54" selection-start-line="344" selection-start-column="54" selection-end-line="344" selection-end-column="54" />
               <folding>
-                <marker date="1436503769133" expanded="true" signature="438:519" placeholder="SELECT COUNT..." />
-                <marker date="1436503769133" expanded="true" signature="3930:3991" placeholder="SELECT DISTI..commentstbl..." />
-                <marker date="1436503769133" expanded="true" signature="5073:5398" placeholder="SELECT COUNT..." />
-                <marker date="1436503769133" expanded="true" signature="5613:5740" placeholder="SELECT COUNT..." />
-                <marker date="1436503769133" expanded="true" signature="9940:10077" placeholder="INSERT INTO ..." />
-                <marker date="1436503769133" expanded="true" signature="10402:10744" placeholder="..." />
-                <marker date="1436503769133" expanded="false" signature="10444:10684" placeholder="..." />
-                <marker date="1436503769133" expanded="true" signature="10686:10735" placeholder="..." />
+                <marker date="1436596443719" expanded="true" signature="438:519" placeholder="SELECT COUNT..." />
+                <marker date="1436596443719" expanded="true" signature="3930:3991" placeholder="SELECT DISTI..commentstbl..." />
+                <marker date="1436596443719" expanded="true" signature="5073:5398" placeholder="SELECT COUNT..." />
+                <marker date="1436596443719" expanded="true" signature="5619:5746" placeholder="SELECT COUNT..." />
+                <marker date="1436596443719" expanded="true" signature="9942:10079" placeholder="INSERT INTO ..." />
+                <marker date="1436596443719" expanded="true" signature="10400:10742" placeholder="..." />
+                <marker date="1436596443719" expanded="false" signature="10442:10682" placeholder="..." />
+                <marker date="1436596443719" expanded="true" signature="10684:10733" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload_utils.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/common/upload_utils.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.12434326" vertical-offset="201" max-vertical-offset="1496">
+              <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -147,7 +123,7 @@
       <file leaf-file-name="CommentFileUpload.php" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/boothsite/actions/comment/CommentFileUpload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.884615" vertical-offset="3590" max-vertical-offset="4148">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3590" max-vertical-offset="4148">
               <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
               <folding>
                 <marker date="1436503382010" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
@@ -160,11 +136,11 @@
       <file leaf-file-name="CommentFileUpload.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/actions/comment/CommentFileUpload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.4615383" vertical-offset="1047" max-vertical-offset="4148">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1047" max-vertical-offset="4148">
               <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
               <folding>
-                <marker date="1436503382010" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
-                <marker date="1436503382010" expanded="true" signature="4390:4584" placeholder="SELECT `hash..." />
+                <marker date="1436503979081" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
+                <marker date="1436503979081" expanded="true" signature="4390:4584" placeholder="SELECT `hash..." />
               </folding>
             </state>
           </provider>
@@ -173,7 +149,7 @@
       <file leaf-file-name="upload.php" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/boothsite/actions/comment/upload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="1343">
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1343">
               <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
               <folding>
                 <marker date="1436503382023" expanded="true" signature="886:1023" placeholder="..." />
@@ -184,6 +160,9 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Push.Settings">
+    <option name="myUpdateMethod" value="REBASE" />
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -219,6 +198,7 @@
         <option value="$PROJECT_DIR$/newbooth/scripts/webcam-page.mst" />
         <option value="$PROJECT_DIR$/action-pages/scripts/webcamComment-page.mst.js" />
         <option value="$PROJECT_DIR$/actions/comment/utils.php" />
+        <option value="$PROJECT_DIR$/common/upload_utils.php" />
       </list>
     </option>
   </component>
@@ -227,7 +207,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -255,7 +235,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -390,6 +369,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -425,9 +405,6 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -435,6 +412,9 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -480,21 +460,27 @@
       <option name="project" value="LOCAL" />
       <updated>1436487245385</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Switched webcam comment to use IE-compatible library.">
+      <created>1436503960261</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1436503960261</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30952382" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33766234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7251082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18710022" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18923241" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30952382" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -504,9 +490,9 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -531,30 +517,18 @@
     <MESSAGE value="Added media files and extracted friend feed SQL" />
     <MESSAGE value="IE compatible webcam" />
     <MESSAGE value="dontcommit" />
-    <option name="LAST_COMMIT_MESSAGE" value="dontcommit" />
+    <MESSAGE value="Switched webcam comment to use IE-compatible library." />
+    <option name="LAST_COMMIT_MESSAGE" value="Switched webcam comment to use IE-compatible library." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/capture/webcam.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4417" max-vertical-offset="11866">
-          <caret line="289" column="4" selection-start-line="289" selection-start-column="4" selection-end-line="289" selection-end-column="4" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1436139456682" expanded="true" signature="9705:9714" placeholder="..." />
-            <marker date="1436139456682" expanded="true" signature="10033:10042" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/webcam.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="793" max-vertical-offset="3315">
           <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -563,8 +537,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="884">
           <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
           <folding>
-            <marker date="1436502308774" expanded="true" signature="1311:1480" placeholder="..." />
-            <marker date="1436502308774" expanded="true" signature="1354:1461" placeholder="{...}" />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -581,13 +555,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1785">
           <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding>
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `fkUs..." />
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `pkNu..." />
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `pkNu..." />
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `pkNu..." />
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `pkNu..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -595,9 +563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1700">
           <caret line="22" column="53" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="53" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -605,7 +570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2244">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -613,7 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3736" max-vertical-offset="4318">
           <caret line="162" column="13" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -629,8 +592,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="850">
           <caret line="27" column="101" selection-start-line="27" selection-start-column="101" selection-end-line="27" selection-end-column="101" />
           <folding>
-            <marker date="1436502308774" expanded="true" signature="1311:1480" placeholder="..." />
-            <marker date="1436502308774" expanded="true" signature="1354:1461" placeholder="{...}" />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -639,7 +602,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4301">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -647,7 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="3315">
           <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -677,8 +638,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="850">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1436502308774" expanded="true" signature="1311:1480" placeholder="..." />
-            <marker date="1436502308774" expanded="true" signature="1354:1461" placeholder="{...}" />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -799,13 +760,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1785">
           <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding>
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `fkUs..." />
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `pkNu..." />
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `pkNu..." />
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `pkNu..." />
-            <marker date="1436136718306" expanded="true" signature="-1:-1" placeholder="SELECT `pkNu..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -813,9 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1700">
           <caret line="22" column="53" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="53" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -823,7 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="793" max-vertical-offset="3315">
           <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -831,28 +782,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="4318">
           <caret line="121" column="34" selection-start-line="121" selection-start-column="34" selection-end-line="121" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/booths/be513d628c5d60a8db7a7b43c57e0e30.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="17306">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-          <folding>
-            <marker date="1436503774027" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1436503774027" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1436503774027" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1436503774027" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1436503774027" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1436503774027" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -867,19 +802,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="748">
           <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-          <folding>
-            <marker date="1436502875924" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/newbooth/webcam.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.653846" vertical-offset="274" max-vertical-offset="867">
+        <state vertical-scroll-proportion="0.0" vertical-offset="274" max-vertical-offset="867">
           <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
           <folding>
-            <marker date="1436502308774" expanded="true" signature="1311:1480" placeholder="..." />
-            <marker date="1436502308774" expanded="true" signature="1354:1461" placeholder="{...}" />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -890,8 +823,8 @@
           <caret line="289" column="4" selection-start-line="289" selection-start-column="4" selection-end-line="289" selection-end-column="4" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1436139456682" expanded="true" signature="9705:9714" placeholder="..." />
-            <marker date="1436139456682" expanded="true" signature="10033:10042" placeholder="..." />
+            <marker date="1436139456682" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436139456682" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -908,13 +841,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3321918" vertical-offset="1132" max-vertical-offset="2244">
           <caret line="78" column="4" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/newbooth/scripts/webcam-page.mst">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="1173">
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1173">
           <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
           <folding />
         </state>
@@ -930,7 +862,7 @@
     </entry>
     <entry file="file://$USER_HOME$/boothsite/actions/comment/CommentFileUpload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.884615" vertical-offset="3590" max-vertical-offset="4148">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3590" max-vertical-offset="4148">
           <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
           <folding>
             <marker date="1436503382010" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
@@ -941,18 +873,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/actions/comment/CommentFileUpload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.4615383" vertical-offset="1047" max-vertical-offset="4148">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1047" max-vertical-offset="4148">
           <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
           <folding>
-            <marker date="1436503382010" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
-            <marker date="1436503382010" expanded="true" signature="4390:4584" placeholder="SELECT `hash..." />
+            <marker date="1436503979081" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
+            <marker date="1436503979081" expanded="true" signature="4390:4584" placeholder="SELECT `hash..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/boothsite/actions/comment/upload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="1343">
+        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1343">
           <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
           <folding>
             <marker date="1436503382023" expanded="true" signature="886:1023" placeholder="..." />
@@ -963,7 +895,7 @@
     </entry>
     <entry file="file://$USER_HOME$/boothsite/actions/comment/utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615" vertical-offset="255" max-vertical-offset="6069">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="6069">
           <caret line="37" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
           <folding>
             <marker date="1436503382029" expanded="true" signature="435:516" placeholder="SELECT COUNT..." />
@@ -980,18 +912,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/actions/comment/utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="10.033275" vertical-offset="153" max-vertical-offset="6069">
-          <caret line="346" column="22" selection-start-line="346" selection-start-column="22" selection-end-line="346" selection-end-column="22" />
+        <state vertical-scroll-proportion="-3.6923077" vertical-offset="5752" max-vertical-offset="6069">
+          <caret line="344" column="54" selection-start-line="344" selection-start-column="54" selection-end-line="344" selection-end-column="54" />
           <folding>
-            <marker date="1436503769133" expanded="true" signature="438:519" placeholder="SELECT COUNT..." />
-            <marker date="1436503769133" expanded="true" signature="3930:3991" placeholder="SELECT DISTI..commentstbl..." />
-            <marker date="1436503769133" expanded="true" signature="5073:5398" placeholder="SELECT COUNT..." />
-            <marker date="1436503769133" expanded="true" signature="5613:5740" placeholder="SELECT COUNT..." />
-            <marker date="1436503769133" expanded="true" signature="9940:10077" placeholder="INSERT INTO ..." />
-            <marker date="1436503769133" expanded="true" signature="10402:10744" placeholder="..." />
-            <marker date="1436503769133" expanded="false" signature="10444:10684" placeholder="..." />
-            <marker date="1436503769133" expanded="true" signature="10686:10735" placeholder="..." />
+            <marker date="1436596443719" expanded="true" signature="438:519" placeholder="SELECT COUNT..." />
+            <marker date="1436596443719" expanded="true" signature="3930:3991" placeholder="SELECT DISTI..commentstbl..." />
+            <marker date="1436596443719" expanded="true" signature="5073:5398" placeholder="SELECT COUNT..." />
+            <marker date="1436596443719" expanded="true" signature="5619:5746" placeholder="SELECT COUNT..." />
+            <marker date="1436596443719" expanded="true" signature="9942:10079" placeholder="INSERT INTO ..." />
+            <marker date="1436596443719" expanded="true" signature="10400:10742" placeholder="..." />
+            <marker date="1436596443719" expanded="false" signature="10442:10682" placeholder="..." />
+            <marker date="1436596443719" expanded="true" signature="10684:10733" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/upload_utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12434326" vertical-offset="201" max-vertical-offset="1496">
+          <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
+          <folding />
         </state>
       </provider>
     </entry>
