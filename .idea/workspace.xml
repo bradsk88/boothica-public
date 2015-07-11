@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca153bc9-cbf4-4492-8a60-61abd39714bd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_mobile/v2/queries/friendfeed-owner.mst.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_mobile/v2/queries/friendfeed-tofriend.mst.sql" />
-      <change type="DELETED" beforePath="C:\Users\Brad\boothica-public\user-registration\script.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_mobile/v2/friendfeed.php" afterPath="$PROJECT_DIR$/_mobile/v2/friendfeed.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_mobile/v2/queries/getUncheckedMentionsCount.mst.sql" afterPath="$PROJECT_DIR$/_mobile/v2/queries/getUncheckedMentionsCount.mst.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_mobile/v2/getnotifications.php" afterPath="$PROJECT_DIR$/_mobile/v2/getnotifications.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user-registration/index.php" afterPath="$PROJECT_DIR$/user-registration/index.php" />
+    <list default="true" id="ca153bc9-cbf4-4492-8a60-61abd39714bd" name="Default" comment="Switched webcam comment to use IE-compatible library.">
+      <change type="DELETED" beforePath="C:\wamp\www\.idea\workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/upload_utils.php" afterPath="$PROJECT_DIR$/common/upload_utils.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/actions/comment/utils.php" afterPath="$PROJECT_DIR$/actions/comment/utils.php" />
+    </list>
+    <list id="2f6dd334-9c3e-473f-a083-0c9ab9db0008" name="dontcommit" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/boiler.php" afterPath="$PROJECT_DIR$/common/boiler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newbooth/post_utils.php" afterPath="$PROJECT_DIR$/newbooth/post_utils.php" />
     </list>
     <ignored path="boothica-public.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
+    <ignored path="dologin.php" />
+    <ignored path="actions/doregister.php" />
+    <ignored path="emailconfirmskip.php" />
+    <ignored path="actions/confirmregistration.php" />
+    <ignored path="utils/devlist.php" />
+    <ignored path="booths/" />
+    <ignored path="comments/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <file path="$PROJECT_DIR$/newbooth/post_utils.php" ignored="false" />
+    <file path="$PROJECT_DIR$/common/boiler.php" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,146 +42,163 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="readTheRules.mst" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/boothica-public-fillers/actions/templates/readTheRules.mst">
+      <file leaf-file-name="webcamComment-page.mst.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/action-pages/scripts/webcamComment-page.mst.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="986">
+              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="friendfeed.php" pinned="false" current-in-tab="false">
-        <entry file="file://C:/wamp/www/_mobile/v2/friendfeed.php">
+      <file leaf-file-name="webcam-page.mst" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/newbooth/scripts/webcam-page.mst">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="1564">
-              <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1173">
+              <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="devlist.php" pinned="false" current-in-tab="false">
-        <entry file="file://C:/wamp/www/utils/devlist.php">
+      <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/boothsite/actions/comment/utils.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="170">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
-        <entry file="file://C:/wamp/www/common/db.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.615385" vertical-offset="87" max-vertical-offset="850">
-              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getnotifications.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_mobile/v2/getnotifications.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.6538463" vertical-offset="482" max-vertical-offset="1258">
-              <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getUncheckedMentionsCount.mst.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_mobile/v2/queries/getUncheckedMentionsCount.mst.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.34" vertical-offset="0" max-vertical-offset="255">
-              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dologin.php" pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/boothica-public-fillers/dologin.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6048689" vertical-offset="0" max-vertical-offset="561">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="6069">
+              <caret line="37" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
               <folding>
-                <marker date="1435786281622" expanded="true" signature="461:558" placeholder="..." />
-                <marker date="1435786281622" expanded="true" signature="499:550" placeholder="..." />
+                <marker date="1436503382029" expanded="true" signature="435:516" placeholder="SELECT COUNT..." />
+                <marker date="1436503382029" expanded="true" signature="3888:3949" placeholder="SELECT DISTI..commentstbl..." />
+                <marker date="1436503382029" expanded="true" signature="5031:5356" placeholder="SELECT COUNT..." />
+                <marker date="1436503382029" expanded="true" signature="5571:5698" placeholder="SELECT COUNT..." />
+                <marker date="1436503382029" expanded="true" signature="9898:10035" placeholder="INSERT INTO ..." />
+                <marker date="1436503382029" expanded="true" signature="10360:10702" placeholder="..." />
+                <marker date="1436503382029" expanded="false" signature="10402:10642" placeholder="..." />
+                <marker date="1436503382029" expanded="true" signature="10644:10693" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getMentions.mst.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_mobile/v2/queries/getMentions.mst.sql">
+      <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/boothica-public/actions/comment/utils.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.04" vertical-offset="0" max-vertical-offset="544">
-              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="7" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="friendfeed-owner.mst.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_mobile/v2/queries/friendfeed-owner.mst.sql">
+      <file leaf-file-name="utils.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/actions/comment/utils.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.1" vertical-offset="0" max-vertical-offset="408">
-              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+            <state vertical-scroll-proportion="-3.6923077" vertical-offset="5752" max-vertical-offset="6069">
+              <caret line="344" column="54" selection-start-line="344" selection-start-column="54" selection-end-line="344" selection-end-column="54" />
+              <folding>
+                <marker date="1436596443719" expanded="true" signature="438:519" placeholder="SELECT COUNT..." />
+                <marker date="1436596443719" expanded="true" signature="3930:3991" placeholder="SELECT DISTI..commentstbl..." />
+                <marker date="1436596443719" expanded="true" signature="5073:5398" placeholder="SELECT COUNT..." />
+                <marker date="1436596443719" expanded="true" signature="5619:5746" placeholder="SELECT COUNT..." />
+                <marker date="1436596443719" expanded="true" signature="9942:10079" placeholder="INSERT INTO ..." />
+                <marker date="1436596443719" expanded="true" signature="10400:10742" placeholder="..." />
+                <marker date="1436596443719" expanded="false" signature="10442:10682" placeholder="..." />
+                <marker date="1436596443719" expanded="true" signature="10684:10733" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload_utils.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/common/upload_utils.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.12434326" vertical-offset="201" max-vertical-offset="1496">
+              <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="friendfeed-tofriend.mst.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_mobile/v2/queries/friendfeed-tofriend.mst.sql">
+      <file leaf-file-name="CommentFileUpload.php" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/boothsite/actions/comment/CommentFileUpload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.06" vertical-offset="0" max-vertical-offset="646">
-              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3590" max-vertical-offset="4148">
+              <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+              <folding>
+                <marker date="1436503382010" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
+                <marker date="1436503382010" expanded="true" signature="4390:4584" placeholder="SELECT `hash..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentFileUpload.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/actions/comment/CommentFileUpload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1047" max-vertical-offset="4148">
+              <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
+              <folding>
+                <marker date="1436503979081" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
+                <marker date="1436503979081" expanded="true" signature="4390:4584" placeholder="SELECT `hash..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload.php" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/boothsite/actions/comment/upload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1343">
+              <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+              <folding>
+                <marker date="1436503382023" expanded="true" signature="886:1023" placeholder="..." />
+                <marker date="1436503382023" expanded="true" signature="894:975" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="Git.Push.Settings">
+    <option name="myUpdateMethod" value="REBASE" />
+  </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/newbooth/newbooth-scripts.js" />
-        <option value="$PROJECT_DIR$/css/webcam.css" />
         <option value="$PROJECT_DIR$/newbooth/templates/webcamScripts.mst.js" />
-        <option value="$PROJECT_DIR$/newbooth/webcam.php" />
-        <option value="$PROJECT_DIR$/newbooth/templates/webcam.mst" />
-        <option value="$PROJECT_DIR$/common/db_auth.php" />
-        <option value="$PROJECT_DIR$/common/db.php" />
-        <option value="C:/wamp/www/index.php" />
-        <option value="$USER_HOME$/boothica-public-fillers/common/db_auth.php" />
-        <option value="C:/wamp/www/common/db_auth.php" />
-        <option value="C:/wamp/www/common/boiler.php" />
-        <option value="$USER_HOME$/boothica-public-fillers/actions/doregister.php" />
-        <option value="C:/wamp/www/_mobile/v2/publicfeed.php" />
-        <option value="$USER_HOME$/boothica-public-fillers/common/internal_utils.php" />
-        <option value="$PROJECT_DIR$/user-registration/index.php" />
-        <option value="$USER_HOME$/boothica-public-fillers/actions/registerConstants.php" />
-        <option value="$USER_HOME$/boothica-public-fillers/actions/confirmregistration.php" />
-        <option value="$USER_HOME$/boothica-public-fillers/emailconfirmskip.php" />
-        <option value="$USER_HOME$/boothica-public-fillers/actions/templates/readTheRules.mst" />
+        <option value="$PROJECT_DIR$/common/boiler.php" />
         <option value="$USER_HOME$/boothica-public-fillers/utils/devlist.php" />
-        <option value="$PROJECT_DIR$/_mobile/v2/queries/friendfeed-owner.mst.sql" />
-        <option value="$PROJECT_DIR$/_mobile/v2/queries/friendfeed-tofriend.mst.sql" />
-        <option value="C:/wamp/www/_mobile/v2/friendfeed.php" />
-        <option value="C:/wamp/www/utils/devlist.php" />
-        <option value="$PROJECT_DIR$/_mobile/v2/getnotifications.php" />
-        <option value="C:/wamp/www/common/db.php" />
-        <option value="$PROJECT_DIR$/_mobile/v2/queries/getUncheckedMentionsCount.mst.sql" />
-        <option value="$USER_HOME$/boothica-public-fillers/dologin.php" />
+        <option value="$PROJECT_DIR$/utils/devlist.php" />
+        <option value="$PROJECT_DIR$/capture/webcam.mst.html" />
+        <option value="$PROJECT_DIR$/capture/scripts/webcam.js.php" />
+        <option value="$PROJECT_DIR$/newbooth/scripts/webcam-page1.mst" />
+        <option value="$PROJECT_DIR$/newbooth/post_utils.php" />
+        <option value="$PROJECT_DIR$/userpages/booth_utils.php" />
+        <option value="$PROJECT_DIR$/newbooth/scripts/webcam-page2.mst" />
+        <option value="$PROJECT_DIR$/newbooth/templates/webcam.mst" />
+        <option value="$PROJECT_DIR$/capture/templates/webcam.mst.html" />
+        <option value="$PROJECT_DIR$/capture/webcam.js" />
+        <option value="$PROJECT_DIR$/css/webcam.css" />
+        <option value="$PROJECT_DIR$/capture/scripts/webcam.mst.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/newbooth/webcam.php" />
+        <option value="$PROJECT_DIR$/action-pages/webcamComment.php" />
+        <option value="$PROJECT_DIR$/newbooth/scripts/webcam-page.mst" />
+        <option value="$PROJECT_DIR$/action-pages/scripts/webcamComment-page.mst.js" />
+        <option value="$PROJECT_DIR$/actions/comment/utils.php" />
+        <option value="$PROJECT_DIR$/common/upload_utils.php" />
       </list>
     </option>
   </component>
@@ -181,11 +207,12 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="275" />
-    <option name="width" value="1645" />
-    <option name="height" value="1040" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -198,7 +225,7 @@
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
-      <showMembers />
+      <showMembers ProjectPane="false" />
       <showModules />
       <showLibraryContents />
       <hideEmptyPackages />
@@ -208,7 +235,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -223,7 +249,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="boothica-public" />
+              <option name="myItemId" value="www" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -233,25 +259,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="boothica-public" />
+              <option name="myItemId" value="www" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boothica-public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="boothica-public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_mobile" />
+              <option name="myItemId" value="newbooth" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -261,15 +273,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="boothica-public" />
+              <option name="myItemId" value="www" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="_mobile" />
+              <option name="myItemId" value="newbooth" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="v2" />
+              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -279,33 +291,104 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="capture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="boothica-public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="_mobile" />
+              <option name="myItemId" value="capture" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="v2" />
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boothica-public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="queries" />
+              <option name="myItemId" value="capture" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boothica-public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="actions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="boothica-public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="actions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="comment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="options.lastSelected" value="preferences.fileTypes" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHub/PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.gitignore" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\capture\scripts" />
+      <recent name="C:\wamp\www" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\capture" />
+      <recent name="C:\wamp\www\capture\templates" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -336,13 +419,19 @@
     </configuration>
     <list size="0" />
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <recycled_changelist date="1436487244931">
+      <option name="PATH" value="C:\wamp\www\.idea\shelf\dontcommit.patch" />
+      <option name="DESCRIPTION" value="dontcommit" />
+    </recycled_changelist>
+  </component>
   <component name="SvnConfiguration">
-    <configuration>C:\Users\Brad\AppData\Roaming\Subversion</configuration>
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ca153bc9-cbf4-4492-8a60-61abd39714bd" name="Default" comment="" />
+      <changelist id="2f6dd334-9c3e-473f-a083-0c9ab9db0008" name="dontcommit" comment="" />
       <created>1434327090179</created>
       <option name="number" value="Default" />
       <updated>1434327090179</updated>
@@ -353,33 +442,57 @@
       <option name="project" value="LOCAL" />
       <updated>1434336333947</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="IE compatible webcam">
+      <created>1436140384585</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1436140384585</updated>
+    </task>
+    <task id="LOCAL-00003" summary="IE compatible webcam">
+      <created>1436486356168</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1436486356168</updated>
+    </task>
+    <task id="LOCAL-00004" summary="dontcommit">
+      <created>1436487245385</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1436487245385</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Switched webcam comment to use IE-compatible library.">
+      <created>1436503960261</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1436503960261</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="275" y="0" width="1645" height="1040" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31057268" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30952382" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33810574" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7251082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22649843" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18923241" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30952382" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -397,19 +510,73 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/lib/h2o-php" />
+    </ignored-roots>
     <MESSAGE value="Added flash fallback but it doesn't really work.&#10;Going to check out webcamjs&#10;https://github.com/jhuckaby/webcamjs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added flash fallback but it doesn't really work.&#10;Going to check out webcamjs&#10;https://github.com/jhuckaby/webcamjs" />
+    <MESSAGE value="Added media files and extracted friend feed SQL" />
+    <MESSAGE value="IE compatible webcam" />
+    <MESSAGE value="dontcommit" />
+    <MESSAGE value="Switched webcam comment to use IE-compatible library." />
+    <option name="LAST_COMMIT_MESSAGE" value="Switched webcam comment to use IE-compatible library." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/css/webcam.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="793" max-vertical-offset="3315">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newbooth/webcam.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="884">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding>
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newbooth/scripts/webcam-page.mst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="1173">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpages/booth_utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1785">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capture/templates/webcam.mst.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1700">
+          <caret line="22" column="53" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capture/scripts/webcam.mst.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2244">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/newbooth/templates/webcamScripts.mst.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3736" max-vertical-offset="4318">
           <caret line="162" column="13" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -417,7 +584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -426,8 +592,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="850">
           <caret line="27" column="101" selection-start-line="27" selection-start-column="101" selection-end-line="27" selection-end-column="101" />
           <folding>
-            <marker date="1434335728706" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1434335728706" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -436,7 +602,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4301">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -465,7 +630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1683">
           <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -474,23 +638,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="850">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1434335728706" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1434335728706" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/webcam.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="3315">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newbooth/webcam.js.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="323">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -501,313 +651,287 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dologin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="609">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/actions/confirmregistration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3877193" vertical-offset="0" max-vertical-offset="2006">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/h2o-php/h2o.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3104631" vertical-offset="69" max-vertical-offset="4624">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/boothica-public-fillers/utils/devlist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="170">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/devlist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11663808" vertical-offset="0" max-vertical-offset="583">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/boiler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1089" max-vertical-offset="3349">
+          <caret line="76" column="7" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capture/scripts/webcam.js.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="323">
+          <caret line="8" column="69" selection-start-line="8" selection-start-column="69" selection-end-line="8" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newbooth/webcam.js.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="323">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/booth/utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newbooth/post_utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5384617" vertical-offset="153" max-vertical-offset="4964">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/feed.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9606164" vertical-offset="0" max-vertical-offset="799">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/pageframe.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.380137" vertical-offset="2719" max-vertical-offset="11917">
+          <caret line="173" column="4" selection-start-line="173" selection-start-column="3" selection-end-line="173" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/master.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.109589" vertical-offset="4338" max-vertical-offset="6681">
+          <caret line="362" column="31" selection-start-line="362" selection-start-column="27" selection-end-line="362" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newbooth/templates/webcam.mst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39459458" vertical-offset="818" max-vertical-offset="1734">
+          <caret line="61" column="37" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userpages/booth_utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1785">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/capture/templates/webcam.mst.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1700">
+          <caret line="22" column="53" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/webcam.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="793" max-vertical-offset="3315">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/newbooth/templates/webcamScripts.mst.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3736" max-vertical-offset="4318">
-          <caret line="162" column="13" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="4318">
+          <caret line="121" column="34" selection-start-line="121" selection-start-column="34" selection-end-line="121" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/booths/be513d628c5d60a8db7a7b43c57e0e30.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action-pages/webcamComment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="748">
+          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/newbooth/webcam.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="850">
-          <caret line="27" column="101" selection-start-line="27" selection-start-column="101" selection-end-line="27" selection-end-column="101" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="274" max-vertical-offset="867">
+          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
           <folding>
-            <marker date="1434335728706" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1434335728706" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436503979097" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newbooth/templates/webcam.mst">
+    <entry file="file://$PROJECT_DIR$/capture/webcam.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="1717">
-          <caret line="76" column="25" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/utils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.115385" vertical-offset="1914" max-vertical-offset="13923">
-          <caret line="125" column="57" selection-start-line="125" selection-start-column="57" selection-end-line="125" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/wamp/www/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0" vertical-offset="306" max-vertical-offset="918">
-          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/framing/PageFrame.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.653846" vertical-offset="1322" max-vertical-offset="3672">
-          <caret line="101" column="36" selection-start-line="101" selection-start-column="36" selection-end-line="101" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4417" max-vertical-offset="11866">
+          <caret line="289" column="4" selection-start-line="289" selection-start-column="4" selection-end-line="289" selection-end-column="4" />
           <folding>
-            <marker date="1434327086241" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1434327086241" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1434327086241" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1434327086241" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1434327086241" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1434327086241" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1436139456682" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1436139456682" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/db.php">
+    <entry file="file://$PROJECT_DIR$/action-pages/scripts/webcamComment-page.mst.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="850">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/wamp/www/common/db_auth.php">
+    <entry file="file://$PROJECT_DIR$/capture/scripts/webcam.mst.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="323">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.3321918" vertical-offset="1132" max-vertical-offset="2244">
+          <caret line="78" column="4" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newbooth/scripts/webcam-page.mst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1173">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-registration/accepted.php">
+    <entry file="file://$USER_HOME$/boothica-public/actions/comment/utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="204">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_3.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537" vertical-offset="13141" max-vertical-offset="18037">
-          <caret line="785" column="9" selection-start-line="785" selection-start-column="9" selection-end-line="785" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/framing/templates/login.mst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36319217" vertical-offset="542" max-vertical-offset="1156">
-          <caret line="45" column="31" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.230769" vertical-offset="347" max-vertical-offset="935">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/boiler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537" vertical-offset="17" max-vertical-offset="1105">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/wamp/www/common/boiler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.5" vertical-offset="0" max-vertical-offset="1105">
-          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/wamp/www/_mobile/v2/publicfeed.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3076923" vertical-offset="153" max-vertical-offset="1819">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3469388" vertical-offset="15385" max-vertical-offset="18003">
-          <caret line="917" column="9" selection-start-line="917" selection-start-column="9" selection-end-line="917" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_mobile/utils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="1428">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <marker date="1434327085662" expanded="true" signature="-1:-1" placeholder="SELECT `key`..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user-registration/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.115385" vertical-offset="653" max-vertical-offset="1241">
-          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/boothica-public-fillers/common/db_auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="323">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/boothica-public-fillers/actions/confirmregistration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="18.961538" vertical-offset="663" max-vertical-offset="2006">
-          <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
-          <folding>
-            <marker date="1435783362198" expanded="true" signature="-1:-1" placeholder="SELECT `user..." />
-            <marker date="1435783362198" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1435783362198" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1435783362198" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1435783362198" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1435783362198" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1435783362198" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/boothica-public-fillers/actions/registerConstants.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="255">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/boothica-public-fillers/emailconfirmskip.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="442">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <marker date="1435783883030" expanded="true" signature="-1:-1" placeholder="SELECT code ..registertbl..." />
-            <marker date="1435783883030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1435783883030" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1435783883030" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_mobile/v2/friendfeed.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="584">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_mobile/v2/queries/friendList.mst.sql">
+    <entry file="file://$USER_HOME$/boothsite/actions/comment/CommentFileUpload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.46" vertical-offset="0" max-vertical-offset="510">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_mobile/v2/getcomments.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.192307" vertical-offset="363" max-vertical-offset="2312">
-          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3590" max-vertical-offset="4148">
+          <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
           <folding>
-            <marker date="1434327085703" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+            <marker date="1436503382010" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
+            <marker date="1436503382010" expanded="true" signature="4390:4584" placeholder="SELECT `hash..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_mobile/v2/queries/friendfeed-tofriend.mst.sql">
+    <entry file="file://$PROJECT_DIR$/actions/comment/CommentFileUpload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.06" vertical-offset="0" max-vertical-offset="646">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/boothica-public-fillers/actions/templates/readTheRules.mst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_mobile/v2/queries/friendfeed-owner.mst.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1" vertical-offset="0" max-vertical-offset="408">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/wamp/www/_mobile/v2/friendfeed.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="1564">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/wamp/www/utils/devlist.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="170">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/wamp/www/common/db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.615385" vertical-offset="87" max-vertical-offset="850">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_mobile/v2/getnotifications.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.6538463" vertical-offset="482" max-vertical-offset="1258">
-          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_mobile/v2/queries/getMentions.mst.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.04" vertical-offset="0" max-vertical-offset="544">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="7" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_mobile/v2/queries/getUncheckedMentionsCount.mst.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.34" vertical-offset="0" max-vertical-offset="255">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/boothica-public-fillers/dologin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6048689" vertical-offset="0" max-vertical-offset="561">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1047" max-vertical-offset="4148">
+          <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
           <folding>
-            <marker date="1435786281622" expanded="true" signature="461:558" placeholder="..." />
-            <marker date="1435786281622" expanded="true" signature="499:550" placeholder="..." />
+            <marker date="1436503979081" expanded="true" signature="3394:3586" placeholder="SELECT `pkCo..." />
+            <marker date="1436503979081" expanded="true" signature="4390:4584" placeholder="SELECT `hash..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/boothsite/actions/comment/upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1343">
+          <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+          <folding>
+            <marker date="1436503382023" expanded="true" signature="886:1023" placeholder="..." />
+            <marker date="1436503382023" expanded="true" signature="894:975" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/boothsite/actions/comment/utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="6069">
+          <caret line="37" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="351" selection-end-column="0" />
+          <folding>
+            <marker date="1436503382029" expanded="true" signature="435:516" placeholder="SELECT COUNT..." />
+            <marker date="1436503382029" expanded="true" signature="3888:3949" placeholder="SELECT DISTI..commentstbl..." />
+            <marker date="1436503382029" expanded="true" signature="5031:5356" placeholder="SELECT COUNT..." />
+            <marker date="1436503382029" expanded="true" signature="5571:5698" placeholder="SELECT COUNT..." />
+            <marker date="1436503382029" expanded="true" signature="9898:10035" placeholder="INSERT INTO ..." />
+            <marker date="1436503382029" expanded="true" signature="10360:10702" placeholder="..." />
+            <marker date="1436503382029" expanded="false" signature="10402:10642" placeholder="..." />
+            <marker date="1436503382029" expanded="true" signature="10644:10693" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/actions/comment/utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6923077" vertical-offset="5752" max-vertical-offset="6069">
+          <caret line="344" column="54" selection-start-line="344" selection-start-column="54" selection-end-line="344" selection-end-column="54" />
+          <folding>
+            <marker date="1436596443719" expanded="true" signature="438:519" placeholder="SELECT COUNT..." />
+            <marker date="1436596443719" expanded="true" signature="3930:3991" placeholder="SELECT DISTI..commentstbl..." />
+            <marker date="1436596443719" expanded="true" signature="5073:5398" placeholder="SELECT COUNT..." />
+            <marker date="1436596443719" expanded="true" signature="5619:5746" placeholder="SELECT COUNT..." />
+            <marker date="1436596443719" expanded="true" signature="9942:10079" placeholder="INSERT INTO ..." />
+            <marker date="1436596443719" expanded="true" signature="10400:10742" placeholder="..." />
+            <marker date="1436596443719" expanded="false" signature="10442:10682" placeholder="..." />
+            <marker date="1436596443719" expanded="true" signature="10684:10733" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/upload_utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12434326" vertical-offset="201" max-vertical-offset="1496">
+          <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -14,7 +14,7 @@ function handle_mentions($blurb) {
  */
 function linkify_mention($mentions) {
     $mention = $mentions[1];
-    return "<a class = \"mention\" href = \"".base()."/users/".strtolower($mention)."/booths.php\">@".$mention."</a>";
+    return "<a class = \"mention\" href = \"".base()."/users/".strtolower($mention)."/booths\">@".$mention."</a>";
 }
 
 /*

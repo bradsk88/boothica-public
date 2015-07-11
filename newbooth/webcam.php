@@ -9,7 +9,8 @@
 
         function __construct() {
             parent::__construct();
-            $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/newbooth/templates/webcam.mst");
+            $templatefile = str_replace('/', DIRECTORY_SEPARATOR, realpath($_SERVER['DOCUMENT_ROOT']) . "/capture/templates/webcam.mst.html");
+            $htmlBuilder = new h2o($templatefile);
             $html = $htmlBuilder->render(array(
                 "baseUrl" => base(),
                 "headerText" => "New Booth",
@@ -23,8 +24,8 @@
 
     if (isLoggedIn()) {
         $page = new WebcamPage();
-        $page->script(base()."/newbooth/webcam.js");
-        $page->script(base()."/lib/getUserMedia.js");
+        $page->script(base()."/capture/webcam.js");
+        $page->script(base()."/capture/scripts/webcam.js");
         $pageScriptBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/newbooth/scripts/webcam-page.mst");
         $page->rawScript($pageScriptBuilder->render(array()));
         $page->rawScript("<script type = \"text/javascript\">

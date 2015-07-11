@@ -2,3 +2,5 @@ common/db_auth.php
 lib/h2o-php
 common/internal_utils.php
 test/vendor
+.idea/workspace.xml
+.idea/tasks.xml
