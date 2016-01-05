@@ -40,7 +40,7 @@ ln -sfn $BASE_DIR/public/framing/ /srv/http/framing
 ln -sfn $BASE_DIR/public/lib/ /srv/http/lib 
 ln -sfn $BASE_DIR/fillers/utils /srv/http/utils 
 ln -sfn $BASE_DIR/fillers/common/db_auth.php $BASE_DIR/public/common/db_auth.php 
-ln -sfn $BASE_DIR/fillers/common/db_auth.php $BASE_DIR/public/common/boiler.php 
+ln -sfn $BASE_DIR/fillers/common/boiler.php $BASE_DIR/public/common/boiler.php 
 ln -sfn $BASE_DIR/public/css/ css
 ln -sfn $BASE_DIR/fillers/media/ media
 ln -sfn $BASE_DIR/public/_mobile/ _mobile
