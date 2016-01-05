@@ -50,6 +50,7 @@ ln -sfn $BASE_DIR/public/_mobile/ _mobile
 ln -sfn $BASE_DIR/public/livefeed/ livefeed
 ln -sfn $BASE_DIR/fillers/common/internal_utils.php $BASE_DIR/public/common/internal_utils.php
 ln -sfn $BASE_DIR/public/user-registration user-registration
+ln -sfn $BASE_DIR/public/user-pages user-pages
 ln -sfn $BASE_DIR/public/comment comment
 ln -sfn $BASE_DIR/public/pages pages
 ```
