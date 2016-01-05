@@ -34,11 +34,11 @@ In the following script, BASE_DIR is the directory into which you clone the boot
 
 ```
 BASE_DIR = /home/bradsk88/boothica_dev 
-ln -sf $BASE_DIR/public/index.php /src/http/index.php 
-ln -sf $BASE_DIR/public/common/ /src/http/common 
-ln -sf $BASE_DIR/public/framing/ /src/http/framing 
-ln -sf $BASE_DIR/public/lib/ /src/http/lib 
-ln -sf $BASE_DIR/fillers/utils /src/http/utils 
+ln -sf $BASE_DIR/public/index.php /srv/http/index.php 
+ln -sf $BASE_DIR/public/common/ /srv/http/common 
+ln -sf $BASE_DIR/public/framing/ /srv/http/framing 
+ln -sf $BASE_DIR/public/lib/ /srv/http/lib 
+ln -sf $BASE_DIR/fillers/utils /srv/http/utils 
 ln -sf $BASE_DIR/fillers/common/db_auth.php $BASE_DIR/public/common/db_auth.php 
 ln -sf $BASE_DIR/public/css/ css
 ln -sf $BASE_DIR/fillers/media/ media
