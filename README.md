@@ -38,6 +38,7 @@ ln -sfn $BASE_DIR/public/index.php /srv/http/index.php
 ln -sfn $BASE_DIR/public/common/ /srv/http/common 
 ln -sfn $BASE_DIR/public/framing/ /srv/http/framing 
 ln -sfn $BASE_DIR/public/lib/ /srv/http/lib 
+ln -sfn $BASE_DIR/fillers/actions/ /srv/http/actions 
 ln -sfn $BASE_DIR/fillers/utils /srv/http/utils 
 ln -sfn $BASE_DIR/fillers/common/db_auth.php $BASE_DIR/public/common/db_auth.php 
 ln -sfn $BASE_DIR/fillers/common/boiler.php $BASE_DIR/public/common/boiler.php 
