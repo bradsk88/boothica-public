@@ -59,3 +59,10 @@ Explanation:
 ``` -s ``` Causes ``` ln ``` to create a ``` symbolic link ```  
 ``` -f ``` Causes ``` ln ``` to overwrite old ``` symbolic link ```s  
 ``` -n ``` Causes ``` ln ``` to overwrite old ``` symbolic link ```s that point to directories  
+
+Finally
+---
+
+Once everything is up and running you should be able to go to ``` localhost ``` in your browser and land on the boothi.ca login page.  Click the register button and create a new user.
+
+If you don't have your local server configured with email support (we recommend you *don't* support emails), you can go to ``` http://localhost/emailconfirmskip ``` to skip the email confirmation step of registration.
