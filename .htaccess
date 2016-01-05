@@ -21,6 +21,7 @@ RewriteRule ^users/([a-zA-Z0-9_-]+)/friends/remove\/([a-zA-Z0-9_-]+)/confirm[\/]
 RewriteRule ^users/([a-zA-Z0-9_-]+)/friends/ignore\/([a-zA-Z0-9_-]+)[\/]?$ ./action-pages/ignoreFriend.php?username=$1&friendname=$2
 RewriteRule ^users/([a-zA-Z0-9_-]+)/friends/unignore\/([a-zA-Z0-9_-]+)[\/]?$ ./action-pages/addFriend.php?username=$1&friendname=$2&unignore=true
 RewriteRule ^users/([a-zA-Z0-9_-]+)/friends/manage[\/]?$ ./user-pages/manageFriends.php?username=$1
+RewriteRule ^users/([a-zA-Z0-9_-]+)/the/end[\/]?$ ./user-pages/exportEverything?username=$1
 RewriteRule ^users/([a-zA-Z0-9_-]+)/([0-9]+)[\/]?$ ./user-pages/onebooth.php?username=$1&boothnum=$2
 RewriteRule ^users/([a-zA-Z0-9_-]+)/([0-9]+)\/like[\/]?$ ./actions/likebooth.php?boothnum=$2
 RewriteRule ^users/([a-zA-Z0-9_-]+)/([0-9]+)\/edit[\/]?$ ./action-pages/editBlurb.php?boothnum=$2
