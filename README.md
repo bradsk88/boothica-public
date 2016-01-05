@@ -51,7 +51,7 @@ ln -sfn $BASE_DIR/public/pages pages
 ```
 
 Explanation:  
-``` ln ``` Linux command used for interacting with links
-``` -s ``` Causes ``` ln ``` to create a ``` symbolic link ```
-``` -f ``` Causes ``` ln ``` to overwrite old ``` symbolic link ```s
-``` -n ``` Causes ``` ln ``` to overwrite old ``` symbolic link ```s that point to directories
+``` ln ``` Linux command used for interacting with links  
+``` -s ``` Causes ``` ln ``` to create a ``` symbolic link ```  
+``` -f ``` Causes ``` ln ``` to overwrite old ``` symbolic link ```s  
+``` -n ``` Causes ``` ln ``` to overwrite old ``` symbolic link ```s that point to directories  
