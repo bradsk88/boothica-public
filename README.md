@@ -5,7 +5,7 @@ These instructions are based on Arch Linux, adjust directions as necessary:
 
 Install apache 
 ``` sudo pacman -S apache ```
-(This will set our http root at ``` /src/http ```
+(This will set our http root at ``` /srv/http ```
 
 Update ``` /etc/httpd/conf/httpd.conf ``` to allow .htaccess by changing the AllowOverride value under <Directory "srv/http"> to have the value ``` All ```.
 
@@ -34,19 +34,24 @@ In the following script, BASE_DIR is the directory into which you clone the boot
 
 ```
 BASE_DIR = /home/bradsk88/boothica_dev 
-ln -sf $BASE_DIR/public/index.php /srv/http/index.php 
-ln -sf $BASE_DIR/public/common/ /srv/http/common 
-ln -sf $BASE_DIR/public/framing/ /srv/http/framing 
-ln -sf $BASE_DIR/public/lib/ /srv/http/lib 
-ln -sf $BASE_DIR/fillers/utils /srv/http/utils 
-ln -sf $BASE_DIR/fillers/common/db_auth.php $BASE_DIR/public/common/db_auth.php 
-ln -sf $BASE_DIR/public/css/ css
-ln -sf $BASE_DIR/fillers/media/ media
-ln -sf $BASE_DIR/public/_mobile/ _mobile
-ln -sf $BASE_DIR/public/livefeed/ livefeed
-ln -sf $BASE_DIR/fillers/common/internal_utils.php $BASE_DIR/public/common/internal_utils.php
-ln -sf $BASE_DIR/public/user-registration user-registration
-ln -sf $BASE_DIR/public/comment comment
-ln -sf $BASE_DIR/public/pages pages
+ln -sfn $BASE_DIR/public/index.php /srv/http/index.php 
+ln -sfn $BASE_DIR/public/common/ /srv/http/common 
+ln -sfn $BASE_DIR/public/framing/ /srv/http/framing 
+ln -sfn $BASE_DIR/public/lib/ /srv/http/lib 
+ln -sfn $BASE_DIR/fillers/utils /srv/http/utils 
+ln -sfn $BASE_DIR/fillers/common/db_auth.php $BASE_DIR/public/common/db_auth.php 
+ln -sfn $BASE_DIR/public/css/ css
+ln -sfn $BASE_DIR/fillers/media/ media
+ln -sfn $BASE_DIR/public/_mobile/ _mobile
+ln -sfn $BASE_DIR/public/livefeed/ livefeed
+ln -sfn $BASE_DIR/fillers/common/internal_utils.php $BASE_DIR/public/common/internal_utils.php
+ln -sfn $BASE_DIR/public/user-registration user-registration
+ln -sfn $BASE_DIR/public/comment comment
+ln -sfn $BASE_DIR/public/pages pages
 ```
 
+Explanation:  
+``` ln ``` Linux command used for interacting with links
+``` -s ``` Causes ``` ln ``` to create a ``` symbolic link ```
+``` -f ``` Causes ``` ln ``` to overwrite old ``` symbolic link ```s
+``` -n ``` Causes ``` ln ``` to overwrite old ``` symbolic link ```s that point to directories
