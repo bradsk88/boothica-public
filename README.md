@@ -7,7 +7,7 @@ Install apache
 ``` sudo pacman -S apache ```
 (This will set our http root at ``` /srv/http ```
 
-Update ``` /etc/httpd/conf/httpd.conf ``` to allow .htaccess by changing the AllowOverride value under <Directory "srv/http"> to have the value ``` All ```.
+Update ``` /etc/httpd/conf/httpd.conf ``` to allow .htaccess by changing the AllowOverride value under ``` <Directory "srv/http"> ``` to have the value ``` All ```.
 
 Install php 
 ``` sudo pacman -S php ``` 
