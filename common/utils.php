@@ -123,7 +123,7 @@ function go_to_error($msg) {
     echo "<script = 'text/javascript'>location.href='/errors/error?msg=".urlencode($msg)."';</script>";
 }
 
-include("{$_SERVER['DOCUMENT_ROOT']}/utils/devlist.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/utils/devlist.php");
 
 function mysql_death2($link,$sql) {
     $usern = "not logged in";

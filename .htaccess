@@ -7,6 +7,7 @@ RewriteRule ^(.+)$ $1.php [L,QSA]
 RewriteRule ^newbooth[\/]?$ ./newbooth/webcam
 RewriteRule ^pm[\/]?$ ./user-pages/pm.php
 RewriteRule ^publicfeed[\/]?$ ./public-feed/publicfeed.php
+RewriteRule ^friendfeed[\/]?$ ./public-feed/friendfeed.php
 RewriteRule ^mentions[\/]?$ ./user-pages/mentions.php
 RewriteRule ^mentions/clearall[\/]?$ ./action-pages/clearAllMentions.php
 RewriteRule ^users/([a-zA-Z0-9_-]+)[\/]?$ ./user-pages/booths.php?username=$1

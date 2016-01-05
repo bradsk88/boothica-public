@@ -4,6 +4,10 @@ require_once "{$_SERVER['DOCUMENT_ROOT']}/common/db_auth.php";
 
 function sql_query($sql) {
     $dblink = connect_boothDB();
+    if (!$dblink) {
+        return null;
+    }
+
     $query = $dblink->query($sql);
     if (false===$query) {
         sql_death1($sql);
