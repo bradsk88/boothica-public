@@ -44,11 +44,11 @@ ln -sfn $BASE_DIR/fillers/utils /srv/http/utils
 ln -sfn $BASE_DIR/fillers/common/internal_utils.php $BASE_DIR/public/common/internal_utils.php 
 ln -sfn $BASE_DIR/fillers/common/db_auth.php $BASE_DIR/public/common/db_auth.php 
 ln -sfn $BASE_DIR/fillers/common/boiler.php $BASE_DIR/public/common/boiler.php 
+ln -sfn $BASE_DIR/fillers/dologin.php dologin.php
 ln -sfn $BASE_DIR/public/css/ css
 ln -sfn $BASE_DIR/public/media/ media
 ln -sfn $BASE_DIR/public/_mobile/ _mobile
 ln -sfn $BASE_DIR/public/livefeed/ livefeed
-ln -sfn $BASE_DIR/fillers/common/internal_utils.php $BASE_DIR/public/common/internal_utils.php
 ln -sfn $BASE_DIR/public/user-registration user-registration
 ln -sfn $BASE_DIR/public/user-pages user-pages
 ln -sfn $BASE_DIR/public/comment comment
