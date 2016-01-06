@@ -46,17 +46,17 @@ ln -sfn $BASE_DIR/fillers/utils /srv/http/utils
 ln -sfn $BASE_DIR/fillers/common/internal_utils.php $BASE_DIR/public/common/internal_utils.php 
 ln -sfn $BASE_DIR/fillers/common/db_auth.php $BASE_DIR/public/common/db_auth.php 
 ln -sfn $BASE_DIR/fillers/common/boiler.php $BASE_DIR/public/common/boiler.php 
-ln -sfn $BASE_DIR/fillers/dologin.php dologin.php
-ln -sfn $BASE_DIR/public/css/ css
-ln -sfn $BASE_DIR/public/media/ media
-ln -sfn $BASE_DIR/public/_mobile/ _mobile
-ln -sfn $BASE_DIR/public/livefeed/ livefeed
-ln -sfn $BASE_DIR/public/user-registration user-registration
-ln -sfn $BASE_DIR/public/user-pages user-pages
-ln -sfn $BASE_DIR/public/comment comment
-ln -sfn $BASE_DIR/public/pages pages
-mkdir $BASE_DIR/booths
-mkdir $BASE_DIR/comments
+ln -sfn $BASE_DIR/fillers/dologin.php /srv/http/dologin.php
+ln -sfn $BASE_DIR/public/css/ /srv/http/css
+ln -sfn $BASE_DIR/public/media/ m/srv/http/edia
+ln -sfn $BASE_DIR/public/_mobile/ /srv/http/_mobile
+ln -sfn $BASE_DIR/public/livefeed/ /srv/http/livefeed
+ln -sfn $BASE_DIR/public/user-registration /srv/http/user-registration
+ln -sfn $BASE_DIR/public/user-pages /srv/http/user-pages
+ln -sfn $BASE_DIR/public/comment /srv/http/comment
+ln -sfn $BASE_DIR/public/pages /srv/http/pages
+mkdir /srv/http/booths
+mkdir /srv/http/comments
 ```
 
 Explanation:  
