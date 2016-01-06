@@ -55,6 +55,8 @@ ln -sfn $BASE_DIR/public/user-registration user-registration
 ln -sfn $BASE_DIR/public/user-pages user-pages
 ln -sfn $BASE_DIR/public/comment comment
 ln -sfn $BASE_DIR/public/pages pages
+mkdir $BASE_DIR/booths
+mkdir $BASE_DIR/comments
 ```
 
 Explanation:  
