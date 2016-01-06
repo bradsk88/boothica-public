@@ -40,6 +40,7 @@ ln -sfn $BASE_DIR/public/framing/ /srv/http/framing
 ln -sfn $BASE_DIR/public/booth/ /srv/http/booth
 ln -sfn $BASE_DIR/public/lib/ /srv/http/lib 
 ln -sfn $BASE_DIR/fillers/actions/ /srv/http/actions 
+ln -sfn $BASE_DIR/fillers/newbooth/ /srv/http/newbooth 
 ln -sfn $BASE_DIR/fillers/utils /srv/http/utils 
 ln -sfn $BASE_DIR/fillers/common/internal_utils.php $BASE_DIR/public/common/internal_utils.php 
 ln -sfn $BASE_DIR/fillers/common/db_auth.php $BASE_DIR/public/common/db_auth.php 
