@@ -56,8 +56,11 @@ ln -sfn $BASE_DIR/public/user-pages /srv/http/user-pages
 ln -sfn $BASE_DIR/public/comment /srv/http/comment
 ln -sfn $BASE_DIR/public/pages /srv/http/pages
 mkdir -m 777 /srv/http/booths
-mkdir -m 777 /srv/http/booths
+mkdir -m 777 /srv/http/booths/small
+mkdir -m 777 /srv/http/booths/tiny
 mkdir -m 777 /srv/http/comments
+mkdir -m 777 /srv/http/comments/small
+mkdir -m 777 /srv/http/comments/tiny
 ```
 
 Explanation:  
