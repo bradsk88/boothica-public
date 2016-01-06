@@ -6,20 +6,20 @@
 	function sendNewBoothEmail($username, $number) {
 
         $dblink = connect_boothDB();
-		$sql = "SELECT 
-			`email` 
-			FROM `emailtbl` 
-			WHERE `fkUsername` IN 
-				(SELECT 
-				`fkUsername` 
-				FROM `friendstbl` 
-				WHERE `fkFriendName` = '".$username."') 
-			AND `friendBooth` = 1 
+		$sql = "SELECT
+			`email`
+			FROM `emailtbl`
+			WHERE `fkUsername` IN
+				(SELECT
+				`fkUsername`
+				FROM `friendstbl`
+				WHERE `fkFriendName` = '".$username."')
+			AND `friendBooth` = 1
 			AND NOT `fkUsername` = '".$username."';";
 		$emailres = $dblink->query($sql);
 		if (!$emailres) {
 			sql_death1($sql);
-		}	
+		}
 
 		$site = $_SERVER['HTTP_HOST'];
 		$headers = "MIME-Version: 1.0\r\n";
@@ -29,11 +29,11 @@
 		require_once "{$_SERVER['DOCUMENT_ROOT']}/common/internal_utils.php";
 		while ($row = $emailres->fetch_array()) {
 			mail(
-				$row['email'], 
-				"New Booth: $name", 
+				$row['email'],
+				"New Booth: $name",
 				makeMessage($name, $site, $number, $username),
 				$headers
-			); 
+			);
 		}
 	
 	}

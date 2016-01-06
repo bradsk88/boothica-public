@@ -7,6 +7,7 @@
  */
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/newbooth/email.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/newbooth/file_upload.php");
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
 require_common("ImageUtils");
@@ -16,24 +17,35 @@ require_common("utils");
 
 function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly, $requestHash = null) {
 
-    error_reporting(E_ALL);
     $dblink = connect_boothDB();
 
-    $ratelimitsql = "
-SELECT NOW( ) > datetime + INTERVAL 1
-MINUTE AS timePassed
-FROM `boothnumbers`
-WHERE fkUsername = '".$dblink->real_escape_string($username)."'
-ORDER BY datetime DESC
-LIMIT 1 ";
-    $result = $dblink->query($ratelimitsql);
-    if ($result->num_rows != 0) {
-        $rateLimitRow = $result->fetch_assoc();
-        if ($rateLimitRow['timePassed'] == 0) {
-            return json_encode(array(
-                "error" => "User posting too rapidly"
-            ));
-        }
+//    $ratelimitsql = "
+//SELECT NOW( ) > datetime + INTERVAL 1
+//MINUTE AS timePassed
+//FROM `boothnumbers`
+//WHERE fkUsername = '".$dblink->real_escape_string($username)."'
+//ORDER BY datetime DESC
+//LIMIT 1 ";
+//    $result = $dblink->query($ratelimitsql);
+//    if ($result->num_rows != 0) {
+//        $rateLimitRow = $result->fetch_assoc();
+//        if ($rateLimitRow['timePassed'] == 0) {
+//            return json_encode(array(
+//                "error" => "User posting too rapidly"
+//            ));
+//        }
+//    }
+
+    if (!class_exists('ImageUtils')) {
+        return json_encode(array(
+            "error" => "ImageUtil error"
+        ));
+    }
+
+    if (!method_exists(ImageUtils, 'makeFromEncoded')) {
+        return json_encode(array(
+            "error" => "ImageUtil error"
+        ));
     }
 
     $uploadedfile = ImageUtils::makeFromEncoded($rawImageBytes);
@@ -155,7 +167,11 @@ LIMIT 1 ";
         sql_death1($sql);
     }
 
+    error_log("Before small upload");
+
     $smallResult = uploadSmall($name, $extension, $height/$width, $filename, $uploadedfile);
+
+    error_log("After small upload");
 
     if (isset($smallResult['error'])) {
         rollback($number);
@@ -163,6 +179,9 @@ LIMIT 1 ";
     }
 
     $tinyResult = uploadTiny($name, $extension, $height/$width, $filename, $uploadedfile);
+
+    error_log("After tiny upload");
+
     if (isset($tinyResult['error'])) {
         rollback($number);
         return json_encode($tinyResult);
@@ -255,6 +274,9 @@ function uploadSmall($name, $extension, $heightOverWidth, $filename, $uploadedfi
 function uploadResized($extension, $heightOverWidth, $filename, $uploadedfile, $newwidth, $filename1, $jpegQuality)
 {
     if ($extension == 'jpg') {
+        if (!function_exists('imagecreatefromjpeg')) {
+            return array("error" => "Server Misconfigured"); // You forgot to install gd.so, didn't you?
+        }
         $normal = imagecreatefromjpeg($filename);
         $small = ImageUtils::resize($normal, $filename, $heightOverWidth, $newwidth);
         if (!$small) {
@@ -270,6 +292,9 @@ function uploadResized($extension, $heightOverWidth, $filename, $uploadedfile, $
             return array("success" => "uploaded ok", "filename" => $filename1);
         }
     } else if ($extension == 'png') {
+        if (!function_exists('imagecreatefrompng')) {
+            return array("error" => "Server Misconfigured"); // You forgot to install php-gd and gd.so, didn't you?
+        }
         $normal = imagecreatefrompng($filename);
         $small = ImageUtils::resize($normal, $filename, $heightOverWidth, $newwidth);
         if (!$small) {
