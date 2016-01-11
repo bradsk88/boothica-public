@@ -1,6 +1,8 @@
 <?PHP
 
 require_once "{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php";
+require_once("{$_SERVER['DOCUMENT_ROOT']}/framing/PageFrame.php");
+require_lib('h2o-php/h2o');
 
 error_reporting(E_ALL);
 
@@ -45,8 +47,12 @@ if (!$result['success']) {
     return;
 }
 
-foreach ($result['success']['booths'] as $booth) {
-    echo "BOOTH";
-}
+echo build_standalone_page($result);
 
-echo "end";
+function build_standalone_page($result) {
+    $pageFrame = new PageFrame();
+    $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/centerBooth.mst");
+    $html = $page->render($result['success']['booths'][0]);
+    $pageFrame->body($html);
+    return $pageFrame->render();
+}

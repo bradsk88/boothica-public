@@ -16,7 +16,7 @@
             </a>
         </div>
         <div class='centerBoothText'>
-            {{{blurb}}}
+            {{blurb}}
         </div>
     </div>
 </div>
