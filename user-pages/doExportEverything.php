@@ -16,7 +16,7 @@ if (!isLoggedIn()) {
 $username = $_SESSION['username'];
 
 $hash = hash('sha256', $username);
-echo $hash."<br/>";
+//echo $hash."<br/>\n";
 
 $strCookie = 'PHPSESSID=' . $_COOKIE['PHPSESSID'] . '; path=/';
 
@@ -47,12 +47,64 @@ if (!$result['success']) {
     return;
 }
 
-echo build_standalone_page($result);
+//foreach ($result['success']['booths'] as $booth) {
+//    echo $booth['blurb']."<br/>";
+//}
 
-function build_standalone_page($result) {
+echo build_css_block('pageframe');
+echo build_css_block('oneBooth-page');
+echo build_css_block('booth');
+echo build_css_block('posts');
+echo "<style>
+    #booth_buttons {
+        visibility: visible !important;
+    }
+</style>";
+$booth = $result['success']['booths'][0];
+echo build_standalone_page($booth);
+
+
+function build_css_block($file_name) {
+    $css_as_string = file_get_contents(sprintf("{$_SERVER['DOCUMENT_ROOT']}/css/%s.css", $file_name));
+    return sprintf("<style>%s</style>", $css_as_string);
+}
+
+function build_standalone_page($booth) {
     $pageFrame = new PageFrame();
-    $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/centerBooth.mst");
-    $html = $page->render($result['success']['booths'][0]);
+
+    $filetype = $booth['filetype'];
+    $image_file = sprintf("{$_SERVER['DOCUMENT_ROOT']}/booths/%s.%s", $booth['imageHash'], $filetype);
+    $im = file_get_contents($image_file);
+    $imdata = base64_encode($im);
+    $image_src = sprintf('data:image/%s;base64,%s', $filetype, $imdata);
+    $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/booth/templates/oneBooth.mst");
+    $boothBody = $htmlBuilder->render(array(
+        'blurb' => $booth['blurb'],
+        'boothImageUrl' => $image_src
+    ));
+
+    return json_encode($booth);
+
+    $prevBoothUrl = "";
+    $nextBoothUrl = "";
+
+    $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/user-pages/templates/oneBoothFrame.mst");
+    $commentsBody = "Comments!";
+
+    $html = $htmlBuilder->render(array(
+        "baseUrl" => '',
+        "allowed" => True,
+        "isOwner" => False,
+        "commentInput" => "",
+        "commentsBody" => $commentsBody,
+        "boothBody" => $boothBody,
+        "username" => $booth['username'],
+        "boothNumber" => $booth['boothNumber'],
+        "bootherPosessiveDisplayname" => getPossessiveDisplayName($booth['username']),
+        "static" => True,
+        "prev_booth_url" => $prevBoothUrl,
+        "next_booth_url" => $nextBoothUrl
+    ));
     $pageFrame->body($html);
     return $pageFrame->render();
 }
