@@ -14,9 +14,8 @@ if (!isLoggedIn()) {
 }
 
 $username = $_SESSION['username'];
-
-$hash = hash('sha256', $username);
-//echo $hash."<br/>\n";
+$num = rand(0, 99999);
+$hash = hash('sha256', $num.''.$username);
 
 $strCookie = 'PHPSESSID=' . $_COOKIE['PHPSESSID'] . '; path=/';
 
@@ -47,29 +46,50 @@ if (!$result['success']) {
     return;
 }
 
-//foreach ($result['success']['booths'] as $booth) {
-//    echo $booth['blurb']."<br/>";
-//}
+$relative_dir = sprintf("/the_end/%s/%s-%s", date("Y-m-d"), date("H:i:s"), $hash);
 
-echo build_css_block('pageframe');
-echo build_css_block('oneBooth-page');
-echo build_css_block('booth');
-echo build_css_block('posts');
-echo "<style>
+$absolute_dir = sprintf("{$_SERVER['DOCUMENT_ROOT']}%s", $relative_dir);
+
+if (!mkdir($absolute_dir, 0755, true)) {
+    echo "Critical error";
+    return;
+}
+
+$next_page_num = 0;
+# TODO: previous page num
+
+foreach ($result['success']['booths'] as $booth) {
+    try {
+        $page = build_css_block('pageframe');
+        $page .= build_css_block('oneBooth-page');
+        $page .= build_css_block('booth');
+        $page .= build_css_block('posts');
+        $page .= "<style>
     #booth_buttons {
         visibility: visible !important;
     }
 </style>";
-$booth = $result['success']['booths'][0];
-echo build_standalone_page($booth);
+        $page .= build_standalone_page($booth, $next_page_num, 0);
+        $next_page_num = $booth['boothnum'];
 
+        $out_file = sprintf("%s/%s.html", $absolute_dir, $booth['boothnum']);
+        file_put_contents($out_file, $page);
+        syslog(LOG_INFO, "Wrote booth file to " . $out_file);
+    } catch (Exception $e) {
+        echo "There was a problem";
+        death($e->getMessage());
+        break;
+    }
+}
+
+zip_and_serve($username, $absolute_dir, $relative_dir);
 
 function build_css_block($file_name) {
     $css_as_string = file_get_contents(sprintf("{$_SERVER['DOCUMENT_ROOT']}/css/%s.css", $file_name));
     return sprintf("<style>%s</style>", $css_as_string);
 }
 
-function build_standalone_page($booth) {
+function build_standalone_page($booth, $next_page_num, $prev_page_num) {
     $pageFrame = new PageFrame();
 
     $filetype = $booth['filetype'];
@@ -83,10 +103,8 @@ function build_standalone_page($booth) {
         'boothImageUrl' => $image_src
     ));
 
-    return json_encode($booth);
-
-    $prevBoothUrl = "";
-    $nextBoothUrl = "";
+    $prevBoothUrl = sprintf("%s.html", $prev_page_num);
+    $nextBoothUrl = sprintf("%s.html", $next_page_num);
 
     $htmlBuilder = new h2o("{$_SERVER['DOCUMENT_ROOT']}/user-pages/templates/oneBoothFrame.mst");
     $commentsBody = "Comments!";
@@ -107,4 +125,34 @@ function build_standalone_page($booth) {
     ));
     $pageFrame->body($html);
     return $pageFrame->render();
+}
+
+function zip_and_serve($username, $absolute_dir, $relative_dir) {
+    $relative_zip = sprintf("/the_end/%s_booths.zip", $username);
+    $zipname = "{$_SERVER['DOCUMENT_ROOT']}".$relative_zip;
+    touch($zipname);
+
+    $zip = new ZipArchive;
+    if ($zip->open($zipname, ZipArchive::CREATE)!==TRUE) {
+        exit("Critical Error: Z");
+    }
+    if ($handle = opendir($absolute_dir)) {
+        while (false !== ($entry = readdir($handle))) {
+            if ($entry != "." && $entry != ".." && !strstr($entry,'.php')) {
+                $file = sprintf('%s/%s', $absolute_dir, $entry);
+                if (!file_exists($file)) {
+                    die ("Critical Error: F");
+                }
+                $zip->addFile($file, sprintf('%s/%s', $username, $entry));
+            }
+        }
+        closedir($handle);
+    }
+
+    $zip->close();
+
+    header('Content-Type: application/zip');
+    header("Content-Disposition: attachment; filename='".base().$relative_zip."'");
+    header('Content-Length: ' . filesize($zipname));
+    header("Location: ".base().$relative_zip);
 }
