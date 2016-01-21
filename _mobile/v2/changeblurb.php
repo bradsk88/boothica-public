@@ -11,6 +11,11 @@ try {
 
 function main() {
 
+    if (is_the_end()) {
+        echo json_encode(array("error" => "The End"));
+        return;
+    }
+
     require_once("{$_SERVER['DOCUMENT_ROOT']}/userpages/friendbooth_utils.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/_mobile/utils.php");
     require_once("{$_SERVER['DOCUMENT_ROOT']}/common/boiler.php");

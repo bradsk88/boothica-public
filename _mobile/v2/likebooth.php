@@ -18,6 +18,10 @@ class LikeBoothApiResponse extends AbstractUserApiResponse {
 
     protected function run($username)
     {
+        if ($this->fail_if_the_end()) {
+            return;
+        }
+
         $boothnum = $_REQUEST['boothnum'];
         if (!isAllowedToInteractWithBooth($username, $boothnum)) {
             $this->markCallAsFailure($username . " is not allowed to interact with booth " . $boothnum);

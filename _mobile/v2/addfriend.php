@@ -13,6 +13,11 @@ class AddFriendResponse extends AbstractUserApiResponse {
 
     protected function run($username)
     {
+
+        if ($this->fail_if_the_end()) {
+            return;
+        }
+
         $otherUser = $_POST['boothername'];
         if (!userExists($otherUser)) {
             $this->markCallAsFailure("User ". $otherUser ." does not exist.");

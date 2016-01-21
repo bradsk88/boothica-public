@@ -22,6 +22,14 @@ try {
 
 function main() {
 
+    if (is_the_end()) {
+        echo json_encode(array(
+            "error" => "The End"
+        ));
+        return;
+    }
+
+
     $dblink = connect_boothDB();
     $username = $_POST['username'];
     if (isset($_SESSION['username'])) {

@@ -19,6 +19,17 @@ abstract class AbstractUserApiResponse {
 
     protected $callWasSuccessful = false;
 
+    function fail_if_the_end() {
+
+        $end = new DateTime('2016-01-30');
+        $now = new DateTime();
+        if (($now > $end) || true) {
+            $this->markCallAsFailure("The End");
+            return True;
+        }
+        return False;
+    }
+
     function __construct($requiredArgs=array()) {
         $this->requiredArgs = $requiredArgs;
         if (in_array('username', $requiredArgs)) {

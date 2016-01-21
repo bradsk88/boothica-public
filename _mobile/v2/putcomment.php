@@ -30,6 +30,11 @@ class PutCommentApiResponse extends AbstractUserApiResponse {
      */
     protected function run($username)
     {
+
+        if ($this->fail_if_the_end()) {
+            return;
+        }
+
         $boothNum = $_POST['boothnum'];
         $commentText = $_POST['commenttext'];
 

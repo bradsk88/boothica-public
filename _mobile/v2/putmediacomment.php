@@ -33,6 +33,10 @@ class PutCommentApiResponse extends AbstractUserApiResponse {
     protected function run($username)
     {
 
+        if ($this->fail_if_the_end()) {
+            return;
+        }
+
         if (!in_array($_POST['mediatype'], array("photo"))) {
             $this->markCallAsFailure("Missing POST parameter mediatype.  Must be one of: [\"photo\",]");
             return;
