@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca153bc9-cbf4-4492-8a60-61abd39714bd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/userpages/booth_utils.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-pages/doExportEverything.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/userpages/friendbooth_utils.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newbooth/email.php" afterPath="$PROJECT_DIR$/newbooth/email.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user-pages/exportEverything.php" afterPath="$PROJECT_DIR$/user-pages/exportEverything.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newbooth/post_utils.php" afterPath="$PROJECT_DIR$/newbooth/post_utils.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="ca153bc9-cbf4-4492-8a60-61abd39714bd" name="Default" comment="Working on exporting comments&#10;">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="boothica-public.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +32,7 @@
       <file leaf-file-name="doExportEverything.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user-pages/doExportEverything.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.583333" vertical-offset="289" max-vertical-offset="855">
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="855">
               <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
@@ -48,12 +42,9 @@
       <file leaf-file-name="postbooth.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_mobile/v2/postbooth.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.333334" vertical-offset="769" max-vertical-offset="1335">
+            <state vertical-scroll-proportion="0.0" vertical-offset="769" max-vertical-offset="1335">
               <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
-              <folding>
-                <marker date="1434798291289" expanded="true" signature="1306:1455" placeholder="SELECT reque..requestHash..." />
-                <marker date="1434798291289" expanded="true" signature="1332:1404" placeholder="SELECT reque..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,17 +52,9 @@
       <file leaf-file-name="post_utils.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newbooth/post_utils.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.666667" vertical-offset="4016" max-vertical-offset="4755">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4016" max-vertical-offset="4755">
               <caret line="293" column="13" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
-              <folding>
-                <marker date="1452055893128" expanded="true" signature="560:743" placeholder="SELECT NOW( ..." />
-                <marker date="1452055893128" expanded="true" signature="1494:1610" placeholder="SELECT `next..." />
-                <marker date="1452055893128" expanded="true" signature="2683:2743" placeholder="INSERT INTO ..." />
-                <marker date="1452055893128" expanded="true" signature="2925:3075" placeholder="SELECT `pkNu..." />
-                <marker date="1452055893128" expanded="true" signature="3305:3479" placeholder="INSERT INTO ..." />
-                <marker date="1452055893128" expanded="true" signature="4087:4158" placeholder="SELECT `imag..." />
-                <marker date="1452055893128" expanded="true" signature="6539:6732" placeholder="INSERT INTO ..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,7 +62,7 @@
       <file leaf-file-name="file_upload.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newbooth/file_upload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="675">
+            <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="675">
               <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
               <folding>
                 <marker date="1434798291306" expanded="true" signature="298:353" placeholder="DELETE FROM ..." />
@@ -91,7 +74,7 @@
       <file leaf-file-name="boiler.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/boiler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="975">
+            <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1110">
               <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
               <folding />
             </state>
@@ -101,7 +84,7 @@
       <file leaf-file-name="addFriend.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/action-pages/addFriend.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="900">
+            <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="900">
               <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="61" />
               <folding />
             </state>
@@ -111,7 +94,7 @@
       <file leaf-file-name="userfeed.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_mobile/v2/userfeed.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.958334" vertical-offset="1249" max-vertical-offset="1815">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1249" max-vertical-offset="1815">
               <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding />
             </state>
@@ -121,7 +104,7 @@
       <file leaf-file-name="getbooth.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_mobile/getbooth.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="315">
+            <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="315">
               <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
               <folding />
             </state>
@@ -131,7 +114,7 @@
       <file leaf-file-name="getbooth.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_mobile/v2/getbooth.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15228426" vertical-offset="0" max-vertical-offset="2085">
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2085">
               <caret line="6" column="70" selection-start-line="6" selection-start-column="70" selection-end-line="6" selection-end-column="70" />
               <folding>
                 <marker date="1452056104676" expanded="true" signature="1257:1357" placeholder="SELECT count..." />
@@ -145,7 +128,7 @@
       <file leaf-file-name="standard_3.php" pinned="false" current-in-tab="false">
         <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_3.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.166667" vertical-offset="13109" max-vertical-offset="15915">
+            <state vertical-scroll-proportion="0.0" vertical-offset="13109" max-vertical-offset="15915">
               <caret line="887" column="9" selection-start-line="887" selection-start-column="9" selection-end-line="887" selection-end-column="9" />
               <folding />
             </state>
@@ -160,11 +143,15 @@
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="the-end" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/newbooth/newbooth-scripts.js" />
         <option value="$PROJECT_DIR$/css/webcam.css" />
         <option value="$PROJECT_DIR$/newbooth/templates/webcamScripts.mst.js" />
         <option value="$PROJECT_DIR$/newbooth/webcam.php" />
@@ -196,11 +183,26 @@
         <option value="$PROJECT_DIR$/common/db_auth.php" />
         <option value="$PROJECT_DIR$/exportEverything.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/user-pages/exportEverything.php" />
         <option value="$PROJECT_DIR$/newbooth/email.php" />
-        <option value="$PROJECT_DIR$/user-pages/doExportEverything.php" />
         <option value="$PROJECT_DIR$/newbooth/post_utils.php" />
         <option value="$PROJECT_DIR$/_mobile/v2/getbooth.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/putcomment.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/meta/AbstractUserApiResponse.php" />
+        <option value="$PROJECT_DIR$/common/boiler.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/postbooth.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/removefriend.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/putmediacomment.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/likebooth.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/ignorefriend.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/clearallmentions.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/changeblurb.php" />
+        <option value="$PROJECT_DIR$/_mobile/v2/addfriend.php" />
+        <option value="$PROJECT_DIR$/user-pages/phpinfo.php" />
+        <option value="$PROJECT_DIR$/user-pages/exportEverything.php" />
+        <option value="$PROJECT_DIR$/user-pages/templates/oneBoothFrame.mst" />
+        <option value="$PROJECT_DIR$/framing/templates/textCommentNoContext.mst" />
+        <option value="$PROJECT_DIR$/booth/templates/oneBooth.h2o" />
+        <option value="$PROJECT_DIR$/user-pages/doExportEverything.php" />
       </list>
     </option>
   </component>
@@ -209,9 +211,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1919" />
-    <option name="width" value="1922" />
-    <option name="height" value="1056" />
+    <option name="x" value="1920" />
+    <option name="width" value="1920" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -284,6 +286,11 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/user-pages/templates" />
+      <recent name="$PROJECT_DIR$/booth/templates" />
+      <recent name="$PROJECT_DIR$/framing/templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/user-pages" />
     </key>
@@ -324,6 +331,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ca153bc9-cbf4-4492-8a60-61abd39714bd" name="Default" comment="" />
+      <changelist id="" name="Actions" comment="" />
       <created>1434327090179</created>
       <option name="number" value="Default" />
       <updated>1434327090179</updated>
@@ -346,31 +354,55 @@
       <option name="project" value="LOCAL" />
       <updated>1451970096105</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Froze the API after Jan 30">
+      <created>1453347750417</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1453347750417</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Deleted sunsetted v1 endpoints">
+      <created>1453347833264</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1453347833264</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Export works for exporting booths and blurbs only&#10;No comments">
+      <created>1453352993521</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1453352993521</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Brought back actions.  Can't remember why I removed these...">
+      <created>1453436691257</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1453436691257</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="0" width="1922" height="1056" extended-state="6" />
+    <frame x="1920" y="0" width="1920" height="1055" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3104189" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23162939" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23375931" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33727175" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867885" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32975295" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33727175" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -393,7 +425,11 @@
     <MESSAGE value="Added flash fallback but it doesn't really work.&#10;Going to check out webcamjs&#10;https://github.com/jhuckaby/webcamjs" />
     <MESSAGE value="Improving localhost" />
     <MESSAGE value="Initial commit of &quot;The End&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit of &quot;The End&quot;" />
+    <MESSAGE value="Froze the API after Jan 30" />
+    <MESSAGE value="Deleted sunsetted v1 endpoints" />
+    <MESSAGE value="Export works for exporting booths and blurbs only&#10;No comments" />
+    <MESSAGE value="Brought back actions.  Can't remember why I removed these..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Brought back actions.  Can't remember why I removed these..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -495,7 +531,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3469388" vertical-offset="15385" max-vertical-offset="18003">
           <caret line="917" column="9" selection-start-line="917" selection-start-column="9" selection-end-line="917" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -580,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -588,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -603,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-37.5" vertical-offset="0" max-vertical-offset="1095">
           <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -626,7 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-26.25" vertical-offset="0" max-vertical-offset="810">
           <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -634,7 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3660">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -642,7 +672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
           <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -650,7 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="645">
           <caret line="23" column="63" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -658,7 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="825">
           <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -666,7 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="180">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -682,7 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="600">
           <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -690,13 +715,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="735">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="30" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/action-pages/addFriend.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="900">
+        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="900">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="61" />
           <folding />
         </state>
@@ -704,7 +728,7 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_3.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.166667" vertical-offset="13109" max-vertical-offset="15915">
+        <state vertical-scroll-proportion="0.0" vertical-offset="13109" max-vertical-offset="15915">
           <caret line="887" column="9" selection-start-line="887" selection-start-column="9" selection-end-line="887" selection-end-column="9" />
           <folding />
         </state>
@@ -712,7 +736,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/boiler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="975">
+        <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1110">
           <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
           <folding />
         </state>
@@ -720,7 +744,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_mobile/v2/userfeed.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.958334" vertical-offset="1249" max-vertical-offset="1815">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1249" max-vertical-offset="1815">
           <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding />
         </state>
@@ -728,7 +752,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newbooth/file_upload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="675">
+        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="675">
           <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
           <folding>
             <marker date="1434798291306" expanded="true" signature="298:353" placeholder="DELETE FROM ..." />
@@ -740,18 +764,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7016275" vertical-offset="152" max-vertical-offset="885">
           <caret line="36" column="9" selection-start-line="7" selection-start-column="8" selection-end-line="36" selection-end-column="9" />
-          <folding>
-            <marker date="1452055418173" expanded="true" signature="-1:-1" placeholder="SELECT `emai..." />
-            <marker date="1452055418173" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452055418173" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1452055418173" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user-pages/doExportEverything.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.583333" vertical-offset="289" max-vertical-offset="855">
+        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="855">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
@@ -759,34 +777,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_mobile/v2/postbooth.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.333334" vertical-offset="769" max-vertical-offset="1335">
+        <state vertical-scroll-proportion="0.0" vertical-offset="769" max-vertical-offset="1335">
           <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
-          <folding>
-            <marker date="1434798291289" expanded="true" signature="1306:1455" placeholder="SELECT reque..requestHash..." />
-            <marker date="1434798291289" expanded="true" signature="1332:1404" placeholder="SELECT reque..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/newbooth/post_utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.666667" vertical-offset="4016" max-vertical-offset="4755">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4016" max-vertical-offset="4755">
           <caret line="293" column="13" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
-          <folding>
-            <marker date="1452055893128" expanded="true" signature="560:743" placeholder="SELECT NOW( ..." />
-            <marker date="1452055893128" expanded="true" signature="1494:1610" placeholder="SELECT `next..." />
-            <marker date="1452055893128" expanded="true" signature="2683:2743" placeholder="INSERT INTO ..." />
-            <marker date="1452055893128" expanded="true" signature="2925:3075" placeholder="SELECT `pkNu..." />
-            <marker date="1452055893128" expanded="true" signature="3305:3479" placeholder="INSERT INTO ..." />
-            <marker date="1452055893128" expanded="true" signature="4087:4158" placeholder="SELECT `imag..." />
-            <marker date="1452055893128" expanded="true" signature="6539:6732" placeholder="INSERT INTO ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_mobile/getbooth.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="315">
+        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="315">
           <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
           <folding />
         </state>
@@ -794,7 +801,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_mobile/v2/getbooth.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15228426" vertical-offset="0" max-vertical-offset="2085">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="2085">
           <caret line="6" column="70" selection-start-line="6" selection-start-column="70" selection-end-line="6" selection-end-column="70" />
           <folding>
             <marker date="1452056104676" expanded="true" signature="1257:1357" placeholder="SELECT count..." />
