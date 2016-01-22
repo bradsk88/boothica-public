@@ -56,6 +56,7 @@ ln -sfn $BASE_DIR/public/user-pages /srv/http/user-pages
 ln -sfn $BASE_DIR/public/comment /srv/http/comment
 ln -sfn $BASE_DIR/public/pages /srv/http/pages
 ln -sfn $BASE_DIR/public/actions /srv/http/actions
+ln -sfn $BASE_DIR/public/action-pages /srv/http/action-pages
 ln -sfn $BASE_DIR/public/userpages /srv/http/userpages
 mkdir -m 777 /srv/http/booths
 mkdir -m 777 /srv/http/booths/small
