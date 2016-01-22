@@ -1,0 +1,31 @@
+<div class="photoCommentRegionNoContext">
+    <div class="photoCommentImageRegionNoContext">
+        <img src="{{imageUrl}}" class="photoCommentImageNoContext"/>
+    </div>
+    <div class="photoCommentUsernameRegionNoContext">
+        <a href={{baseUrl}}/users/{{username}}  class="photoCommentUsernameNoContext">
+            <div>
+                {{displayName}}
+            </div>
+        </a>
+    </div>
+    <div class="photoCommentTextRegionNoContext">
+        <div class="photoCommentTextNoContext">
+            {% autoescape off %}
+            {{ text }}
+            {% autoescape on %}
+        </div>
+    </div>
+    {% if hasLikes %}
+        <div class = "commentLikesCountRegion" id = "comment_{{commentNumber}}_likes_count_region">
+            <div class = "commentLikesCountNumber" id = "comment_{{commentNumber}}_likes_count">
+                {{likes}} likes
+            </div>
+        </div>
+    {% endif %}
+    <div class = "textCommentDateTimeRegionNoContext">
+        <div class = "textCommentDateTimeNoContext">
+            {{commentDatetime}}
+        </div>
+    </div>
+</div>

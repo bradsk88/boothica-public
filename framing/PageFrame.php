@@ -46,11 +46,16 @@ class PageFrame {
     private $lastSidebarCollapsed = false;
     private $lastSidebarLink = null;
     private $availableWhenSiteDown = false;
+    private $static = false;
 
     public function __construct($available=false) {
         $this->availableWhenSiteDown = $available;
         $this->includeJQuery();
         $this->initialMeta();
+    }
+
+    public function makeStatic() {
+        $this->static = true;
     }
 
     function body($html) {
@@ -157,6 +162,9 @@ class PageFrame {
             $data["userDisplayName"] = getDisplayName($_SESSION['username']);
         }
         $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/pageFrame.mst");
+        if ($this->static) {
+            $page = new h2o("{$_SERVER['DOCUMENT_ROOT']}/framing/templates/pageFrameStatic.h2o");
+        }
         return $page->render($data);
     }
 

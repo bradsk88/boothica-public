@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="keywords"
+          content="dailybooth, social, photography, photo, socialnetworking, microblogging, community, web2.0, pictures, blog, photos">
+    {% for css in metaCss %}
+    <link rel="stylesheet" href="{{css}}" type="text/css" media="screen"/>
+    {% endfor %}
+    {% for css in metaRemoteCss %}
+    <link href="{{css}}" type="text/css" media="screen"/>
+    {% endfor %}
+    <link rel="shortcut icon" href="{{baseUrl}}/favicon.ico" type="image/x-icon">
+    {% for script in metaScripts %}
+    <script type="text/javascript" src="{{script}}"></script>
+    {% endfor %}
+    {% for script in metaRawScripts %}
+    {% autoescape off %}
+    {{script}}
+    {% autoescape on %}
+    {% endfor %}
+</head>
+<body>
+<div class='pageheaderbg'>
+    <div class='pageheader'>
+        <a href="{{headerlink}}" class="headertitle" id="homebutton"></a>
+        {% if loggedIn %}
+        {% endif %}
+    </div>
+</div>
+{% if notificationRegion %}
+<div style="width: 100%;">
+    {% autoescape off %}
+    {{notificationRegion}}
+    {% autoescape on %}
+</div>
+{% endif %}
+<div class="page_frame">
+    <div class="body_inside" id = "inner_body">
+        <div class="requires_js_warning" id = "requires_js_warning">
+            This website requires JavaScript.  While some features may work, there are no guarantees.
+        </div>
+        {% autoescape off %}
+        {{body}}
+        {% autoescape on %}
+        <div class="load_more_button" id="body_load_more_button">
+            Load More ...
+        </div>
+    </div>
+    <div class="sidebar_first">
+        <div class="sidebar_titleandbutton">
+            {% if firstSidebarTitle %}
+            <div class="sidebar_title">
+                {{firstSidebarTitle}}
+            </div>
+            {% endif %}
+            {% if firstSidebarLink != null %}
+            <div class="sidebar_button">
+                <a href="{{firstSidebarLink}}">go</a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="section_toggler">
+            {{firstSidebarTitle}}
+        </div>
+        <div class="sidebar_body{% if firstSideBarCollapsed %} collapsed{% endif %}">
+            <div id="firstSideBarContents">
+            </div>
+        </div>
+    </div>
+    <div class="sidebar_last">
+        <div class="sidebar_titleandbutton">
+            {% if lastSidebarTitle %}
+            <div class="sidebar_title">
+                {{lastSidebarTitle}}
+            </div>
+            {% endif %}
+            {% if lastSidebarLink != null %}
+            <div class="sidebar_button">
+                <a href="{{lastSidebarLink}}">go</a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="section_toggler">
+            {{lastSidebarTitle}}
+        </div>
+        <div class="sidebar_body{% if lastSideBarCollapsed %} collapsed{% endif %}">
+            <div id="lastSideBarContents">
+            </div>
+        </div>
+    </div>
+    {{footer}}
+</div>
+</body>
+</html>

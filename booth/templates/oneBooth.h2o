@@ -4,7 +4,9 @@
     </div>
     <div class = "oneBoothBlurbRegion">
         <div class = "oneBoothBlurb">
-            {{{blurb}}}
+            {% autoescape off %}
+            {{blurb}}
+            {% autoescape on %}
         </div>
     </div>
 </div>

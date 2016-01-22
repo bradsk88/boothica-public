@@ -1,0 +1,40 @@
+<div class="textCommentRegionNoContext">
+    <div class="textCommentImageRegionNoContext">
+        <a href={{baseUrl}}/users/{{username}}>
+            <img src="{{iconUrl}}" class="textCommentImageNoContext"/>
+        </a>
+    </div>
+    <div class="textCommentUsernameRegionNoContext">
+        <a href={{baseUrl}}/users/{{username}}  class="textCommentUsernameNoContext">
+            <div>
+                {{displayName}}
+            </div>
+        </a>
+    </div>
+    <div class="textCommentTextRegionNoContext">
+        <div class="textCommentTextNoContext">
+            {% autoescape off %}
+            {{text}}
+            {% autoescape on %}
+        </div>
+    </div>
+    {% if hasLikes %}
+    <div class = "commentLikesCountRegion" id = "comment_{{commentNumber}}_likes_count_region">
+        <div class = "commentLikesCountNumber" id = "comment_{{commentNumber}}_likes_count">
+            {{likes}} likes
+        </div>
+    </div>
+    {% endif %}
+    <div class="textCommentButtonsRegionNoContext">
+        <form class="userBoothButton" action = "{{baseUrl}}/comments/{{commentNumber}}/like" method = "POST">
+        {% if selfUrl %}
+            <input type = "hidden" name = "nextUrl" id = "nextUrl" value = "{{selfUrl}}"/>
+        {% endif %}
+        </form>
+    </div>
+    <div class = "textCommentDateTimeRegionNoContext">
+        <div class = "textCommentDateTimeNoContext">
+            {{commentDatetime}}
+        </div>
+    </div>
+</div>

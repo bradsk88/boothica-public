@@ -1,0 +1,68 @@
+<div class = "section_toggler" id = "user_booth_body_toggler">
+    $username - Booth {{boothNum}}
+</div>
+
+<div class = "userBoothBody">
+
+
+    <div class = "userBoothButtonsRegion">
+        <form class = "userBoothButton" action = "{{baseUrl}}/users/{{username}}/">
+            <button>
+                Click to go to {{bootherPosessiveDisplayname}} profile
+            </button>
+        </form>
+    </div>
+
+    <div id = "user_booth_body">{% if boothBody %}{% autoescape off %}{{ boothBody }}{% autoescape on %}{% endif %}</div>
+
+    {% if allowed %}
+
+    <div class = "userBoothButtonsRegion" id = "booth_buttons">
+
+        <form class = "userBoothButton" id = "prev_booth_form" {% if prev_booth_url %}action = "{{ prev_booth_url }}"{% endif %}>
+            <button id = "prev_booth_button"{% if prev_booth_url %}{% else %} disabled=disabled{% endif %}>
+                Previous
+            </button>
+        </form>
+
+        {% if isOwner %}
+
+        <form class = "userBoothButton" action = "{{baseUrl}}/users/{{username}}/{{boothNumber}}/edit">
+            <button>
+                Edit
+            </button>
+        </form>
+
+        {% else %}
+
+        {% endif %}
+
+        <form class = "userBoothButton" id = "next_booth_form" {% if next_booth_url %}action = "{{ next_booth_url }}"{% endif %}>
+            <button id = "next_booth_button"{% if next_booth_url %}{% else %} disabled=disabled{% endif %}>
+                Next
+            </button>
+        </form>
+
+    </div>
+
+    <div class = "userBoothLikesRegion" id = "user_booth_likes_region">
+        <div class = "userBoothLikes" id = "user_booth_likes">
+            <div class = "userBoothLikesCountRegion" id = "user_booth_likes_count_region">
+                <div class = "userBoothLikesCountNumber" id = "user_booth_likes_count">
+                    #
+                </div>
+                <div id = "like_count_label">
+                    Likes
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = "userBoothComments" id = "user_booth_comments">{% if commentsBody %}{% autoescape off %}{{ commentsBody }}{% autoescape on %}{% endif %}</div>
+    <div id="loadmoreajaxloader" style="display:none;">
+        <center><img src="{{baseUrl}}/media/ajax-loader.gif" /></center>
+    </div>
+    {% endif %}
+    {% autoescape off %}
+    {{commentInput}}
+    {% autoescape on %}
+</div>
