@@ -3,3 +3,4 @@ lib/h2o-php
 common/internal_utils.php
 test/vendor
 .idea/workspace.xml
+common/boiler.php

@@ -13,14 +13,14 @@
         </form>
     </div>
 
-    <div id = "user_booth_body">{% if boothBody %}{% autoescape off %}{{ boothBody }}{% autoescape on %}{% endif %}</div>
+    <div id = "user_booth_body"></div>
 
     {% if allowed %}
 
     <div class = "userBoothButtonsRegion" id = "booth_buttons">
 
-        <form class = "userBoothButton" id = "prev_booth_form" {% if prev_booth_url %}action = "{{ prev_booth_url }}"{% endif %}>
-            <button id = "prev_booth_button"{% if prev_booth_url %}{% else %} disabled=disabled{% endif %}>
+        <form class = "userBoothButton" id = "prev_booth_form">
+            <button id = "prev_booth_button" disabled=disabled>
                 Previous
             </button>
         </form>
@@ -43,8 +43,8 @@
 
         {% endif %}
 
-        <form class = "userBoothButton" id = "next_booth_form" {% if next_booth_url %}action = "{{ next_booth_url }}"{% endif %}>
-            <button id = "next_booth_button"{% if next_booth_url %}{% else %} disabled=disabled{% endif %}>
+        <form class = "userBoothButton" id = "next_booth_form">
+            <button id = "next_booth_button" disabled=disabled>
                 Next
             </button>
         </form>
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-    <div class = "userBoothComments" id = "user_booth_comments">{% if commentsBody %}{{ commentsBody }}{% endif %}</div>
+    <div class = "userBoothComments" id = "user_booth_comments"></div>
     <div id="loadmoreajaxloader" style="display:none;">
         <center><img src="{{baseUrl}}/media/ajax-loader.gif" /></center>
     </div>
