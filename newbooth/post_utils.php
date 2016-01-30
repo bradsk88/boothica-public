@@ -66,6 +66,8 @@ function doPostBooth($username, $rawImageBytes, $blurb, $friendsonly, $requestHa
     $formattedblurb = handle_links($blurb);
     $formattedblurb = handle_mentions($formattedblurb);
     $formattedblurb = handle_hashtags($formattedblurb);
+    $formattedblurb = str_replace("\n", "<br />", $formattedblurb);
+
 
     $columns = "(`fkUsername`, `source`, `isPublic`, `blurb`)";
     $values = "('".$dblink->real_escape_string($username)."', 'newbooth/post_utils.php',".(!($dblink->real_escape_string($friendsonly))).", '".$dblink->real_escape_string($formattedblurb)."')";

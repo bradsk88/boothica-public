@@ -51,7 +51,6 @@ $(document).ready(function() {
             "audio": false,
             "video": true,
             el: "webcam",
-
             extern: null,
             append: true,
             width: 640,

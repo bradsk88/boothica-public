@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    </head>
+    <body style="font-family: Open Sans">
+        <img src="{{ headerImage }}"/><br/>
+        <div style = "background: #143B5B; max-width: 640px; color: #DDDDFF;">
+            <div style = "padding: 10px;">
+            Hi,<br/>
+            <br/>
+            As you may or may not have heard, Boothi.ca will be switching to read-only some time around the 30th of January.
+            This means that there is a little less than 1 week left before the site goes quiet.<br/>
+            <br/>
+            I thought I'd take this opportunity to thank everyone who made Boothi.ca what it was.  I consider Boothi.ca a
+            success, despite my decision to close it's doors and move on.<br/>
+            <br/>
+            If you'd like to make one last splash before January 30th, head over to the site and get in one or two final booths.
+            <br/>
+            <br/>
+            <div style="width: 100%; text-align: center">
+                <a style = "color: white; text-decoration: none;" href="{{ baseUrl }}">Click here to go to Boothi.ca</a>
+            </div>
+            <br/>
+            Stay tuned to <a style = "color: white; text-decoration: none;" href="http://twitter.com/boothicanews">Our Twitter Account</a> because I'll be posting information
+            about how you can download all of your booths, should you want to do so.<br/>
+            <br/>
+            See you around,<br/>
+            Brad<br/>
+            Creator of Boothi.ca
+            </div>
+        </div>
+    </body>
+</html>

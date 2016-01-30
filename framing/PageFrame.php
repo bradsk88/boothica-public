@@ -151,7 +151,9 @@ class PageFrame {
             "headerlink" => $headerlink,
             "baseUrl" => base(),
             "firstSidebarTitle" => $this->firstSidebarTitle,
+            "firstSidebarLink" => $this->firstSidebarLink,
             "lastSidebarTitle" => $this->lastSidebarTitle,
+            "lastSidebarLink" => $this->lastSidebarLink,
             "title" => $this->title,
         );
         if (isset($this->bannerMessage)) {
